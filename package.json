@@ -4,7 +4,8 @@
   "description": "Static website scaffold for Atlas Barbell Club.",
   "scripts": {
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
-    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "test": "node ./tests/verify-scroll-animations.mjs"
   },
   "keywords": [],
   "author": "",

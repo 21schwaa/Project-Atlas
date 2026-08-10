@@ -46,7 +46,7 @@
       <section class="relative overflow-hidden border-b border-white/10">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.22),transparent_34%),linear-gradient(135deg,rgba(63,63,70,0.6),transparent_45%)]"></div>
         <div class="relative mx-auto grid min-h-[78vh] max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.08fr_0.92fr]">
-          <div>
+          <div data-reveal>
             <p class="mb-4 text-sm font-black uppercase text-amber-300">Strength starts here</p>
             <h1 class="max-w-3xl text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
               Train heavy. Move well. Build what lasts.
@@ -70,7 +70,7 @@
             </div>
           </div>
 
-          <div class="border border-white/10 bg-zinc-900/70 p-6 shadow-2xl shadow-black/30">
+          <div class="border border-white/10 bg-zinc-900/70 p-6 shadow-2xl shadow-black/30" data-reveal data-reveal-delay="120">
             <div class="mb-5 flex items-center justify-center border border-white/10 bg-zinc-950/80 px-8 py-8">
               <img
                 src="./atlasbarbellnowords.svg"
@@ -99,15 +99,15 @@
 
       <section id="training" class="mx-auto max-w-6xl px-5 py-16">
         <div class="grid gap-5 md:grid-cols-3">
-          <article class="border border-white/10 bg-zinc-900 p-6">
+          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal>
             <h2 class="text-xl font-black text-white">Open Gym</h2>
             <p class="mt-3 leading-7 text-zinc-400">Train on your schedule with serious equipment and a focused floor.</p>
           </article>
-          <article class="border border-white/10 bg-zinc-900 p-6">
+          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="100">
             <h2 class="text-xl font-black text-white">Powerlifting</h2>
             <p class="mt-3 leading-7 text-zinc-400">Technique, programming, and meet prep for squat, bench, and deadlift.</p>
           </article>
-          <article class="border border-white/10 bg-zinc-900 p-6">
+          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="200">
             <h2 class="text-xl font-black text-white">Strength Basics</h2>
             <p class="mt-3 leading-7 text-zinc-400">Learn the lifts, build confidence, and develop durable training habits.</p>
           </article>
@@ -116,11 +116,11 @@
 
       <section id="coaching" class="border-y border-white/10 bg-zinc-900">
         <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
+          <div data-reveal>
             <p class="text-sm font-black uppercase text-amber-300">Coaching</p>
             <h2 class="mt-3 text-4xl font-black text-white">Clear programming. Direct feedback.</h2>
           </div>
-          <p class="text-lg leading-8 text-zinc-300">
+          <p class="text-lg leading-8 text-zinc-300" data-reveal data-reveal-delay="120">
             Whether you are new to barbells or preparing for the platform, Atlas gives you the structure and eyes you need to train with purpose.
           </p>
         </div>
@@ -128,12 +128,12 @@
 
       <section id="visit" class="mx-auto max-w-6xl px-5 py-16">
         <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
-          <div>
+          <div data-reveal>
             <p class="text-sm font-black uppercase text-amber-300">Visit</p>
             <h2 class="mt-3 text-4xl font-black text-white">Come lift with us.</h2>
             <p class="mt-4 leading-7 text-zinc-400">Use this starter section for address, hours, trial pass info, or a contact form.</p>
           </div>
-          <div class="border border-white/10 bg-zinc-900 p-6">
+          <div class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="120">
             <p class="text-sm font-bold uppercase text-zinc-400">Next step</p>
             <a
               href="mailto:hello@atlasbarbellclub.com"
@@ -149,5 +149,6 @@
     <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-zinc-500">
       <p>&copy; 2026 Atlas Barbell Club. Built strong.</p>
     </footer>
+    <script src="./src/main.js" defer></script>
   </body>
 </html>
