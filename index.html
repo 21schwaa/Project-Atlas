@@ -5,150 +5,607 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Atlas Barbell Club is a focused strength training space for lifters, coaches, and anyone ready to train with intent."
+      content="Atlas Barbell Club is an Olympic weightlifting gym for lifters who want sharper technique, serious platforms, and focused coaching."
     >
-    <title>Atlas Barbell Club</title>
+    <title>Atlas Barbell Club | Olympic Weightlifting Gym</title>
+    <link rel="preconnect" href="https://picsum.photos">
     <link rel="stylesheet" href="./dist/styles.css">
   </head>
-  <body class="bg-zinc-950 text-zinc-100 antialiased">
+  <body class="bg-[#060607] text-zinc-100 antialiased">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-amber-300 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-950"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-30 focus:rounded-full focus:bg-amber-300 focus:px-5 focus:py-3 focus:text-sm focus:font-black focus:text-zinc-950"
     >
       Skip to main content
     </a>
 
-    <header class="border-b border-white/10 bg-zinc-950/90">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5" aria-label="Main navigation">
-        <a href="#" class="flex items-center gap-4 text-white">
-          <img
-            src="./atlasbarbellnowords.svg"
-            alt="Atlas Barbell Club logo"
-            class="h-16 w-9 shrink-0 invert"
-          >
-          <span class="flex flex-col">
-            <span class="text-2xl font-black uppercase leading-none tracking-wide sm:text-3xl">Atlas</span>
-            <span class="my-1 h-0.5 w-full bg-amber-300" aria-hidden="true"></span>
-            <span class="text-sm font-black uppercase leading-none tracking-[0.18em] text-zinc-200 sm:text-base">
-              Barbell Club
-            </span>
+    <div class="site-grain" aria-hidden="true"></div>
+
+    <header class="fixed inset-x-0 top-0 z-20 px-4 pt-5">
+      <nav
+        class="mx-auto flex w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-black/45 px-4 py-3 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-2xl sm:px-5"
+        aria-label="Main navigation"
+      >
+        <a href="#" class="group flex min-w-0 items-center gap-3 text-white">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-95">
+            <img
+              src="./atlasbarbellnowords.svg"
+              alt="Atlas Barbell Club logo"
+              class="h-8 w-auto invert"
+            >
+          </span>
+          <span class="hidden text-[0.72rem] font-black uppercase tracking-[0.22em] text-zinc-100 sm:block">
+            Atlas Barbell Club
           </span>
         </a>
-        <div class="hidden items-center gap-7 text-sm font-semibold text-zinc-300 sm:flex">
-          <a class="transition hover:text-amber-300" href="#training">Training</a>
-          <a class="transition hover:text-amber-300" href="#coaching">Coaching</a>
-          <a class="transition hover:text-amber-300" href="#visit">Visit</a>
+        <div class="hidden items-center gap-6 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-zinc-300 md:flex">
+          <a class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="#training">Training</a>
+          <a class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="#open-gym">Open Gym</a>
+          <a class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="#team">Team</a>
+          <a class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="#coaching">Coaching</a>
+          <a class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="#visit">Visit</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="hidden items-center gap-2 sm:flex">
+            <a
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
+              href="https://www.instagram.com/atlasbarbellclub/"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="icon-mask icon-instagram" aria-hidden="true"></span>
+            </a>
+            <a
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
+              href="https://www.facebook.com/atlasbarbellclub/"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="icon-mask icon-facebook" aria-hidden="true"></span>
+            </a>
+          </div>
+          <a
+            href="mailto:hello@atlasbarbellclub.com"
+            class="group inline-flex items-center gap-3 rounded-full bg-amber-300 py-1.5 pl-5 pr-1.5 text-[0.72rem] font-black uppercase tracking-[0.16em] text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+          >
+            Trial
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-sm transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+              <span class="icon-mask icon-arrow-right icon-arrow-light" aria-hidden="true"></span>
+            </span>
+          </a>
         </div>
       </nav>
     </header>
 
-    <main id="main">
-      <section class="relative overflow-hidden border-b border-white/10">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.22),transparent_34%),linear-gradient(135deg,rgba(63,63,70,0.6),transparent_45%)]"></div>
-        <div class="relative mx-auto grid min-h-[78vh] max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.08fr_0.92fr]">
-          <div data-reveal>
-            <p class="mb-4 text-sm font-black uppercase text-amber-300">Strength starts here</p>
-            <h1 class="max-w-3xl text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
-              Train heavy. Move well. Build what lasts.
+    <main id="main" class="w-full max-w-full overflow-x-hidden">
+      <section class="relative isolate min-h-[100dvh] overflow-hidden pb-20 pt-32">
+        <div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_18%_22%,rgba(245,158,11,0.2),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(212,212,216,0.08),transparent_30%),linear-gradient(135deg,#050505_0%,#111113_55%,#050505_100%)]"></div>
+        <div
+          class="absolute inset-0 -z-10 opacity-55 mix-blend-luminosity"
+          style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.32), rgba(0,0,0,0.86)), url('./mainlandingpageimage.webp'); background-size: cover; background-position: center;"
+          data-asset-slot="main-landing-background"
+          aria-hidden="true"
+        ></div>
+
+        <div class="page-shell grid min-h-[calc(100dvh-9rem)] items-end gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+          <div class="pb-2" data-reveal>
+            <p class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200 ring-1 ring-white/10">
+              Olympic weightlifting in Phoenix
+            </p>
+            <h1 class="max-w-6xl text-[clamp(3.15rem,7.4vw,6.9rem)] font-black leading-[0.88] tracking-normal text-white">
+              Olympic weightlifting without the guesswork.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
-              A no-nonsense barbell club built for focused training, sharp coaching, and steady progress.
+            <p class="mt-7 max-w-2xl text-base leading-8 text-zinc-200 sm:text-lg">
+              Show up with a plan, lift in a room built for the snatch and clean and jerk, and get the level of coaching support that matches your goals.
             </p>
             <div class="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#visit"
-                class="inline-flex items-center justify-center bg-amber-300 px-6 py-3 text-sm font-black uppercase text-zinc-950 transition hover:bg-amber-200"
+                class="group inline-flex items-center justify-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
               >
-                Start Training
+                Start training
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <span class="icon-mask icon-arrow-right icon-arrow-light" aria-hidden="true"></span>
+                </span>
               </a>
               <a
                 href="#training"
-                class="inline-flex items-center justify-center border border-white/20 px-6 py-3 text-sm font-black uppercase text-white transition hover:border-amber-300 hover:text-amber-300"
+                class="group inline-flex items-center justify-center gap-4 rounded-full bg-zinc-950/85 py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-white ring-1 ring-white/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
               >
-                See Programs
+                See the floor
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-amber-200 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <span class="icon-mask icon-arrow-right icon-arrow-light" aria-hidden="true"></span>
+                </span>
               </a>
             </div>
           </div>
 
-          <div class="border border-white/10 bg-zinc-900/70 p-6 shadow-2xl shadow-black/30" data-reveal data-reveal-delay="120">
-            <div class="mb-5 flex items-center justify-center border border-white/10 bg-zinc-950/80 px-8 py-8">
-              <img
-                src="./atlasbarbellnowords.svg"
-                alt=""
+          <div class="relative hidden lg:block" data-reveal data-reveal-delay="120">
+            <div class="absolute -left-12 top-12 h-36 w-36 rounded-full bg-amber-300/20 blur-3xl" aria-hidden="true"></div>
+            <div class="relative rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10">
+              <div class="overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                <div
+                  class="aspect-[4/5] bg-cover bg-center opacity-90 contrast-125 grayscale transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+                  style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.72)), url('./thirdcardimage.webp'); background-position: center;"
+                  data-scroll-image
+                  data-asset-slot="hero-lifter"
+                  aria-hidden="true"
+                ></div>
+                <div class="absolute bottom-8 left-8 right-8 rounded-[1.5rem] bg-black/55 p-5 ring-1 ring-white/10 backdrop-blur-xl">
+                  <p class="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-200">Platform standard</p>
+                  <p class="mt-2 text-2xl font-black leading-none text-white">Quiet room. Fast bar. Clear eyes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-rhythm-tight">
+        <div class="page-shell">
+          <div class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal>
+            <div class="rounded-[calc(2.5rem-0.5rem)] bg-[#101012] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] sm:p-8">
+              <div class="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
+                <div>
+                  <p class="mb-4 inline-flex rounded-full bg-amber-300 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-zinc-950">
+                    Choose your training lane
+                  </p>
+                  <h2 class="max-w-2xl text-[clamp(2rem,3vw,3rem)] font-black leading-[1.04] text-white">
+                    One gym. Three ways to train.
+                  </h2>
+                </div>
+                <div class="grid gap-4 md:grid-cols-3">
+                  <a class="group rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1" href="#team">
+                    <span class="block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200">Team programming</span>
+                    <span class="mt-4 block text-xl font-black leading-tight text-white">Follow the weekly Atlas track.</span>
+                    <span class="mt-4 block text-sm leading-6 text-zinc-400">Best for lifters who want structure, progression, and the energy of training with the room.</span>
+                  </a>
+                  <a class="group rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1" href="#open-gym">
+                    <span class="block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200">Open gym</span>
+                    <span class="mt-4 block text-xl font-black leading-tight text-white">Bring your coach or your own plan.</span>
+                    <span class="mt-4 block text-sm leading-6 text-zinc-400">Best for independent lifters who just need access to the right floor and equipment.</span>
+                  </a>
+                  <a class="group rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1" href="#coach">
+                    <span class="block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200">Coaching</span>
+                    <span class="mt-4 block text-xl font-black leading-tight text-white">Get eyes on the lift.</span>
+                    <span class="mt-4 block text-sm leading-6 text-zinc-400">Best for newer lifters, meet prep, technical rebuilds, and honest feedback between attempts.</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="training" class="section-rhythm">
+        <div class="page-shell">
+          <div class="max-w-5xl" data-reveal>
+            <p class="mb-5 inline-flex rounded-full bg-amber-300/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200 ring-1 ring-amber-200/20">
+              Why Atlas fits
+            </p>
+            <h2 class="max-w-4xl text-[clamp(2.2rem,3.8vw,3.8rem)] font-black leading-[1.02] tracking-normal text-white">
+              Athlete-focused training without the commercial gym noise.
+            </h2>
+          </div>
+
+          <div class="mt-14 grid grid-flow-dense grid-cols-1 gap-4 md:grid-cols-12 md:auto-rows-[15rem]">
+            <article class="group rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10 md:col-span-7 md:row-span-2" data-reveal>
+              <div class="relative h-full overflow-hidden rounded-[calc(2rem-0.375rem)] bg-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                <div
+                  class="absolute inset-0 bg-cover bg-center opacity-80 contrast-125 grayscale transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                  style="background-image: linear-gradient(135deg, rgba(0,0,0,0.18), rgba(0,0,0,0.84)), url('./firstcardimage.webp');"
+                  data-scroll-image
+                  data-asset-slot="platforms"
+                  aria-hidden="true"
+                ></div>
+                <div class="relative flex h-full flex-col justify-end p-7 sm:p-9">
+                  <h3 class="max-w-xl text-3xl font-black leading-tight text-white sm:text-4xl">Platforms that keep the room honest.</h3>
+                  <p class="mt-5 max-w-xl text-base leading-7 text-zinc-200">Wood, rubber, chalk, and enough space to move with intent. No clutter around the bar path.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="group rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10 md:col-span-5 md:row-span-1" data-reveal data-reveal-delay="90">
+              <div class="flex h-full flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                <h3 class="text-2xl font-black leading-tight text-white">Athlete-focused from the first session.</h3>
+                <p class="mt-5 text-sm leading-6 text-zinc-400">Your goal sets the lane: learn the lifts, prepare for a meet, follow team programming, or train independently.</p>
+              </div>
+            </article>
+
+            <article class="group rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10 md:col-span-5 md:row-span-1" data-reveal data-reveal-delay="150">
+              <div class="flex h-full flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-amber-300 p-7 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45)]">
+                <h3 class="text-2xl font-black leading-tight">Community without forced classes.</h3>
+                <p class="mt-5 text-sm font-semibold leading-6 text-zinc-800">Train around other Olympic lifters while keeping the flexibility to follow the plan that fits you.</p>
+              </div>
+            </article>
+
+            <article class="group rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10 md:col-span-12 md:row-span-1" data-reveal>
+              <div class="grid h-full overflow-hidden rounded-[calc(2rem-0.375rem)] bg-[#0d0d0f] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] md:grid-cols-[0.8fr_1.2fr]">
+                <div
+                  class="min-h-56 bg-cover bg-center opacity-75 contrast-125 grayscale transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 md:min-h-0"
+                  style="background-image: url('./secondcardimage.webp');"
+                  data-scroll-image
+                  data-asset-slot="chalk-hands"
+                  aria-hidden="true"
+                ></div>
+                <div class="flex flex-col justify-center p-7 sm:p-9">
+                  <h3 class="text-2xl font-black leading-tight text-white sm:text-3xl">New lifters start with structure, not noise.</h3>
+                  <p class="mt-4 max-w-2xl text-base leading-7 text-zinc-400">Beginner sessions teach the lifts clearly before the weight gets interesting. Experienced athletes get the details that unlock heavier attempts.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="open-gym" class="section-rhythm">
+        <div class="page-shell grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="flex items-center" data-reveal>
+            <div>
+              <p class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-300 ring-1 ring-white/10">
+                Open gym
+              </p>
+              <h2 class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white">
+                Bring your plan. Use the room.
+              </h2>
+              <p class="mt-7 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
+                You do not have to follow Atlas programming to train here. If you already work with an online coach, have your own training plan, or simply want to train on your own, open gym gives you access to the platforms and equipment without forcing a program on you.
+              </p>
+              <p class="mt-4 max-w-2xl text-base leading-8 text-zinc-400">
+                Coached open gym support is available when you want eyes on a lift, but independent training stays welcome.
+              </p>
+              <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Your coach</p>
+                </div>
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Your plan</p>
+                </div>
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Your pace</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal data-reveal-delay="120">
+            <div class="responsive-media-shell relative overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+              <div
+                class="absolute inset-0 bg-cover bg-center opacity-78 contrast-125 grayscale"
+                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.04), rgba(0,0,0,0.78)), url('https://picsum.photos/seed/open-gym-barbell-platform/1100/1300');"
+                data-scroll-image
+                data-asset-slot="open-gym"
                 aria-hidden="true"
-                class="h-56 max-h-[34vh] w-auto invert sm:h-72"
+              ></div>
+              <div class="responsive-media-shell relative flex flex-col justify-end p-7 sm:p-10">
+                <h3 class="max-w-lg text-3xl font-black leading-tight text-white">Independent training still belongs in a serious room.</h3>
+                <p class="mt-5 max-w-lg text-base leading-7 text-zinc-300">Open gym is for lifters who know what they came to do and want the right floor to do it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="section-rhythm">
+        <div class="page-shell grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal>
+            <div class="responsive-media-shell relative flex overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+              <div
+                class="absolute inset-0 bg-cover bg-center opacity-65 contrast-125 grayscale"
+                style="background-image: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.86)), url('https://picsum.photos/seed/atlas-weightlifting-team/1200/1200');"
+                data-scroll-image
+                data-asset-slot="team-programming"
+                aria-hidden="true"
+              ></div>
+              <div class="relative mt-auto p-8 sm:p-10">
+                <p class="mb-5 inline-flex rounded-full bg-amber-300 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-zinc-950">
+                  Team programming
+                </p>
+                <h2 class="max-w-3xl text-[clamp(2.1rem,3.4vw,3.5rem)] font-black leading-[1.03] tracking-normal text-white">
+                  Follow the plan. Lift with the room.
+                </h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-5">
+            <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="90">
+              <div class="rounded-[calc(2rem-0.375rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] sm:p-10">
+                <h3 class="text-2xl font-black leading-tight sm:text-3xl">Team programming gives members a clear weekly track.</h3>
+                <p class="mt-5 text-base leading-8 text-zinc-700">
+                  Atlas programming is built around Olympic weightlifting progress: technical lift work, strength accessories, squats, pulls, and enough structure to show up knowing exactly what matters that day.
+                </p>
+              </div>
+            </article>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="140">
+                <div class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black leading-tight text-white">For competitive lifters</h3>
+                  <p class="mt-5 text-sm leading-6 text-zinc-400">Meet-prep rhythms, attempt confidence, and shared training energy without losing individual feedback.</p>
+                </div>
+              </article>
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="190">
+                <div class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black leading-tight text-white">For newer athletes</h3>
+                  <p class="mt-5 text-sm leading-6 text-zinc-400">A guided path into the lifts, with enough repetition to build skill before chasing load.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="coaching" class="section-rhythm">
+        <div class="page-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="lg:sticky lg:top-32 lg:self-start" data-reveal>
+            <p class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-300 ring-1 ring-white/10">
+              Coaching rhythm
+            </p>
+            <h2 class="max-w-3xl text-[clamp(2.1rem,3.4vw,3.45rem)] font-black leading-[1.04] tracking-normal text-white">
+              Better lifts come from better signals.
+            </h2>
+          </div>
+
+          <div class="space-y-5">
+            <div class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal>
+              <div class="rounded-[calc(2rem-0.375rem)] bg-[#101012] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] sm:p-10">
+                <p class="text-2xl font-black leading-tight text-white sm:text-3xl">
+                  <span data-scrub-word>Pull</span>
+                  <span data-scrub-word>close.</span>
+                  <span data-scrub-word>Meet</span>
+                  <span data-scrub-word>the</span>
+                  <span data-scrub-word>bar.</span>
+                  <span data-scrub-word>Stand</span>
+                  <span data-scrub-word>with</span>
+                  <span data-scrub-word>purpose.</span>
+                </p>
+                <p class="mt-6 text-base leading-8 text-zinc-400">Atlas keeps coaching direct, useful, and specific to the next rep. You know what to fix before the next set starts.</p>
+              </div>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <div class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="90">
+                <div class="min-h-72 overflow-hidden rounded-[calc(2rem-0.375rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <div
+                    class="h-72 bg-cover bg-center opacity-80 contrast-125 grayscale"
+                    style="background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.62)), url('https://picsum.photos/seed/clean-and-jerk-coaching/800/900');"
+                    data-scroll-image
+                    data-asset-slot="coaching"
+                    aria-hidden="true"
+                  ></div>
+                </div>
+              </div>
+              <div class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="150">
+                <div class="flex min-h-72 flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+                  <p class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-zinc-600">Training culture</p>
+                  <p class="text-2xl font-black leading-tight">A room for lifters who like quiet work and loud plates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="coach" class="section-rhythm">
+        <div class="page-shell grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal>
+            <div class="overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+              <div
+                class="responsive-media-shell bg-cover bg-center opacity-85 contrast-125 grayscale"
+                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.72)), url('https://picsum.photos/seed/weightlifting-coach-platform/1100/1300');"
+                data-scroll-image
+                data-asset-slot="coach"
+                aria-hidden="true"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex items-center" data-reveal data-reveal-delay="120">
+            <div>
+              <p class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-300 ring-1 ring-white/10">
+                Meet the coach
+              </p>
+              <h2 class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white">
+                Coaching that watches the bar, not the clock.
+              </h2>
+              <p class="mt-7 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
+                This section is built for the head coach profile: name, portrait, competitive background, coaching credentials, and the lens they bring to each lift. Until the final bio is ready, the page keeps the focus on what members feel on the platform: direct cues, patient progress, and honest standards.
+              </p>
+              <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Technique</p>
+                </div>
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Programming</p>
+                </div>
+                <div class="rounded-[1.5rem] bg-white/7 p-5 ring-1 ring-white/10">
+                  <p class="text-sm font-black uppercase tracking-[0.16em] text-amber-200">Meet prep</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="overflow-hidden border-y border-white/10 bg-amber-300 py-6 text-zinc-950" aria-label="Atlas training focus">
+        <div class="marquee-track flex w-max gap-8 text-2xl font-black uppercase tracking-normal sm:text-4xl">
+          <span>Snatch</span>
+          <span>Clean and jerk</span>
+          <span>Squat</span>
+          <span>Pull</span>
+          <span>Recover</span>
+          <span>Compete</span>
+          <span>Snatch</span>
+          <span>Clean and jerk</span>
+          <span>Squat</span>
+          <span>Pull</span>
+          <span>Recover</span>
+          <span>Compete</span>
+        </div>
+      </section>
+
+      <section id="offers" class="section-rhythm">
+        <div class="page-shell">
+          <div class="max-w-5xl" data-reveal>
+            <p class="mb-5 inline-flex rounded-full bg-amber-300/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200 ring-1 ring-amber-200/20">
+              What the gym offers
+            </p>
+            <h2 class="max-w-4xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white">
+              A focused Olympic lifting gym with the support pieces nearby.
+            </h2>
+          </div>
+
+          <div class="mt-14 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal>
+                <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black text-white">Olympic platforms</h3>
+                  <p class="mt-4 text-sm leading-6 text-zinc-400">Dedicated room to snatch, clean and jerk, squat, pull, and train without fighting commercial gym traffic.</p>
+                </div>
+              </article>
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="80">
+                <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black text-white">Team programming</h3>
+                  <p class="mt-4 text-sm leading-6 text-zinc-400">Shared weekly training for lifters who want direction, consistency, and a team environment.</p>
+                </div>
+              </article>
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="120">
+                <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black text-white">Coaching access</h3>
+                  <p class="mt-4 text-sm leading-6 text-zinc-400">Technical feedback, beginner onboarding, programming support, and meet-prep guidance.</p>
+                </div>
+              </article>
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="160">
+                <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <h3 class="text-2xl font-black text-white">Open gym culture</h3>
+                  <p class="mt-4 text-sm leading-6 text-zinc-400">A training space for members who want a serious room, respectful energy, and consistent standards, whether they follow Atlas programming or lift independently.</p>
+                </div>
+              </article>
+            </div>
+
+            <aside class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal data-reveal-delay="200">
+              <div class="flex h-full flex-col justify-between rounded-[calc(2.5rem-0.5rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] sm:p-10">
+                <div>
+                  <p class="mb-5 inline-flex rounded-full bg-zinc-950 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-white">
+                    On-site access
+                  </p>
+                  <h3 class="text-2xl font-black leading-tight sm:text-3xl">A physical therapy office is attached to the gym.</h3>
+                  <p class="mt-6 text-base leading-8 text-zinc-700">
+                    The physical therapy office is not formally associated with Atlas, but it is within access to the facility. The therapist is an active gym member, which keeps the resource close to the lifting community while remaining a separate practice.
+                  </p>
+                </div>
+                <p class="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">
+                  Separate practice. Convenient proximity.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit" class="section-rhythm">
+        <div class="page-shell rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10" data-reveal>
+          <div class="grid overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="p-8 sm:p-12 lg:p-14">
+              <p class="mb-5 inline-flex rounded-full bg-zinc-950 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-white">
+                Come lift
+              </p>
+              <h2 class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal">
+                Get under the bar with people who care about the rep.
+              </h2>
+              <p class="mt-7 max-w-2xl text-base leading-8 text-zinc-700 sm:text-lg">
+                Book a trial session, ask about coaching, or come see whether the room feels right for your training.
+              </p>
+              <a
+                href="mailto:hello@atlasbarbellclub.com"
+                class="group mt-9 inline-flex items-center gap-4 rounded-full bg-zinc-950 py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-white transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
               >
+                hello@atlasbarbellclub.com
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-amber-300 text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <span class="icon-mask icon-arrow-right icon-arrow-dark" aria-hidden="true"></span>
+                </span>
+              </a>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-zinc-950 p-5">
-                <p class="text-4xl font-black text-amber-300">24/7</p>
-                <p class="mt-2 text-sm text-zinc-400">Member access</p>
-              </div>
-              <div class="bg-zinc-950 p-5">
-                <p class="text-4xl font-black text-amber-300">1:1</p>
-                <p class="mt-2 text-sm text-zinc-400">Coaching available</p>
-              </div>
-              <div class="col-span-2 bg-zinc-950 p-5">
-                <p class="text-sm font-bold uppercase text-zinc-400">Equipment</p>
-                <p class="mt-3 text-2xl font-black text-white">Racks, platforms, specialty bars, calibrated plates.</p>
+            <div
+              class="min-h-80 bg-cover bg-center opacity-90 contrast-125 grayscale lg:min-h-full"
+              style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.25)), url('https://picsum.photos/seed/weightlifting-gym-door/1000/1200');"
+              data-scroll-image
+              data-asset-slot="gym-door"
+              aria-hidden="true"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-rhythm-tight pt-0">
+        <div class="page-shell">
+          <div class="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal>
+              <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#101012] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] sm:p-10">
+                <p class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-300 ring-1 ring-white/10">
+                  Hours and contact
+                </p>
+                <h2 class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white">
+                  Come by when the room is open, or reach out first.
+                </h2>
+                <p class="mt-6 max-w-2xl text-base leading-8 text-zinc-400">
+                  Add the final address, phone number, and exact staffed hours here when they are ready. For now, email is the cleanest first contact.
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="training" class="mx-auto max-w-6xl px-5 py-16">
-        <div class="grid gap-5 md:grid-cols-3">
-          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal>
-            <h2 class="text-xl font-black text-white">Open Gym</h2>
-            <p class="mt-3 leading-7 text-zinc-400">Train on your schedule with serious equipment and a focused floor.</p>
-          </article>
-          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="100">
-            <h2 class="text-xl font-black text-white">Powerlifting</h2>
-            <p class="mt-3 leading-7 text-zinc-400">Technique, programming, and meet prep for squat, bench, and deadlift.</p>
-          </article>
-          <article class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="200">
-            <h2 class="text-xl font-black text-white">Strength Basics</h2>
-            <p class="mt-3 leading-7 text-zinc-400">Learn the lifts, build confidence, and develop durable training habits.</p>
-          </article>
-        </div>
-      </section>
+            <div class="grid gap-5 md:grid-cols-2">
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="90">
+                <div class="h-full rounded-[calc(2rem-0.375rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+                  <p class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-zinc-600">Gym hours</p>
+                  <dl class="mt-7 space-y-4 text-sm font-bold">
+                    <div class="flex items-center justify-between gap-5 border-b border-zinc-950/10 pb-4">
+                      <dt>Monday-Friday</dt>
+                      <dd class="text-right text-zinc-700">To be announced</dd>
+                    </div>
+                    <div class="flex items-center justify-between gap-5 border-b border-zinc-950/10 pb-4">
+                      <dt>Saturday</dt>
+                      <dd class="text-right text-zinc-700">To be announced</dd>
+                    </div>
+                    <div class="flex items-center justify-between gap-5">
+                      <dt>Sunday</dt>
+                      <dd class="text-right text-zinc-700">To be announced</dd>
+                    </div>
+                  </dl>
+                </div>
+              </article>
 
-      <section id="coaching" class="border-y border-white/10 bg-zinc-900">
-        <div class="mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div data-reveal>
-            <p class="text-sm font-black uppercase text-amber-300">Coaching</p>
-            <h2 class="mt-3 text-4xl font-black text-white">Clear programming. Direct feedback.</h2>
-          </div>
-          <p class="text-lg leading-8 text-zinc-300" data-reveal data-reveal-delay="120">
-            Whether you are new to barbells or preparing for the platform, Atlas gives you the structure and eyes you need to train with purpose.
-          </p>
-        </div>
-      </section>
-
-      <section id="visit" class="mx-auto max-w-6xl px-5 py-16">
-        <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
-          <div data-reveal>
-            <p class="text-sm font-black uppercase text-amber-300">Visit</p>
-            <h2 class="mt-3 text-4xl font-black text-white">Come lift with us.</h2>
-            <p class="mt-4 leading-7 text-zinc-400">Use this starter section for address, hours, trial pass info, or a contact form.</p>
-          </div>
-          <div class="border border-white/10 bg-zinc-900 p-6" data-reveal data-reveal-delay="120">
-            <p class="text-sm font-bold uppercase text-zinc-400">Next step</p>
-            <a
-              href="mailto:hello@atlasbarbellclub.com"
-              class="mt-4 inline-flex items-center justify-center bg-white px-6 py-3 text-sm font-black uppercase text-zinc-950 transition hover:bg-amber-300"
-            >
-              hello@atlasbarbellclub.com
-            </a>
+              <article class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10" data-reveal data-reveal-delay="150">
+                <div class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                  <div>
+                    <p class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200">Contact</p>
+                    <a class="mt-6 block break-words text-2xl font-black leading-tight text-white transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200" href="mailto:hello@atlasbarbellclub.com">
+                      hello@atlasbarbellclub.com
+                    </a>
+                    <p class="mt-5 text-sm leading-6 text-zinc-400">
+                      Ask about open gym, team programming, coaching, or visiting the facility.
+                    </p>
+                  </div>
+                  <p class="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">
+                    Address and phone can be added here.
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-zinc-500">
-      <p>&copy; 2026 Atlas Barbell Club. Built strong.</p>
+    <footer class="px-5 pb-10 text-center text-sm text-zinc-500">
+      <p>&copy; 2026 Atlas Barbell Club. Olympic weightlifting, coached with intent.</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="./src/main.js" defer></script>
   </body>
 </html>

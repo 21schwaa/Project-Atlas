@@ -13,5 +13,8 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "css.gg": "^2.1.4"
   }
 }
