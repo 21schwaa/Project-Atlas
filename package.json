@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
     "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "build:digitalocean": "npm run build && node ./scripts/prepare-digitalocean.mjs",
+    "verify:digitalocean": "node ./tests/verify-digitalocean-build.mjs",
     "test": "node ./tests/verify-scroll-animations.mjs"
   },
   "keywords": [],

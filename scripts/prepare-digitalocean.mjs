@@ -1,0 +1,43 @@
+import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const publicDir = join(root, "public");
+
+const files = [
+  "index.html",
+  "atlasbarbellnowords.svg",
+  "mainlandingpageimage.webp",
+  "firstcardimage.webp",
+  "secondcardimage.webp",
+  "thirdcardimage.webp",
+  "hero-card-generated-v1.png",
+];
+
+const directories = [
+  "dist",
+  "src",
+  "assets",
+];
+
+rmSync(publicDir, { recursive: true, force: true });
+mkdirSync(publicDir, { recursive: true });
+
+for (const file of files) {
+  const source = join(root, file);
+  if (!existsSync(source)) {
+    throw new Error(`Missing deploy asset: ${file}`);
+  }
+  cpSync(source, join(publicDir, file));
+}
+
+for (const directory of directories) {
+  const source = join(root, directory);
+  if (!existsSync(source)) {
+    throw new Error(`Missing deploy directory: ${directory}`);
+  }
+  cpSync(source, join(publicDir, directory), { recursive: true });
+}
+
+console.log("DigitalOcean static build prepared in public/");

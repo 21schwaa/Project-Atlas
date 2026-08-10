@@ -1,0 +1,21 @@
+name: atlas-barbell-club
+region: nyc
+static_sites:
+  - name: website
+    environment_slug: node-js
+    github:
+      repo: your-github-user-or-org/atlas-barbell-club
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    build_command: npm ci && npm run build:digitalocean
+    output_dir: public
+    index_document: index.html
+    catchall_document: index.html
+ingress:
+  rules:
+    - component:
+        name: website
+      match:
+        path:
+          prefix: /
