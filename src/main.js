@@ -24,6 +24,21 @@ const revealWithin = (root) => {
   root.querySelectorAll("[data-reveal]").forEach(revealNow);
 };
 
+const alignHashTarget = (target) => {
+  const header = document.querySelector(".atlas-topline");
+  const headerOffset = header ? header.getBoundingClientRect().height : 0;
+  const targetTop = Math.max(
+    0,
+    window.scrollY + target.getBoundingClientRect().top - headerOffset,
+  );
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+
+  root.style.scrollBehavior = "auto";
+  window.scrollTo({ top: targetTop, behavior: "auto" });
+  root.style.scrollBehavior = previousScrollBehavior;
+};
+
 const revealHashTarget = () => {
   const hash = window.location.hash;
 
@@ -33,6 +48,13 @@ const revealHashTarget = () => {
 
   const target = document.getElementById(decodeURIComponent(hash.slice(1)));
   revealWithin(target);
+
+  if (target) {
+    // Wait for the browser's native fragment work, then settle on the target below the fixed header.
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => alignHashTarget(target));
+    });
+  }
 };
 
 if ("IntersectionObserver" in window) {
@@ -58,7 +80,7 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach(revealNow);
 }
 
-revealHashTarget();
+window.addEventListener("load", revealHashTarget, { once: true });
 window.addEventListener("hashchange", revealHashTarget);
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
