@@ -24,37 +24,46 @@ const revealWithin = (root) => {
   root.querySelectorAll("[data-reveal]").forEach(revealNow);
 };
 
-const alignHashTarget = (target) => {
+const getHashTarget = (hash) => {
+  if (!hash || hash.length < 2) {
+    return null;
+  }
+
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+};
+
+const getAnchorScrollBehavior = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
+const alignHashTarget = (target, behavior = "auto") => {
   const header = document.querySelector(".atlas-topline");
   const headerOffset = header ? header.getBoundingClientRect().height : 0;
   const targetTop = Math.max(
     0,
     window.scrollY + target.getBoundingClientRect().top - headerOffset,
   );
-  const root = document.documentElement;
-  const previousScrollBehavior = root.style.scrollBehavior;
 
-  root.style.scrollBehavior = "auto";
-  window.scrollTo({ top: targetTop, behavior: "auto" });
-  root.style.scrollBehavior = previousScrollBehavior;
+  window.scrollTo({ top: targetTop, behavior });
 };
 
-const revealHashTarget = () => {
+const revealHashTarget = (behavior = "auto") => {
   const hash = window.location.hash;
+  const target = getHashTarget(hash);
 
-  if (!hash || hash.length < 2) {
+  if (!target) {
     return;
   }
 
-  const target = document.getElementById(decodeURIComponent(hash.slice(1)));
   revealWithin(target);
 
-  if (target) {
-    // Wait for the browser's native fragment work, then settle on the target below the fixed header.
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => alignHashTarget(target));
-    });
-  }
+  // Wait for the browser's native fragment work, then settle on the target below the fixed header.
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => alignHashTarget(target, behavior));
+  });
 };
 
 if ("IntersectionObserver" in window) {
@@ -80,8 +89,29 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach(revealNow);
 }
 
-window.addEventListener("load", revealHashTarget, { once: true });
-window.addEventListener("hashchange", revealHashTarget);
+document.addEventListener("click", (event) => {
+  const link = event.target.closest?.('a[href^="#"]');
+
+  if (!link) {
+    return;
+  }
+
+  const hash = link.getAttribute("href");
+  const target = getHashTarget(hash);
+
+  if (!target) {
+    return;
+  }
+
+  event.preventDefault();
+  revealWithin(target);
+  window.history.pushState(null, "", hash);
+  alignHashTarget(target, getAnchorScrollBehavior());
+});
+
+window.addEventListener("load", () => revealHashTarget("auto"), { once: true });
+window.addEventListener("hashchange", () => revealHashTarget(getAnchorScrollBehavior()));
+window.addEventListener("popstate", () => revealHashTarget(getAnchorScrollBehavior()));
 
 const testimonialSlides = [
   {

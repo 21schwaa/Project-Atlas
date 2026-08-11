@@ -108,7 +108,7 @@ const checks = [
   ["CSS adds scroll margin for anchored sections", css.includes(".anchor-section") && css.includes("scroll-margin-top")],
   ["CSS keeps no-JS content visible", css.includes("[data-reveal]") && css.includes("opacity: 1") && css.includes(".js-enabled [data-reveal]")],
   ["JS reveals hash targets on load and hashchange", js.includes("revealHashTarget") && js.includes("window.location.hash") && js.includes("hashchange")],
-  ["JS actively aligns hash targets below the fixed header without animation", js.includes("alignHashTarget") && js.includes('document.querySelector(".atlas-topline")') && js.includes("header.getBoundingClientRect().height") && js.includes('root.style.scrollBehavior = "auto"') && js.includes('behavior: "auto"') && js.includes('window.addEventListener("load", revealHashTarget') && js.includes("requestAnimationFrame")],
+  ["JS smoothly scrolls nav clicks below the fixed header", js.includes("alignHashTarget") && js.includes('document.querySelector(".atlas-topline")') && js.includes("header.getBoundingClientRect().height") && js.includes('document.addEventListener("click"') && js.includes("event.preventDefault()") && js.includes("window.history.pushState") && js.includes('window.scrollTo({ top: targetTop, behavior })') && js.includes('"smooth"')],
   ["CSS fully disables reduced-motion transitions and interaction transforms", (() => {
     const reducedMotionCss = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
     return reducedMotionCss.includes("*::before")
