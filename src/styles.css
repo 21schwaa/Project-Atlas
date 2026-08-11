@@ -2055,6 +2055,7 @@
     padding: 0.65rem 1rem;
     color: #09090b;
     background: #f7d64a;
+    text-shadow: none;
   }
 
   .mini-label {
@@ -2095,11 +2096,16 @@
 
   .welcome-copy,
   .equipment-header > div:last-child,
-  .offerings-header > p,
+  .offerings-header > p:not(.section-kicker),
   .contact-copy > p {
     color: rgba(244, 244, 245, 0.68);
     font-size: clamp(1rem, 1.35vw, 1.14rem);
     line-height: 1.85;
+  }
+
+  .offerings-header .section-kicker {
+    color: #09090b;
+    background: #f7d64a;
   }
 
   .welcome-copy p + p,
