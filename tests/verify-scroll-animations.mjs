@@ -86,6 +86,7 @@ const checks = [
   ["Testimonials carousel has five review entries", testimonialSlideCount === 5 && testimonialsHtml.includes("data-testimonial-dots") && testimonialsHtml.includes("01 / 05")],
   ["Testimonials carousel has generated controls and vanilla JS state", html.includes("data-testimonial-prev") && html.includes("data-testimonial-next") && js.includes("document.createElement(\"button\")") && js.includes("dataset.testimonialDot") && js.includes("changeSlide")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club")],
+  ["Contact section uses compact isolated footer-panel layout", css.includes(".contact-section") && css.includes("isolation: isolate") && css.includes("padding-block: clamp(1.4rem, 3.5vw, 3.25rem)") && css.includes("min-height: clamp(15rem, 30svh, 20rem)")],
   ["Footer has required identity and links", footerHtml.includes("2026 Atlas Barbell Club") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona") && footerHtml.includes("Instagram") && footerHtml.includes("Facebook") && footerHtml.includes("Contact")],
   ["Footer avoids decorative middle-dot separators", !footerHtml.includes("\u00B7") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],
   ["HTML removes placeholder photo service", !html.includes("picsum.photos")],
