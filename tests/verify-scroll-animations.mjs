@@ -57,6 +57,7 @@ const checks = [
   ["HTML has simplified hero actions", html.includes("Start training") && html.includes("See the floor") && !html.includes("Get started")],
   ["HTML uses welcome editorial selector", html.includes("welcome-editorial") && html.includes("training-selector") && !html.includes("welcome-bento")],
   ["CSS defines welcome cleanup system", css.includes(".welcome-editorial") && css.includes(".training-selector")],
+  ["Welcome selector links read as visible action buttons", html.includes("Choose your lane") && html.includes("<em aria-hidden=\"true\"></em>") && css.includes(".training-selector a em") && css.includes("background: #f7d64a") && css.includes(".training-selector a::before") && css.includes("transform: scaleX(1)")],
   ["CSS preserves subtle hero review scale on hover", css.includes(".hero-review-card-subtle:hover") && css.includes("scale(0.92) translateY(-2px)")],
   ["HTML has updated platform card", html.includes("Built around Olympic weightlifting.") && html.includes("Platforms, bars, open floor space")],
   ["HTML keeps hero Google review highlight", html.includes("hero-review-card") && html.includes("Google reviews")],
