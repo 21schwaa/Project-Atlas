@@ -81,7 +81,7 @@ const checks = [
   ["Testimonials section is Google Reviews gateway without fake quotes", html.includes("reviews-gateway") && html.includes("Read more Google Reviews") && !html.includes("Member testimonial will appear here") && !html.includes("Member Name / Training type")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club")],
   ["Footer has required identity and links", footerHtml.includes("2026 Atlas Barbell Club") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona") && footerHtml.includes("Instagram") && footerHtml.includes("Facebook") && footerHtml.includes("Contact")],
-  ["Footer avoids decorative middle-dot separators", !footerHtml.includes("Â·") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],
+  ["Footer avoids decorative middle-dot separators", !footerHtml.includes("\u00B7") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],
   ["HTML removes placeholder photo service", !html.includes("picsum.photos")],
   ["HTML has no unfinished stock copy", !html.includes("when finalized") && !html.includes("To be announced")],
   ["HTML has continuous marquee row", html.includes("marquee-content")],
