@@ -340,57 +340,28 @@
             </div>
           </div>
 
-          <div class="equipment-gallery">
-            <figure class="equipment-photo equipment-photo-large" data-reveal>
-              <img src="./mainlandingpageimage.webp" alt="Atlas Barbell Club training floor" data-scroll-image data-asset-slot="floor" />
+          <div class="equipment-hero" data-reveal>
+            <figure>
+              <img src="./mainlandingpageimage.webp" alt="Atlas Barbell Club Olympic weightlifting floor" data-scroll-image data-asset-slot="floor" />
             </figure>
-            <figure class="equipment-photo" data-reveal data-reveal-delay="80">
-              <img src="./firstcardimage.webp" alt="Weightlifting equipment at Atlas Barbell Club" data-scroll-image data-asset-slot="platform-view" />
-            </figure>
-            <figure class="equipment-photo" data-reveal data-reveal-delay="140">
-              <img src="./secondcardimage.webp" alt="Barbell and training space at Atlas Barbell Club" data-scroll-image data-asset-slot="barbell-view" />
-            </figure>
-            <figure class="equipment-photo" data-reveal data-reveal-delay="200">
-              <img src="./thirdcardimage.webp" alt="Atlas Barbell Club facility detail" data-scroll-image data-asset-slot="facility-detail" />
-            </figure>
+            <div class="equipment-side-strip" aria-label="Atlas floor details">
+              <img src="./firstcardimage.webp" alt="Weightlifting platform detail at Atlas Barbell Club" data-scroll-image data-asset-slot="platform-view" />
+              <img src="./secondcardimage.webp" alt="Barbell detail at Atlas Barbell Club" data-scroll-image data-asset-slot="barbell-view" />
+            </div>
           </div>
 
-          <div class="equipment-inventory" aria-label="Equipment inventory">
-            <article data-reveal>
-              <h3>Platforms</h3>
-              <p>Dedicated lifting space for snatch, clean and jerk, pulls, and platform work.</p>
-            </article>
-            <article data-reveal data-reveal-delay="50">
-              <h3>Bars</h3>
-              <p>Olympic weightlifting bars used throughout regular training sessions.</p>
-            </article>
-            <article data-reveal data-reveal-delay="100">
-              <h3>Plates</h3>
-              <!-- TODO: Add verified plate inventory and brands. -->
-              <p>Inventory details to be confirmed before final copy.</p>
-            </article>
-            <article data-reveal data-reveal-delay="150">
-              <h3>Blocks</h3>
-              <p>Blocks available for positional pulls, lifts from height, and technical work.</p>
-            </article>
-            <article data-reveal data-reveal-delay="200">
-              <h3>Racks</h3>
-              <!-- TODO: Add verified rack count and setup. -->
-              <p>Rack details to be confirmed before final copy.</p>
-            </article>
-            <article data-reveal data-reveal-delay="250">
-              <h3>Accessories and mobility</h3>
-              <!-- TODO: Add verified accessory and mobility inventory. -->
-              <p>Accessory and mobility inventory to be confirmed before final copy.</p>
-            </article>
+          <div class="equipment-list" aria-label="Equipment available at Atlas">
+            <article><h3>Platforms</h3><p>Dedicated floor space for snatch, clean and jerk, pulls, and positional work.</p></article>
+            <article><h3>Bars</h3><p>Olympic weightlifting bars used throughout regular training sessions.</p></article>
+            <article><h3>Plates</h3><p>Plates available for the lifts, squats, pulls, and accessory work.</p></article>
+            <article><h3>Blocks</h3><p>Blocks available for lifts from height, pulls, and technical position work.</p></article>
+            <article><h3>Racks</h3><p>Rack space supports squats, presses, pulls, and strength work around the lifts.</p></article>
+            <article><h3>Mobility</h3><p>Accessory and mobility tools support warm-ups, positions, and session prep.</p></article>
           </div>
 
-          <aside class="pt-note machined-panel" data-reveal>
-            <p class="mini-label">Also in the building</p>
-            <p>
-              A separate physical therapy practice is attached to the facility.
-              It is independently operated and is not part of Atlas Barbell Club.
-            </p>
+          <aside class="pt-note" data-reveal>
+            <strong>Also in the building</strong>
+            <p>A separate physical therapy practice is attached to the facility. It is independently operated and is not part of Atlas Barbell Club.</p>
           </aside>
         </div>
       </section>
@@ -407,8 +378,10 @@
             </p>
           </div>
 
-          <section id="team" class="anchor-section service-block service-block-team" aria-labelledby="team-heading">
-            <div class="service-copy" data-reveal>
+          <div class="training-path-stack">
+          <section id="team" class="anchor-section training-path training-path-team" aria-labelledby="team-heading">
+            <div class="training-path-mark" aria-hidden="true"><img src="./teamicon.svg" alt="" /></div>
+            <div class="training-path-body" data-reveal>
               <p class="mini-label">Team Programming</p>
               <h3 id="team-heading">Follow the plan. Train with the room.</h3>
               <p>
@@ -423,8 +396,8 @@
                 adjustments.
               </p>
             </div>
-            <div class="service-card-grid">
-              <article class="service-info-card" data-reveal data-reveal-delay="80">
+            <div class="training-path-details">
+              <article data-reveal data-reveal-delay="80">
                 <img src="./dumbellicon.svg" alt="" />
                 <h4>For competitive lifters</h4>
                 <p>
@@ -433,7 +406,7 @@
                   competition approaches.
                 </p>
               </article>
-              <article class="service-info-card" data-reveal data-reveal-delay="150">
+              <article data-reveal data-reveal-delay="150">
                 <img src="./charticon.svg" alt="" />
                 <h4>For developing lifters</h4>
                 <p>
@@ -445,8 +418,9 @@
             </div>
           </section>
 
-          <section id="coaching" class="anchor-section service-block service-block-coaching" aria-labelledby="coaching-heading">
-            <div class="service-copy" data-reveal>
+          <section id="coaching" class="anchor-section training-path training-path-coaching" aria-labelledby="coaching-heading">
+            <div class="training-path-mark" aria-hidden="true"><img src="./coachicon.svg" alt="" /></div>
+            <div class="training-path-body" data-reveal>
               <p class="mini-label">Coaching</p>
               <h3 id="coaching-heading">Coaching when you want a closer look at the lift.</h3>
               <p>
@@ -460,7 +434,7 @@
                 eyes on specific technical or programming problems.
               </p>
             </div>
-            <div class="coaching-focus-grid">
+            <div class="training-path-details">
               <article data-reveal data-reveal-delay="60">
                 <h4>Technique</h4>
                 <p>Review timing, bar path, footwork, turnover, and receiving positions.</p>
@@ -480,20 +454,20 @@
             </div>
           </section>
 
-          <section id="open-gym" class="anchor-section open-gym-section service-open-gym" aria-labelledby="open-gym-heading">
-            <div class="open-gym-shell page-shell">
-              <div class="open-gym-copy" data-reveal>
-                <p class="open-gym-eyebrow">Open Gym</p>
-                <h3 id="open-gym-heading" class="open-gym-heading">
+          <section id="open-gym" class="anchor-section training-path training-path-open-gym open-gym-section" aria-labelledby="open-gym-heading">
+              <div class="training-path-mark" aria-hidden="true"><img src="./stopwatchicon.svg" alt="" /></div>
+              <div class="training-path-body" data-reveal>
+                <p class="mini-label">Open Gym</p>
+                <h3 id="open-gym-heading">
                   Bring your plan. Use the room.
                 </h3>
-                <p class="open-gym-body">
+                <p>
                   Open gym is for lifters who already have a program, work with
                   an outside coach or online coach, or simply prefer to manage
                   their own training. You can use the Atlas weightlifting floor
                   without having to follow Atlas programming.
                 </p>
-                <p class="open-gym-body open-gym-body-small">
+                <p>
                   If you decide you want additional feedback, coaching can be
                   arranged separately. The open-gym option itself is
                   intentionally flexible.
@@ -518,34 +492,21 @@
                     <span>Your Pace</span>
                   </div>
                 </div>
-              </div>
-
-              <div class="open-gym-media" data-reveal data-reveal-delay="120">
-                <div class="open-gym-photo-frame">
-                  <img
-                    src="./mainlandingpageimage.webp"
-                    alt="Open gym training floor at Atlas Barbell Club"
-                    data-scroll-image
-                    data-asset-slot="open-gym"
-                  />
+                <div class="training-path-note">
+                  <h4>Your programming can still have a home at Atlas.</h4>
+                  <p>
+                    Open gym gives independent lifters access to a space
+                    centered on Olympic weightlifting while allowing them to
+                    keep the programming and coaching relationships they
+                    already use.
+                  </p>
                 </div>
-                <article class="open-gym-statement-card">
-                  <div class="open-gym-statement-icon" aria-hidden="true">
-                    <img src="./platformlogo.svg" alt="" />
-                  </div>
-                  <div>
-                    <h4>Your programming can still have a home at Atlas.</h4>
-                    <p>
-                      Open gym gives independent lifters access to a space
-                      centered on Olympic weightlifting while allowing them to
-                      keep the programming and coaching relationships they
-                      already use.
-                    </p>
-                  </div>
-                </article>
               </div>
-            </div>
+              <figure class="training-path-photo" data-reveal data-reveal-delay="120">
+                <img src="./mainlandingpageimage.webp" alt="Open gym training floor at Atlas Barbell Club" data-scroll-image data-asset-slot="open-gym" />
+              </figure>
           </section>
+          </div>
         </div>
       </section>
 

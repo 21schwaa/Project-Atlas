@@ -2078,17 +2078,13 @@
 
   .welcome-copy p + p,
   .equipment-header p + p,
-  .service-copy p + p,
   .coach-info-card p + p,
   .lifting-method-choice p + p {
     margin-top: 1.1rem;
   }
 
   .training-lane-card,
-  .equipment-inventory article,
   .pt-note,
-  .service-info-card,
-  .coaching-focus-grid article,
   .testimonial-grid article,
   .contact-card-grid article {
     border: 1px solid rgba(255, 255, 255, 0.11);
@@ -2098,10 +2094,7 @@
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
   }
 
-  .equipment-inventory article,
   .pt-note,
-  .service-info-card,
-  .coaching-focus-grid article,
   .testimonial-grid article,
   .contact-card-grid article {
     border-radius: 1.5rem;
@@ -2109,10 +2102,6 @@
   }
 
   .training-lane-card h3,
-  .equipment-inventory h3,
-  .service-copy h3,
-  .service-info-card h4,
-  .coaching-focus-grid h4,
   .testimonial-grid p,
   .contact-card-grid a {
     color: #ffffff;
@@ -2127,23 +2116,12 @@
   }
 
   .training-lane-card p:not(.mini-label),
-  .equipment-inventory p,
   .pt-note p:not(.mini-label),
-  .service-copy p,
-  .service-info-card p,
-  .coaching-focus-grid p,
   .testimonial-grid span,
   .contact-card-grid p,
   .contact-card-grid dd {
     color: rgba(244, 244, 245, 0.66);
     line-height: 1.7;
-  }
-
-  .service-info-card img {
-    width: 2.25rem;
-    height: 2.25rem;
-    object-fit: contain;
-    filter: brightness(0) saturate(100%) invert(84%) sepia(73%) saturate(1115%) hue-rotate(339deg) brightness(101%) contrast(96%);
   }
 
   .welcome-editorial {
@@ -2244,49 +2222,68 @@
       #070708;
   }
 
-  .equipment-gallery {
+  .equipment-hero {
     display: grid;
-    grid-template-columns: 1.35fr 0.65fr;
-    grid-auto-rows: clamp(11rem, 18vw, 15rem);
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.28fr);
     gap: 1rem;
     margin-top: clamp(2rem, 4vw, 4rem);
   }
 
-  .equipment-photo {
+  .equipment-hero figure,
+  .equipment-side-strip img,
+  .training-path-photo {
     overflow: hidden;
-    border-radius: 1.35rem;
-    background: #111;
+    border-radius: 1.6rem;
     border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #101011;
   }
 
-  .equipment-photo-large {
-    grid-row: span 3;
+  .equipment-hero figure {
+    min-height: clamp(28rem, 48vw, 42rem);
   }
 
-  .equipment-photo img {
+  .equipment-hero img,
+  .training-path-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.45) contrast(1.08) brightness(0.82);
+    filter: grayscale(0.55) contrast(1.12) brightness(0.78);
   }
 
-  .equipment-inventory {
+  .equipment-side-strip {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 0.85rem;
+    gap: 1rem;
+  }
+
+  .equipment-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
     margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 1.35rem;
+    border: 1px solid rgba(245, 201, 40, 0.22);
+    background: rgba(245, 201, 40, 0.18);
   }
 
-  .equipment-inventory article {
-    min-height: 10.5rem;
-    padding: 1.05rem;
+  .equipment-list article {
+    min-height: 9rem;
+    padding: 1.2rem;
+    background: #0d0d0f;
   }
 
-  .equipment-inventory h3 {
+  .equipment-list h3 {
     color: #f7d64a;
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .equipment-list p {
+    margin-top: 0.9rem;
+    color: rgba(244, 244, 245, 0.66);
+    line-height: 1.6;
   }
 
   .pt-note {
@@ -2297,113 +2294,127 @@
     align-items: center;
   }
 
+  .pt-note strong {
+    color: #f7d64a;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   .offerings-header {
     max-width: 56rem;
     margin-bottom: clamp(2rem, 5vw, 4.5rem);
   }
 
-  .service-block {
+  .training-path-stack {
     display: grid;
-    grid-template-columns: minmax(22rem, 0.74fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 3.5rem);
+    gap: 1.1rem;
+  }
+
+  .training-path {
+    display: grid;
+    grid-template-columns: auto minmax(0, 0.8fr) minmax(18rem, 0.62fr);
+    gap: clamp(1rem, 3vw, 2.5rem);
     align-items: center;
-    padding-block: clamp(2.75rem, 5vw, 5.5rem);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.02)),
+      rgba(13, 13, 14, 0.92);
   }
 
-  .service-open-gym {
-    display: block;
-    padding-bottom: 0;
+  .training-path-mark {
+    display: grid;
+    place-items: center;
+    width: clamp(4.25rem, 6vw, 5.5rem);
+    height: clamp(4.25rem, 6vw, 5.5rem);
+    border-radius: 999px;
+    background: #f7d64a;
   }
 
-  .service-open-gym .open-gym-shell {
-    width: 100%;
+  .training-path-mark img {
+    width: 52%;
+    height: 52%;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%);
   }
 
-  .service-copy h3 {
+  .training-path-body h3 {
     max-width: 42rem;
     font-size: clamp(2rem, 4vw, 4rem);
     line-height: 0.98;
   }
 
-  .service-copy p:first-of-type {
+  .training-path-body > p:not(.mini-label):first-of-type {
     margin-top: 1.4rem;
   }
 
-  .service-card-grid,
-  .coaching-focus-grid,
+  .training-path-body p + p {
+    margin-top: 1.1rem;
+  }
+
+  .training-path-body p,
+  .training-path-details p {
+    color: rgba(244, 244, 245, 0.66);
+    line-height: 1.7;
+  }
+
+  .training-path-details,
   .contact-card-grid {
     display: grid;
     gap: 1rem;
   }
 
-  .service-card-grid {
+  .training-path-details {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-info-card {
-    min-height: 18rem;
+  .training-path-details article {
+    min-height: 9rem;
+    padding: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.035);
   }
 
-  .service-info-card h4 {
-    margin-top: 1.5rem;
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  .training-path-details h4,
+  .training-path-note h4 {
+    color: #f4f1e8;
+    font-size: 1rem;
+    font-weight: 900;
     line-height: 1.02;
   }
 
-  .coaching-focus-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .training-path-details p {
+    margin-top: 0.7rem;
   }
 
-  .coaching-focus-grid article {
-    min-height: 12rem;
-  }
-
-  .coaching-focus-grid h4 {
-    color: #f7d64a;
-    font-size: 0.82rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .open-gym-photo-frame > img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.12) brightness(0.76);
-    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 52%);
-  }
-
-  .open-gym-statement-icon {
-    display: grid;
-    place-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
-    border-radius: 999px;
-    border: 1px solid rgba(245, 201, 40, 0.58);
-  }
-
-  .open-gym-statement-icon img {
-    width: 2.4rem;
-    height: 2.4rem;
+  .training-path-details img {
+    width: 2rem;
+    height: 2rem;
     object-fit: contain;
     filter: brightness(0) saturate(100%) invert(84%) sepia(73%) saturate(1115%) hue-rotate(339deg) brightness(101%) contrast(96%);
   }
 
-  .open-gym-statement-card h4 {
-    color: #fff;
-    font-size: clamp(1.1rem, 1.8vw, 1.55rem);
-    font-weight: 900;
-    line-height: 1.08;
+  .training-path-details img + h4 {
+    margin-top: 1rem;
   }
 
-  .open-gym-statement-card p {
-    margin-top: 0.5rem;
+  .training-path-photo {
+    min-height: 16rem;
+  }
+
+  .training-path-note {
+    margin-top: 1.1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245, 201, 40, 0.2);
     color: rgba(244, 244, 245, 0.72);
-    font-size: 0.9rem;
-    line-height: 1.55;
+  }
+
+  .training-path-note p {
+    margin-top: 0.6rem;
   }
 
   .coach-intro {
@@ -2746,36 +2757,21 @@
   .welcome-editorial,
   .training-selector,
   .equipment-header,
-  .service-block,
+  .equipment-hero,
+  .training-path,
   .testimonials-header,
   .contact-layout,
   .contact-card-grid {
     grid-template-columns: 1fr;
   }
 
-  .equipment-inventory {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .equipment-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-card-grid,
-  .coaching-focus-grid,
+  .training-path-details,
   .testimonial-grid {
     grid-template-columns: 1fr;
-  }
-
-  .service-open-gym .open-gym-shell {
-    min-height: 0;
-  }
-
-  .open-gym-shell {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .open-gym-statement-card {
-    right: 1rem;
-    bottom: 1rem;
-    width: min(34rem, calc(100% - 2rem));
   }
 
   .coach-technique-panel,
@@ -2833,30 +2829,6 @@
     right: 1.25rem;
     bottom: 1rem;
     width: min(30rem, 82%);
-  }
-
-  .open-gym-headline {
-    max-width: min(100%, 42rem);
-    font-size: clamp(2.85rem, 7.4vw, 4.8rem);
-    line-height: 1;
-  }
-
-  .open-gym-shell {
-    min-height: auto;
-  }
-
-  .open-gym-media-stage {
-    min-height: clamp(34rem, 78vw, 44rem);
-  }
-
-  .open-gym-photo-frame {
-    min-height: clamp(28rem, 64vw, 36rem);
-  }
-
-  .open-gym-statement-card {
-    right: -0.25rem;
-    bottom: -1.25rem;
-    width: min(38rem, 88%);
   }
 
   .atlas-fit-shell {
@@ -2989,50 +2961,15 @@
     letter-spacing: 0.18em;
   }
 
-  .equipment-inventory,
+  .equipment-list,
   .open-gym-proof-grid {
     grid-template-columns: 1fr;
-  }
-
-  .equipment-gallery {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 15rem;
-  }
-
-  .equipment-photo-large {
-    grid-row: span 1;
   }
 
   .pt-note {
     grid-template-columns: 1fr;
   }
 
-  .service-block {
-    padding-block: 3rem;
-  }
-
-  .service-copy h3 {
-    font-size: clamp(2.2rem, 11vw, 3.25rem);
-  }
-
-  .open-gym-heading {
-    font-size: clamp(2.45rem, 12vw, 3.6rem);
-  }
-
-  .open-gym-photo-frame > img {
-    clip-path: none;
-    border-radius: 1.4rem;
-  }
-
-  .open-gym-statement-card {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    grid-template-columns: 1fr;
-    margin-top: 1rem;
-    border-radius: 1.35rem;
-  }
 
   .open-gym-statement-card::before,
   .open-gym-statement-card::after {
