@@ -98,7 +98,7 @@ const checks = [
   ["CSS adds scroll margin for anchored sections", css.includes(".anchor-section") && css.includes("scroll-margin-top")],
   ["CSS keeps no-JS content visible", css.includes("[data-reveal]") && css.includes("opacity: 1") && css.includes(".js-enabled [data-reveal]")],
   ["JS reveals hash targets on load and hashchange", js.includes("revealHashTarget") && js.includes("window.location.hash") && js.includes("hashchange")],
-  ["CSS respects reduced motion", css.includes("prefers-reduced-motion")],
+  ["CSS respects reduced motion", css.includes("prefers-reduced-motion") && css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)")).includes(".js-enabled [data-reveal]")],
   ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-50%)")],
   ["JS registers ScrollTrigger when GSAP exists", js.includes("ScrollTrigger")],
   ["JS supports scroll image hooks", js.includes("[data-scroll-image]")],

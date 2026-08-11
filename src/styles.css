@@ -3423,7 +3423,7 @@
     scroll-behavior: auto;
   }
 
-  [data-reveal] {
+  .js-enabled [data-reveal] {
     opacity: 1;
     transform: none;
     filter: none;
