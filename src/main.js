@@ -83,6 +83,93 @@ if ("IntersectionObserver" in window) {
 window.addEventListener("load", revealHashTarget, { once: true });
 window.addEventListener("hashchange", revealHashTarget);
 
+const testimonialSlides = [
+  {
+    quote: "Technique cues are specific, the floor is calm, and every session feels like it has a reason.",
+    author: "Technique-focused training",
+    role: "Member perspective",
+    context: "Atlas floor",
+    image: "./firstcardimage.webp",
+  },
+  {
+    quote: "Programming, coaching, and open gym access can live in the same serious weightlifting room.",
+    author: "Flexible training options",
+    role: "Training path",
+    context: "Team or open gym",
+    image: "./secondcardimage.webp",
+  },
+  {
+    quote: "The details matter here: positions, mobility, timing, and the patience to make better lifts repeatable.",
+    author: "Position before load",
+    role: "Technique and mobility",
+    context: "Atlas standard",
+    image: "./thirdcardimage.webp",
+  },
+];
+
+document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
+  const quote = carousel.querySelector("[data-testimonial-quote]");
+  const author = carousel.querySelector("[data-testimonial-author]");
+  const role = carousel.querySelector("[data-testimonial-role]");
+  const context = carousel.querySelector("[data-testimonial-context]");
+  const image = carousel.querySelector("[data-testimonial-image]");
+  const indexLabel = carousel.querySelector("[data-testimonial-index]");
+  const countLabel = carousel.querySelector("[data-testimonial-count]");
+  const dots = Array.from(carousel.querySelectorAll("[data-testimonial-dot]"));
+  const previousButton = carousel.querySelector("[data-testimonial-prev]");
+  const nextButton = carousel.querySelector("[data-testimonial-next]");
+  let active = 0;
+  let transitionTimer;
+
+  const pad = (number) => String(number).padStart(2, "0");
+
+  const renderSlide = () => {
+    const current = testimonialSlides[active];
+
+    quote.textContent = current.quote;
+    author.textContent = current.author;
+    role.textContent = current.role;
+    context.textContent = current.context;
+    image.src = current.image;
+    image.alt = "";
+    indexLabel.textContent = pad(active + 1);
+    countLabel.textContent = `${pad(active + 1)} / ${pad(testimonialSlides.length)}`;
+
+    dots.forEach((dot, index) => {
+      const isActive = index === active;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  };
+
+  const changeSlide = (nextIndex) => {
+    const normalizedIndex = (nextIndex + testimonialSlides.length) % testimonialSlides.length;
+
+    if (normalizedIndex === active) {
+      return;
+    }
+
+    window.clearTimeout(transitionTimer);
+    carousel.classList.add("is-changing");
+
+    transitionTimer = window.setTimeout(() => {
+      active = normalizedIndex;
+      renderSlide();
+      carousel.classList.remove("is-changing");
+    }, 220);
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      changeSlide(Number(dot.dataset.testimonialTarget));
+    });
+  });
+
+  previousButton.addEventListener("click", () => changeSlide(active - 1));
+  nextButton.addEventListener("click", () => changeSlide(active + 1));
+  renderSlide();
+});
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {

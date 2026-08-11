@@ -5,6 +5,7 @@ const css = readFileSync(new URL("../src/styles.css", import.meta.url), "utf8");
 const js = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 const headerHtml = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
 const footerHtml = html.slice(html.indexOf("<footer"), html.indexOf("</footer>"));
+const testimonialsHtml = html.slice(html.indexOf('id="testimonials"'), html.indexOf("marquee-track"));
 
 const appearsInOrder = (needles) => {
   let lastIndex = -1;
@@ -79,7 +80,8 @@ const checks = [
   ["Coach section includes technique and mobility", html.includes("Technique and positions") && html.includes("Build positions you can repeat") && html.includes("front rack") && html.toLowerCase().includes("overhead stability")],
   ["Coach section includes training methodology", html.includes("Training influences") && html.includes("Bulgarian-influenced training") && html.includes("American approaches") && html.includes("Chinese-influenced training")],
   ["Methodology uses careful Atlas position", html.includes("Atlas is primarily Chinese-influenced") && !html.includes("We use the Chinese method.") && !html.includes("raw intensity")],
-  ["Testimonials section is Google Reviews gateway without fake quotes", html.includes("reviews-gateway") && html.includes("Read more Google Reviews") && !html.includes("Member testimonial will appear here") && !html.includes("Member Name / Training type")],
+  ["Testimonials section uses editorial carousel with no Google link", testimonialsHtml.includes("testimonial-editorial") && testimonialsHtml.includes("data-testimonial-carousel") && testimonialsHtml.includes("What lifters notice in the room.") && !testimonialsHtml.includes("Google Reviews") && !testimonialsHtml.includes("google.com")],
+  ["Testimonials carousel has controls and vanilla JS state", html.includes("data-testimonial-prev") && html.includes("data-testimonial-next") && html.includes("data-testimonial-dot") && js.includes("testimonialSlides") && js.includes("changeSlide")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club")],
   ["Footer has required identity and links", footerHtml.includes("2026 Atlas Barbell Club") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona") && footerHtml.includes("Instagram") && footerHtml.includes("Facebook") && footerHtml.includes("Contact")],
   ["Footer avoids decorative middle-dot separators", !footerHtml.includes("\u00B7") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],
@@ -95,7 +97,7 @@ const checks = [
   ["CSS defines equipment and path cleanup", css.includes(".equipment-hero") && css.includes(".equipment-list") && css.includes(".training-path-stack") && css.includes(".training-path")],
   ["CSS removes obsolete Open Gym layout rules", ![".open-gym-shell", ".open-gym-copy", ".open-gym-media", ".open-gym-media-stage", ".open-gym-photo-frame", ".open-gym-photo-core", ".open-gym-statement-card", ".open-gym-headline", ".open-gym-heading", ".open-gym-eyebrow", ".open-gym-body"].some((selector) => css.includes(selector))],
   ["CSS defines coach profile, technique, and method architecture", css.includes(".coach-profile-section") && css.includes(".technique-gallery-section") && css.includes(".lifting-method-section")],
-  ["CSS defines quieter coach and final contact systems", css.includes(".coach-support-grid") && css.includes(".reviews-gateway") && css.includes(".final-contact-panel")],
+  ["CSS defines quieter coach, review carousel, and final contact systems", css.includes(".coach-support-grid") && css.includes(".testimonial-editorial") && css.includes(".final-contact-panel")],
   ["CSS respects responsive collapse", css.includes("@media (max-width: 1023px)") && css.includes(".welcome-grid") && css.includes("@media (max-width: 640px)")],
   ["CSS defines reveal states", css.includes("[data-reveal]") && css.includes(".is-visible")],
   ["HTML marks every major section as anchor-safe", anchorIds.every((id) => html.includes(`id="${id}"`) && html.includes(`id="${id}" class="`) && html.slice(html.indexOf(`id="${id}"`), html.indexOf(">", html.indexOf(`id="${id}"`))).includes("anchor-section"))],

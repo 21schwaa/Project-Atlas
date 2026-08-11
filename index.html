@@ -769,27 +769,74 @@
 
       <section id="testimonials" class="anchor-section testimonials-section section-rhythm-tight">
         <div class="page-shell">
-          <div class="reviews-gateway" data-reveal>
-            <div>
-              <h2 class="section-heading">What it is like to train at Atlas.</h2>
-              <p>
-                The best description of a gym usually comes from the people who spend
-                time training there. Real member quotes can be added here when Atlas
-                is ready to publish them.
-              </p>
-            </div>
-            <a
-            class="google-review-card testimonial-review-link"
-            href="https://www.google.com/search?q=Atlas+Barbell+Club+Phoenix+AZ+reviews"
-            target="_blank"
-            rel="noreferrer"
+          <div
+            class="testimonial-editorial"
+            data-reveal
+            data-testimonial-carousel
+            aria-label="Atlas Barbell Club review carousel"
           >
-            <span class="google-review-mark" aria-hidden="true">G</span>
-            <span>
-              <span class="block text-[0.62rem] font-black uppercase tracking-[0.18em] text-amber-200">Google Reviews</span>
-              <span class="mt-1 block text-sm font-black leading-tight text-white">Read more Google Reviews - see what lifters say</span>
-            </span>
-            </a>
+            <span class="testimonial-editorial-number" data-testimonial-index>01</span>
+
+            <div class="testimonial-editorial-copy">
+              <p class="section-kicker">Reviews</p>
+              <h2 class="testimonial-editorial-heading">What lifters notice in the room.</h2>
+              <blockquote data-testimonial-quote>
+                Technique cues are specific, the floor is calm, and every session feels like it has a reason.
+              </blockquote>
+
+              <div class="testimonial-author-card">
+                <div class="testimonial-author-image">
+                  <img
+                    data-testimonial-image
+                    src="./firstcardimage.webp"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <p data-testimonial-author>Technique-focused training</p>
+                  <p>
+                    <span data-testimonial-role>Member perspective</span>
+                    <span aria-hidden="true">/</span>
+                    <span data-testimonial-context>Atlas floor</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-editorial-controls" aria-label="Review controls">
+              <div class="testimonial-line-selector" aria-label="Select a review">
+                <button
+                  class="is-active"
+                  type="button"
+                  data-testimonial-dot
+                  data-testimonial-target="0"
+                  aria-label="Show review 1"
+                  aria-current="true"
+                ></button>
+                <button
+                  type="button"
+                  data-testimonial-dot
+                  data-testimonial-target="1"
+                  aria-label="Show review 2"
+                ></button>
+                <button
+                  type="button"
+                  data-testimonial-dot
+                  data-testimonial-target="2"
+                  aria-label="Show review 3"
+                ></button>
+              </div>
+              <span class="testimonial-counter" data-testimonial-count>01 / 03</span>
+              <div class="testimonial-arrow-group">
+                <button type="button" data-testimonial-prev aria-label="Previous review">
+                  <i class="gg-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" data-testimonial-next aria-label="Next review">
+                  <i class="gg-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
