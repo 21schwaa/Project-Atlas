@@ -49,6 +49,7 @@ const anchorIds = [
 const checks = [
   ["HTML has scroll reveal targets", html.includes("data-reveal")],
   ["HTML loads the scroll animation script", html.includes("./src/main.js")],
+  ["HTML loads local interaction script without module-only file restrictions", html.includes('src="./src/main.js" defer') && !html.includes('type="module" src="./src/main.js"')],
   ["HTML keeps fixed hero rail outside section clipping", html.indexOf("class=\"hero-rail\"") < html.indexOf("<main id=\"main\"")],
   ["HTML keeps reference-style hero", html.includes('id="home"') && html.includes("hero-reference-stage") && html.includes("hero-photo-bezel")],
   ["HTML has anti-guesswork hero message", html.includes("Olympic weightlifting without the guesswork")],
