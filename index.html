@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Atlas Barbell Club is an Olympic weightlifting gym for lifters who want sharper technique, serious platforms, and focused coaching."
+      content="Atlas Barbell Club is a Phoenix Olympic weightlifting gym for team programming, coaching, open gym training, and lifters who want better technique."
     />
     <title>Atlas Barbell Club | Olympic Weightlifting Gym</title>
     <meta
@@ -14,7 +14,7 @@
     />
     <meta
       property="og:description"
-      content="Olympic weightlifting in a serious training room: team programming, open gym, coaching, and platform-focused training."
+      content="Olympic weightlifting in Phoenix: team programming, coaching, open gym, technique work, and a floor built around the snatch and clean and jerk."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./mainlandingpageimage.webp" />
@@ -37,7 +37,7 @@
         class="atlas-topline mx-auto flex w-full items-center justify-between px-5 py-5 backdrop-blur-2xl lg:px-8"
         aria-label="Main navigation"
       >
-        <a href="#" class="group flex min-w-0 items-center gap-3 text-white">
+        <a href="#home" class="group flex min-w-0 items-center gap-3 text-white">
           <span
             class="flex h-14 w-14 shrink-0 items-center justify-center border-r border-amber-300/45 pr-4 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-95"
           >
@@ -53,46 +53,29 @@
             Atlas Barbell Club
           </span>
         </a>
+
         <div
           class="hidden items-center gap-9 text-[0.78rem] font-bold uppercase tracking-[0.24em] text-zinc-300 lg:flex"
         >
-          <a
-            class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-            href="#training"
-            >Training</a
-          >
-          <a
-            class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-            href="#open-gym"
-            >Open Gym</a
-          >
-          <a
-            class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-            href="#team"
-            >Team</a
-          >
-          <a
-            class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-            href="#coaching"
-            >Coaching</a
-          >
-          <a
-            class="transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-            href="#visit"
-            >Visit</a
-          >
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#welcome">Welcome</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#equipment">The Floor</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#offerings">Training</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#coach">Coach</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#testimonials">Reviews</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#contact">Contact</a>
         </div>
+
         <div class="flex items-center gap-2">
           <div class="hidden items-center gap-2 sm:flex">
             <a
-              class="group flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
+              class="group flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 hover:text-amber-200"
               href="https://www.instagram.com/atlasbarbellclub/"
               aria-label="Instagram"
               target="_blank"
               rel="noreferrer"
             >
               <svg
-                class="cssgg-instagram-svg h-5 w-5 text-zinc-200 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-amber-200"
+                class="cssgg-instagram-svg h-5 w-5 text-zinc-200 transition-colors duration-700 group-hover:text-amber-200"
                 viewBox="0 0 24 24"
                 fill="none"
                 aria-hidden="true"
@@ -117,14 +100,14 @@
               </svg>
             </a>
             <a
-              class="group flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
+              class="group flex h-9 w-9 items-center justify-center rounded-full bg-white/7 text-zinc-200 ring-1 ring-white/10 transition-colors duration-700 hover:text-amber-200"
               href="https://www.facebook.com/atlasbarbellclub/"
               aria-label="Facebook"
               target="_blank"
               rel="noreferrer"
             >
               <svg
-                class="cssgg-facebook-svg h-5 w-5 text-zinc-200 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:text-amber-200"
+                class="cssgg-facebook-svg h-5 w-5 text-zinc-200 transition-colors duration-700 group-hover:text-amber-200"
                 viewBox="0 0 24 24"
                 fill="none"
                 aria-hidden="true"
@@ -137,8 +120,21 @@
               </svg>
             </a>
           </div>
+
+          <details class="mobile-nav lg:hidden">
+            <summary aria-label="Open mobile navigation">Menu</summary>
+            <div class="mobile-nav-panel">
+              <a href="#welcome">Welcome</a>
+              <a href="#equipment">The Floor</a>
+              <a href="#offerings">Training</a>
+              <a href="#coach">Coach</a>
+              <a href="#testimonials">Reviews</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </details>
+
           <a
-            href="mailto:hello@atlasbarbellclub.com"
+            href="#contact"
             class="group inline-flex items-center gap-3 rounded-full bg-amber-300 py-1.5 pl-5 pr-1.5 text-[0.72rem] font-black uppercase tracking-[0.16em] text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
           >
             Trial
@@ -170,7 +166,7 @@
     </aside>
 
     <main id="main" class="w-full max-w-full overflow-x-hidden">
-      <section class="hero-reference-stage relative isolate overflow-hidden">
+      <section id="home" class="hero-reference-stage relative isolate overflow-hidden">
         <div class="hero-contours" aria-hidden="true"></div>
 
         <div
@@ -178,9 +174,7 @@
         >
           <div class="hero-copy-panel pb-2 lg:pb-0" data-reveal>
             <div class="mb-7 flex items-center gap-5">
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.34em] text-amber-200"
-              >
+              <p class="text-[10px] font-black uppercase tracking-[0.34em] text-amber-200">
                 Olympic weightlifting in Phoenix
               </p>
               <span
@@ -195,61 +189,38 @@
               <span class="block">Olympic</span>
               <span class="block">weightlifting</span>
               <span class="block">without the</span>
-              <span class="block"
-                >guesswork<span class="text-amber-300">.</span></span
-              >
+              <span class="block">guesswork<span class="text-amber-300">.</span></span>
             </h1>
-            <p
-              class="mt-7 max-w-2xl text-base leading-8 text-zinc-200 sm:text-lg"
-            >
-              Show up with a plan, lift in a room built for the snatch and clean
-              and jerk, and get the level of coaching support that matches your
-              goals.
+            <p class="mt-7 max-w-2xl text-base leading-8 text-zinc-200 sm:text-lg">
+              Atlas Barbell Club is a Phoenix gym centered on Olympic
+              weightlifting. Train with Atlas programming, work directly with a
+              coach, or bring your own plan and use a space built around the
+              snatch and clean and jerk.
             </p>
-            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
-                href="#visit"
+                href="#contact"
                 class="group inline-flex items-center justify-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
               >
                 Start training
-                <span
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105"
-                >
-                  <svg
-                    class="cssgg-arrow-svg h-4 w-4 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <svg class="cssgg-arrow-svg h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path></svg>
                 </span>
               </a>
               <a
-                href="#training"
+                href="#equipment"
                 class="group inline-flex items-center justify-center gap-4 rounded-full bg-zinc-950/85 py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-white ring-1 ring-white/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
               >
                 See the floor
-                <span
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-amber-200 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105"
-                >
-                  <svg
-                    class="cssgg-arrow-svg h-4 w-4 text-white"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-amber-200 transition-transform duration-700 group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <svg class="cssgg-arrow-svg h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path></svg>
                 </span>
+              </a>
+              <a
+                href="#welcome"
+                class="inline-flex items-center justify-center px-2 py-2 text-sm font-black uppercase tracking-[0.16em] text-amber-200 transition-colors duration-700 hover:text-white"
+              >
+                Get started
               </a>
             </div>
             <a
@@ -261,23 +232,13 @@
             >
               <span class="google-review-mark" aria-hidden="true">G</span>
               <span class="min-w-0">
-                <span
-                  class="block text-[0.62rem] font-black uppercase tracking-[0.18em] text-amber-200"
-                  >Google reviews</span
-                >
-                <span
-                  class="mt-1 block text-sm font-black leading-tight text-white"
-                  >See what lifters say</span
-                >
+                <span class="block text-[0.62rem] font-black uppercase tracking-[0.18em] text-amber-200">Google reviews</span>
+                <span class="mt-1 block text-sm font-black leading-tight text-white">See what lifters say</span>
               </span>
             </a>
           </div>
 
-          <div
-            class="hero-equipment-stage relative"
-            data-reveal
-            data-reveal-delay="120"
-          >
+          <div class="hero-equipment-stage relative" data-reveal data-reveal-delay="120">
             <div class="hero-photo-bezel">
               <div class="hero-photo-core">
                 <img
@@ -287,29 +248,24 @@
                   data-scroll-image
                   data-asset-slot="hero-lifter"
                 />
-                <div
-                  class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.04),rgba(0,0,0,0.5))]"
-                  aria-hidden="true"
-                ></div>
+                <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.04),rgba(0,0,0,0.5))]" aria-hidden="true"></div>
               </div>
             </div>
             <div class="hero-standard-card">
               <div class="hero-standard-icon" aria-hidden="true">
-                <img
-                  src="./platformlogo.svg"
-                  alt=""
-                  class="hero-standard-logo"
-                />
+                <img src="./platformlogo.svg" alt="" class="hero-standard-logo" />
               </div>
               <div>
-                <p
-                  class="hero-standard-label text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-200"
-                >
+                <p class="hero-standard-label text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-200">
                   Platform standard
                   <span aria-hidden="true"></span>
                 </p>
                 <p class="mt-2 text-xl font-black leading-tight text-white">
-                  Real equipment.<br />Real floor. No wasted space.
+                  Built around Olympic weightlifting.
+                </p>
+                <p class="mt-2 max-w-md text-sm leading-6 text-zinc-300">
+                  Platforms, bars, open floor space, and the equipment used
+                  throughout a weightlifting session.
                 </p>
               </div>
             </div>
@@ -317,616 +273,354 @@
         </div>
       </section>
 
-      <section class="section-rhythm-tight">
+      <section id="welcome" class="welcome-section section-rhythm">
         <div class="page-shell">
-          <div
-            class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10"
-            data-reveal
-          >
-            <div
-              class="machined-panel rounded-[calc(2.5rem-0.5rem)] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] sm:p-8"
-            >
-              <div class="relative grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
-                <div>
-                  <p
-                    class="mb-4 inline-flex rounded-full bg-amber-300 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-zinc-950"
-                  >
-                    Choose your training lane
-                  </p>
-                  <h2
-                    class="max-w-2xl text-[clamp(2rem,3vw,3rem)] font-black leading-[1.04] text-white"
-                  >
-                    One gym. Three ways to train.
-                  </h2>
-                </div>
-                <div class="grid gap-4 md:grid-cols-3">
-                  <a
-                    class="training-lane-card group p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
-                    href="#team"
-                  >
-                    <span
-                      class="relative block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200"
-                      >Team programming</span
-                    >
-                    <span
-                      class="relative mt-4 block text-xl font-black leading-tight text-white"
-                      >Follow the weekly Atlas track.</span
-                    >
-                    <span
-                      class="relative mt-4 block text-sm leading-6 text-zinc-400"
-                      >Best for lifters who want structure, progression, and the
-                      energy of training with the room.</span
-                    >
-                  </a>
-                  <a
-                    class="training-lane-card group p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
-                    href="#open-gym"
-                  >
-                    <span
-                      class="relative block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200"
-                      >Open gym</span
-                    >
-                    <span
-                      class="relative mt-4 block text-xl font-black leading-tight text-white"
-                      >Bring your coach or your own plan.</span
-                    >
-                    <span
-                      class="relative mt-4 block text-sm leading-6 text-zinc-400"
-                      >Best for independent lifters who just need access to the
-                      right floor and equipment.</span
-                    >
-                  </a>
-                  <a
-                    class="training-lane-card group p-5 ring-1 ring-white/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1"
-                    href="#coaching"
-                  >
-                    <span
-                      class="relative block text-[0.68rem] font-black uppercase tracking-[0.2em] text-amber-200"
-                      >Coaching</span
-                    >
-                    <span
-                      class="relative mt-4 block text-xl font-black leading-tight text-white"
-                      >Get eyes on the lift.</span
-                    >
-                    <span
-                      class="relative mt-4 block text-sm leading-6 text-zinc-400"
-                      >Best for newer lifters, meet prep, technical rebuilds,
-                      and honest feedback between attempts.</span
-                    >
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="proof-strip py-6" aria-label="Atlas gym standards">
-        <div class="page-shell grid gap-4 text-center sm:grid-cols-3">
-          <div>
-            <p
-              class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200"
-            >
-              Olympic focus
-            </p>
-            <p class="mt-2 text-sm font-semibold text-zinc-300">
-              Snatch, clean and jerk, technique work, squats, pulls, and
-              platform work.
-            </p>
-          </div>
-          <div>
-            <p
-              class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200"
-            >
-              Flexible access
-            </p>
-            <p class="mt-2 text-sm font-semibold text-zinc-300">
-              Team programming, coached open gym, or your own plan.
-            </p>
-          </div>
-          <div>
-            <p
-              class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200"
-            >
-              Facility support
-            </p>
-            <p class="mt-2 text-sm font-semibold text-zinc-300">
-              Attached PT office access in the same building.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="training" class="atlas-fit-section section-rhythm">
-        <div class="atlas-fit-shell page-shell">
-          <article class="atlas-fit-image-card group" data-reveal>
-            <div
-              class="atlas-fit-image"
-              style="
-                background-image:
-                  linear-gradient(
-                    180deg,
-                    rgba(0, 0, 0, 0.08),
-                    rgba(0, 0, 0, 0.82)
-                  ),
-                  url(&quot;./firstcardimage.webp&quot;);
-              "
-              data-scroll-image
-              data-asset-slot="platforms"
-              aria-hidden="true"
-            ></div>
-            <div class="atlas-fit-image-copy">
-              <p class="atlas-fit-kicker">Why Atlas fits</p>
-              <h2>
-                Athlete-focused training without the commercial gym noise.
+          <div class="section-kicker" data-reveal>Welcome to Atlas</div>
+          <div class="welcome-grid">
+            <div data-reveal>
+              <h2 class="section-heading">
+                A weightlifting gym built around the lifts and the people
+                learning them.
               </h2>
+            </div>
+            <div class="welcome-copy" data-reveal data-reveal-delay="90">
               <p>
-                Purpose-built programming, quality coaching, and a room that
-                keeps the work honest.
+                Atlas Barbell Club is a Phoenix training space centered on the
+                snatch, clean and jerk, and the strength work that supports
+                them. The gym is designed for athletes who want to spend their
+                training time around Olympic lifting, whether they follow Atlas
+                programming, work directly with a coach, or already have a plan
+                of their own.
               </p>
-              <span aria-hidden="true"></span>
+              <p>
+                The goal is not to make every athlete train the same way. It is
+                to give lifters a useful place to train, access to coaching when
+                they want it, and enough flexibility to choose how involved they
+                want Atlas to be in their programming.
+              </p>
             </div>
-          </article>
+          </div>
 
-          <div
-            class="atlas-fit-card-stack"
-            aria-label="Why Atlas fits details"
-            data-reveal
-            data-reveal-delay="110"
-          >
-            <article class="atlas-fit-stack-card" tabindex="0">
-              <div class="atlas-fit-card-head">
-                <span class="atlas-fit-card-icon" aria-hidden="true">
-                  <img src="./dumbellicon.svg" alt="" />
-                </span>
-                <div>
-                  <p>Built for performance</p>
-                  <h3>Equipment, space, and structure for serious progress.</h3>
-                </div>
-                <span class="atlas-fit-card-arrow" aria-hidden="true"
-                  ><i class="gg-chevron-down"></i
-                ></span>
-              </div>
-              <div class="atlas-fit-card-body">
-                <p>
-                  Platforms, bars, blocks, and floor space are arranged around
-                  the snatch, clean and jerk, squats, pulls, and the rhythm of
-                  real training.
-                </p>
-                <ul>
-                  <li>Olympic lifting platforms</li>
-                  <li>Room for attempts and feedback</li>
-                  <li>No commercial gym clutter</li>
-                </ul>
-              </div>
+          <div class="welcome-bento">
+            <article class="welcome-origin-card machined-panel" data-reveal>
+              <!-- TODO: Replace with verified Atlas founder story -->
+              <p class="mini-label">How Atlas started</p>
+              <h3>Built for Phoenix weightlifters.</h3>
+              <p>
+                Atlas was created to give Olympic weightlifters in Phoenix a
+                space centered specifically on the way they train.
+              </p>
             </article>
+            <article class="training-lane-card p-6" data-reveal data-reveal-delay="80">
+              <p class="mini-label">Olympic Weightlifting</p>
+              <h3>The competition lifts are the center of the room.</h3>
+              <p>
+                Training starts with the snatch, clean and jerk, and the
+                strength work that keeps those lifts moving forward.
+              </p>
+            </article>
+            <article class="training-lane-card p-6" data-reveal data-reveal-delay="130">
+              <p class="mini-label">Technical Coaching</p>
+              <h3>Small details get attention.</h3>
+              <p>
+                Bar path, timing, positions, and mobility are treated as real
+                training variables, not afterthoughts.
+              </p>
+            </article>
+            <article class="training-lane-card p-6" data-reveal data-reveal-delay="180">
+              <p class="mini-label">Flexible Training</p>
+              <h3>Use as much structure as you need.</h3>
+              <p>
+                Follow Atlas programming, work one on one with a coach, or bring
+                the training plan you already trust.
+              </p>
+            </article>
+          </div>
 
-            <article class="atlas-fit-stack-card is-featured" tabindex="0">
-              <div class="atlas-fit-card-head">
-                <span class="atlas-fit-card-icon" aria-hidden="true">
-                  <img src="./coachicon.svg" alt="" />
-                </span>
-                <div>
-                  <p>Coaching that is invested</p>
-                  <h3>Feedback from people who know the lifts.</h3>
-                </div>
-                <span class="atlas-fit-card-arrow" aria-hidden="true"
-                  ><i class="gg-chevron-down"></i
-                ></span>
-              </div>
-              <div class="atlas-fit-card-body">
-                <p>
-                  Coaches who lift, compete, and care. Expect thoughtful
-                  feedback, real accountability, and programming tailored to
-                  your goals.
-                </p>
-                <ul>
-                  <li>Technique-first approach</li>
-                  <li>Individualized feedback</li>
-                  <li>Long-term athlete development</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="atlas-fit-stack-card" tabindex="0">
-              <div class="atlas-fit-card-head">
-                <span class="atlas-fit-card-icon" aria-hidden="true">
-                  <img src="./teamicon.svg" alt="" />
-                </span>
-                <div>
-                  <p>Team Community</p>
-                  <h3>Training partners who keep you moving.</h3>
-                </div>
-                <span class="atlas-fit-card-arrow" aria-hidden="true"
-                  ><i class="gg-chevron-down"></i
-                ></span>
-              </div>
-              <div class="atlas-fit-card-body">
-                <p>
-                  Train around other Olympic lifters while keeping the
-                  flexibility to follow team programming, open gym, or your own
-                  plan.
-                </p>
-                <ul>
-                  <li>Shared progress</li>
-                  <li>Meet-prep energy</li>
-                  <li>Independent training welcome</li>
-                </ul>
-              </div>
-            </article>
+          <div class="quick-offer-panel" data-reveal>
+            <div>
+              <p class="mini-label">What we offer</p>
+              <h3>Choose how you want Atlas involved in your training.</h3>
+            </div>
+            <div class="quick-offer-grid">
+              <a href="#team" class="quick-offer-card">
+                <img src="./teamicon.svg" alt="" />
+                <span>Team Programming</span>
+                <p>Follow a shared weekly training plan.</p>
+              </a>
+              <a href="#coaching" class="quick-offer-card">
+                <img src="./coachicon.svg" alt="" />
+                <span>Coaching</span>
+                <p>Get a closer eye on the details.</p>
+              </a>
+              <a href="#open-gym" class="quick-offer-card">
+                <img src="./stopwatchicon.svg" alt="" />
+                <span>Open Gym</span>
+                <p>Bring your own plan.</p>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="technique-mobility"
-        class="technique-gallery-section section-rhythm"
-      >
-        <span
-          class="technique-ambient-glow"
-          data-reveal
-          aria-hidden="true"
-        ></span>
-        <div class="technique-gallery-shell page-shell">
-          <div class="technique-gallery-grid">
-            <div class="technique-gallery-copy" data-reveal>
-              <p class="technique-gallery-eyebrow">Technique work</p>
-              <h2 class="technique-gallery-headline">
-                Better positions before heavier attempts<span>.</span>
-              </h2>
-              <p class="technique-gallery-body">
-                Atlas puts real attention on mobility because Olympic lifting
-                asks for positions most gyms never train: overhead stability,
-                front rack comfort, ankle range, hip depth, and the patience to
-                make those positions usable under load.
-              </p>
-              <div
-                class="technique-gallery-chips"
-                aria-label="Technique focus areas"
-              >
-                <span>Ankle range</span>
-                <span>Overhead stability</span>
-                <span>Front rack</span>
-              </div>
+      <section id="equipment" class="equipment-section section-rhythm-tight">
+        <div class="page-shell">
+          <div class="equipment-header" data-reveal>
+            <div>
+              <p class="section-kicker">What we have</p>
+              <h2 class="section-heading">A room set up for Olympic weightlifting.</h2>
             </div>
+            <div>
+              <p>
+                The floor is organized around the work weightlifters regularly
+                do: snatch, clean and jerk, squats, pulls, positional work, and
+                accessory training.
+              </p>
+              <p>
+                Rather than treating the facility itself as an abstract selling
+                point, this section should show visitors what is actually
+                available before they come in.
+              </p>
+            </div>
+          </div>
 
-            <div
-              class="technique-gallery-stack"
-              aria-label="Technique and mobility priorities"
-            >
-              <article
-                class="technique-glass-card"
-                data-reveal
-                data-reveal-delay="90"
-              >
-                <div
-                  class="technique-icon-orbit technique-icon-orbit-mobility"
-                  aria-hidden="true"
-                >
+          <div class="equipment-gallery">
+            <figure class="equipment-photo equipment-photo-large" data-reveal>
+              <img src="./mainlandingpageimage.webp" alt="Atlas Barbell Club training floor" data-scroll-image data-asset-slot="floor" />
+            </figure>
+            <figure class="equipment-photo" data-reveal data-reveal-delay="80">
+              <img src="./firstcardimage.webp" alt="Weightlifting equipment at Atlas Barbell Club" data-scroll-image data-asset-slot="platform-view" />
+            </figure>
+            <figure class="equipment-photo" data-reveal data-reveal-delay="140">
+              <img src="./secondcardimage.webp" alt="Barbell and training space at Atlas Barbell Club" data-scroll-image data-asset-slot="barbell-view" />
+            </figure>
+            <figure class="equipment-photo" data-reveal data-reveal-delay="200">
+              <img src="./thirdcardimage.webp" alt="Atlas Barbell Club facility detail" data-scroll-image data-asset-slot="facility-detail" />
+            </figure>
+          </div>
+
+          <div class="equipment-inventory" aria-label="Equipment inventory">
+            <article data-reveal>
+              <h3>Platforms</h3>
+              <p>Dedicated lifting space for snatch, clean and jerk, pulls, and platform work.</p>
+            </article>
+            <article data-reveal data-reveal-delay="50">
+              <h3>Bars</h3>
+              <p>Olympic weightlifting bars used throughout regular training sessions.</p>
+            </article>
+            <article data-reveal data-reveal-delay="100">
+              <h3>Plates</h3>
+              <!-- TODO: Add verified plate inventory and brands. -->
+              <p>Inventory details to be confirmed before final copy.</p>
+            </article>
+            <article data-reveal data-reveal-delay="150">
+              <h3>Blocks</h3>
+              <p>Blocks available for positional pulls, lifts from height, and technical work.</p>
+            </article>
+            <article data-reveal data-reveal-delay="200">
+              <h3>Racks</h3>
+              <!-- TODO: Add verified rack count and setup. -->
+              <p>Rack details to be confirmed before final copy.</p>
+            </article>
+            <article data-reveal data-reveal-delay="250">
+              <h3>Accessories and mobility</h3>
+              <!-- TODO: Add verified accessory and mobility inventory. -->
+              <p>Accessory and mobility inventory to be confirmed before final copy.</p>
+            </article>
+          </div>
+
+          <aside class="pt-note machined-panel" data-reveal>
+            <p class="mini-label">Also in the building</p>
+            <p>
+              A separate physical therapy practice is attached to the facility.
+              It is independently operated and is not part of Atlas Barbell Club.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="offerings" class="offerings-section section-rhythm">
+        <div class="page-shell">
+          <div class="offerings-header" data-reveal>
+            <p class="section-kicker">What we offer</p>
+            <h2 class="section-heading">Three ways to train at Atlas.</h2>
+            <p>
+              Different athletes want different levels of structure. Atlas
+              supports team programming, individual coaching, and independent
+              open-gym training.
+            </p>
+          </div>
+
+          <section id="team" class="service-block service-block-team" aria-labelledby="team-heading">
+            <div class="service-copy" data-reveal>
+              <p class="mini-label">Team Programming</p>
+              <h3 id="team-heading">Follow the plan. Train with the room.</h3>
+              <p>
+                Atlas team programming provides a shared weekly structure built
+                around Olympic lifting technique and strength development.
+                Sessions can include the competition lifts, variations, squats,
+                pulls, and accessory work depending on the phase of training.
+              </p>
+              <p>
+                It is an option for athletes who want their training planned for
+                them while still having room for individual feedback and
+                adjustments.
+              </p>
+            </div>
+            <div class="service-card-grid">
+              <article class="service-info-card" data-reveal data-reveal-delay="80">
+                <img src="./dumbellicon.svg" alt="" />
+                <h4>For competitive lifters</h4>
+                <p>
+                  Programming can account for meet timelines, heavier training
+                  phases, attempt preparation, and individual feedback as
+                  competition approaches.
+                </p>
+              </article>
+              <article class="service-info-card" data-reveal data-reveal-delay="150">
+                <img src="./charticon.svg" alt="" />
+                <h4>For developing lifters</h4>
+                <p>
+                  A repeatable weekly structure gives newer lifters more
+                  opportunities to practice the competition lifts without having
+                  to piece together every session on their own.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section id="coaching" class="service-block service-block-coaching" aria-labelledby="coaching-heading">
+            <div class="service-copy" data-reveal>
+              <p class="mini-label">Coaching</p>
+              <h3 id="coaching-heading">Coaching when you want a closer look at the lift.</h3>
+              <p>
+                Individual coaching is available for athletes who want more
+                direct feedback on technique, positions, training decisions, or
+                preparation for competition.
+              </p>
+              <p>
+                The amount of support can vary with the athlete. Some may need
+                help learning the lifts, while others may want another set of
+                eyes on specific technical or programming problems.
+              </p>
+            </div>
+            <div class="coaching-focus-grid">
+              <article data-reveal data-reveal-delay="60">
+                <h4>Technique</h4>
+                <p>Review timing, bar path, footwork, turnover, and receiving positions.</p>
+              </article>
+              <article data-reveal data-reveal-delay="110">
+                <h4>Mobility and positions</h4>
+                <p>Address range-of-motion limitations when they interfere with positions used in the lifts.</p>
+              </article>
+              <article data-reveal data-reveal-delay="160">
+                <h4>Programming guidance</h4>
+                <p>Adjust training based on experience, schedule, current goals, and how the athlete is responding.</p>
+              </article>
+              <article data-reveal data-reveal-delay="210">
+                <h4>Competition preparation</h4>
+                <p>Help athletes prepare for the practical demands of entering and navigating a weightlifting meet.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="open-gym" class="open-gym-section service-open-gym" aria-labelledby="open-gym-heading">
+            <div class="open-gym-shell page-shell">
+              <div class="open-gym-copy" data-reveal>
+                <p class="open-gym-eyebrow">Open Gym</p>
+                <h3 id="open-gym-heading" class="open-gym-heading">
+                  Bring your plan. Use the room.
+                </h3>
+                <p class="open-gym-body">
+                  Open gym is for lifters who already have a program, work with
+                  an outside coach or online coach, or simply prefer to manage
+                  their own training. You can use the Atlas weightlifting floor
+                  without having to follow Atlas programming.
+                </p>
+                <p class="open-gym-body open-gym-body-small">
+                  If you decide you want additional feedback, coaching can be
+                  arranged separately. The open-gym option itself is
+                  intentionally flexible.
+                </p>
+                <div class="open-gym-proof-grid" aria-label="Open gym options">
+                  <div class="open-gym-proof-card">
+                    <span class="open-gym-proof-icon open-gym-proof-icon-coach" aria-hidden="true">
+                      <img src="./coachicon.svg" alt="" />
+                    </span>
+                    <span>Your Coach</span>
+                  </div>
+                  <div class="open-gym-proof-card">
+                    <span class="open-gym-proof-icon open-gym-proof-icon-plan" aria-hidden="true">
+                      <img src="./planicon.svg" alt="" />
+                    </span>
+                    <span>Your Plan</span>
+                  </div>
+                  <div class="open-gym-proof-card">
+                    <span class="open-gym-proof-icon open-gym-proof-icon-pace" aria-hidden="true">
+                      <img src="./stopwatchicon.svg" alt="" />
+                    </span>
+                    <span>Your Pace</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="open-gym-media" data-reveal data-reveal-delay="120">
+                <div class="open-gym-photo-frame">
                   <img
-                    src="./stretchicon.svg"
-                    alt=""
-                    class="technique-custom-icon"
+                    src="./mainlandingpageimage.webp"
+                    alt="Open gym training floor at Atlas Barbell Club"
+                    data-scroll-image
+                    data-asset-slot="open-gym"
                   />
                 </div>
-                <div>
-                  <p class="technique-card-label">Mobility</p>
-                  <h3>Warm-ups that match the lift.</h3>
-                  <p>
-                    Targeted prep for ankles, hips, thoracic extension,
-                    shoulders, overhead receiving, and front rack positions.
-                  </p>
-                </div>
-              </article>
-
-              <article
-                class="technique-glass-card"
-                data-reveal
-                data-reveal-delay="140"
-              >
-                <div
-                  class="technique-icon-orbit technique-icon-orbit-barbell"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="./dumbellicon.svg"
-                    alt=""
-                    class="technique-custom-icon"
-                  />
-                </div>
-                <div>
-                  <p class="technique-card-label">Technique</p>
-                  <h3>Drills with a reason.</h3>
-                  <p>
-                    Pull timing, bar path, footwork, turnover, dip-drive rhythm,
-                    and receiving positions are coached as skills, not slogans.
-                  </p>
-                </div>
-              </article>
+                <article class="open-gym-statement-card">
+                  <div class="open-gym-statement-icon" aria-hidden="true">
+                    <img src="./platformlogo.svg" alt="" />
+                  </div>
+                  <div>
+                    <h4>Your programming can still have a home at Atlas.</h4>
+                    <p>
+                      Open gym gives independent lifters access to a space
+                      centered on Olympic weightlifting while allowing them to
+                      keep the programming and coaching relationships they
+                      already use.
+                    </p>
+                  </div>
+                </article>
+              </div>
             </div>
-          </div>
-
-          <div
-            class="technique-proof-strip"
-            data-reveal
-            data-reveal-delay="180"
-          >
-            <article>
-              <span class="technique-proof-icon" aria-hidden="true">
-                <img
-                  src="./leaficon.svg"
-                  alt=""
-                  class="technique-custom-icon"
-                />
-              </span>
-              <div>
-                <h3>Mobility before load</h3>
-                <p>Create capacity. Then build on it.</p>
-              </div>
-            </article>
-            <article>
-              <span class="technique-proof-icon" aria-hidden="true">
-                <img
-                  src="./charticon.svg"
-                  alt=""
-                  class="technique-custom-icon"
-                />
-              </span>
-              <div>
-                <h3>Skill before max effort</h3>
-                <p>Quality reps build long-term strength.</p>
-              </div>
-            </article>
-            <article>
-              <span class="technique-proof-icon" aria-hidden="true">
-                <img
-                  src="./bullseyeicon.svg"
-                  alt=""
-                  class="technique-custom-icon"
-                />
-              </span>
-              <div>
-                <h3>Positions that transfer</h3>
-                <p>Training that shows up where it counts.</p>
-              </div>
-            </article>
-          </div>
+          </section>
         </div>
       </section>
 
-      <section id="open-gym" class="open-gym-section section-rhythm">
-        <div
-          class="open-gym-shell page-shell grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]"
-        >
-          <div class="open-gym-copy" data-reveal>
-            <div class="mb-7 flex items-center gap-5">
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.34em] text-amber-200"
-              >
-                Open gym
-              </p>
-              <span
-                class="hidden h-px w-36 bg-gradient-to-r from-amber-300/70 to-transparent sm:block"
-                aria-hidden="true"
-              ></span>
-            </div>
-            <h2 class="open-gym-headline font-black tracking-normal text-white">
-              Bring your plan.<br />Use the room.
-            </h2>
-            <p
-              class="mt-7 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg"
-            >
-              Train here without buying programming. Bring your online coach,
-              your own cycle, or your own pace.
-            </p>
-            <p class="mt-4 max-w-2xl text-base leading-8 text-zinc-500">
-              Coached open gym support is available when you want eyes on a
-              lift, but you can still train on your own.
-            </p>
-            <div class="open-gym-proof-grid mt-9 grid gap-4 sm:grid-cols-3">
-              <div class="open-gym-proof-tile" data-open-gym-icon="coach">
-                <img
-                  src="./coachicon.svg"
-                  alt=""
-                  class="open-gym-proof-icon open-gym-proof-icon-coach"
-                  aria-hidden="true"
-                />
-                <p>Your coach</p>
-              </div>
-              <div class="open-gym-proof-tile" data-open-gym-icon="plan">
-                <img
-                  src="./planicon.svg"
-                  alt=""
-                  class="open-gym-proof-icon open-gym-proof-icon-plan"
-                  aria-hidden="true"
-                />
-                <p>Your plan</p>
-              </div>
-              <div class="open-gym-proof-tile" data-open-gym-icon="pace">
-                <img
-                  src="./stopwatchicon.svg"
-                  alt=""
-                  class="open-gym-proof-icon open-gym-proof-icon-pace"
-                  aria-hidden="true"
-                />
-                <p>Your pace</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="open-gym-media-stage" data-reveal data-reveal-delay="120">
-            <div class="open-gym-photo-frame">
-              <div class="open-gym-photo-core">
-                <div
-                  class="absolute inset-0 bg-cover bg-center opacity-85 contrast-125 grayscale"
-                  style="
-                    background-image:
-                      linear-gradient(
-                        to bottom,
-                        rgba(0, 0, 0, 0.02),
-                        rgba(0, 0, 0, 0.42)
-                      ),
-                      url(&quot;./mainlandingpageimage.webp&quot;);
-                  "
-                  data-scroll-image
-                  data-asset-slot="open-gym"
-                  aria-hidden="true"
-                ></div>
-              </div>
-            </div>
-            <div class="open-gym-statement-card">
-              <img
-                src="./platformlogo.svg"
-                alt=""
-                class="h-11 w-11 object-contain"
-                aria-hidden="true"
-              />
-              <span aria-hidden="true"></span>
-              <div>
-                <h3
-                  class="text-2xl font-black leading-tight text-white sm:text-3xl"
-                >
-                  Independent training belongs on a serious floor.
-                </h3>
-                <p class="mt-3 max-w-xl text-base leading-7 text-zinc-300">
-                  Open gym is for lifters who know what they came to do and want
-                  the right floor to do it.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="team" class="section-rhythm">
-        <div class="page-shell grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div
-            class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10"
-            data-reveal
-          >
-            <div
-              class="responsive-media-shell relative flex overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-            >
-              <div
-                class="absolute inset-0 bg-cover bg-center opacity-65 contrast-125 grayscale"
-                style="
-                  background-image:
-                    linear-gradient(
-                      135deg,
-                      rgba(0, 0, 0, 0.1),
-                      rgba(0, 0, 0, 0.86)
-                    ),
-                    url(&quot;./secondcardimage.webp&quot;);
-                "
-                data-scroll-image
-                data-asset-slot="team-programming"
-                aria-hidden="true"
-              ></div>
-              <div class="relative mt-auto p-8 sm:p-10">
-                <p
-                  class="mb-5 inline-flex rounded-full bg-amber-300 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-zinc-950"
-                >
-                  Team programming
-                </p>
-                <h2
-                  class="max-w-3xl text-[clamp(2.1rem,3.4vw,3.5rem)] font-black leading-[1.03] tracking-normal text-white"
-                >
-                  Follow the plan. Lift with the room.
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid gap-5">
-            <article
-              class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-              data-reveal
-              data-reveal-delay="90"
-            >
-              <div
-                class="rounded-[calc(2rem-0.375rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] sm:p-10"
-              >
-                <h3 class="text-2xl font-black leading-tight sm:text-3xl">
-                  Team programming gives members a clear weekly track.
-                </h3>
-                <p class="mt-5 text-base leading-8 text-zinc-700">
-                  Atlas programming is built around Olympic weightlifting
-                  progress: technical lift work, strength accessories, squats,
-                  pulls, and enough structure to show up knowing exactly what
-                  matters that day.
-                </p>
-              </div>
-            </article>
-
-            <div class="grid gap-5 md:grid-cols-2">
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-                data-reveal-delay="140"
-              >
-                <div
-                  class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black leading-tight text-white">
-                    For competitive lifters
-                  </h3>
-                  <p class="mt-5 text-sm leading-6 text-zinc-400">
-                    Meet-prep rhythms, attempt confidence, and shared training
-                    energy without losing individual feedback.
-                  </p>
-                </div>
-              </article>
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-                data-reveal-delay="190"
-              >
-                <div
-                  class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black leading-tight text-white">
-                    For newer athletes
-                  </h3>
-                  <p class="mt-5 text-sm leading-6 text-zinc-400">
-                    A guided path into the lifts, with enough repetition to
-                    build skill before chasing load.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="coaching" class="coach-profile-section section-rhythm">
+      <section id="coach" class="coach-profile-section section-rhythm">
         <div class="coach-profile-shell page-shell">
           <div class="coach-profile-heading" data-reveal>
             <span aria-hidden="true"></span>
-            <h2>Meet the Coach</h2>
+            <h2>Meet Coach Shen</h2>
             <span aria-hidden="true"></span>
           </div>
 
+          <p class="coach-intro" data-reveal data-reveal-delay="60">
+            Coach Shen leads the day-to-day coaching approach at Atlas, with an
+            emphasis on understanding the positions and movement demands of
+            Olympic weightlifting rather than treating every lifter exactly the
+            same.
+          </p>
+
           <div class="coach-profile-grid">
-            <article
-              class="coach-photo-card"
-              data-reveal
-              data-reveal-delay="80"
-            >
+            <article class="coach-photo-card" data-reveal data-reveal-delay="80">
               <div
                 class="coach-photo"
                 style="
                   background-image:
-                    linear-gradient(
-                      to bottom,
-                      rgba(0, 0, 0, 0.04),
-                      rgba(0, 0, 0, 0.76)
-                    ),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.76)),
                     url(&quot;./thirdcardimage.webp&quot;);
                 "
                 data-scroll-image
                 data-asset-slot="coach"
                 role="img"
-                aria-label="Atlas Barbell Club training floor"
+                aria-label="Atlas Barbell Club training floor used as coach profile photography"
               ></div>
               <div class="coach-photo-caption">
                 <p>COACH SHEN</p>
@@ -935,147 +629,267 @@
             </article>
 
             <div class="coach-profile-stack">
-              <article
-                class="coach-info-card"
-                data-reveal
-                data-reveal-delay="130"
-              >
+              <article class="coach-info-card" data-reveal data-reveal-delay="130">
                 <div class="coach-info-icon" aria-hidden="true">
                   <img src="./coachicon.svg" alt="" />
                 </div>
                 <div>
                   <p class="coach-info-kicker">Qualifications</p>
-                  <h3></h3>
                   <ul class="coach-check-list">
-                    <li>
-                      <strong>USAW L1:</strong> Olympic weightlifting
-                      certification.
-                    </li>
-                    <li>
-                      <strong>OPEX CCP:</strong> coaching principles,
-                      assessment, and program design.
-                    </li>
-                    <li>
-                      <strong>FISAF:</strong> pre and post natal, plus certified
-                      personal trainer.
-                    </li>
-                    <li>
-                      <strong>Biomechanics RTS LV1:</strong> movement mechanics
-                      and applied training analysis.
-                    </li>
-                    <li>
-                      <strong>Experience:</strong> coaching since 2021, fitness
-                      industry since 2018.
-                    </li>
+                    <li><strong>USAW L1:</strong> Olympic weightlifting certification.</li>
+                    <li><strong>OPEX CCP:</strong> coaching principles, assessment, and program design.</li>
+                    <li><strong>FISAF:</strong> pre and post natal, plus certified personal trainer.</li>
+                    <li><strong>Biomechanics RTS LV1:</strong> movement mechanics and applied training analysis.</li>
+                    <li><strong>Experience:</strong> coaching since 2021, fitness industry since 2018.</li>
                   </ul>
                 </div>
               </article>
 
-              <article
-                class="coach-info-card coach-info-card-accent"
-                data-reveal
-                data-reveal-delay="190"
-              >
+              <article class="coach-info-card coach-info-card-accent" data-reveal data-reveal-delay="190">
                 <div class="coach-info-icon" aria-hidden="true">
                   <img src="./dumbellicon.svg" alt="" />
                 </div>
                 <div>
-                  <p class="coach-info-kicker">Mission statement</p>
+                  <p class="coach-info-kicker">Coaching philosophy</p>
                   <h3>Mindful Movements Matter</h3>
                   <p>
-                    Our Mission is to Empower Athletes of any age in Olympic
-                    weightlifting to achieve pain free longetivity by
-                    cultivating midful, biomechanically percise
-                    movement,applying techincal mastery, and intergrating prehab
-                    and rehab strategies to promote holistic healing through
-                    movement.
+                    Atlas coaching is centered on helping athletes understand
+                    what they are trying to do in each lift, why a position
+                    matters, and how to make technical work usable under load.
+                  </p>
+                  <p>
+                    The goal is durable progress: better positions, clearer
+                    feedback, smarter training decisions, and movement that
+                    supports the athlete beyond one heavy attempt.
                   </p>
                 </div>
               </article>
             </div>
           </div>
+
+          <div class="technique-gallery-section coach-technique-panel">
+            <div class="technique-ambient-glow" data-reveal aria-hidden="true"></div>
+            <div class="technique-gallery-shell">
+              <div class="technique-gallery-grid">
+                <div class="technique-gallery-copy" data-reveal>
+                  <p class="technique-gallery-eyebrow">Technique and positions</p>
+                  <h3 class="technique-gallery-headline">
+                    Build positions you can repeat<span>.</span>
+                  </h3>
+                  <p class="technique-gallery-body">
+                    Olympic lifting asks athletes to coordinate strength, speed,
+                    mobility, and timing through specific positions. Coaching may
+                    therefore include work on ankles, hips, front rack, overhead
+                    stability, bar path, timing, footwork, or receiving
+                    positions depending on what an athlete needs.
+                  </p>
+                  <div class="technique-gallery-chips" aria-label="Mobility focus areas">
+                    <span>Ankle range</span>
+                    <span>Overhead stability</span>
+                    <span>Front rack</span>
+                  </div>
+                </div>
+
+                <div class="technique-gallery-stack">
+                  <article class="technique-glass-card" data-reveal data-reveal-delay="80">
+                    <div class="technique-icon-orbit" aria-hidden="true">
+                      <img class="technique-custom-icon" src="./stretchicon.svg" alt="" />
+                    </div>
+                    <div>
+                      <p>Mobility</p>
+                      <h4>Prepare the positions the session requires.</h4>
+                      <span>
+                        Targeted prep can support ankles, hips, thoracic
+                        extension, shoulders, overhead receiving, and front rack
+                        positions.
+                      </span>
+                    </div>
+                  </article>
+                  <article class="technique-glass-card" data-reveal data-reveal-delay="150">
+                    <div class="technique-icon-orbit" aria-hidden="true">
+                      <img class="technique-custom-icon" src="./dumbellicon.svg" alt="" />
+                    </div>
+                    <div>
+                      <p>Technique</p>
+                      <h4>Use drills to solve specific problems.</h4>
+                      <span>
+                        Pull timing, bar path, footwork, turnover, dip-drive
+                        rhythm, and receiving positions are coached as skills.
+                      </span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <div class="technique-proof-strip" data-reveal>
+                <div>
+                  <span aria-hidden="true"><img class="technique-custom-icon" src="./leaficon.svg" alt="" /></span>
+                  <p>Positions</p>
+                  <strong>Mobility creates access to usable receiving positions.</strong>
+                </div>
+                <div>
+                  <span aria-hidden="true"><img class="technique-custom-icon" src="./charticon.svg" alt="" /></span>
+                  <p>Technique</p>
+                  <strong>Quality reps build long-term strength.</strong>
+                </div>
+                <div>
+                  <span aria-hidden="true"><img class="technique-custom-icon" src="./bullseyeicon.svg" alt="" /></span>
+                  <p>Strength</p>
+                  <strong>Training transfers when positions are repeatable.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section class="lifting-method-section coach-method-panel" aria-labelledby="method-heading">
+            <div class="lifting-method-shell">
+              <div class="lifting-method-header" data-reveal>
+                <div>
+                  <p>Training influences</p>
+                  <h3 id="method-heading">Different systems emphasize different ideas.</h3>
+                </div>
+                <p>
+                  Weightlifting methods are often described using national labels
+                  such as Bulgarian, American, or Chinese. Those labels are
+                  useful shorthand, but they cover many coaches, athletes, and
+                  programs rather than one universal method. Atlas uses the
+                  comparison to explain the ideas that influence its own
+                  coaching.
+                </p>
+              </div>
+
+              <div class="lifting-method-grid">
+                <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="70">
+                  <span class="lifting-method-number">01</span>
+                  <div class="lifting-method-icon" aria-hidden="true">
+                    <img src="./dumbellicon.svg" alt="" />
+                  </div>
+                  <h4>Bulgarian-influenced training</h4>
+                  <p class="lifting-method-summary">
+                    Often associated with very high specificity, frequent
+                    exposure to heavy classical lifts, and relatively low
+                    exercise variation.
+                  </p>
+                  <div class="lifting-method-drawer">
+                    <ul>
+                      <li>Frequent practice of the classical lifts.</li>
+                      <li>High specificity around the snatch and clean and jerk.</li>
+                      <li>Heavy loading may appear often.</li>
+                      <li>Comparatively limited exercise variation in its best-known forms.</li>
+                      <li>Recovery demands can be substantial.</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="120">
+                  <span class="lifting-method-number">02</span>
+                  <div class="lifting-method-icon" aria-hidden="true">
+                    <img src="./stopwatchicon.svg" alt="" />
+                  </div>
+                  <h4>American approaches</h4>
+                  <p class="lifting-method-summary">
+                    Often more varied, using periodization and a broader mix of
+                    intensity, volume, strength work, and technical exercise
+                    selection across longer cycles.
+                  </p>
+                  <div class="lifting-method-drawer">
+                    <ul>
+                      <li>More exercise variation across training blocks.</li>
+                      <li>Periodized loading over longer cycles.</li>
+                      <li>Balanced volume and intensity.</li>
+                      <li>Useful for broad development and practical scheduling.</li>
+                      <li>Can be adjusted for different experience levels.</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="lifting-method-card lifting-method-card-selected" tabindex="0" data-reveal data-reveal-delay="170">
+                  <span class="lifting-method-number">03</span>
+                  <div class="lifting-method-icon" aria-hidden="true">
+                    <img src="./stretchicon.svg" alt="" />
+                  </div>
+                  <h4>Chinese-influenced training</h4>
+                  <p class="lifting-method-summary">
+                    Highly technical, often using detailed accessory work,
+                    flexibility, positional strength, and technique refinement to
+                    make the lifts adaptable across athletes.
+                  </p>
+                  <div class="lifting-method-drawer">
+                    <ul>
+                      <li>Detailed technical work and positional refinement.</li>
+                      <li>Accessory exercises selected for lift-specific problems.</li>
+                      <li>Flexibility and mobility treated as training tools.</li>
+                      <li>Can support a more upright, balanced lifting style for many athletes.</li>
+                      <li>Adapts well across different body types and training histories.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+
+              <aside class="lifting-method-choice" data-reveal data-reveal-delay="230">
+                <div>
+                  <p>What Atlas uses</p>
+                  <h4>Atlas is primarily Chinese-influenced.</h4>
+                </div>
+                <p>
+                  Atlas leans toward the Chinese system because the snatch and
+                  clean and jerk reward precision, mobility, repeatable
+                  positions, and technical consistency. The approach gives the
+                  coach more tools to meet athletes where they are while still
+                  building strength for real attempts.
+                </p>
+                <p>
+                  Bulgarian-influenced ideas can be useful for specificity and
+                  confidence with heavier weights, and American-style
+                  periodization can be useful for long-term structure. The Atlas
+                  bias is toward technical efficiency, adaptable positions, and
+                  a training process that can work for more than one body type.
+                </p>
+              </aside>
+            </div>
+          </section>
         </div>
       </section>
 
-      <section class="lifting-method-section section-rhythm-tight">
-        <div class="lifting-method-shell page-shell">
-          <div class="lifting-method-header" data-reveal>
-            <div>
-              <p>What we do differently</p>
-              <h2>Three common systems, applied with context.</h2>
-            </div>
+      <section id="testimonials" class="testimonials-section section-rhythm-tight">
+        <div class="page-shell">
+          <div class="testimonials-header" data-reveal>
+            <p class="section-kicker">Member stories</p>
+            <h2 class="section-heading">What it is like to train at Atlas.</h2>
             <p>
-              Atlas draws from the method that fits the athlete, not the loudest
-              training myth.
+              The best description of a gym usually comes from the people who
+              spend time training there.
             </p>
           </div>
-
-          <div class="lifting-method-grid">
-            <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="70">
-              <span class="lifting-method-number">01</span>
-              <div class="lifting-method-icon" aria-hidden="true">
-                <img src="./dumbellicon.svg" alt="" />
-              </div>
-              <h3>Bulgarian method</h3>
-              <div class="lifting-method-drawer">
-                <ul>
-                  <li>Daily maximal attempts and very high intensity.</li>
-                  <li>Low variation with focus on a few core lifts.</li>
-                  <li>Often favors a hip-dominant hinge pattern.</li>
-                  <li>Relies on explosive hamstrings and glutes.</li>
-                  <li>Values raw intensity and unusual resilience.</li>
-                </ul>
-              </div>
+          <div class="testimonial-grid">
+            <article data-reveal>
+              <!-- TODO: Replace with verified member testimonial. -->
+              <p>Member testimonial will appear here.</p>
+              <span>Member Name / Training type</span>
             </article>
-
-            <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="120">
-              <span class="lifting-method-number">02</span>
-              <div class="lifting-method-icon" aria-hidden="true">
-                <img src="./stopwatchicon.svg" alt="" />
-              </div>
-              <h3>American approach</h3>
-              <div class="lifting-method-drawer">
-                <ul>
-                  <li>More exercise variation across the cycle.</li>
-                  <li>Uses periodization over longer training blocks.</li>
-                  <li>Balances volume and intensity more broadly.</li>
-                  <li>Can work well for general development.</li>
-                  <li>The technical thread can get diluted.</li>
-                </ul>
-              </div>
+            <article data-reveal data-reveal-delay="80">
+              <!-- TODO: Replace with verified member testimonial. -->
+              <p>Member testimonial will appear here.</p>
+              <span>Member Name / Training type</span>
             </article>
-
-            <article class="lifting-method-card lifting-method-card-selected" tabindex="0" data-reveal data-reveal-delay="170">
-              <span class="lifting-method-number">03</span>
-              <div class="lifting-method-icon" aria-hidden="true">
-                <img src="./stretchicon.svg" alt="" />
-              </div>
-              <h3>Chinese method</h3>
-              <div class="lifting-method-drawer">
-                <ul>
-                  <li>Highly technical and detail-driven training.</li>
-                  <li>Uses accessory work and flexibility to shape positions.</li>
-                  <li>Favors an upright torso and greater knee flexion.</li>
-                  <li>Builds stronger quad contribution in the pull and receive.</li>
-                  <li>Adapts well across different body types.</li>
-                </ul>
-              </div>
+            <article data-reveal data-reveal-delay="160">
+              <!-- TODO: Replace with verified member testimonial. -->
+              <p>Member testimonial will appear here.</p>
+              <span>Member Name / Training type</span>
             </article>
           </div>
-
-          <aside class="lifting-method-choice" data-reveal data-reveal-delay="230">
-            <div>
-              <p>What Atlas uses</p>
-              <h3>We use the Chinese method.</h3>
-            </div>
-            <p>
-              The snatch and clean and jerk reward precision, mobility, and
-              repeatable positions. The Chinese method gives us a technical,
-              adaptable system that can meet athletes where they are while
-              still building strength for real attempts. It prioritizes
-              technical efficiency over raw intensity.
-            </p>
-          </aside>
+          <a
+            class="google-review-card testimonial-review-link"
+            href="https://www.google.com/search?q=Atlas+Barbell+Club+Phoenix+AZ+reviews"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="google-review-mark" aria-hidden="true">G</span>
+            <span>
+              <span class="block text-[0.62rem] font-black uppercase tracking-[0.18em] text-amber-200">Google Reviews</span>
+              <span class="mt-1 block text-sm font-black leading-tight text-white">Read more Google Reviews -></span>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -1083,9 +897,7 @@
         class="overflow-hidden border-y border-white/10 bg-amber-300 py-6 text-zinc-950"
         aria-label="Atlas training focus"
       >
-        <div
-          class="marquee-track flex w-max text-2xl font-black uppercase tracking-normal sm:text-4xl"
-        >
+        <div class="marquee-track flex w-max text-2xl font-black uppercase tracking-normal sm:text-4xl">
           <div class="marquee-content" aria-hidden="true">
             <span>Snatch</span>
             <span>Clean and jerk</span>
@@ -1105,348 +917,79 @@
         </div>
       </section>
 
-      <section id="offers" class="section-rhythm">
+      <section id="contact" class="contact-section section-rhythm">
         <div class="page-shell">
-          <div class="max-w-5xl" data-reveal>
-            <p
-              class="mb-5 inline-flex rounded-full bg-amber-300/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200 ring-1 ring-amber-200/20"
-            >
-              What the gym offers
-            </p>
-            <h2
-              class="max-w-4xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white"
-            >
-              A focused Olympic lifting gym with the support pieces nearby.
-            </h2>
-          </div>
-
-          <div class="mt-14 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-            <div class="grid gap-5 sm:grid-cols-2">
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-              >
-                <div
-                  class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black text-white">
-                    Olympic platforms
-                  </h3>
-                  <p class="mt-4 text-sm leading-6 text-zinc-400">
-                    Dedicated room to snatch, clean and jerk, squat, pull, and
-                    train without fighting commercial gym traffic.
-                  </p>
-                </div>
-              </article>
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-                data-reveal-delay="80"
-              >
-                <div
-                  class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black text-white">
-                    Team programming
-                  </h3>
-                  <p class="mt-4 text-sm leading-6 text-zinc-400">
-                    Shared weekly training for lifters who want direction,
-                    consistency, and a team environment.
-                  </p>
-                </div>
-              </article>
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-                data-reveal-delay="120"
-              >
-                <div
-                  class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black text-white">
-                    Coaching access
-                  </h3>
-                  <p class="mt-4 text-sm leading-6 text-zinc-400">
-                    Technical feedback, mobility guidance, beginner onboarding,
-                    programming support, and meet-prep guidance.
-                  </p>
-                </div>
-              </article>
-              <article
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-                data-reveal-delay="160"
-              >
-                <div
-                  class="h-full rounded-[calc(2rem-0.375rem)] bg-[#111113] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                >
-                  <h3 class="text-2xl font-black text-white">
-                    Open gym culture
-                  </h3>
-                  <p class="mt-4 text-sm leading-6 text-zinc-400">
-                    A training space for members who want a serious room,
-                    respectful energy, and consistent standards, whether they
-                    follow Atlas programming or lift independently.
-                  </p>
-                </div>
-              </article>
-            </div>
-
-            <aside
-              class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10"
-              data-reveal
-              data-reveal-delay="200"
-            >
-              <div
-                class="flex h-full flex-col justify-between rounded-[calc(2.5rem-0.5rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] sm:p-10"
-              >
-                <div>
-                  <p
-                    class="mb-5 inline-flex rounded-full bg-zinc-950 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-white"
-                  >
-                    On-site access
-                  </p>
-                  <h3 class="text-2xl font-black leading-tight sm:text-3xl">
-                    A physical therapy office is attached to the gym.
-                  </h3>
-                  <p class="mt-6 text-base leading-8 text-zinc-700">
-                    The physical therapy office is not formally associated with
-                    Atlas, but it is accessible from the facility. The therapist
-                    is an active gym member, so the resource sits close to the
-                    lifting community while remaining a separate practice.
-                  </p>
-                </div>
-                <p
-                  class="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500"
-                >
-                  Separate practice. Convenient proximity.
-                </p>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section id="visit" class="section-rhythm">
-        <div
-          class="page-shell rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10"
-          data-reveal
-        >
-          <div
-            class="grid overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] lg:grid-cols-[1.1fr_0.9fr]"
-          >
-            <div class="p-8 sm:p-12 lg:p-14">
-              <p
-                class="mb-5 inline-flex rounded-full bg-zinc-950 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-white"
-              >
-                Come lift
-              </p>
-              <h2
-                class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal"
-              >
-                Get under the bar with people who care about the rep.
+          <div class="contact-layout">
+            <div class="contact-copy" data-reveal>
+              <p class="section-kicker">Start training</p>
+              <h2 class="section-heading">
+                Want to see if Atlas fits your training?
               </h2>
-              <p
-                class="mt-7 max-w-2xl text-base leading-8 text-zinc-700 sm:text-lg"
-              >
-                Book a trial session, ask about coaching, or come see whether
-                the room feels right for your training.
+              <p>
+                Tell us what you are looking for: team programming, individual
+                coaching, open gym, or simply a first visit. We can help you
+                figure out the most useful place to start.
               </p>
               <a
                 href="mailto:hello@atlasbarbellclub.com"
-                class="group mt-9 inline-flex items-center gap-4 rounded-full bg-zinc-950 py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-white transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
+                class="group mt-8 inline-flex items-center gap-4 rounded-full bg-amber-300 py-2 pl-6 pr-2 text-sm font-black uppercase tracking-[0.12em] text-zinc-950 transition-transform duration-700 active:scale-[0.98]"
               >
-                hello@atlasbarbellclub.com
-                <span
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-amber-300 text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105"
-                >
-                  <svg
-                    class="cssgg-arrow-svg h-4 w-4 text-zinc-950"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
+                Ask about training
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <svg class="cssgg-arrow-svg h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path></svg>
                 </span>
               </a>
-            </div>
-            <div
-              class="min-h-80 bg-cover bg-center opacity-90 contrast-125 grayscale lg:min-h-full"
-              style="
-                background-image:
-                  linear-gradient(
-                    to bottom,
-                    rgba(0, 0, 0, 0.05),
-                    rgba(0, 0, 0, 0.25)
-                  ),
-                  url(&quot;./mainlandingpageimage.webp&quot;);
-              "
-              data-scroll-image
-              data-asset-slot="gym-door"
-              aria-hidden="true"
-            ></div>
-          </div>
-        </div>
-      </section>
 
-      <section id="contact" class="section-rhythm-tight pt-0">
-        <div class="page-shell">
-          <div class="grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-            <div class="grid gap-5">
-              <div
-                class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                data-reveal
-              >
-                <div
-                  class="h-full rounded-[calc(2rem-0.375rem)] bg-[#101012] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)] sm:p-10"
-                >
-                  <p
-                    class="mb-5 inline-flex rounded-full bg-white/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-300 ring-1 ring-white/10"
-                  >
-                    Hours and contact
-                  </p>
-                  <h2
-                    class="max-w-3xl text-[clamp(2.15rem,3.6vw,3.65rem)] font-black leading-[1.03] tracking-normal text-white"
-                  >
-                    Come by when the room is open, or reach out first.
-                  </h2>
-                  <p class="mt-6 max-w-2xl text-base leading-8 text-zinc-400">
-                    Open gym, coached sessions, and trial visits are coordinated
-                    by email so we can match you with the right training lane
-                    before you arrive.
-                  </p>
-                </div>
-              </div>
-
-              <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-1">
-                <article
-                  class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                  data-reveal
-                  data-reveal-delay="90"
-                >
-                  <div
-                    class="h-full rounded-[calc(2rem-0.375rem)] bg-[#f3eee3] p-8 text-zinc-950 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]"
-                  >
-                    <p
-                      class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-zinc-600"
-                    >
-                      Gym hours
-                    </p>
-                    <dl class="mt-7 space-y-4 text-sm font-bold">
-                      <div
-                        class="flex items-center justify-between gap-5 border-b border-zinc-950/10 pb-4"
-                      >
-                        <dt>Monday-Friday</dt>
-                        <dd class="text-right text-zinc-700">By appointment</dd>
-                      </div>
-                      <div
-                        class="flex items-center justify-between gap-5 border-b border-zinc-950/10 pb-4"
-                      >
-                        <dt>Saturday</dt>
-                        <dd class="text-right text-zinc-700">By appointment</dd>
-                      </div>
-                      <div class="flex items-center justify-between gap-5">
-                        <dt>Sunday</dt>
-                        <dd class="text-right text-zinc-700">By appointment</dd>
-                      </div>
-                    </dl>
-                  </div>
+              <div class="contact-card-grid">
+                <article>
+                  <p class="mini-label">Hours</p>
+                  <dl>
+                    <div><dt>Monday-Friday</dt><dd>By appointment</dd></div>
+                    <div><dt>Saturday</dt><dd>By appointment</dd></div>
+                    <div><dt>Sunday</dt><dd>By appointment</dd></div>
+                  </dl>
                 </article>
-
-                <article
-                  class="rounded-[2rem] bg-white/7 p-1.5 ring-1 ring-white/10"
-                  data-reveal
-                  data-reveal-delay="150"
-                >
-                  <div
-                    class="flex h-full flex-col justify-between rounded-[calc(2rem-0.375rem)] bg-[#111113] p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-                  >
-                    <div>
-                      <p
-                        class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200"
-                      >
-                        Contact
-                      </p>
-                      <a
-                        class="mt-6 block break-words text-2xl font-black leading-tight text-white transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-amber-200"
-                        href="mailto:hello@atlasbarbellclub.com"
-                      >
-                        hello@atlasbarbellclub.com
-                      </a>
-                      <p class="mt-5 text-sm leading-6 text-zinc-400">
-                        Ask about open gym, team programming, coaching, visiting
-                        the facility, or getting directions.
-                      </p>
-                    </div>
-                    <p
-                      class="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500"
-                    >
-                      Exact visit details are confirmed before your first
-                      session.
-                    </p>
-                  </div>
+                <article>
+                  <p class="mini-label">Questions before you visit?</p>
+                  <p>
+                    Email Atlas about team programming, coaching, open gym,
+                    visiting the facility, or finding the right way to start.
+                  </p>
+                  <a href="mailto:hello@atlasbarbellclub.com">hello@atlasbarbellclub.com</a>
                 </article>
               </div>
             </div>
 
-            <article
-              class="rounded-[2.5rem] bg-white/7 p-2 ring-1 ring-white/10"
-              data-reveal
-              data-reveal-delay="180"
-            >
-              <div
-                class="relative flex h-full min-h-[34rem] flex-col overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-[#101012] shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]"
-              >
-                <div class="map-frame">
-                  <iframe
-                    title="Google Maps location for Atlas Barbell Club"
-                    src="https://www.google.com/maps?q=Atlas%20Barbell%20Club%20Phoenix%20AZ&output=embed"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    allowfullscreen
-                  ></iframe>
+            <article class="contact-map-card" data-reveal data-reveal-delay="140">
+              <div class="map-frame">
+                <iframe
+                  title="Google Maps location for Atlas Barbell Club"
+                  src="https://www.google.com/maps?q=Atlas%20Barbell%20Club%20Phoenix%20AZ&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="map-caption">
+                <div>
+                  <p class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200">
+                    Location map
+                  </p>
+                  <p class="mt-2 text-xl font-black leading-tight text-white">
+                    Atlas Barbell Club - Phoenix, Arizona
+                  </p>
                 </div>
-                <div class="map-caption">
-                  <div>
-                    <p
-                      class="text-[0.68rem] font-black uppercase tracking-[0.22em] text-amber-200"
-                    >
-                      Location map
-                    </p>
-                    <p class="mt-2 text-xl font-black leading-tight text-white">
-                      Atlas Barbell Club in Phoenix, AZ
-                    </p>
-                  </div>
-                  <a
-                    class="group inline-flex items-center gap-3 rounded-full bg-white py-1.5 pl-5 pr-1.5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-zinc-950 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                    href="https://www.google.com/maps/search/?api=1&query=Atlas%20Barbell%20Club%20Phoenix%20AZ"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Directions
-                    <span
-                      class="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105"
-                    >
-                      <svg
-                        class="cssgg-arrow-svg h-4 w-4 text-white"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <path
-                          d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
+                <a
+                  class="group inline-flex items-center gap-3 rounded-full bg-white py-1.5 pl-5 pr-1.5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-zinc-950 transition-transform duration-700 active:scale-[0.98]"
+                  href="https://www.google.com/maps/search/?api=1&query=Atlas%20Barbell%20Club%20Phoenix%20AZ"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Directions
+                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform duration-700 group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                    <svg class="cssgg-arrow-svg h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path></svg>
+                  </span>
+                </a>
               </div>
             </article>
           </div>
@@ -1454,11 +997,15 @@
       </section>
     </main>
 
-    <footer class="px-5 pb-10 text-center text-sm text-zinc-500">
-      <p>
-        &copy; 2026 Atlas Barbell Club. Olympic weightlifting, coached with
-        intent.
-      </p>
+    <footer class="site-footer">
+      <div class="page-shell">
+        <p>&copy; 2026 Atlas Barbell Club · Olympic Weightlifting · Phoenix, Arizona</p>
+        <div>
+          <a href="https://www.instagram.com/atlasbarbellclub/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/atlasbarbellclub/" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
     </footer>
 
     <script
@@ -1469,6 +1016,6 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
       defer
     ></script>
-    <script src="./src/main.js" defer></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
