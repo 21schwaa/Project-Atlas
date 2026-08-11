@@ -7,6 +7,8 @@ const headerHtml = html.slice(html.indexOf("<header"), html.indexOf("</header>")
 const footerHtml = html.slice(html.indexOf("<footer"), html.indexOf("</footer>"));
 const testimonialsHtml = html.slice(html.indexOf('id="testimonials"'), html.indexOf("marquee-track"));
 const testimonialSlideCount = (js.match(/quote: "/g) || []).length;
+const marqueeHtml = html.slice(html.indexOf("marquee-track"), html.indexOf('id="contact"'));
+const marqueeContentCount = (marqueeHtml.match(/class="marquee-content"/g) || []).length;
 
 const appearsInOrder = (needles) => {
   let lastIndex = -1;
@@ -94,7 +96,7 @@ const checks = [
   ["Footer avoids decorative middle-dot separators", !footerHtml.includes("\u00B7") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],
   ["HTML removes placeholder photo service", !html.includes("picsum.photos")],
   ["HTML has no unfinished stock copy", !html.includes("when finalized") && !html.includes("To be announced")],
-  ["HTML has continuous marquee row", html.includes("marquee-content")],
+  ["HTML has continuous marquee row", marqueeContentCount >= 4],
   ["HTML loads GSAP and ScrollTrigger", html.includes("gsap.min.js") && html.includes("ScrollTrigger.min.js")],
   ["HTML uses all current Atlas visual assets", ["./mainlandingpageimage.webp", "./firstcardimage.webp", "./secondcardimage.webp", "./thirdcardimage.webp", "./hero-card-generated-v1.png", "./platformlogo.svg", "./coachicon.svg", "./planicon.svg", "./stopwatchicon.svg", "./leaficon.svg", "./stretchicon.svg", "./bullseyeicon.svg", "./charticon.svg", "./dumbellicon.svg"].every((asset) => html.includes(asset))],
   ["CSS defines new hierarchy sections", css.includes(".welcome-section") && css.includes(".equipment-section") && css.includes(".offerings-section") && css.includes(".testimonials-section") && css.includes(".contact-section")],
@@ -121,7 +123,7 @@ const checks = [
       && reducedMotionCss.includes(".coach-photo-card:hover .coach-photo")
       && reducedMotionCss.includes(".training-selector a:hover");
   })()],
-  ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-50%)")],
+  ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-25%)")],
   ["JS registers ScrollTrigger when GSAP exists", js.includes("ScrollTrigger")],
   ["JS supports scroll image hooks", js.includes("[data-scroll-image]")],
 ];
