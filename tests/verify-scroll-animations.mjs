@@ -67,6 +67,7 @@ const checks = [
   ["Welcome section has calm training selector", html.includes("Choose how Atlas fits your training") && html.includes('href="#team"') && html.includes('href="#coaching"') && html.includes('href="#open-gym"')],
   ["Equipment section shows actual floor intent", html.includes("What we have") && html.includes("A room set up for Olympic weightlifting") && html.includes("snatch, clean and jerk, squats, pulls")],
   ["Equipment section is photo-led and avoids visible uncertainty copy", html.includes("equipment-hero") && html.includes("equipment-list") && !html.includes("Inventory details to be confirmed") && !html.includes("Rack details to be confirmed") && !html.includes("Accessory and mobility inventory to be confirmed")],
+  ["Equipment introduction uses visitor-facing facility copy", html.includes("Atlas is a dedicated place to train the competition lifts") && !html.includes("this section should show visitors")],
   ["Equipment section mentions PT correctly", html.includes("A separate physical therapy practice") && html.includes("independently operated") && html.includes("not part of Atlas Barbell Club")],
   ["Offerings section includes three services", html.includes("Three ways to train at Atlas") && html.includes('id="team"') && html.includes('id="coaching"') && html.includes('id="open-gym"')],
   ["Team programming copy is present", html.includes("Atlas team programming provides a shared weekly structure") && html.includes("For competitive lifters") && html.includes("For developing lifters")],
@@ -102,7 +103,15 @@ const checks = [
   ["CSS keeps no-JS content visible", css.includes("[data-reveal]") && css.includes("opacity: 1") && css.includes(".js-enabled [data-reveal]")],
   ["JS reveals hash targets on load and hashchange", js.includes("revealHashTarget") && js.includes("window.location.hash") && js.includes("hashchange")],
   ["JS actively aligns hash targets below the fixed header without animation", js.includes("alignHashTarget") && js.includes('document.querySelector(".atlas-topline")') && js.includes("header.getBoundingClientRect().height") && js.includes('root.style.scrollBehavior = "auto"') && js.includes('behavior: "auto"') && js.includes('window.addEventListener("load", revealHashTarget') && js.includes("requestAnimationFrame")],
-  ["CSS respects reduced motion", css.includes("prefers-reduced-motion") && css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)")).includes(".js-enabled [data-reveal]")],
+  ["CSS fully disables reduced-motion transitions and interaction transforms", (() => {
+    const reducedMotionCss = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
+    return reducedMotionCss.includes("*::before")
+      && reducedMotionCss.includes("animation: none !important")
+      && reducedMotionCss.includes("transition: none !important")
+      && reducedMotionCss.includes(".google-review-card:hover")
+      && reducedMotionCss.includes(".coach-photo-card:hover .coach-photo")
+      && reducedMotionCss.includes(".training-selector a:hover");
+  })()],
   ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-50%)")],
   ["JS registers ScrollTrigger when GSAP exists", js.includes("ScrollTrigger")],
   ["JS supports scroll image hooks", js.includes("[data-scroll-image]")],

@@ -3179,8 +3179,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  html:focus-within {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 
   .js-enabled [data-reveal] {
@@ -3197,6 +3205,39 @@
 
   .marquee-track {
     animation: none;
+  }
+
+  .training-lane-card:hover::before {
+    opacity: 0;
+  }
+
+  .atlas-fit-image-card:hover .atlas-fit-image,
+  .atlas-fit-card-stack:hover .atlas-fit-stack-card:not(:hover):not(:focus-within),
+  .atlas-fit-stack-card:hover,
+  .atlas-fit-stack-card:focus,
+  .atlas-fit-stack-card:focus-within,
+  .atlas-fit-stack-card:hover .atlas-fit-card-arrow,
+  .atlas-fit-stack-card:focus .atlas-fit-card-arrow,
+  .atlas-fit-stack-card:focus-within .atlas-fit-card-arrow,
+  .atlas-fit-stack-card:hover .atlas-fit-card-body,
+  .atlas-fit-stack-card:focus .atlas-fit-card-body,
+  .atlas-fit-stack-card:focus-within .atlas-fit-card-body,
+  .technique-gallery-section .technique-ambient-glow.is-visible,
+  .technique-glass-card:hover,
+  .coach-photo-card:hover .coach-photo,
+  .lifting-method-card:hover,
+  .lifting-method-card:focus,
+  .lifting-method-card:focus-within,
+  .lifting-method-card:hover .lifting-method-drawer,
+  .lifting-method-card:focus .lifting-method-drawer,
+  .lifting-method-card:focus-within .lifting-method-drawer,
+  .open-gym-proof-card:hover,
+  .google-review-card:hover,
+  .hero-review-card-subtle:hover,
+  .hero-review-card-subtle:focus-visible,
+  .training-selector a:hover,
+  .training-selector a:focus-visible {
+    transform: none;
   }
 
   .training-selector a {
