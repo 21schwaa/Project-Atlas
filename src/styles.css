@@ -1840,6 +1840,11 @@
       rgba(8, 8, 9, 0.82);
   }
 
+  .hero-review-card-subtle:hover,
+  .hero-review-card-subtle:focus-visible {
+    transform: scale(0.92) translateY(-2px);
+  }
+
   .google-review-mark {
     display: grid;
     place-items: center;

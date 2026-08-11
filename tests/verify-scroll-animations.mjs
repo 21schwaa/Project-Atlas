@@ -54,6 +54,7 @@ const checks = [
   ["HTML has simplified hero actions", html.includes("Start training") && html.includes("See the floor") && !html.includes("Get started")],
   ["HTML uses welcome editorial selector", html.includes("welcome-editorial") && html.includes("training-selector") && !html.includes("welcome-bento")],
   ["CSS defines welcome cleanup system", css.includes(".welcome-editorial") && css.includes(".training-selector")],
+  ["CSS preserves subtle hero review scale on hover", css.includes(".hero-review-card-subtle:hover") && css.includes("scale(0.92) translateY(-2px)")],
   ["HTML has updated platform card", html.includes("Built around Olympic weightlifting.") && html.includes("Platforms, bars, open floor space")],
   ["HTML keeps hero Google review highlight", html.includes("hero-review-card") && html.includes("Google reviews")],
   ["Header has new desktop nav targets", navTargets.every((target) => headerHtml.includes(target))],
