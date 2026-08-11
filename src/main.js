@@ -1,5 +1,7 @@
 const revealItems = document.querySelectorAll("[data-reveal]");
 
+document.documentElement.classList.add("js-enabled");
+
 const revealNow = (element) => {
   const delay = element.dataset.revealDelay;
 
@@ -8,6 +10,29 @@ const revealNow = (element) => {
   }
 
   element.classList.add("is-visible");
+};
+
+const revealWithin = (root) => {
+  if (!root) {
+    return;
+  }
+
+  if (root.matches("[data-reveal]")) {
+    revealNow(root);
+  }
+
+  root.querySelectorAll("[data-reveal]").forEach(revealNow);
+};
+
+const revealHashTarget = () => {
+  const hash = window.location.hash;
+
+  if (!hash || hash.length < 2) {
+    return;
+  }
+
+  const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+  revealWithin(target);
 };
 
 if ("IntersectionObserver" in window) {
@@ -32,6 +57,9 @@ if ("IntersectionObserver" in window) {
 } else {
   revealItems.forEach(revealNow);
 }
+
+revealHashTarget();
+window.addEventListener("hashchange", revealHashTarget);
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
