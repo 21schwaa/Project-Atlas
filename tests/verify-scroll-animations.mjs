@@ -91,6 +91,7 @@ const checks = [
   ["CSS defines section typography without negative tracking", css.includes(".section-heading") && css.includes("letter-spacing: 0")],
   ["Offerings section uses stacked training paths", html.includes("training-path-stack") && html.includes("training-path-team") && html.includes("training-path-coaching") && html.includes("training-path-open-gym")],
   ["CSS defines equipment and path cleanup", css.includes(".equipment-hero") && css.includes(".equipment-list") && css.includes(".training-path-stack") && css.includes(".training-path")],
+  ["CSS removes obsolete Open Gym layout rules", ![".open-gym-shell", ".open-gym-copy", ".open-gym-media", ".open-gym-media-stage", ".open-gym-photo-frame", ".open-gym-photo-core", ".open-gym-statement-card", ".open-gym-headline", ".open-gym-heading", ".open-gym-eyebrow", ".open-gym-body"].some((selector) => css.includes(selector))],
   ["CSS defines coach profile, technique, and method architecture", css.includes(".coach-profile-section") && css.includes(".technique-gallery-section") && css.includes(".lifting-method-section")],
   ["CSS defines testimonials and contact", css.includes(".testimonial-grid") && css.includes(".contact-layout") && css.includes(".contact-map-card")],
   ["CSS respects responsive collapse", css.includes("@media (max-width: 1023px)") && css.includes(".welcome-grid") && css.includes("@media (max-width: 640px)")],

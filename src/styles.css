@@ -1580,49 +1580,6 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, black 24%, black);
   }
 
-  .open-gym-shell {
-    position: relative;
-    z-index: 1;
-    min-height: clamp(34rem, 46vw, 43rem);
-    padding-block: clamp(0.25rem, 1.1vw, 1rem);
-  }
-
-  .open-gym-headline,
-  .open-gym-heading {
-    max-width: 48rem;
-    color: #f1eee6;
-    font-size: clamp(2.9rem, 4.25vw, 5.35rem);
-    line-height: 0.98;
-    letter-spacing: 0;
-  }
-
-  .open-gym-copy {
-    max-width: 44rem;
-  }
-
-  .open-gym-eyebrow {
-    display: inline-flex;
-    margin-bottom: 1.3rem;
-    color: #f7d64a;
-    font-size: 0.67rem;
-    font-weight: 900;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-
-  .open-gym-body {
-    max-width: 43rem;
-    margin-top: 1.4rem;
-    color: rgba(244, 244, 245, 0.7);
-    font-size: clamp(1rem, 1.25vw, 1.12rem);
-    line-height: 1.82;
-  }
-
-  .open-gym-body-small {
-    color: rgba(244, 244, 245, 0.58);
-    font-size: 0.98rem;
-  }
-
   .open-gym-proof-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1630,7 +1587,6 @@
     margin-top: 2.3rem;
   }
 
-  .open-gym-proof-tile,
   .open-gym-proof-card {
     position: relative;
     min-height: 8.8rem;
@@ -1649,7 +1605,6 @@
       background 700ms cubic-bezier(0.32,0.72,0,1);
   }
 
-  .open-gym-proof-tile::after,
   .open-gym-proof-card::after {
     content: "";
     position: absolute;
@@ -1660,7 +1615,6 @@
     background-size: 100% 100%;
   }
 
-  .open-gym-proof-tile:hover,
   .open-gym-proof-card:hover {
     transform: translateY(-0.28rem);
     background:
@@ -1703,7 +1657,6 @@
     transform: translateY(0.12rem);
   }
 
-  .open-gym-proof-tile p::before,
   .open-gym-proof-card span:last-child::before {
     content: "";
     display: block;
@@ -1713,92 +1666,12 @@
     background: linear-gradient(90deg, rgba(245, 201, 40, 0.9), transparent);
   }
 
-  .open-gym-proof-tile p,
   .open-gym-proof-card span:last-child {
     text-align: center;
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-  }
-
-  .open-gym-media-stage,
-  .open-gym-media {
-    position: relative;
-    align-self: stretch;
-    min-height: clamp(30rem, 39vw, 40rem);
-  }
-
-  .open-gym-photo-frame {
-    position: relative;
-    height: 100%;
-    min-height: clamp(28rem, 36vw, 37rem);
-  }
-
-  .open-gym-photo-frame::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='20,0 100,0 100,100 0,100 0,52' fill='none' stroke='%23f5c928' stroke-opacity='.9' stroke-width='1.35' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  }
-
-  .open-gym-photo-core {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background: #09090b;
-    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 52%);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14);
-  }
-
-  .open-gym-statement-card {
-    position: absolute;
-    z-index: 3;
-    right: clamp(-1.5rem, -1.7vw, -0.5rem);
-    bottom: clamp(-1.8rem, -2.2vw, -0.8rem);
-    width: min(39rem, 74%);
-    display: grid;
-    grid-template-columns: auto 1px 1fr;
-    align-items: center;
-    gap: 1.55rem;
-    min-height: 8.1rem;
-    padding: 1.2rem 1.5rem;
-    isolation: isolate;
-    filter: drop-shadow(0 24px 52px rgba(0, 0, 0, 0.72));
-  }
-
-  .open-gym-statement-card::before,
-  .open-gym-statement-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .open-gym-statement-card::before {
-    z-index: -2;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
-      #070708;
-    clip-path: polygon(8% 0, 93.5% 0, 100% 28%, 100% 100%, 0 100%, 0 26%);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  }
-
-  .open-gym-statement-card::after {
-    z-index: -1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='8,.5 93.4,.5 99.5,28.2 99.5,99.5 .5,99.5 .5,26.2' fill='none' stroke='%23f5c928' stroke-opacity='.86' stroke-width='1.45' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  }
-
-  .open-gym-statement-card > span {
-    width: 1px;
-    height: 4rem;
-    background: linear-gradient(to bottom, transparent, rgba(245, 201, 40, 0.82), transparent);
   }
 
   .google-review-card {
@@ -2970,18 +2843,6 @@
     grid-template-columns: 1fr;
   }
 
-
-  .open-gym-statement-card::before,
-  .open-gym-statement-card::after {
-    clip-path: none;
-    border-radius: 1.35rem;
-  }
-
-  .open-gym-statement-card::after {
-    border: 1px solid rgba(245, 201, 40, 0.6);
-    background-image: none;
-  }
-
   .contact-copy,
   .contact-map-card {
     border-radius: 1.35rem;
@@ -3055,29 +2916,8 @@
     opacity: 0.12;
   }
 
-  .open-gym-headline {
-    font-size: clamp(2.65rem, 12.5vw, 3.8rem);
-    line-height: 1.02;
-  }
-
   .open-gym-proof-grid {
     grid-template-columns: 1fr;
-  }
-
-  .open-gym-proof-tile {
-    min-height: 5.8rem;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    align-content: center;
-    gap: 1rem;
-    clip-path: none;
-    border-radius: 1.15rem;
-  }
-
-  .open-gym-proof-tile::after {
-    background-image: none;
-    border: 1px solid rgba(245, 201, 40, 0.42);
-    border-radius: 1.15rem;
   }
 
   .open-gym-proof-icon {
@@ -3093,58 +2933,6 @@
     width: 2.7rem;
     height: 2.7rem;
     transform: none;
-  }
-
-  .open-gym-proof-tile p {
-    text-align: left;
-  }
-
-  .open-gym-proof-tile p::before {
-    display: none;
-  }
-
-  .open-gym-media-stage {
-    min-height: auto;
-  }
-
-  .open-gym-photo-frame,
-  .open-gym-photo-core {
-    min-height: 24rem;
-    clip-path: none;
-    border-radius: 1.5rem;
-  }
-
-  .open-gym-photo-frame::before {
-    background-image: none;
-    border: 1.5px solid rgba(245, 201, 40, 0.7);
-    border-radius: 1.5rem;
-  }
-
-  .open-gym-statement-card {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    grid-template-columns: auto 1fr;
-    margin-top: 1rem;
-    gap: 1rem;
-    min-height: auto;
-    padding: 1.25rem;
-  }
-
-  .open-gym-statement-card > span {
-    display: none;
-  }
-
-  .open-gym-statement-card::before {
-    clip-path: none;
-    border-radius: 1.5rem;
-  }
-
-  .open-gym-statement-card::after {
-    background-image: none;
-    border: 1.5px solid rgba(245, 201, 40, 0.66);
-    border-radius: 1.5rem;
   }
 
   .coach-profile-heading {
