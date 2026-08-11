@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -31,8 +31,16 @@ const directories = [
   "assets",
 ];
 
-rmSync(publicDir, { recursive: true, force: true });
 mkdirSync(publicDir, { recursive: true });
+
+for (const entry of readdirSync(publicDir)) {
+  rmSync(join(publicDir, entry), {
+    recursive: true,
+    force: true,
+    maxRetries: 3,
+    retryDelay: 100,
+  });
+}
 
 for (const file of files) {
   const source = join(root, file);

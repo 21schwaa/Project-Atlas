@@ -6,6 +6,7 @@ const js = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 const headerHtml = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
 const footerHtml = html.slice(html.indexOf("<footer"), html.indexOf("</footer>"));
 const testimonialsHtml = html.slice(html.indexOf('id="testimonials"'), html.indexOf("marquee-track"));
+const testimonialSlideCount = (js.match(/quote: "/g) || []).length;
 
 const appearsInOrder = (needles) => {
   let lastIndex = -1;
@@ -81,7 +82,8 @@ const checks = [
   ["Coach section includes training methodology", html.includes("Training influences") && html.includes("Bulgarian-influenced training") && html.includes("American approaches") && html.includes("Chinese-influenced training")],
   ["Methodology uses careful Atlas position", html.includes("Atlas is primarily Chinese-influenced") && !html.includes("We use the Chinese method.") && !html.includes("raw intensity")],
   ["Testimonials section uses editorial carousel with no Google link", testimonialsHtml.includes("testimonial-editorial") && testimonialsHtml.includes("data-testimonial-carousel") && testimonialsHtml.includes("What lifters notice in the room.") && !testimonialsHtml.includes("Google Reviews") && !testimonialsHtml.includes("google.com")],
-  ["Testimonials carousel has controls and vanilla JS state", html.includes("data-testimonial-prev") && html.includes("data-testimonial-next") && html.includes("data-testimonial-dot") && js.includes("testimonialSlides") && js.includes("changeSlide")],
+  ["Testimonials carousel has five review entries", testimonialSlideCount === 5 && testimonialsHtml.includes("data-testimonial-dots") && testimonialsHtml.includes("01 / 05")],
+  ["Testimonials carousel has generated controls and vanilla JS state", html.includes("data-testimonial-prev") && html.includes("data-testimonial-next") && js.includes("document.createElement(\"button\")") && js.includes("dataset.testimonialDot") && js.includes("changeSlide")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club")],
   ["Footer has required identity and links", footerHtml.includes("2026 Atlas Barbell Club") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona") && footerHtml.includes("Instagram") && footerHtml.includes("Facebook") && footerHtml.includes("Contact")],
   ["Footer avoids decorative middle-dot separators", !footerHtml.includes("\u00B7") && footerHtml.includes("Olympic Weightlifting") && footerHtml.includes("Phoenix, Arizona")],

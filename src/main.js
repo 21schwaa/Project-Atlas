@@ -105,6 +105,20 @@ const testimonialSlides = [
     context: "Atlas standard",
     image: "./thirdcardimage.webp",
   },
+  {
+    quote: "Open gym still feels intentional here. You can bring your online coach, your own cycle, or your own pace.",
+    author: "Open gym access",
+    role: "Independent training",
+    context: "Your plan",
+    image: "./mainlandingpageimage.webp",
+  },
+  {
+    quote: "The attached therapy office adds useful access nearby, while staying separate from the gym itself.",
+    author: "Training support",
+    role: "Adjacent resource",
+    context: "Independent practice",
+    image: "./hero-card-generated-v1.png",
+  },
 ];
 
 document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
@@ -115,13 +129,40 @@ document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
   const image = carousel.querySelector("[data-testimonial-image]");
   const indexLabel = carousel.querySelector("[data-testimonial-index]");
   const countLabel = carousel.querySelector("[data-testimonial-count]");
-  const dots = Array.from(carousel.querySelectorAll("[data-testimonial-dot]"));
+  const dotContainer = carousel.querySelector("[data-testimonial-dots]");
   const previousButton = carousel.querySelector("[data-testimonial-prev]");
   const nextButton = carousel.querySelector("[data-testimonial-next]");
   let active = 0;
   let transitionTimer;
 
+  if (
+    !quote ||
+    !author ||
+    !role ||
+    !context ||
+    !image ||
+    !indexLabel ||
+    !countLabel ||
+    !dotContainer ||
+    !previousButton ||
+    !nextButton
+  ) {
+    return;
+  }
+
   const pad = (number) => String(number).padStart(2, "0");
+
+  const dots = testimonialSlides.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.dataset.testimonialDot = "";
+    dot.dataset.testimonialTarget = String(index);
+    dot.setAttribute("aria-label", `Show review ${index + 1}`);
+    dot.addEventListener("click", () => changeSlide(index));
+    return dot;
+  });
+
+  dotContainer.replaceChildren(...dots);
 
   const renderSlide = () => {
     const current = testimonialSlides[active];
@@ -158,12 +199,6 @@ document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
       carousel.classList.remove("is-changing");
     }, 220);
   };
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      changeSlide(Number(dot.dataset.testimonialTarget));
-    });
-  });
 
   previousButton.addEventListener("click", () => changeSlide(active - 1));
   nextButton.addEventListener("click", () => changeSlide(active + 1));
