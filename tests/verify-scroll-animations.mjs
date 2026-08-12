@@ -101,7 +101,7 @@ const checks = [
   ["HTML removes retired Welcome flow", removedTargets.every((target) => !html.includes(target)) && !html.includes("Welcome to Atlas") && !html.includes("welcome-editorial") && !html.includes("welcome-origin-note") && !html.includes("welcome-principles")],
   ["HTML has compact training selector after hero", trainingOptionsHtml.includes("Choose how you train") && trainingOptionsHtml.includes("Three ways to train at Atlas.") && trainingOptionsHtml.includes("training-selector") && html.indexOf('id="home"') < html.indexOf('id="training-options"') && html.indexOf('id="training-options"') < html.indexOf('id="equipment"')],
   ["Training selector links to all training options", trainingOptionsHtml.includes('href="#team"') && trainingOptionsHtml.includes("Team Programming") && trainingOptionsHtml.includes("Follow a shared weekly track.") && trainingOptionsHtml.includes('href="#coaching"') && trainingOptionsHtml.includes("Coaching") && trainingOptionsHtml.includes("Get a closer eye on the lift.") && trainingOptionsHtml.includes('href="#open-gym"') && trainingOptionsHtml.includes("Open Gym") && trainingOptionsHtml.includes("Bring your own plan.")],
-  ["Training selector uses compact tertiary CTA links", trainingOptionsHtml.includes("training-selector-link") && trainingOptionsHtml.includes('class="gg-arrow-right"') && css.includes(".training-selector-link") && css.includes(".training-selector-link i") && css.includes("grid-template-columns: minmax(13rem, 0.8fr) repeat(3, minmax(10rem, 0.55fr))")],
+  ["Training selector uses flow button interaction", trainingOptionsHtml.includes("training-flow-button") && trainingOptionsHtml.includes("flow-arrow-left") && trainingOptionsHtml.includes("flow-arrow-right") && trainingOptionsHtml.includes("training-flow-orb") && css.includes(".training-flow-button") && css.includes(".training-flow-button:hover .flow-arrow-left") && css.includes(".training-flow-button:hover .flow-arrow-right") && css.includes(".training-flow-button:hover .training-flow-orb") && css.includes("border-radius: 100px")],
   ["HTML has updated platform card", html.includes("Built around Olympic weightlifting.") && html.includes("Platforms, bars, open floor space")],
   ["Header has new desktop nav targets", navTargets.every((target) => headerHtml.includes(target)) && !headerHtml.includes('href="#welcome"') && !headerHtml.includes(">Welcome<")],
   ["Header has mobile nav", headerHtml.includes("mobile-nav") && headerHtml.includes("<summary")],
@@ -177,7 +177,7 @@ const checks = [
       && reducedMotionCss.includes("transition: none !important")
       && reducedMotionCss.includes(".google-review-card:hover")
       && reducedMotionCss.includes(".coach-photo-card:hover .coach-photo")
-      && reducedMotionCss.includes(".training-selector a:hover");
+      && reducedMotionCss.includes(".training-flow-button:hover");
   })()],
   ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-25%)")],
   ["JS registers ScrollTrigger when GSAP exists", js.includes("ScrollTrigger")],
