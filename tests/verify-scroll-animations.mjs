@@ -6,12 +6,23 @@ const js = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 const headerHtml = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
 const heroHtml = html.slice(html.indexOf('id="home"'), html.indexOf("</section>", html.indexOf('id="home"')));
 const googleFloatingStart = html.indexOf('class="floating-google-review"');
-const googleFloatingHtml = html.slice(googleFloatingStart, html.indexOf("</aside>", googleFloatingStart));
+const googleFloatingEnd = html.indexOf("</aside>", googleFloatingStart);
+const googleFloatingFound = googleFloatingStart >= 0 && googleFloatingEnd > googleFloatingStart;
+const googleFloatingHtml = html.slice(googleFloatingStart, googleFloatingEnd);
 const footerHtml = html.slice(html.indexOf("<footer"), html.indexOf("</footer>"));
 const testimonialsHtml = html.slice(html.indexOf('id="testimonials"'), html.indexOf("marquee-track"));
+const offeringsHtml = html.slice(html.indexOf('id="offerings"'), html.indexOf('id="coach"'));
+const coachHtml = html.slice(html.indexOf('id="coach"'), html.indexOf('id="testimonials"'));
 const testimonialSlideCount = (js.match(/quote: "/g) || []).length;
 const marqueeHtml = html.slice(html.indexOf("marquee-track"), html.indexOf('id="contact"'));
 const marqueeContentCount = (marqueeHtml.match(/class="marquee-content"/g) || []).length;
+const loadedSource = `${html}\n${css}\n${js}`;
+const fabricatedTestimonialPhrases = [
+  "Technique cues are specific",
+  "Programming, coaching, and open gym access can live",
+  "Open gym still feels intentional here",
+  "The attached therapy office adds useful access nearby",
+];
 
 const appearsInOrder = (needles) => {
   let lastIndex = -1;
@@ -60,9 +71,10 @@ const checks = [
   ["HTML has anti-guesswork hero message", html.includes("Olympic weightlifting without the guesswork")],
   ["Hero has three intentional paths", heroHtml.includes('href="#contact"') && heroHtml.includes("Start training") && heroHtml.includes('href="#equipment"') && heroHtml.includes("See the floor") && heroHtml.includes('href="#welcome"') && heroHtml.includes("Get started") && heroHtml.includes("Learn what Atlas is about.")],
   ["Hero no longer contains Google Reviews", !heroHtml.includes("Google reviews") && !heroHtml.includes("hero-review-card") && !heroHtml.includes("google.com/search")],
-  ["HTML has accurate Glendale and Phoenix-area hero body", html.includes("Olympic weightlifting in the Phoenix area") && html.includes("Atlas Barbell Club is a Glendale weightlifting gym serving athletes across the Phoenix area") && html.includes("bring your own plan")],
-  ["Floating Google Reviews placeholder is truthful", html.includes("floating-google-review") && html.includes("Google Reviews") && html.includes("Reviews coming soon") && html.includes("TODO: Replace Google Reviews placeholder with verified production rating, review count, and business URL")],
-  ["Floating Google Reviews has no fake public review data", !googleFloatingHtml.includes("4.9") && !googleFloatingHtml.includes("27 Google Reviews") && !googleFloatingHtml.includes("★") && !googleFloatingHtml.includes("☆") && !googleFloatingHtml.includes("data-rating") && !googleFloatingHtml.includes("data-review-count") && !googleFloatingHtml.includes("google.com/search")],
+  ["HTML has accurate Glendale and Phoenix-area hero body", heroHtml.includes("Olympic weightlifting in the Phoenix area") && heroHtml.includes("Atlas Barbell Club is a Glendale weightlifting gym serving athletes across the Phoenix area") && heroHtml.includes("bring your own plan")],
+  ["Floating Google Reviews placeholder is truthful", googleFloatingFound && googleFloatingHtml.includes("Google Reviews") && googleFloatingHtml.includes("Reviews coming soon") && googleFloatingHtml.includes("TODO: Replace Google Reviews placeholder with verified production rating, review count, and business URL")],
+  ["Floating Google Reviews has no fake public review data", googleFloatingFound && !googleFloatingHtml.includes("4.9") && !googleFloatingHtml.includes("27 Google Reviews") && !googleFloatingHtml.includes(String.fromCharCode(0x2605)) && !googleFloatingHtml.includes(String.fromCharCode(0x2606)) && !googleFloatingHtml.includes("data-rating") && !googleFloatingHtml.includes("data-review-count") && !googleFloatingHtml.includes("google.com/search")],
+  ["No prohibited Google review integrations are loaded", !["places.googleapis.com", "maps.googleapis.com/maps/api/js", "GooglePlaces", "google.maps.places", "review-widget", "elfsight"].some((marker) => loadedSource.includes(marker))],
   ["HTML uses welcome editorial selector", html.includes("welcome-editorial") && html.includes("training-selector") && !html.includes("welcome-bento")],
   ["CSS defines welcome cleanup system", css.includes(".welcome-editorial") && css.includes(".training-selector")],
   ["Welcome selector links read as visible action buttons", html.includes("Choose your lane") && html.includes("<em aria-hidden=\"true\"></em>") && css.includes(".training-selector a em") && css.includes("background: #f7d64a") && css.includes(".training-selector a::before") && css.includes("transform: scaleX(1)")],
@@ -92,9 +104,11 @@ const checks = [
   ["Methodology uses softened Atlas approach", html.includes("Three lenses. One Atlas approach.") && html.includes("Atlas approach") && html.includes("Often associated with frequent heavy practice and high specificity.") && html.includes("Often associated with planned training blocks and broader exercise variation.") && html.includes("Technical choices can be adjusted around individual proportions and positions.") && html.includes("Technical positions you can repeat.") && !html.includes("Atlas bias")],
   ["Technique proof copy is educational rather than absolute", html.includes("Mobility can help athletes access the positions required by the lifts.") && html.includes("Technical repetitions give athletes more opportunities to practice a position consistently.") && html.includes("Repeatable positions make it easier to evaluate what changes as speed or load increases.") && !html.includes("Quality reps build long-term strength.") && !html.includes("Training transfers when positions are repeatable.")],
   ["Testimonials section uses member story language", testimonialsHtml.includes("testimonial-editorial") && testimonialsHtml.includes("Atlas Barbell Club member testimonial carousel") && testimonialsHtml.includes("Member stories") && testimonialsHtml.includes("What lifters say about training at Atlas.") && testimonialsHtml.includes("Testimonial controls") && !testimonialsHtml.includes(">Reviews<") && !testimonialsHtml.includes("Review controls")],
-  ["Testimonials carousel has five member stories", testimonialSlideCount === 5 && testimonialsHtml.includes("data-testimonial-dots") && testimonialsHtml.includes("01 / 05")],
+  ["Testimonials carousel has four to five placeholder member stories", testimonialSlideCount >= 4 && testimonialSlideCount <= 5 && testimonialsHtml.includes("data-testimonial-dots") && testimonialsHtml.includes("01 / 05") && js.includes("Replace placeholder testimonial content with verified quotes") && (js.includes("Placeholder member story") || js.includes("Verified member story coming soon")) && !fabricatedTestimonialPhrases.some((phrase) => js.includes(phrase) || testimonialsHtml.includes(phrase))],
   ["Testimonials carousel has generated controls and vanilla JS state", html.includes("Previous testimonial") && html.includes("Next testimonial") && js.includes("Show testimonial") && html.includes("data-testimonial-prev") && html.includes("data-testimonial-next") && js.includes("document.createElement(\"button\")") && js.includes("dataset.testimonialDot") && js.includes("changeSlide")],
   ["Header labels testimonials as lifters", headerHtml.includes('href="#testimonials"') && headerHtml.includes(">Lifters<") && !headerHtml.includes(">Reviews<")],
+  ["Training paths are grouped in order", offeringsHtml.includes("Team Programming") && offeringsHtml.includes("Coaching") && offeringsHtml.includes("Open Gym") && offeringsHtml.indexOf("Team Programming") < offeringsHtml.indexOf("Coaching") && offeringsHtml.indexOf("Coaching") < offeringsHtml.indexOf("Open Gym")],
+  ["Coach section keeps Shen group labels", coachHtml.includes("Qualifications") && coachHtml.includes("Coaching Philosophy") && coachHtml.includes("Technique and positions") && coachHtml.includes("Training influences")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club") && html.includes("17437 N 71st Dr Ste 103") && html.includes("Glendale, AZ 85308")],
   ["Contact section uses compact isolated footer-panel layout", css.includes(".contact-section") && css.includes("isolation: isolate") && css.includes("padding-block: clamp(1.4rem, 3.5vw, 3.25rem)") && css.includes("min-height: clamp(15rem, 30svh, 20rem)")],
   ["Contact section avoids white-on-yellow and cramped mobile cards", css.includes(".final-contact-panel .section-kicker") && css.includes("color: #f7d64a") && css.includes("background: #f7d64a") && css.includes("grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr))") && css.includes("grid-template-columns: 1fr !important")],
