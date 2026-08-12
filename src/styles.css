@@ -2821,6 +2821,42 @@
     text-align: center;
   }
 
+  .coach-transition-header {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 48rem;
+    margin: clamp(2.25rem, 5vw, 4.25rem) 0 clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .coach-transition-header > p:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    color: #f7d64a;
+    font-size: clamp(0.64rem, 0.8vw, 0.72rem);
+    font-weight: 950;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .coach-transition-header > p:first-child span {
+    display: block;
+    width: min(18rem, 30vw);
+    height: 1px;
+    background: linear-gradient(to right, rgba(247, 214, 74, 0.72), transparent);
+  }
+
+  .coach-transition-line {
+    max-width: 16ch;
+    color: #f4f1e8;
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
   .coach-support-grid {
     display: grid;
     gap: clamp(2rem, 5vw, 4rem);
