@@ -1,4 +1,10 @@
 const revealItems = document.querySelectorAll("[data-reveal]");
+const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+const floatingTrainingCta = document.querySelector("[data-floating-training-cta]");
+const heroSection = document.getElementById("home");
+const contactSection = document.getElementById("contact");
+let heroVisible = true;
+let contactVisible = false;
 
 document.documentElement.classList.add("js-enabled");
 
@@ -36,6 +42,39 @@ const getHashTarget = (hash) => {
   }
 };
 
+const navTargets = navLinks
+  .map((link) => getHashTarget(link.getAttribute("href")))
+  .filter((target, index, targets) => target && targets.indexOf(target) === index);
+const navObservedSections = [document.getElementById("home"), ...navTargets].filter(Boolean);
+
+const setActiveNavLink = (id) => {
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${id}`;
+
+    link.classList.toggle("is-active", isActive);
+
+    if (isActive) {
+      link.setAttribute("aria-current", "true");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+};
+
+const updateFloatingTrainingCta = () => {
+  if (!floatingTrainingCta) {
+    return;
+  }
+
+  const shouldShow = !heroVisible && !contactVisible;
+
+  floatingTrainingCta.classList.toggle("is-visible", shouldShow);
+  floatingTrainingCta.tabIndex = shouldShow ? 0 : -1;
+  floatingTrainingCta.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+};
+
+updateFloatingTrainingCta();
+
 const getAnchorScrollBehavior = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 
@@ -59,6 +98,7 @@ const revealHashTarget = (behavior = "auto") => {
   }
 
   revealWithin(target);
+  setActiveNavLink(target.id);
 
   // Wait for the browser's native fragment work, then settle on the target below the fixed header.
   window.requestAnimationFrame(() => {
@@ -85,8 +125,54 @@ if ("IntersectionObserver" in window) {
   );
 
   revealItems.forEach((item) => revealObserver.observe(item));
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((first, second) => first.boundingClientRect.top - second.boundingClientRect.top);
+
+      if (visibleEntries[0]) {
+        setActiveNavLink(visibleEntries[0].target.id);
+      }
+    },
+    {
+      rootMargin: "-34% 0px -54% 0px",
+      threshold: 0,
+    },
+  );
+
+  navObservedSections.forEach((target) => navObserver.observe(target));
+
+  if (floatingTrainingCta && heroSection && contactSection) {
+    const floatingCtaObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroSection) {
+            heroVisible = entry.isIntersecting;
+          }
+
+          if (entry.target === contactSection) {
+            contactVisible = entry.isIntersecting;
+          }
+        });
+
+        updateFloatingTrainingCta();
+      },
+      {
+        rootMargin: "-10% 0px -20% 0px",
+        threshold: 0,
+      },
+    );
+
+    floatingCtaObserver.observe(heroSection);
+    floatingCtaObserver.observe(contactSection);
+  }
 } else {
   revealItems.forEach(revealNow);
+  heroVisible = false;
+  contactVisible = false;
+  updateFloatingTrainingCta();
 }
 
 document.addEventListener("click", (event) => {
@@ -106,6 +192,7 @@ document.addEventListener("click", (event) => {
   const mobileNav = link.closest(".mobile-nav");
   event.preventDefault();
   revealWithin(target);
+  setActiveNavLink(target.id);
   window.history.pushState(null, "", hash);
   alignHashTarget(target, getAnchorScrollBehavior());
 
@@ -114,7 +201,9 @@ document.addEventListener("click", (event) => {
   }
 });
 
-window.addEventListener("load", () => revealHashTarget("auto"), { once: true });
+window.addEventListener("load", () => {
+  revealHashTarget("auto");
+}, { once: true });
 window.addEventListener("hashchange", () => revealHashTarget(getAnchorScrollBehavior()));
 window.addEventListener("popstate", () => revealHashTarget(getAnchorScrollBehavior()));
 
