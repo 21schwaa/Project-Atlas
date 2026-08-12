@@ -103,49 +103,56 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  const mobileNav = link.closest(".mobile-nav");
   event.preventDefault();
   revealWithin(target);
   window.history.pushState(null, "", hash);
   alignHashTarget(target, getAnchorScrollBehavior());
+
+  if (mobileNav) {
+    mobileNav.open = false;
+  }
 });
 
 window.addEventListener("load", () => revealHashTarget("auto"), { once: true });
 window.addEventListener("hashchange", () => revealHashTarget(getAnchorScrollBehavior()));
 window.addEventListener("popstate", () => revealHashTarget(getAnchorScrollBehavior()));
 
+// TODO: Replace placeholder testimonial content with verified quotes
+// collected directly from Atlas Barbell Club lifters before production.
 const testimonialSlides = [
   {
-    quote: "Technique cues are specific, the floor is calm, and every session feels like it has a reason.",
-    author: "Technique-focused training",
-    role: "Member perspective",
+    quote: "Placeholder member story: verified training experience coming soon.",
+    author: "Placeholder member story 01",
+    role: "Verified member quote coming soon",
     context: "Atlas floor",
     image: "./firstcardimage.webp",
   },
   {
-    quote: "Programming, coaching, and open gym access can live in the same serious weightlifting room.",
-    author: "Flexible training options",
-    role: "Training path",
+    quote: "Placeholder member story: verified coaching experience coming soon.",
+    author: "Placeholder member story 02",
+    role: "Verified member quote coming soon",
     context: "Team or open gym",
     image: "./secondcardimage.webp",
   },
   {
-    quote: "The details matter here: positions, mobility, timing, and the patience to make better lifts repeatable.",
-    author: "Position before load",
-    role: "Technique and mobility",
+    quote: "Placeholder member story: verified technique experience coming soon.",
+    author: "Placeholder member story 03",
+    role: "Verified member quote coming soon",
     context: "Atlas standard",
     image: "./thirdcardimage.webp",
   },
   {
-    quote: "Open gym still feels intentional here. You can bring your online coach, your own cycle, or your own pace.",
-    author: "Open gym access",
-    role: "Independent training",
+    quote: "Placeholder member story: verified open gym experience coming soon.",
+    author: "Placeholder member story 04",
+    role: "Verified member quote coming soon",
     context: "Your plan",
     image: "./mainlandingpageimage.webp",
   },
   {
-    quote: "The attached therapy office adds useful access nearby, while staying separate from the gym itself.",
-    author: "Training support",
-    role: "Adjacent resource",
+    quote: "Placeholder member story: verified training support experience coming soon.",
+    author: "Placeholder member story 05",
+    role: "Verified member quote coming soon",
     context: "Independent practice",
     image: "./hero-card-generated-v1.png",
   },
@@ -187,7 +194,7 @@ document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
     dot.type = "button";
     dot.dataset.testimonialDot = "";
     dot.dataset.testimonialTarget = String(index);
-    dot.setAttribute("aria-label", `Show review ${index + 1}`);
+    dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
     dot.addEventListener("click", () => changeSlide(index));
     return dot;
   });
