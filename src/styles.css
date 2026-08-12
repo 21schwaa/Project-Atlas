@@ -35,6 +35,37 @@
       rgba(5, 5, 5, 0.82);
   }
 
+  .atlas-topline [data-nav-link] {
+    position: relative;
+  }
+
+  .atlas-topline [data-nav-link]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0.24em;
+    bottom: -0.62rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(247, 214, 74, 0.95), transparent);
+    opacity: 0;
+    transform: scaleX(0.32);
+    transform-origin: left;
+    transition:
+      opacity 500ms cubic-bezier(0.32,0.72,0,1),
+      transform 500ms cubic-bezier(0.32,0.72,0,1);
+  }
+
+  .atlas-topline [data-nav-link].is-active,
+  .atlas-topline [data-nav-link][aria-current="true"] {
+    color: #f7d64a;
+  }
+
+  .atlas-topline [data-nav-link].is-active::after,
+  .atlas-topline [data-nav-link][aria-current="true"]::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
   .section-rhythm {
     padding-block: clamp(4.5rem, 8vw, 9rem);
   }
@@ -342,6 +373,7 @@
     letter-spacing: 0.16em;
     line-height: 1;
     text-transform: uppercase;
+    margin-left: clamp(0.45rem, 1vw, 1rem);
     transition:
       color 700ms cubic-bezier(0.32,0.72,0,1),
       transform 700ms cubic-bezier(0.32,0.72,0,1);
@@ -1961,8 +1993,8 @@
   .floating-google-review {
     position: fixed;
     z-index: 18;
-    left: max(1rem, env(safe-area-inset-left));
-    bottom: max(1rem, env(safe-area-inset-bottom));
+    left: max(7.35rem, calc(env(safe-area-inset-left) + 7.35rem));
+    bottom: max(0.6rem, env(safe-area-inset-bottom));
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
@@ -2014,6 +2046,61 @@
     font-size: 0.82rem;
     font-weight: 800;
     line-height: 1.2;
+  }
+
+  .floating-training-cta {
+    position: fixed;
+    right: max(0.85rem, env(safe-area-inset-right));
+    top: 50%;
+    z-index: 24;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    border: 1px solid rgba(247, 214, 74, 0.72);
+    background: #f7d64a;
+    color: #060607;
+    padding: 0.85rem 0.8rem 0.85rem 1rem;
+    text-decoration: none;
+    box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.36);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(115%, -50%);
+    transition:
+      opacity 260ms ease,
+      transform 360ms cubic-bezier(0.32, 0.72, 0, 1);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0.8rem 100%, 0 50%);
+  }
+
+  .floating-training-cta.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(0, -50%);
+  }
+
+  .floating-training-cta strong,
+  .floating-training-cta small {
+    display: block;
+  }
+
+  .floating-training-cta strong {
+    color: #060607;
+    font-size: 0.72rem;
+    font-weight: 950;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .floating-training-cta small {
+    margin-top: 0.28rem;
+    color: rgba(6, 6, 7, 0.72);
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .floating-training-cta .gg-arrow-right {
+    color: #060607;
   }
 
   .map-frame {
@@ -2201,7 +2288,7 @@
     letter-spacing: 0;
   }
 
-  .welcome-section,
+  .training-options-section,
   .offerings-section,
   .testimonials-section {
     position: relative;
@@ -2210,7 +2297,6 @@
       linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 24%);
   }
 
-  .welcome-grid,
   .equipment-header,
   .offerings-header,
   .contact-layout {
@@ -2218,13 +2304,11 @@
     gap: clamp(2rem, 4vw, 4rem);
   }
 
-  .welcome-grid,
   .equipment-header {
     grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 0.78fr);
     align-items: start;
   }
 
-  .welcome-copy,
   .equipment-header > div:last-child,
   .offerings-header > p:not(.section-kicker),
   .contact-copy > p {
@@ -2238,7 +2322,6 @@
     background: #f7d64a;
   }
 
-  .welcome-copy p + p,
   .equipment-header p + p,
   .coach-info-card p + p,
   .lifting-method-choice p + p {
@@ -2282,44 +2365,28 @@
     line-height: 1.7;
   }
 
-  .welcome-editorial {
+  .training-options-section {
+    isolation: isolate;
+    padding-block: clamp(1.6rem, 4vw, 3.5rem);
+  }
+
+  .training-options-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 5rem;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(247, 214, 74, 0.24), transparent);
+    pointer-events: none;
+  }
+
+  .training-options-header {
     display: grid;
-    grid-template-columns: minmax(18rem, 0.48fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 4rem);
-    margin-top: clamp(2.5rem, 5vw, 4.5rem);
-    padding-top: clamp(1.5rem, 3vw, 2.5rem);
-    border-top: 1px solid rgba(245, 201, 40, 0.22);
+    gap: clamp(0.75rem, 1.5vw, 1rem);
+    max-width: 42rem;
   }
 
-  .welcome-origin-note h3 {
-    color: #f4f1e8;
-    font-size: clamp(1.7rem, 2.4vw, 2.4rem);
-    font-weight: 900;
-    line-height: 1.02;
-  }
-
-  .welcome-origin-note p,
-  .welcome-principles p {
-    color: rgba(244, 244, 245, 0.68);
-    line-height: 1.75;
-  }
-
-  .welcome-origin-note p {
-    margin-top: 1rem;
-  }
-
-  .welcome-principles {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .welcome-principles p {
-    padding-block: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-  }
-
-  .welcome-principles strong {
-    color: #f7d64a;
+  .training-options-header .section-heading {
+    max-width: 12ch;
   }
 
   .training-selector {
@@ -2679,6 +2746,60 @@
 
   .training-path-note p {
     margin-top: 0.6rem;
+  }
+
+  .training-path-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.1rem;
+    align-self: start;
+    min-width: min(100%, 21rem);
+    max-width: 28rem;
+    margin-top: clamp(0.6rem, 1.6vw, 1rem);
+    border: 1px solid rgba(247, 214, 74, 0.42);
+    background:
+      linear-gradient(135deg, rgba(247, 214, 74, 0.16), rgba(255, 255, 255, 0.045) 42%, rgba(0, 0, 0, 0.42)),
+      #141414;
+    color: #fff8e6;
+    padding: 0.9rem 1rem 0.9rem 1.1rem;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 1rem, 100% 100%, 0 100%);
+    transition:
+      border-color 240ms ease,
+      background-color 240ms ease,
+      transform 240ms ease;
+  }
+
+  .training-path-cta strong,
+  .training-path-cta small {
+    display: block;
+  }
+
+  .training-path-cta strong {
+    color: #fff8e6;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .training-path-cta small {
+    margin-top: 0.35rem;
+    color: rgba(244, 244, 245, 0.68);
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .training-path-cta .gg-arrow-right {
+    color: #f7d64a;
+    flex: 0 0 auto;
+  }
+
+  .training-path-cta:hover,
+  .training-path-cta:focus-visible {
+    border-color: rgba(247, 214, 74, 0.78);
+    transform: translateY(-2px);
   }
 
   .coach-intro {
@@ -3203,6 +3324,27 @@
     margin-top: 1.25rem;
   }
 
+  .floating-google-review {
+    bottom: max(0.35rem, env(safe-area-inset-bottom));
+    width: min(15.5rem, calc(100vw - 8rem));
+    gap: 0.62rem;
+    padding: 0.58rem 0.7rem;
+  }
+
+  .floating-google-review-mark {
+    width: 1.95rem;
+    height: 1.95rem;
+    font-size: 0.82rem;
+  }
+
+  .floating-google-review strong {
+    font-size: 0.56rem;
+  }
+
+  .floating-google-review span span {
+    font-size: 0.74rem;
+  }
+
   .hero-equipment-stage {
     height: calc(100svh - var(--atlas-header-height) - var(--hero-bottom-space) - 1rem);
     min-height: 0;
@@ -3271,8 +3413,6 @@
     --hero-bottom-space: 3rem;
   }
 
-  .welcome-grid,
-  .welcome-editorial,
   .training-selector,
   .equipment-header,
   .equipment-hero,
@@ -3593,6 +3733,22 @@
 
   .floating-google-review span span {
     font-size: 0.72rem;
+  }
+
+  .floating-training-cta {
+    right: max(0.65rem, env(safe-area-inset-right));
+    top: auto;
+    bottom: max(0.55rem, env(safe-area-inset-bottom));
+    padding: 0.72rem 0.72rem 0.72rem 0.95rem;
+    transform: translateX(120%);
+  }
+
+  .floating-training-cta.is-visible {
+    transform: translateX(0);
+  }
+
+  .floating-training-cta small {
+    display: none;
   }
 
   .hero-reference-shell {
@@ -4031,6 +4187,11 @@
 
   .marquee-track {
     animation: none;
+  }
+
+  .floating-training-cta,
+  .floating-training-cta.is-visible {
+    transform: none !important;
   }
 
   .training-lane-card:hover::before {
