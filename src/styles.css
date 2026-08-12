@@ -379,6 +379,11 @@
       transform 700ms cubic-bezier(0.32,0.72,0,1);
   }
 
+  .hero-action-link {
+    min-width: clamp(9.75rem, 13vw, 11.75rem);
+    margin-left: 0;
+  }
+
   .hero-tertiary-link::after {
     content: "";
     position: absolute;
@@ -2045,6 +2050,12 @@
     font-size: 0.95rem;
     font-weight: 950;
     line-height: 1;
+  }
+
+  .floating-google-review-mark img {
+    width: 1.22rem;
+    height: 1.22rem;
+    object-fit: contain;
   }
 
   .floating-google-review strong,
