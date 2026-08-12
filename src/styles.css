@@ -1725,6 +1725,15 @@
     outline: none;
   }
 
+  .lifting-method-card:focus-visible {
+    outline: 2px solid rgba(247, 214, 74, 0.92);
+    outline-offset: 0.28rem;
+    box-shadow:
+      0 0 0 0.34rem rgba(247, 214, 74, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(245, 201, 40, 0.34);
+  }
+
   .lifting-method-card-selected {
     border-color: rgba(245, 201, 40, 0.58);
     background:
