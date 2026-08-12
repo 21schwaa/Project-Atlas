@@ -57,12 +57,11 @@
         <div
           class="hidden items-center gap-9 text-[0.78rem] font-bold uppercase tracking-[0.24em] text-zinc-300 lg:flex"
         >
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#welcome">Welcome</a>
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#equipment">The Floor</a>
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#offerings">Training</a>
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#coach">Coach</a>
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#testimonials">Lifters</a>
-          <a class="transition-colors duration-500 hover:text-amber-200" href="#contact">Contact</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#equipment" data-nav-link>The Floor</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#offerings" data-nav-link>Training</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#coach" data-nav-link>Coach</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#testimonials" data-nav-link>Lifters</a>
+          <a class="transition-colors duration-500 hover:text-amber-200" href="#contact" data-nav-link>Contact</a>
         </div>
 
         <div class="flex items-center gap-2">
@@ -124,12 +123,11 @@
           <details class="mobile-nav lg:hidden">
             <summary aria-label="Open mobile navigation">Menu</summary>
             <div class="mobile-nav-panel">
-              <a href="#welcome">Welcome</a>
-              <a href="#equipment">The Floor</a>
-              <a href="#offerings">Training</a>
-              <a href="#coach">Coach</a>
-              <a href="#testimonials">Lifters</a>
-              <a href="#contact">Contact</a>
+              <a href="#equipment" data-nav-link>The Floor</a>
+              <a href="#offerings" data-nav-link>Training</a>
+              <a href="#coach" data-nav-link>Coach</a>
+              <a href="#testimonials" data-nav-link>Lifters</a>
+              <a href="#contact" data-nav-link>Contact</a>
             </div>
           </details>
 
@@ -170,6 +168,19 @@
         <span>Reviews coming soon</span>
       </span>
     </aside>
+
+    <a
+      href="#contact"
+      class="floating-training-cta"
+      data-floating-training-cta
+      aria-label="Start Training at Atlas Barbell Club"
+    >
+      <span>
+        <strong>Start Training</strong>
+        <small>Find your next step</small>
+      </span>
+      <i class="gg-arrow-right" aria-hidden="true"></i>
+    </a>
 
     <aside class="hero-rail" aria-hidden="true">
       <span class="hero-rail-icon"></span>
@@ -227,9 +238,9 @@
                   <svg class="cssgg-arrow-svg h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path></svg>
                 </span>
               </a>
-              <a href="#welcome" class="hero-tertiary-link">
+              <a href="#training-options" class="hero-tertiary-link">
                 <span>Get started</span>
-                <small>Learn what Atlas is about.</small>
+                <small>Choose how you want to train.</small>
                 <i class="gg-arrow-right" aria-hidden="true"></i>
               </a>
             </div>
@@ -270,50 +281,14 @@
         </div>
       </section>
 
-      <section id="welcome" class="anchor-section welcome-section section-rhythm">
+      <section id="training-options" class="anchor-section training-options-section section-rhythm-tight">
         <div class="page-shell">
-          <div class="section-kicker" data-reveal>Welcome to Atlas</div>
-          <div class="welcome-grid">
-            <div data-reveal>
-              <h2 class="section-heading">
-                A weightlifting gym built around the lifts and the people
-                learning them.
-              </h2>
-            </div>
-            <div class="welcome-copy" data-reveal data-reveal-delay="90">
-              <p>
-                In Glendale and across the Phoenix area, Atlas Barbell Club is a
-                training space centered on the snatch, clean and jerk, and the
-                strength work that supports them. The gym is designed for
-                athletes who want to spend their training time around Olympic
-                lifting, whether they follow Atlas programming, work directly
-                with a coach, or already have a plan of their own.
-              </p>
-              <p>
-                The goal is not to make every athlete train the same way. It is
-                to give lifters a useful place to train, access to coaching when
-                they want it, and enough flexibility to choose how involved they
-                want Atlas to be in their programming.
-              </p>
-            </div>
+          <div class="training-options-header" data-reveal>
+            <p class="section-kicker">Choose how you train</p>
+            <h2 class="section-heading">Three ways to train at Atlas.</h2>
           </div>
 
-          <div class="welcome-editorial" data-reveal>
-            <article class="welcome-origin-note">
-              <h3>Built for Glendale and Phoenix-area weightlifters.</h3>
-              <!-- TODO: Replace with verified Atlas founder/origin story -->
-              <p>
-                Atlas was created to give Olympic weightlifters in Glendale and the Phoenix area a space centered specifically on the way they train.
-              </p>
-            </article>
-            <div class="welcome-principles" aria-label="What Atlas does well">
-              <p><strong>Olympic lifting first.</strong> The competition lifts sit at the center of the room.</p>
-              <p><strong>Coaching when it matters.</strong> Technical details get attention when athletes need another set of eyes.</p>
-              <p><strong>Room to choose.</strong> Use Atlas programming, coaching, or open gym access based on your training.</p>
-            </div>
-          </div>
-
-          <nav class="training-selector" aria-label="Choose how Atlas fits your training" data-reveal>
+          <nav class="training-selector" aria-label="Choose how Atlas fits your training" data-reveal data-reveal-delay="80">
             <p><span>Choose your lane</span><strong>Jump to the training option that fits.</strong></p>
             <a href="#team"><span>Team Programming</span><strong>Follow a shared weekly track.</strong><em aria-hidden="true"></em></a>
             <a href="#coaching"><span>Coaching</span><strong>Get a closer eye on the lift.</strong><em aria-hidden="true"></em></a>
@@ -418,6 +393,19 @@
                 </p>
               </article>
             </div>
+            <a
+              class="training-path-cta"
+              href="#contact"
+              data-training-interest="team"
+              data-reveal
+              data-reveal-delay="180"
+            >
+              <span>
+                <strong>Start Team Programming</strong>
+                <small>Ask about joining the Atlas training track.</small>
+              </span>
+              <i class="gg-arrow-right" aria-hidden="true"></i>
+            </a>
           </section>
 
           <section id="coaching" class="anchor-section training-path training-path-coaching" aria-labelledby="coaching-heading">
@@ -454,6 +442,19 @@
                 <p>Help athletes prepare for the practical demands of entering and navigating a weightlifting meet.</p>
               </article>
             </div>
+            <a
+              class="training-path-cta"
+              href="#contact"
+              data-training-interest="coaching"
+              data-reveal
+              data-reveal-delay="220"
+            >
+              <span>
+                <strong>Ask About Coaching</strong>
+                <small>Tell us what you want help with.</small>
+              </span>
+              <i class="gg-arrow-right" aria-hidden="true"></i>
+            </a>
           </section>
 
           <section id="open-gym" class="anchor-section training-path training-path-open-gym open-gym-section" aria-labelledby="open-gym-heading">
@@ -503,6 +504,19 @@
                     already use.
                   </p>
                 </div>
+                <a
+                  class="training-path-cta"
+                  href="#contact"
+                  data-training-interest="open-gym"
+                  data-reveal
+                  data-reveal-delay="230"
+                >
+                  <span>
+                    <strong>Start Open Gym</strong>
+                    <small>Ask about access and getting started.</small>
+                  </span>
+                  <i class="gg-arrow-right" aria-hidden="true"></i>
+                </a>
               </div>
               <figure class="training-path-photo" data-reveal data-reveal-delay="120">
                 <img src="./mainlandingpageimage.webp" alt="Open gym training floor at Atlas Barbell Club" data-scroll-image data-asset-slot="open-gym" />
