@@ -21,6 +21,12 @@ const teamHtml = html.slice(html.indexOf('id="team"'), html.indexOf('id="coachin
 const coachingHtml = html.slice(html.indexOf('id="coaching"'), html.indexOf('id="open-gym"'));
 const openGymHtml = html.slice(html.indexOf('id="open-gym"'), html.indexOf('id="coach"'));
 const coachHtml = html.slice(html.indexOf('id="coach"'), html.indexOf('id="testimonials"'));
+const coachProfileGridIndex = coachHtml.indexOf("coach-profile-grid");
+const coachBridgeIndex = coachHtml.indexOf("coach-transition-header");
+const coachSupportGridIndex = coachHtml.indexOf("coach-support-grid");
+const coachBridgeHtml = coachBridgeIndex >= 0
+  ? coachHtml.slice(coachBridgeIndex, coachHtml.indexOf("</div>", coachBridgeIndex))
+  : "";
 const testimonialSlideCount = (js.match(/quote: "/g) || []).length;
 const marqueeHtml = html.slice(html.indexOf("marquee-track"), html.indexOf('id="contact"'));
 const marqueeContentCount = (marqueeHtml.match(/class="marquee-content"/g) || []).length;
@@ -121,6 +127,7 @@ const checks = [
   ["Training paths are grouped in order", offeringsHtml.includes("Team Programming") && offeringsHtml.includes("Coaching") && offeringsHtml.includes("Open Gym") && offeringsHtml.indexOf("Team Programming") < offeringsHtml.indexOf("Coaching") && offeringsHtml.indexOf("Coaching") < offeringsHtml.indexOf("Open Gym")],
   ["Training paths have contextual contact CTAs", teamHtml.includes('href="#contact"') && teamHtml.includes('data-training-interest="team"') && teamHtml.includes("Start Team Programming") && teamHtml.includes("Ask about joining the Atlas training track.") && coachingHtml.includes('href="#contact"') && coachingHtml.includes('data-training-interest="coaching"') && coachingHtml.includes("Ask About Coaching") && coachingHtml.includes("Tell us what you want help with.") && openGymHtml.includes('href="#contact"') && openGymHtml.includes('data-training-interest="open-gym"') && openGymHtml.includes("Start Open Gym") && openGymHtml.includes("Ask about access and getting started.")],
   ["Coach section keeps Shen group labels", coachHtml.includes("Qualifications") && coachHtml.includes("Coaching Philosophy") && coachHtml.includes("Technique and positions") && coachHtml.includes("Training influences")],
+  ["Coach section has transition bridge before technique support", coachProfileGridIndex >= 0 && coachBridgeIndex > coachProfileGridIndex && coachSupportGridIndex > coachBridgeIndex && coachBridgeHtml.includes("MEET COACH SHEN") && coachBridgeHtml.includes("How the approach shows up in training.") && coachBridgeHtml.includes("data-reveal") && !coachBridgeHtml.includes("<h2") && css.includes(".coach-transition-header") && css.includes(".coach-transition-line")],
   ["Contact section merges hours, contact, and map", html.includes("final-contact-panel") && html.includes("Start training") && html.includes("Monday-Friday") && html.includes("By appointment") && html.includes("Google Maps location for Atlas Barbell Club") && html.includes("17437 N 71st Dr Ste 103") && html.includes("Glendale, AZ 85308")],
   ["Contact section uses compact isolated footer-panel layout", css.includes(".contact-section") && css.includes("isolation: isolate") && css.includes("padding-block: clamp(1.4rem, 3.5vw, 3.25rem)") && css.includes("min-height: clamp(15rem, 30svh, 20rem)")],
   ["Contact section avoids white-on-yellow and cramped mobile cards", css.includes(".final-contact-panel .section-kicker") && css.includes("color: #f7d64a") && css.includes("background: #f7d64a") && css.includes("grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr))") && css.includes("grid-template-columns: 1fr !important")],
