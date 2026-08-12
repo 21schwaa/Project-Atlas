@@ -1176,6 +1176,11 @@
     line-height: 1.62;
   }
 
+  .technique-gallery-body-secondary {
+    margin-top: 0.9rem;
+    color: rgba(244, 242, 237, 0.7);
+  }
+
   .coach-technique-panel .technique-gallery-chips {
     gap: 0.55rem;
     margin-top: clamp(1rem, 1.7vw, 1.35rem);
@@ -1294,6 +1299,13 @@
     text-transform: uppercase;
   }
 
+  .coach-technique-panel .technique-proof-strip p span {
+    color: #f7d64a;
+    font-size: 0.62rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+  }
+
   .coach-technique-panel .technique-proof-strip strong {
     display: block;
     max-width: 17rem;
@@ -1301,6 +1313,16 @@
     font-size: clamp(0.82rem, 0.9vw, 0.92rem);
     font-weight: 760;
     line-height: 1.28;
+  }
+
+  .coach-technique-panel .technique-proof-strip small {
+    display: block;
+    max-width: 18rem;
+    margin-top: 0.62rem;
+    color: rgba(244, 242, 237, 0.62);
+    font-size: 0.78rem;
+    font-weight: 650;
+    line-height: 1.45;
   }
 
   .coach-technique-panel .technique-proof-strip .technique-custom-icon {
@@ -1752,6 +1774,25 @@
     opacity: 1;
   }
 
+  .lifting-method-badge {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: clamp(0.8rem, 1.1vw, 0.95rem);
+    margin-bottom: -0.25rem;
+    border: 1px solid rgba(247, 214, 74, 0.42);
+    border-radius: 999px;
+    padding: 0.38rem 0.62rem;
+    color: #f7d64a;
+    font-size: 0.56rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    line-height: 1;
+  }
+
+  .lifting-method-card-selected h4 {
+    margin-top: 0.72rem;
+  }
+
   .lifting-method-card h3,
   .lifting-method-card h4 {
     max-width: 15rem;
@@ -1766,11 +1807,40 @@
   .lifting-method-drawer {
     position: relative;
     z-index: 1;
-    margin-top: clamp(0.9rem, 1.4vw, 1.15rem);
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0.85rem;
+    opacity: 0;
+    transform: translateY(0.45rem);
+    transition:
+      grid-template-rows 440ms cubic-bezier(0.32,0.72,0,1),
+      opacity 360ms cubic-bezier(0.32,0.72,0,1),
+      transform 440ms cubic-bezier(0.32,0.72,0,1);
+  }
+
+  .lifting-method-drawer > div {
+    overflow: hidden;
     padding-top: clamp(0.85rem, 1.2vw, 1rem);
     border-top: 1px solid rgba(245, 201, 40, 0.22);
+  }
+
+  .lifting-method-card:hover .lifting-method-drawer,
+  .lifting-method-card:focus .lifting-method-drawer,
+  .lifting-method-card:focus-within .lifting-method-drawer {
+    grid-template-rows: 1fr;
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .lifting-method-drawer p {
+    color: rgba(244, 242, 237, 0.64);
+    font-size: 0.84rem;
+    line-height: 1.48;
+  }
+
+  .lifting-method-drawer p + ul,
+  .lifting-method-drawer ul + p {
+    margin-top: 0.9rem;
   }
 
   .lifting-method-drawer ul {
@@ -3651,6 +3721,7 @@
 
   .lifting-method-drawer {
     position: relative;
+    grid-template-rows: 1fr;
     margin-top: 1rem;
     opacity: 1;
     transform: none;
@@ -4309,5 +4380,9 @@
   .training-selector a {
     transform: none;
     transition: none;
+  }
+
+  .lifting-method-drawer {
+    transform: none;
   }
 }
