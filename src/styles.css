@@ -2037,6 +2037,12 @@
     transform: translateY(0.12rem);
   }
 
+  .open-gym-proof-icon-access {
+    width: 2.92rem;
+    height: 3.18rem;
+    transform: translateY(0.12rem);
+  }
+
   .open-gym-proof-card span:last-child::before {
     content: "";
     display: block;
@@ -2512,7 +2518,7 @@
 
   .training-selector {
     display: grid;
-    grid-template-columns: minmax(13rem, 0.8fr) repeat(3, minmax(10rem, 0.55fr));
+    grid-template-columns: minmax(13rem, 0.8fr) repeat(4, minmax(10rem, 0.55fr));
     gap: clamp(1.1rem, 2vw, 1.8rem);
     align-items: stretch;
     margin-top: clamp(1.55rem, 3.2vw, 2.7rem);
@@ -3688,6 +3694,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .open-gym-proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .training-path-details {
     grid-template-columns: 1fr;
   }
@@ -4086,7 +4096,8 @@
 
   .open-gym-proof-icon-coach,
   .open-gym-proof-icon-plan,
-  .open-gym-proof-icon-pace {
+  .open-gym-proof-icon-pace,
+  .open-gym-proof-icon-access {
     width: 2.7rem;
     height: 2.7rem;
     transform: none;
