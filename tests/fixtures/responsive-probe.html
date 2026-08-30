@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive layout probe</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      iframe {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="site" src="/index.html" title="Atlas responsive test page"></iframe>
+    <div id="result" data-json="pending"></div>
+    <script>
+      const frame = document.getElementById("site");
+      const output = document.getElementById("result");
+      const searchParams = new URLSearchParams(window.location.search);
+      const requestedWidth = Number.parseInt(searchParams.get("width"), 10);
+      const requestedSection = searchParams.get("section");
+      const captureMode = searchParams.has("capture");
+
+      if (Number.isFinite(requestedWidth)) frame.style.width = `${requestedWidth}px`;
+      if (requestedSection) frame.src = `/index.html#${encodeURIComponent(requestedSection)}`;
+
+      const isVisible = (element, view) => {
+        if (!element) return false;
+        const styles = view.getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return styles.display !== "none" && styles.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+      };
+
+      const directChildrenFit = (element) => {
+        const bounds = element.getBoundingClientRect();
+        return Array.from(element.children).every((child) => {
+          const rect = child.getBoundingClientRect();
+          return rect.left >= bounds.left - 1 && rect.right <= bounds.right + 1;
+        });
+      };
+
+      const directChildrenDoNotOverlap = (element) => {
+        const rects = Array.from(element.children)
+          .filter((child) => isVisible(child, frame.contentWindow))
+          .map((child) => child.getBoundingClientRect())
+          .sort((left, right) => left.left - right.left);
+        return rects.every((rect, index) => index === 0 || rect.left >= rects[index - 1].right - 1);
+      };
+
+      const maxItemsPerRow = (element) => {
+        const rows = new Map();
+        Array.from(element.children).forEach((child) => {
+          const top = Math.round(child.getBoundingClientRect().top);
+          rows.set(top, (rows.get(top) || 0) + 1);
+        });
+        return Math.max(...rows.values());
+      };
+
+      frame.addEventListener("load", () => {
+        if (captureMode) {
+          const captureStyles = frame.contentDocument.createElement("style");
+          captureStyles.textContent = `
+            [data-reveal] {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: none !important;
+            }
+          `;
+          frame.contentDocument.head.append(captureStyles);
+          window.setTimeout(() => {
+            const view = frame.contentWindow;
+            view.ScrollTrigger?.getAll().forEach((trigger) => trigger.kill(true));
+            view.gsap?.globalTimeline.pause();
+            frame.contentDocument.documentElement.style.scrollBehavior = "auto";
+            if (requestedSection) {
+              frame.contentDocument.getElementById(requestedSection)?.scrollIntoView({ block: "start" });
+            }
+          }, 650);
+        }
+        window.setTimeout(() => {
+          const doc = frame.contentDocument;
+          const view = frame.contentWindow;
+          const desktopNavLink = doc.querySelector(".atlas-topline [data-nav-link]");
+          const desktopNav = desktopNavLink ? desktopNavLink.parentElement : null;
+          const mobileNav = doc.querySelector(".mobile-nav");
+          const topLine = doc.querySelector(".atlas-topline");
+          const brand = doc.querySelector(".atlas-topline > a > span:last-child");
+          const heroStage = doc.querySelector(".hero-reference-stage");
+          const heroShell = doc.querySelector(".hero-reference-shell");
+          const heroCopy = doc.querySelector(".hero-copy-panel");
+          const heroMedia = doc.querySelector(".hero-photo-bezel");
+          const trainingSelector = doc.querySelector(".training-selector");
+          const gridSelectors = [
+            ".training-selector",
+            ".equipment-hero",
+            ".training-path",
+            ".coach-profile-grid",
+            ".lifting-method-choice",
+            ".contact-layout",
+            ".atlas-fit-shell"
+          ];
+          const overflowingGrids = [];
+
+          gridSelectors.forEach((selector) => {
+            doc.querySelectorAll(selector).forEach((element, index) => {
+              if (!directChildrenFit(element)) overflowingGrids.push(`${selector}:${index}`);
+            });
+          });
+
+          const brandStyles = brand ? view.getComputedStyle(brand) : null;
+          const brandLineHeight = brandStyles ? Number.parseFloat(brandStyles.lineHeight) : 0;
+          const brandSingleLine = !isVisible(brand, view) || brand.getBoundingClientRect().height <= brandLineHeight * 1.35;
+          const heroMediaRect = heroMedia.getBoundingClientRect();
+          const heroStageRect = heroStage.getBoundingClientRect();
+          const heroShellRect = heroShell.getBoundingClientRect();
+          const heroEquipmentRect = heroMedia.parentElement.getBoundingClientRect();
+          const heroContainsContent = Array.from(heroShell.children).every((child) => {
+            const rect = child.getBoundingClientRect();
+            return rect.top >= heroStageRect.top - 1 && rect.bottom <= heroStageRect.bottom + 1;
+          });
+          const result = {
+            viewportWidth: view.innerWidth,
+            documentFits: doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1,
+            desktopNavVisible: isVisible(desktopNav, view),
+            mobileNavVisible: isVisible(mobileNav, view),
+            headerCtaVisible: isVisible(doc.querySelector(".header-flow-button"), view),
+            heroRailVisible: isVisible(doc.querySelector(".hero-rail"), view),
+            brandSingleLine,
+            headerFits: directChildrenFit(topLine),
+            headerItemsDoNotOverlap: directChildrenDoNotOverlap(topLine),
+            heroCopyFits: heroCopy.scrollWidth <= heroCopy.clientWidth + 1,
+            heroContainsContent,
+            heroMediaFitsHorizontally: heroMediaRect.left >= -1 && heroMediaRect.right <= view.innerWidth + 1,
+            heroMediaStartsInViewport: heroMediaRect.top < view.innerHeight,
+            heroMediaTop: heroMediaRect.top,
+            heroMediaLeft: heroMediaRect.left,
+            heroMediaRight: heroMediaRect.right,
+            heroShellLeft: heroShellRect.left,
+            heroShellRight: heroShellRect.right,
+            heroEquipmentLeft: heroEquipmentRect.left,
+            heroEquipmentRight: heroEquipmentRect.right,
+            trainingItemsPerRow: maxItemsPerRow(trainingSelector),
+            overflowingGrids
+          };
+
+          output.dataset.json = encodeURIComponent(JSON.stringify(result));
+        }, 900);
+      });
+    </script>
+  </body>
+</html>

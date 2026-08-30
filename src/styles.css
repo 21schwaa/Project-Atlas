@@ -7,11 +7,13 @@
 
   body {
     min-width: 320px;
+    background: var(--atlas-ink);
+    color: var(--atlas-text);
     font-family: "Geist", "Plus Jakarta Sans", system-ui, sans-serif;
   }
 
   ::selection {
-    background: #fcd34d;
+    background: var(--atlas-secondary-bright);
     color: #09090b;
   }
 }
@@ -20,6 +22,40 @@
   :root {
     --atlas-header-height: clamp(5.6rem, 5.8vw, 7.25rem);
     --hero-bottom-space: clamp(1rem, 2vh, 2rem);
+    --atlas-ink: #050606;
+    --atlas-surface: #0b0e0c;
+    --atlas-surface-elevated: #101512;
+    --atlas-primary: #596b5e;
+    --atlas-primary-rgb: 89 107 94;
+    --atlas-primary-deep: #3f4d44;
+    --atlas-secondary: #b7923e;
+    --atlas-secondary-rgb: 183 146 62;
+    --atlas-secondary-bright: #c9ae6b;
+    --atlas-secondary-bright-rgb: 201 174 107;
+    --atlas-secondary-deep: #81652a;
+    --atlas-text: #f2f1eb;
+    --atlas-text-muted: #a9afa8;
+  }
+
+  /* Green is the club's default visual field; gold is reserved for action states. */
+  body {
+    --atlas-secondary: var(--atlas-primary);
+    --atlas-secondary-rgb: var(--atlas-primary-rgb);
+    --atlas-secondary-bright: #9caf9f;
+    --atlas-secondary-bright-rgb: 156 175 159;
+    --atlas-secondary-deep: var(--atlas-primary-deep);
+  }
+
+  .hero-tertiary-link,
+  .header-flow-button,
+  .mobile-nav-panel,
+  .final-contact-panel .section-kicker,
+  .final-contact-panel > a {
+    --atlas-secondary: #b7923e;
+    --atlas-secondary-rgb: 183 146 62;
+    --atlas-secondary-bright: #c9ae6b;
+    --atlas-secondary-bright-rgb: 201 174 107;
+    --atlas-secondary-deep: #81652a;
   }
 
   .page-shell {
@@ -29,7 +65,7 @@
 
   .atlas-topline {
     min-height: var(--atlas-header-height);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgb(var(--atlas-primary-rgb) / 0.42);
     background:
       linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.74)),
       rgba(5, 5, 5, 0.82);
@@ -39,6 +75,10 @@
     position: relative;
   }
 
+  .atlas-topline > a > span:last-child {
+    white-space: nowrap;
+  }
+
   .atlas-topline [data-nav-link]::after {
     content: "";
     position: absolute;
@@ -46,7 +86,7 @@
     right: 0.24em;
     bottom: -0.62rem;
     height: 1px;
-    background: linear-gradient(90deg, rgba(247, 214, 74, 0.95), transparent);
+    background: linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.95), transparent);
     opacity: 0;
     transform: scaleX(0.32);
     transform-origin: left;
@@ -57,7 +97,7 @@
 
   .atlas-topline [data-nav-link].is-active,
   .atlas-topline [data-nav-link][aria-current="true"] {
-    color: #f7d64a;
+    color: var(--atlas-primary);
   }
 
   .atlas-topline [data-nav-link].is-active::after,
@@ -101,7 +141,7 @@
     padding-top: var(--atlas-header-height);
     padding-bottom: var(--hero-bottom-space);
     background:
-      radial-gradient(circle at 32% 47%, rgba(245, 201, 40, 0.055), transparent 20%),
+      radial-gradient(circle at 32% 47%, rgb(var(--atlas-primary-rgb) / 0.3), transparent 28%),
       radial-gradient(circle at 76% 70%, rgba(255, 255, 255, 0.045), transparent 30%),
       linear-gradient(135deg, #080909 0%, #0b0c0c 54%, #050606 100%);
   }
@@ -113,7 +153,7 @@
     z-index: -2;
     opacity: 0.12;
     background-image:
-      linear-gradient(rgba(245, 201, 40, 0.16) 1px, transparent 1px),
+      linear-gradient(rgb(var(--atlas-primary-rgb) / 0.2) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 128px 128px;
     mask-image: linear-gradient(90deg, transparent, black 16%, black 78%, transparent);
@@ -170,7 +210,7 @@
     width: 2px;
     height: 6.75rem;
     transform: translateX(-50%);
-    background: linear-gradient(to bottom, transparent, rgba(252, 211, 77, 0.82), transparent);
+    background: linear-gradient(to bottom, transparent, rgb(var(--atlas-secondary-rgb) / 0.82), transparent);
   }
 
   .hero-rail::before {
@@ -187,7 +227,7 @@
     left: 50%;
     width: 1.45rem;
     height: 1.45rem;
-    border: 1px solid rgba(245, 201, 40, 0.78);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.78);
     border-radius: 999px;
     transform: translateX(-50%);
   }
@@ -196,7 +236,7 @@
   .hero-rail-icon::after {
     content: "";
     position: absolute;
-    background: rgba(245, 201, 40, 0.72);
+    background: rgb(var(--atlas-secondary-rgb) / 0.72);
   }
 
   .hero-rail-icon::before {
@@ -230,7 +270,7 @@
     position: absolute;
     bottom: 2.25rem;
     left: 50%;
-    color: #f5c928;
+    color: var(--atlas-secondary);
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.32em;
@@ -268,7 +308,7 @@
     inset: 0;
     z-index: 3;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='15,0 100,0 91,100 0,100' fill='none' stroke='%23f5c928' stroke-opacity='.92' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='15,0 100,0 91,100 0,100' fill='none' stroke='%23596b5e' stroke-opacity='.92' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -319,7 +359,7 @@
 
   .hero-standard-card::after {
     z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='.5,.5 93.2,.5 99.5,23.2 99.5,99.5 7.2,99.5 .5,76.8' fill='none' stroke='%23f5c928' stroke-opacity='.82' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='.5,.5 93.2,.5 99.5,23.2 99.5,99.5 7.2,99.5 .5,76.8' fill='none' stroke='%23596b5e' stroke-opacity='.82' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -333,14 +373,14 @@
     width: 5.35rem;
     height: 5.35rem;
     border-radius: 999px;
-    border: 1px solid rgba(245, 201, 40, 0.32);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.32);
   }
 
   .hero-standard-logo {
     width: 3.2rem;
     height: 3.2rem;
     object-fit: contain;
-    filter: drop-shadow(0 0 14px rgba(245, 201, 40, 0.18));
+    filter: drop-shadow(0 0 14px rgb(var(--atlas-secondary-rgb) / 0.18));
   }
 
   .hero-standard-label {
@@ -356,7 +396,7 @@
     display: block;
     width: clamp(3rem, 4.2vw, 5.1rem);
     height: 1px;
-    background: linear-gradient(90deg, rgba(245, 201, 40, 0.82), transparent);
+    background: linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.82), transparent);
   }
 
   .hero-tertiary-link {
@@ -391,7 +431,7 @@
     right: 1.85rem;
     bottom: 0;
     height: 1px;
-    background: linear-gradient(90deg, rgba(245, 201, 40, 0.78), transparent);
+    background: linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.78), transparent);
     transform: scaleX(0.42);
     transform-origin: left;
     transition: transform 700ms cubic-bezier(0.32,0.72,0,1);
@@ -408,7 +448,7 @@
   }
 
   .hero-tertiary-link i {
-    color: #f5c928;
+    color: var(--atlas-secondary);
   }
 
   .hero-tertiary-link .gg-arrow-right {
@@ -473,7 +513,7 @@
     overflow: hidden;
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-      radial-gradient(circle at 82% 18%, rgba(252, 211, 77, 0.12), transparent 34%),
+      radial-gradient(circle at 82% 18%, rgb(var(--atlas-secondary-rgb) / 0.12), transparent 34%),
       #101012;
   }
 
@@ -496,7 +536,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    background: radial-gradient(circle at 20% 0%, rgba(252, 211, 77, 0.2), transparent 38%);
+    background: radial-gradient(circle at 20% 0%, rgb(var(--atlas-secondary-rgb) / 0.2), transparent 38%);
     transition: opacity 700ms cubic-bezier(0.32,0.72,0,1);
     pointer-events: none;
   }
@@ -508,7 +548,7 @@
   .proof-strip {
     border-block: 1px solid rgba(255, 255, 255, 0.1);
     background:
-      linear-gradient(90deg, rgba(252, 211, 77, 0.14), transparent 32%, rgba(255, 255, 255, 0.06)),
+      linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.14), transparent 32%, rgba(255, 255, 255, 0.06)),
       #09090b;
   }
 
@@ -516,7 +556,7 @@
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(circle at 80% 30%, rgba(245, 201, 40, 0.07), transparent 26%),
+      radial-gradient(circle at 80% 30%, rgb(var(--atlas-secondary-rgb) / 0.07), transparent 26%),
       linear-gradient(135deg, #050506 0%, #080808 48%, #050505 100%);
   }
 
@@ -528,7 +568,7 @@
     opacity: 0.12;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245, 201, 40, 0.1) 1px, transparent 1px);
+      linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.1) 1px, transparent 1px);
     background-size: 92px 92px;
     mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
@@ -538,7 +578,7 @@
     position: relative;
     width: min(100% - 3rem, 1500px);
     display: grid;
-    grid-template-columns: minmax(60rem, 1fr) 26rem;
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 26rem);
     gap: clamp(2.5rem, 3vw, 3.25rem);
     align-items: center;
     margin-left: max(1rem, calc((100vw - 1500px) / 2));
@@ -600,7 +640,7 @@
     border-radius: 999px;
     padding: 0.72rem 1.25rem;
     color: #09090b;
-    background: linear-gradient(135deg, #ffe56d, #f5c928);
+    background: linear-gradient(135deg, var(--atlas-secondary-bright), var(--atlas-secondary));
     font-size: 0.74rem;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -630,7 +670,7 @@
     width: 5.4rem;
     height: 2px;
     margin-top: 2rem;
-    background: linear-gradient(90deg, #f5c928, transparent);
+    background: linear-gradient(90deg, var(--atlas-secondary), transparent);
   }
 
   .atlas-fit-card-stack {
@@ -656,7 +696,7 @@
     padding: clamp(1rem, 1.45vw, 1.25rem);
     color: #f7f7f2;
     background:
-      radial-gradient(circle at 90% 20%, rgba(245, 201, 40, 0.08), transparent 34%),
+      radial-gradient(circle at 90% 20%, rgb(var(--atlas-secondary-rgb) / 0.08), transparent 34%),
       linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028)),
       #111112;
     border: 1px solid rgba(255, 255, 255, 0.09);
@@ -687,8 +727,8 @@
     max-height: 22rem;
     color: #080809;
     background:
-      radial-gradient(circle at 86% 14%, rgba(245, 201, 40, 0.14), transparent 32%),
-      linear-gradient(135deg, #fffdf6, #f0eee8);
+      radial-gradient(circle at 86% 14%, rgb(var(--atlas-secondary-rgb) / 0.14), transparent 32%),
+      linear-gradient(135deg, var(--atlas-text), #f0eee8);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.76),
@@ -711,8 +751,8 @@
     height: 3.1rem;
     flex: 0 0 auto;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ffe56d, #f5c928);
-    box-shadow: 0 12px 32px rgba(245, 201, 40, 0.16);
+    background: linear-gradient(135deg, var(--atlas-secondary-bright), var(--atlas-secondary));
+    box-shadow: 0 12px 32px rgb(var(--atlas-secondary-rgb) / 0.16);
   }
 
   .atlas-fit-card-icon img {
@@ -752,7 +792,7 @@
     place-items: center;
     width: 1.35rem;
     height: 1.35rem;
-    color: #f5c928;
+    color: var(--atlas-secondary);
     transition:
       transform 760ms cubic-bezier(0.32,0.72,0,1),
       color 760ms cubic-bezier(0.32,0.72,0,1);
@@ -786,7 +826,7 @@
   .atlas-fit-stack-card:hover .atlas-fit-card-arrow,
   .atlas-fit-stack-card:focus .atlas-fit-card-arrow,
   .atlas-fit-stack-card:focus-within .atlas-fit-card-arrow {
-    color: #c49b00;
+    color: var(--atlas-secondary-deep);
     transform: rotate(180deg);
   }
 
@@ -840,8 +880,8 @@
     width: 0.9rem;
     height: 0.9rem;
     border-radius: 999px;
-    background: #f5c928;
-    box-shadow: inset 0 0 0 0.26rem #fffdf6;
+    background: var(--atlas-secondary);
+    box-shadow: inset 0 0 0 0.26rem var(--atlas-text);
   }
 
   .technique-gallery-section {
@@ -850,7 +890,7 @@
     isolation: isolate;
     padding-block: clamp(3rem, 5vw, 5.75rem);
     background:
-      radial-gradient(circle at 4% 74%, rgba(245, 201, 40, 0.08), transparent 22%),
+      radial-gradient(circle at 4% 74%, rgb(var(--atlas-primary-rgb) / 0.18), transparent 28%),
       linear-gradient(135deg, #050606 0%, #0a0a0a 45%, #070707 100%);
   }
 
@@ -863,7 +903,7 @@
     opacity: 0.14;
     background:
       linear-gradient(90deg, transparent 0 10%, rgba(255, 255, 255, 0.12) 10.08%, transparent 10.18%),
-      radial-gradient(ellipse at 88% 64%, transparent 0 33%, rgba(245, 201, 40, 0.2) 33.2%, transparent 33.6%),
+      radial-gradient(ellipse at 88% 64%, transparent 0 33%, rgb(var(--atlas-primary-rgb) / 0.32) 33.2%, transparent 33.6%),
       radial-gradient(ellipse at 88% 64%, transparent 0 47%, rgba(255, 255, 255, 0.2) 47.15%, transparent 47.45%);
     mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
@@ -878,7 +918,7 @@
     pointer-events: none;
     background:
       linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent),
-      radial-gradient(ellipse at 50% 100%, rgba(245, 201, 40, 0.1), transparent 48%);
+      radial-gradient(ellipse at 50% 100%, rgb(var(--atlas-primary-rgb) / 0.16), transparent 48%);
   }
 
   .technique-gallery-section .technique-ambient-glow {
@@ -893,8 +933,8 @@
     filter: none;
     transform: translate3d(3.5rem, 2.5rem, 0) scale(0.9);
     background:
-      radial-gradient(ellipse at 48% 44%, rgba(245, 201, 40, 0.3), rgba(245, 201, 40, 0.11) 31%, transparent 67%),
-      radial-gradient(ellipse at 78% 58%, rgba(255, 238, 164, 0.12), transparent 52%);
+      radial-gradient(ellipse at 48% 44%, rgb(var(--atlas-secondary-rgb) / 0.3), rgb(var(--atlas-secondary-rgb) / 0.11) 31%, transparent 67%),
+      radial-gradient(ellipse at 78% 58%, rgb(var(--atlas-secondary-bright-rgb) / 0.12), transparent 52%);
     mix-blend-mode: screen;
     mask-image: radial-gradient(ellipse at 50% 52%, black 0 28%, rgba(0, 0, 0, 0.72) 44%, transparent 74%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 52%, black 0 28%, rgba(0, 0, 0, 0.72) 44%, transparent 74%);
@@ -930,9 +970,9 @@
     align-items: center;
     min-height: 2.45rem;
     padding: 0 1.55rem;
-    border: 1px solid rgba(245, 201, 40, 0.64);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.64);
     border-radius: 999px;
-    color: #f6d96f;
+    color: var(--atlas-secondary-bright);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.008));
     font-size: 0.66rem;
     font-weight: 900;
@@ -954,7 +994,7 @@
   }
 
   .technique-gallery-headline span {
-    color: #f5c928;
+    color: var(--atlas-secondary);
   }
 
   .technique-gallery-body {
@@ -977,9 +1017,9 @@
     align-items: center;
     min-height: 2.5rem;
     padding: 0 1.1rem;
-    border: 1px solid rgba(245, 201, 40, 0.54);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.54);
     border-radius: 999px;
-    color: #f4d86d;
+    color: var(--atlas-secondary-bright);
     background: rgba(255, 255, 255, 0.025);
     font-size: 0.66rem;
     font-weight: 900;
@@ -1000,11 +1040,11 @@
     gap: clamp(1.2rem, 2.1vw, 1.8rem);
     min-height: clamp(11.6rem, 14vw, 14.6rem);
     overflow: hidden;
-    border: 1px solid rgba(245, 201, 40, 0.24);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.24);
     border-radius: clamp(1.45rem, 2.4vw, 2rem);
     padding: clamp(1.45rem, 2.45vw, 2.2rem);
     background:
-      radial-gradient(circle at 92% 2%, rgba(245, 201, 40, 0.32), transparent 32%),
+      radial-gradient(circle at 92% 2%, rgb(var(--atlas-secondary-rgb) / 0.32), transparent 32%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.018) 42%),
       #111111;
     box-shadow:
@@ -1023,7 +1063,7 @@
     pointer-events: none;
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 38%),
-      radial-gradient(circle at 80% 12%, rgba(255, 230, 150, 0.16), transparent 28%);
+      radial-gradient(circle at 80% 12%, rgb(var(--atlas-secondary-bright-rgb) / 0.16), transparent 28%);
     opacity: 0.84;
   }
 
@@ -1034,7 +1074,7 @@
 
   .technique-glass-card:hover {
     transform: translateY(-0.35rem);
-    border-color: rgba(245, 201, 40, 0.42);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.42);
   }
 
   .technique-icon-orbit,
@@ -1043,11 +1083,11 @@
     display: grid;
     place-items: center;
     flex: 0 0 auto;
-    color: #f5c928;
-    border: 1px solid rgba(245, 201, 40, 0.58);
+    color: var(--atlas-secondary);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.58);
     border-radius: 999px;
     background:
-      radial-gradient(circle at 52% 4%, rgba(245, 201, 40, 0.16), transparent 48%),
+      radial-gradient(circle at 52% 4%, rgb(var(--atlas-secondary-rgb) / 0.16), transparent 48%),
       rgba(255, 255, 255, 0.02);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
   }
@@ -1062,12 +1102,12 @@
     height: 52%;
     object-fit: contain;
     opacity: 0.9;
-    filter: drop-shadow(0 0 9px rgba(245, 201, 40, 0.14));
+    filter: drop-shadow(0 0 9px rgb(var(--atlas-secondary-rgb) / 0.14));
   }
 
   .technique-card-label,
   .technique-proof-strip h3 {
-    color: #f6d96f;
+    color: var(--atlas-secondary-bright);
     font-size: 0.66rem;
     font-weight: 900;
     letter-spacing: 0.24em;
@@ -1102,10 +1142,10 @@
     gap: 0;
     margin-top: clamp(1.4rem, 2.5vw, 2.1rem);
     overflow: hidden;
-    border: 1px solid rgba(245, 201, 40, 0.28);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.28);
     border-radius: clamp(1.3rem, 2.4vw, 1.8rem);
     background:
-      radial-gradient(circle at 93% 12%, rgba(245, 201, 40, 0.3), transparent 34%),
+      radial-gradient(circle at 93% 12%, rgb(var(--atlas-secondary-rgb) / 0.3), transparent 34%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018)),
       #111111;
     box-shadow:
@@ -1125,7 +1165,7 @@
 
   .technique-proof-strip article + article,
   .technique-proof-strip > div + div {
-    border-left: 1px solid rgba(245, 201, 40, 0.18);
+    border-left: 1px solid rgb(var(--atlas-secondary-rgb) / 0.18);
   }
 
   .technique-proof-strip p {
@@ -1153,8 +1193,8 @@
   .coach-technique-panel .technique-gallery-eyebrow {
     min-height: 2.2rem;
     padding-inline: 1.25rem;
-    border-color: rgba(245, 201, 40, 0.58);
-    background: rgba(245, 201, 40, 0.035);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.58);
+    background: rgb(var(--atlas-secondary-rgb) / 0.035);
     font-size: 0.62rem;
     letter-spacing: 0.24em;
   }
@@ -1189,8 +1229,8 @@
   .coach-technique-panel .technique-gallery-chips span {
     min-height: 2.15rem;
     padding-inline: 0.92rem;
-    border-color: rgba(245, 201, 40, 0.42);
-    color: rgba(246, 217, 111, 0.92);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.42);
+    color: rgb(var(--atlas-secondary-bright-rgb) / 0.92);
     background: rgba(255, 255, 255, 0.018);
     font-size: 0.58rem;
     letter-spacing: 0.18em;
@@ -1204,11 +1244,11 @@
   .coach-technique-panel .technique-glass-card {
     min-height: 8.35rem;
     gap: clamp(0.95rem, 1.7vw, 1.35rem);
-    border-color: rgba(245, 201, 40, 0.2);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.2);
     border-radius: 1.15rem;
     padding: clamp(1rem, 1.6vw, 1.35rem);
     background:
-      radial-gradient(circle at 98% 6%, rgba(245, 201, 40, 0.16), transparent 31%),
+      radial-gradient(circle at 98% 6%, rgb(var(--atlas-secondary-rgb) / 0.16), transparent 31%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.064), rgba(255, 255, 255, 0.016) 48%),
       #101011;
     box-shadow:
@@ -1220,7 +1260,7 @@
     opacity: 0.5;
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.064), transparent 36%),
-      radial-gradient(circle at 86% 4%, rgba(255, 230, 150, 0.1), transparent 25%);
+      radial-gradient(circle at 86% 4%, rgb(var(--atlas-secondary-bright-rgb) / 0.1), transparent 25%);
   }
 
   .coach-technique-panel .technique-glass-card:hover {
@@ -1230,14 +1270,14 @@
   .coach-technique-panel .technique-icon-orbit {
     width: clamp(3.7rem, 4.4vw, 4.45rem);
     height: clamp(3.7rem, 4.4vw, 4.45rem);
-    border-color: rgba(245, 201, 40, 0.45);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.45);
     background:
-      radial-gradient(circle at 52% 4%, rgba(245, 201, 40, 0.12), transparent 48%),
+      radial-gradient(circle at 52% 4%, rgb(var(--atlas-secondary-rgb) / 0.12), transparent 48%),
       rgba(255, 255, 255, 0.018);
   }
 
   .coach-technique-panel .technique-glass-card p:first-child {
-    color: rgba(246, 217, 111, 0.94);
+    color: rgb(var(--atlas-secondary-bright-rgb) / 0.94);
     font-size: 0.6rem;
     font-weight: 900;
     letter-spacing: 0.22em;
@@ -1262,10 +1302,10 @@
   .coach-technique-panel .technique-proof-strip {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-top: clamp(0.8rem, 1.5vw, 1.1rem);
-    border-color: rgba(245, 201, 40, 0.2);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.2);
     border-radius: 1.15rem;
     background:
-      radial-gradient(circle at 98% 0%, rgba(245, 201, 40, 0.13), transparent 31%),
+      radial-gradient(circle at 98% 0%, rgb(var(--atlas-secondary-rgb) / 0.13), transparent 31%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.054), rgba(255, 255, 255, 0.012)),
       #0f1010;
     box-shadow:
@@ -1284,14 +1324,14 @@
     place-items: center;
     width: 2.85rem;
     height: 2.85rem;
-    border: 1px solid rgba(245, 201, 40, 0.34);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.34);
     border-radius: 999px;
-    background: rgba(245, 201, 40, 0.045);
+    background: rgb(var(--atlas-secondary-rgb) / 0.045);
   }
 
   .coach-technique-panel .technique-proof-strip p {
     margin: 0 0 0.26rem;
-    color: rgba(246, 217, 111, 0.88);
+    color: rgb(var(--atlas-secondary-bright-rgb) / 0.88);
     font-size: 0.58rem;
     font-weight: 900;
     letter-spacing: 0.2em;
@@ -1300,7 +1340,7 @@
   }
 
   .coach-technique-panel .technique-proof-strip p span {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.62rem;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -1339,7 +1379,7 @@
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(circle at 80% 22%, rgba(245, 201, 40, 0.11), transparent 24%),
+      radial-gradient(circle at 80% 22%, rgb(var(--atlas-secondary-rgb) / 0.11), transparent 24%),
       radial-gradient(circle at 22% 70%, rgba(255, 255, 255, 0.045), transparent 28%),
       #050606;
   }
@@ -1352,7 +1392,7 @@
     opacity: 0.1;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245, 201, 40, 0.13) 1px, transparent 1px);
+      linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.13) 1px, transparent 1px);
     background-size: 98px 98px;
     mask-image: linear-gradient(90deg, transparent, black 10%, black 88%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 88%, transparent);
@@ -1367,7 +1407,7 @@
     height: min(34rem, 42vw);
     pointer-events: none;
     opacity: 0.18;
-    background: repeating-radial-gradient(ellipse at 62% 50%, transparent 0 40px, rgba(245, 201, 40, 0.75) 41px, transparent 42px);
+    background: repeating-radial-gradient(ellipse at 62% 50%, transparent 0 40px, rgb(var(--atlas-secondary-rgb) / 0.75) 41px, transparent 42px);
     mask-image: radial-gradient(ellipse at 50% 52%, black 0 44%, transparent 72%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 52%, black 0 44%, transparent 72%);
   }
@@ -1399,7 +1439,7 @@
   .coach-profile-heading span {
     display: block;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(245, 201, 40, 0.86), transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--atlas-secondary-rgb) / 0.86), transparent);
   }
 
   .coach-profile-grid {
@@ -1413,7 +1453,7 @@
   .coach-info-card {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(245, 201, 40, 0.22);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.22);
     border-radius: clamp(1.35rem, 2.2vw, 2rem);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018)),
@@ -1449,7 +1489,7 @@
     left: clamp(1.25rem, 2.4vw, 2rem);
     z-index: 1;
     padding: clamp(1.25rem, 2.5vw, 1.8rem);
-    border: 1px solid rgba(245, 201, 40, 0.38);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.38);
     border-radius: 1.2rem;
     background:
       linear-gradient(135deg, rgba(12, 13, 14, 0.92), rgba(12, 13, 14, 0.76)),
@@ -1470,7 +1510,7 @@
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
-    color: #f5c928;
+    color: var(--atlas-secondary);
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.28em;
@@ -1481,7 +1521,7 @@
     content: "";
     width: min(12rem, 42%);
     height: 1px;
-    background: #f5c928;
+    background: var(--atlas-secondary);
   }
 
   .coach-profile-stack {
@@ -1504,7 +1544,7 @@
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(circle at 92% 10%, rgba(245, 201, 40, 0.18), transparent 36%),
+      radial-gradient(circle at 92% 10%, rgb(var(--atlas-primary-rgb) / 0.24), transparent 36%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%);
     opacity: 0.82;
   }
@@ -1519,10 +1559,10 @@
     place-items: center;
     width: clamp(4.5rem, 6vw, 5.5rem);
     height: clamp(4.5rem, 6vw, 5.5rem);
-    border: 1px solid rgba(245, 201, 40, 0.54);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.54);
     border-radius: 999px;
     background:
-      radial-gradient(circle at 50% 0%, rgba(245, 201, 40, 0.2), transparent 46%),
+      radial-gradient(circle at 50% 0%, rgb(var(--atlas-secondary-rgb) / 0.2), transparent 46%),
       rgba(255, 255, 255, 0.035);
   }
 
@@ -1534,7 +1574,7 @@
   }
 
   .coach-info-kicker {
-    color: #f5c928;
+    color: var(--atlas-secondary);
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.25em;
@@ -1572,10 +1612,10 @@
     top: 0.42rem;
     width: 0.82rem;
     height: 0.82rem;
-    border: 1px solid #f5c928;
+    border: 1px solid var(--atlas-secondary);
     border-radius: 999px;
     box-shadow: inset 0 0 0 3px #101011;
-    background: #f5c928;
+    background: var(--atlas-secondary);
   }
 
   .coach-check-list strong {
@@ -1592,7 +1632,11 @@
   }
 
   .coach-info-card-accent {
-    border-color: rgba(245, 201, 40, 0.34);
+    border-color: rgb(var(--atlas-primary-rgb) / 0.7);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.12),
+      0 28px 90px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgb(var(--atlas-primary-rgb) / 0.12);
   }
 
   .lifting-method-section {
@@ -1600,7 +1644,7 @@
     overflow: hidden;
     padding-block: clamp(2.2rem, 3.6vw, 4.2rem);
     background:
-      radial-gradient(circle at 14% 18%, rgba(245, 201, 40, 0.1), transparent 22%),
+      radial-gradient(circle at 14% 18%, rgb(var(--atlas-primary-rgb) / 0.18), transparent 28%),
       radial-gradient(circle at 88% 86%, rgba(255, 255, 255, 0.05), transparent 27%),
       #050606;
   }
@@ -1612,7 +1656,7 @@
     pointer-events: none;
     opacity: 0.11;
     background-image:
-      linear-gradient(rgba(245, 201, 40, 0.11) 1px, transparent 1px),
+      linear-gradient(rgb(var(--atlas-secondary-rgb) / 0.11) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 104px 104px;
     mask-image: linear-gradient(90deg, transparent, black 13%, black 88%, transparent);
@@ -1630,12 +1674,12 @@
     gap: clamp(1rem, 2.4vw, 2rem);
     align-items: end;
     padding-bottom: clamp(0.85rem, 1.6vw, 1.15rem);
-    border-bottom: 1px solid rgba(245, 201, 40, 0.24);
+    border-bottom: 1px solid rgb(var(--atlas-secondary-rgb) / 0.24);
   }
 
   .lifting-method-header > div > p,
   .lifting-method-choice > div > p {
-    color: #f5c928;
+    color: var(--atlas-secondary);
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.25em;
@@ -1679,11 +1723,11 @@
     grid-template-rows: auto auto 1fr;
     min-height: clamp(15rem, 17vw, 17.75rem);
     overflow: hidden;
-    border: 1px solid rgba(245, 201, 40, 0.22);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.22);
     border-radius: clamp(1.05rem, 1.5vw, 1.25rem);
     padding: clamp(1rem, 1.5vw, 1.25rem);
     background:
-      radial-gradient(circle at 92% 8%, rgba(245, 201, 40, 0.09), transparent 32%),
+      radial-gradient(circle at 92% 8%, rgb(var(--atlas-secondary-rgb) / 0.09), transparent 32%),
       linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018)),
       #101011;
     box-shadow:
@@ -1696,7 +1740,7 @@
   }
 
   .lifting-method-card + .lifting-method-card {
-    border-left-color: rgba(245, 201, 40, 0.22);
+    border-left-color: rgb(var(--atlas-secondary-rgb) / 0.22);
   }
 
   .lifting-method-card::before {
@@ -1706,7 +1750,7 @@
     pointer-events: none;
     opacity: 0.72;
     background:
-      radial-gradient(circle at 90% 8%, rgba(245, 201, 40, 0.14), transparent 35%),
+      radial-gradient(circle at 90% 8%, rgb(var(--atlas-secondary-rgb) / 0.14), transparent 35%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 42%);
   }
 
@@ -1721,23 +1765,23 @@
     transform: translateY(-0.15rem);
     box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.15),
-      inset 0 -1px 0 rgba(245, 201, 40, 0.32);
+      inset 0 -1px 0 rgb(var(--atlas-secondary-rgb) / 0.32);
     outline: none;
   }
 
   .lifting-method-card:focus-visible {
-    outline: 2px solid rgba(247, 214, 74, 0.92);
+    outline: 2px solid rgb(var(--atlas-secondary-rgb) / 0.92);
     outline-offset: 0.28rem;
     box-shadow:
-      0 0 0 0.34rem rgba(247, 214, 74, 0.12),
+      0 0 0 0.34rem rgb(var(--atlas-secondary-rgb) / 0.12),
       inset 0 1px 1px rgba(255, 255, 255, 0.16),
-      inset 0 -1px 0 rgba(245, 201, 40, 0.34);
+      inset 0 -1px 0 rgb(var(--atlas-secondary-rgb) / 0.34);
   }
 
   .lifting-method-card-selected {
-    border-color: rgba(245, 201, 40, 0.58);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.58);
     background:
-      radial-gradient(circle at 92% 10%, rgba(245, 201, 40, 0.2), transparent 34%),
+      radial-gradient(circle at 92% 10%, rgb(var(--atlas-secondary-rgb) / 0.2), transparent 34%),
       linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.018)),
       #111111;
   }
@@ -1747,10 +1791,10 @@
     place-items: center;
     width: 2.7rem;
     height: 2.7rem;
-    border: 1px solid rgba(245, 201, 40, 0.42);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.42);
     border-radius: 999px;
     background:
-      radial-gradient(circle at 50% 0%, rgba(245, 201, 40, 0.2), transparent 45%),
+      radial-gradient(circle at 50% 0%, rgb(var(--atlas-secondary-rgb) / 0.2), transparent 45%),
       rgba(255, 255, 255, 0.025);
   }
 
@@ -1788,10 +1832,10 @@
     width: fit-content;
     margin-top: clamp(0.8rem, 1.1vw, 0.95rem);
     margin-bottom: -0.25rem;
-    border: 1px solid rgba(247, 214, 74, 0.42);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.42);
     border-radius: 999px;
     padding: 0.38rem 0.62rem;
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.56rem;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -1830,7 +1874,7 @@
   .lifting-method-drawer > div {
     overflow: hidden;
     padding-top: clamp(0.85rem, 1.2vw, 1rem);
-    border-top: 1px solid rgba(245, 201, 40, 0.22);
+    border-top: 1px solid rgb(var(--atlas-secondary-rgb) / 0.22);
   }
 
   .lifting-method-card:hover .lifting-method-drawer,
@@ -1873,8 +1917,8 @@
     width: 0.42rem;
     height: 0.42rem;
     border-radius: 999px;
-    background: #f5c928;
-    box-shadow: 0 0 16px rgba(245, 201, 40, 0.2);
+    background: var(--atlas-secondary);
+    box-shadow: 0 0 16px rgb(var(--atlas-secondary-rgb) / 0.2);
   }
 
   .lifting-method-choice {
@@ -1883,11 +1927,11 @@
     gap: clamp(1rem, 2vw, 1.75rem);
     align-items: center;
     margin-top: clamp(0.95rem, 1.8vw, 1.2rem);
-    border: 1px solid rgba(245, 201, 40, 0.36);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.36);
     border-radius: clamp(1.25rem, 2vw, 1.7rem);
     padding: clamp(1.05rem, 1.8vw, 1.45rem);
     background:
-      radial-gradient(circle at 92% 12%, rgba(245, 201, 40, 0.22), transparent 34%),
+      radial-gradient(circle at 92% 12%, rgb(var(--atlas-secondary-rgb) / 0.22), transparent 34%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
       #101011;
     box-shadow:
@@ -1922,7 +1966,7 @@
   }
 
   .lifting-method-choice-list li {
-    border-left: 3px solid #f5c928;
+    border-left: 3px solid var(--atlas-secondary);
     padding-left: 0.75rem;
   }
 
@@ -1930,7 +1974,7 @@
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(circle at 22% 62%, rgba(245, 201, 40, 0.06), transparent 25%),
+      radial-gradient(circle at 22% 62%, rgb(var(--atlas-secondary-rgb) / 0.06), transparent 25%),
       linear-gradient(135deg, #050606 0%, #080909 50%, #050606 100%);
   }
 
@@ -1941,7 +1985,7 @@
     opacity: 0.11;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(245, 201, 40, 0.14) 1px, transparent 1px),
+      linear-gradient(rgb(var(--atlas-secondary-rgb) / 0.14) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
     background-size: 112px 112px;
     mask-image: linear-gradient(90deg, transparent, black 12%, black 82%, transparent);
@@ -1962,7 +2006,7 @@
 
   .open-gym-proof-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.85rem;
     margin-top: 2.3rem;
   }
@@ -1974,7 +2018,7 @@
     align-content: end;
     gap: 1.05rem;
     padding: 1.2rem 1.2rem 1.3rem;
-    color: #f5c928;
+    color: var(--atlas-secondary);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018)),
       #101011;
@@ -1990,7 +2034,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='.5,.5 88,.5 99.5,18 99.5,99.5 .5,99.5' fill='none' stroke='%23f5c928' stroke-opacity='.64' stroke-width='1.25' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='.5,.5 88,.5 99.5,18 99.5,99.5 .5,99.5' fill='none' stroke='%23596b5e' stroke-opacity='.64' stroke-width='1.25' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -1998,7 +2042,7 @@
   .open-gym-proof-card:hover {
     transform: translateY(-0.28rem);
     background:
-      linear-gradient(135deg, rgba(245, 201, 40, 0.11), rgba(255, 255, 255, 0.018)),
+      linear-gradient(135deg, rgb(var(--atlas-secondary-rgb) / 0.11), rgba(255, 255, 255, 0.018)),
       #101011;
   }
 
@@ -2010,7 +2054,7 @@
     justify-self: center;
     object-fit: contain;
     opacity: 0.86;
-    filter: drop-shadow(0 0 8px rgba(245, 201, 40, 0.12));
+    filter: drop-shadow(0 0 8px rgb(var(--atlas-secondary-rgb) / 0.12));
   }
 
   .open-gym-proof-icon img {
@@ -2049,7 +2093,7 @@
     width: 3.8rem;
     height: 1px;
     margin: 0 auto 1.2rem;
-    background: linear-gradient(90deg, rgba(245, 201, 40, 0.9), transparent);
+    background: linear-gradient(90deg, rgb(var(--atlas-secondary-rgb) / 0.9), transparent);
   }
 
   .open-gym-proof-card span:last-child {
@@ -2082,9 +2126,9 @@
 
   .google-review-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(252, 211, 77, 0.34);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.34);
     background:
-      linear-gradient(145deg, rgba(252, 211, 77, 0.14), rgba(255, 255, 255, 0.05)),
+      linear-gradient(145deg, rgb(var(--atlas-secondary-rgb) / 0.14), rgba(255, 255, 255, 0.05)),
       rgba(8, 8, 9, 0.82);
   }
 
@@ -2112,7 +2156,7 @@
     gap: 0.75rem;
     width: min(17rem, calc(100vw - 2rem));
     padding: 0.72rem 0.86rem;
-    border: 1px solid rgba(245, 201, 40, 0.24);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.24);
     border-radius: 1rem;
     color: #f4efe6;
     background:
@@ -2149,7 +2193,7 @@
   }
 
   .floating-google-review strong {
-    color: #f6d96f;
+    color: var(--atlas-secondary-bright);
     font-size: 0.62rem;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -2173,8 +2217,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.85rem;
-    border: 1px solid rgba(247, 214, 74, 0.72);
-    background: #f7d64a;
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.72);
+    background: var(--atlas-secondary);
     color: #060607;
     padding: 0.85rem 0.8rem 0.85rem 1rem;
     text-decoration: none;
@@ -2226,7 +2270,7 @@
     flex: 1 1 auto;
     overflow: hidden;
     background:
-      radial-gradient(circle at 22% 18%, rgba(252, 211, 77, 0.16), transparent 34%),
+      radial-gradient(circle at 22% 18%, rgb(var(--atlas-secondary-rgb) / 0.16), transparent 34%),
       #0f0f10;
   }
 
@@ -2366,7 +2410,7 @@
   .mobile-nav-panel a:hover,
   .mobile-nav-panel a:focus-visible {
     color: #09090b;
-    background: #fcd34d;
+    background: var(--atlas-secondary-bright);
     outline: 0;
   }
 
@@ -2376,7 +2420,7 @@
     align-items: center;
     width: fit-content;
     border-radius: 999px;
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.67rem;
     font-weight: 900;
     letter-spacing: 0.24em;
@@ -2388,12 +2432,12 @@
     margin-bottom: 1.25rem;
     padding: 0.65rem 1rem;
     color: #09090b;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
     text-shadow: none;
   }
 
   .mini-label {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
   }
 
   .section-heading {
@@ -2410,7 +2454,7 @@
   .testimonials-section {
     position: relative;
     background:
-      radial-gradient(circle at 14% 22%, rgba(245, 201, 40, 0.06), transparent 24%),
+      radial-gradient(circle at 14% 22%, rgb(var(--atlas-secondary-rgb) / 0.06), transparent 24%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 24%);
   }
 
@@ -2446,7 +2490,7 @@
 
   .offerings-header .section-kicker {
     color: #09090b;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
   }
 
   .equipment-header p + p,
@@ -2502,7 +2546,7 @@
     position: absolute;
     inset: 0 auto 0 5rem;
     width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(247, 214, 74, 0.24), transparent);
+    background: linear-gradient(to bottom, transparent, rgb(var(--atlas-secondary-rgb) / 0.24), transparent);
     pointer-events: none;
   }
 
@@ -2513,13 +2557,15 @@
   }
 
   .training-options-header .section-heading {
-    max-width: 12ch;
+    max-width: 15ch;
+    font-size: clamp(2.9rem, 4.5vw, 4.25rem);
+    line-height: 0.94;
   }
 
   .training-selector {
     display: grid;
-    grid-template-columns: minmax(13rem, 0.8fr) repeat(4, minmax(10rem, 0.55fr));
-    gap: clamp(1.1rem, 2vw, 1.8rem);
+    grid-template-columns: minmax(12rem, 0.84fr) repeat(5, minmax(10.5rem, 1fr));
+    gap: clamp(0.7rem, 1.1vw, 1rem);
     align-items: stretch;
     margin-top: clamp(1.55rem, 3.2vw, 2.7rem);
   }
@@ -2536,9 +2582,9 @@
   .training-selector > p {
     display: grid;
     gap: 0.35rem;
-    min-height: 4.35rem;
+    min-height: 5.7rem;
     align-content: center;
-    border: 1px solid rgba(247, 214, 74, 0.26);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.26);
     border-radius: 18px;
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
@@ -2549,7 +2595,7 @@
   }
 
   .training-selector > p span {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.68rem;
     font-weight: 950;
     letter-spacing: 0.16em;
@@ -2568,15 +2614,15 @@
   .training-flow-button {
     position: relative;
     display: flex;
-    height: 4.35rem;
-    width: min(100%, 15.5rem);
+    min-height: 5.7rem;
+    width: 100%;
     align-items: center;
     gap: 0.35rem;
     overflow: hidden;
-    border: 1.5px solid rgba(247, 214, 74, 0.38);
-    border-radius: 100px;
+    border: 1.5px solid rgb(var(--atlas-secondary-rgb) / 0.38);
+    border-radius: 1.35rem;
     background: rgba(255, 255, 255, 0.035);
-    padding: 0.92rem 3.3rem 0.92rem 1.6rem;
+    padding: 0.82rem 2.2rem 0.82rem 1.05rem;
     color: #f4f1e8;
     cursor: pointer;
     box-shadow:
@@ -2602,26 +2648,31 @@
     z-index: 2;
     display: grid;
     gap: 0.28rem;
+    min-width: 0;
     transform: translateX(-0.45rem);
     transition: transform 800ms ease-out;
   }
 
   .training-flow-copy span {
-    color: #f7d64a;
-    font-size: 0.68rem;
+    color: var(--atlas-secondary);
+    max-width: 100%;
+    font-size: clamp(0.58rem, 0.63vw, 0.68rem);
     font-weight: 950;
-    letter-spacing: 0.14em;
-    line-height: 1;
+    letter-spacing: 0.08em;
+    line-height: 1.08;
     text-transform: uppercase;
+    text-wrap: balance;
     transition: color 600ms cubic-bezier(0.23,1,0.32,1);
   }
 
   .training-flow-copy strong {
+    max-width: 12rem;
     color: #ffffff;
-    font-size: 0.78rem;
+    font-size: clamp(0.72rem, 0.72vw, 0.8rem);
     font-weight: 820;
     letter-spacing: 0;
-    line-height: 1.25;
+    line-height: 1.2;
+    text-wrap: balance;
     transition: color 600ms cubic-bezier(0.23,1,0.32,1);
   }
 
@@ -2633,7 +2684,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
     opacity: 0;
     transform: translate(-50%, -50%);
     transition:
@@ -2648,7 +2699,7 @@
     display: block;
     width: 1rem;
     height: 1rem;
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     transition:
       left 800ms cubic-bezier(0.34,1.56,0.64,1),
       right 800ms cubic-bezier(0.34,1.56,0.64,1),
@@ -2679,10 +2730,6 @@
     transform: rotate(45deg);
   }
 
-  .flow-arrow-left {
-    left: -25%;
-  }
-
   .flow-arrow-right {
     right: 1.25rem;
   }
@@ -2698,7 +2745,7 @@
 
   .training-flow-button:focus-visible {
     box-shadow:
-      0 0 0 0.28rem rgba(247, 214, 74, 0.18),
+      0 0 0 0.28rem rgb(var(--atlas-secondary-rgb) / 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.16),
       0 1rem 2.2rem rgba(0, 0, 0, 0.2);
   }
@@ -2722,12 +2769,6 @@
     opacity: 1;
   }
 
-  .training-flow-button:hover .flow-arrow-left,
-  .training-flow-button:focus-visible .flow-arrow-left {
-    left: 1.05rem;
-    color: #090909;
-  }
-
   .training-flow-button:hover .flow-arrow-right,
   .training-flow-button:focus-visible .flow-arrow-right {
     right: -25%;
@@ -2736,11 +2777,12 @@
 
   .header-flow-button {
     height: 3.35rem;
+    min-height: 0;
     min-width: 10.2rem;
     width: auto;
     padding: 0.78rem 3rem 0.78rem 1.55rem;
-    border-color: rgba(247, 214, 74, 0.74);
-    background: rgba(247, 214, 74, 0.12);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.74);
+    background: rgb(var(--atlas-secondary-rgb) / 0.12);
   }
 
   .header-flow-button .training-flow-copy {
@@ -2748,7 +2790,7 @@
   }
 
   .header-flow-button .training-flow-copy span {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.72rem;
     letter-spacing: 0.16em;
   }
@@ -2762,7 +2804,7 @@
   .equipment-section,
   .contact-section {
     background:
-      linear-gradient(90deg, rgba(245, 201, 40, 0.045), transparent 28%),
+      linear-gradient(90deg, rgb(var(--atlas-primary-rgb) / 0.1), transparent 32%),
       #070708;
   }
 
@@ -2781,7 +2823,7 @@
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(circle at 86% 18%, rgba(245, 201, 40, 0.08), transparent 30%),
+      radial-gradient(circle at 86% 18%, rgb(var(--atlas-primary-rgb) / 0.15), transparent 30%),
       linear-gradient(180deg, #070708 0%, #050506 100%);
   }
 
@@ -2825,8 +2867,8 @@
     margin-top: 1rem;
     overflow: hidden;
     border-radius: 1.35rem;
-    border: 1px solid rgba(245, 201, 40, 0.22);
-    background: rgba(245, 201, 40, 0.18);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.22);
+    background: rgb(var(--atlas-secondary-rgb) / 0.18);
   }
 
   .equipment-list article {
@@ -2836,7 +2878,7 @@
   }
 
   .equipment-list h3 {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.82rem;
     font-weight: 900;
     letter-spacing: 0.12em;
@@ -2858,7 +2900,7 @@
   }
 
   .pt-note strong {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: 0.82rem;
     font-weight: 900;
     letter-spacing: 0.12em;
@@ -2894,7 +2936,7 @@
     width: clamp(4.25rem, 6vw, 5.5rem);
     height: clamp(4.25rem, 6vw, 5.5rem);
     border-radius: 999px;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
   }
 
   .training-path-mark img {
@@ -2972,7 +3014,7 @@
   .training-path-note {
     margin-top: 1.1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(245, 201, 40, 0.2);
+    border-top: 1px solid rgb(var(--atlas-secondary-rgb) / 0.2);
     color: rgba(244, 244, 245, 0.72);
   }
 
@@ -2989,11 +3031,11 @@
     min-width: min(100%, 21rem);
     max-width: 28rem;
     margin-top: clamp(0.6rem, 1.6vw, 1rem);
-    border: 1px solid rgba(247, 214, 74, 0.42);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.42);
     background:
-      linear-gradient(135deg, rgba(247, 214, 74, 0.16), rgba(255, 255, 255, 0.045) 42%, rgba(0, 0, 0, 0.42)),
+      linear-gradient(135deg, rgb(var(--atlas-secondary-rgb) / 0.16), rgba(255, 255, 255, 0.045) 42%, rgba(0, 0, 0, 0.42)),
       #141414;
-    color: #fff8e6;
+    color: var(--atlas-text);
     padding: 0.9rem 1rem 0.9rem 1.1rem;
     text-decoration: none;
     clip-path: polygon(0 0, calc(100% - 1rem) 0, 100% 1rem, 100% 100%, 0 100%);
@@ -3009,7 +3051,7 @@
   }
 
   .training-path-cta strong {
-    color: #fff8e6;
+    color: var(--atlas-text);
     font-size: 0.78rem;
     font-weight: 900;
     letter-spacing: 0.14em;
@@ -3024,13 +3066,13 @@
   }
 
   .training-path-cta .gg-arrow-right {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     flex: 0 0 auto;
   }
 
   .training-path-cta:hover,
   .training-path-cta:focus-visible {
-    border-color: rgba(247, 214, 74, 0.78);
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.78);
     transform: translateY(-2px);
   }
 
@@ -3054,7 +3096,7 @@
     display: flex;
     align-items: center;
     gap: 0.95rem;
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     font-size: clamp(0.64rem, 0.8vw, 0.72rem);
     font-weight: 950;
     letter-spacing: 0.22em;
@@ -3066,7 +3108,7 @@
     display: block;
     width: min(18rem, 30vw);
     height: 1px;
-    background: linear-gradient(to right, rgba(247, 214, 74, 0.72), transparent);
+    background: linear-gradient(to right, rgb(var(--atlas-secondary-rgb) / 0.72), transparent);
   }
 
   .coach-transition-line {
@@ -3132,7 +3174,7 @@
     border-radius: 1.8rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background:
-      radial-gradient(circle at 10% 18%, rgba(245, 201, 40, 0.1), transparent 28%),
+      radial-gradient(circle at 10% 18%, rgb(var(--atlas-secondary-rgb) / 0.1), transparent 28%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
       rgba(9, 9, 10, 0.94);
     box-shadow:
@@ -3141,7 +3183,7 @@
   }
 
   .testimonial-editorial-number {
-    color: rgba(245, 201, 40, 0.2);
+    color: rgb(var(--atlas-secondary-rgb) / 0.2);
     font-size: clamp(4.75rem, 10vw, 8rem);
     font-weight: 300;
     line-height: 0.84;
@@ -3200,7 +3242,7 @@
     flex: none;
     overflow: hidden;
     border-radius: 999px;
-    border: 2px solid rgba(245, 201, 40, 0.22);
+    border: 2px solid rgb(var(--atlas-secondary-rgb) / 0.22);
     background: #111112;
   }
 
@@ -3267,12 +3309,12 @@
   .testimonial-line-selector button:hover::before,
   .testimonial-line-selector button:focus-visible::before {
     width: 2.2rem;
-    background: rgba(245, 201, 40, 0.48);
+    background: rgb(var(--atlas-secondary-rgb) / 0.48);
   }
 
   .testimonial-line-selector button.is-active::before {
     width: 3.2rem;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
   }
 
   .testimonial-counter {
@@ -3305,7 +3347,7 @@
 
   .testimonial-arrow-group button:hover,
   .testimonial-arrow-group button:focus-visible {
-    color: #f7d64a;
+    color: var(--atlas-secondary);
     background: rgba(255, 255, 255, 0.07);
     outline: none;
     transform: translateY(-1px);
@@ -3351,8 +3393,8 @@
     border-radius: 2rem;
     padding: clamp(1.05rem, 2.1vw, 1.8rem);
     background:
-      radial-gradient(circle at 12% 14%, rgba(245, 201, 40, 0.12), transparent 32%),
-      #101012;
+      radial-gradient(circle at 12% 14%, rgb(var(--atlas-primary-rgb) / 0.28), transparent 38%),
+      var(--atlas-surface-elevated);
     border: 1px solid rgba(255, 255, 255, 0.11);
   }
 
@@ -3364,13 +3406,11 @@
 
   .final-contact-panel .section-kicker {
     margin-bottom: 1rem;
-    border: 1px solid rgba(245, 201, 40, 0.36);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.36);
     border-radius: 0.85rem;
     padding: 0.55rem 0.8rem;
-    color: #f7d64a;
-    background:
-      linear-gradient(135deg, rgba(245, 201, 40, 0.08), rgba(255, 255, 255, 0.025)),
-      #101012;
+    color: var(--atlas-ink);
+    background: var(--atlas-secondary);
   }
 
   .final-contact-panel .section-heading {
@@ -3391,7 +3431,7 @@
     width: fit-content;
     max-width: 100%;
     color: #09090b;
-    background: #f7d64a;
+    background: var(--atlas-secondary);
     box-shadow: inset 0 -2px 0 rgba(9, 9, 11, 0.16);
   }
 
@@ -3432,6 +3472,47 @@
 
   .contact-card-grid dd {
     text-align: right;
+  }
+
+  .coaching-hours {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 0.85rem;
+  }
+
+  .coaching-hours-days {
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coaching-hours-row,
+  .coaching-hours-note {
+    display: grid;
+    grid-template-columns: minmax(8.5rem, 1fr) minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: baseline;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .coaching-hours-row strong,
+  .coaching-hours-note strong {
+    color: #ffffff;
+    font-weight: 900;
+  }
+
+  .coaching-hours-row span,
+  .coaching-hours-note span {
+    color: rgba(244, 244, 245, 0.66);
+    text-align: right;
+  }
+
+  .coaching-hours-note {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .contact-card-grid dt,
@@ -3495,13 +3576,15 @@
   .page-shell {
     width: min(100% - 4rem, 1180px);
   }
+}
 
+@media (min-width: 1200px) {
   .hero-rail {
     display: flex;
   }
 }
 
-@media (min-width: 1024px) and (max-height: 940px) {
+@media (min-width: 1200px) and (max-height: 940px) {
   :root {
     --atlas-header-height: 5.05rem;
     --hero-bottom-space: 0.85rem;
@@ -3522,7 +3605,7 @@
     align-items: center;
     padding-left: clamp(8.25rem, 9.4vw, 11rem);
     padding-right: clamp(1.5rem, 2vw, 2.8rem);
-    grid-template-columns: minmax(39rem, 0.84fr) minmax(46rem, 1.16fr);
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
   }
 
   .hero-headline {
@@ -3555,7 +3638,7 @@
 
 }
 
-@media (min-width: 1024px) and (max-height: 820px) {
+@media (min-width: 1200px) and (max-height: 820px) {
   :root {
     --atlas-header-height: 4.75rem;
     --hero-bottom-space: 0.5rem;
@@ -3567,7 +3650,7 @@
   }
 
   .hero-reference-shell {
-    grid-template-columns: minmax(33rem, 0.83fr) minmax(39rem, 1.17fr);
+    grid-template-columns: minmax(0, 0.83fr) minmax(0, 1.17fr);
     padding-left: clamp(7.4rem, 8vw, 9rem);
   }
 
@@ -3646,7 +3729,7 @@
   }
 }
 
-@media (min-width: 1024px) and (max-height: 700px) {
+@media (min-width: 1200px) and (max-height: 700px) {
   .hero-headline {
     max-width: 34rem;
     font-size: clamp(2.95rem, 4vw, 4.25rem);
@@ -3675,13 +3758,12 @@
 
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   :root {
     --atlas-header-height: 5.6rem;
     --hero-bottom-space: 3rem;
   }
 
-  .training-selector,
   .equipment-header,
   .equipment-hero,
   .training-path,
@@ -3704,7 +3786,11 @@
 
   .testimonial-editorial {
     width: min(100%, 42rem);
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .training-selector {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .testimonial-editorial-controls {
@@ -3730,21 +3816,24 @@
   }
 
   .hero-reference-stage {
-    min-height: auto;
+    height: auto;
+    min-height: 100svh;
     padding-top: var(--atlas-header-height);
     padding-bottom: var(--hero-bottom-space);
   }
 
   .hero-reference-shell {
     width: min(100% - 2.5rem, 58rem);
-    min-height: auto;
+    height: auto;
+    min-height: calc(100svh - var(--atlas-header-height) - var(--hero-bottom-space));
+    grid-template-columns: minmax(0, 1fr);
     padding-left: 0;
     padding-right: 0;
   }
 
   .hero-headline {
     max-width: 44rem;
-    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-size: clamp(3.5rem, 7vw, 5.4rem);
   }
 
   .hero-copy-panel {
@@ -3752,11 +3841,17 @@
   }
 
   .hero-equipment-stage {
+    width: 100%;
+    height: auto;
+    min-width: 0;
     min-height: auto;
     transform: none;
   }
 
   .hero-photo-bezel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin-left: 0;
     margin-top: 2rem;
   }
@@ -3808,8 +3903,8 @@
   .atlas-fit-stack-card.is-featured {
     color: #080809;
     background:
-      radial-gradient(circle at 86% 14%, rgba(245, 201, 40, 0.14), transparent 32%),
-      linear-gradient(135deg, #fffdf6, #f0eee8);
+      radial-gradient(circle at 86% 14%, rgb(var(--atlas-secondary-rgb) / 0.14), transparent 32%),
+      linear-gradient(135deg, var(--atlas-text), #f0eee8);
   }
 
   .atlas-fit-stack-card.is-featured .atlas-fit-card-head h3,
@@ -3840,7 +3935,7 @@
   }
 
   .lifting-method-card + .lifting-method-card {
-    border-top: 1px solid rgba(245, 201, 40, 0.22);
+    border-top: 1px solid rgb(var(--atlas-secondary-rgb) / 0.22);
     border-left: 0;
   }
 
@@ -3882,7 +3977,7 @@
   }
 
   .technique-proof-strip article + article {
-    border-top: 1px solid rgba(245, 201, 40, 0.18);
+    border-top: 1px solid rgb(var(--atlas-secondary-rgb) / 0.18);
     border-left: 0;
   }
 
@@ -3919,17 +4014,57 @@
   }
 
   .coach-technique-panel .technique-proof-strip article + article {
-    border-top: 1px solid rgba(245, 201, 40, 0.18);
+    border-top: 1px solid rgb(var(--atlas-secondary-rgb) / 0.18);
     border-left: 0;
   }
 
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1199px) {
   .atlas-fit-shell {
     width: min(100% - 3rem, 58rem);
     grid-template-columns: 1fr;
     margin-inline: auto;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .hero-reference-shell {
+    width: min(100% - 3rem, 72rem);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    align-items: center;
+    column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  }
+
+  .hero-copy-panel {
+    padding-top: 1rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(3.35rem, 5.2vw, 4.15rem);
+  }
+
+  .hero-equipment-stage {
+    align-self: center;
+  }
+
+  .hero-photo-bezel {
+    margin-top: 0;
+  }
+
+  .hero-photo-core,
+  .hero-card-image {
+    min-height: clamp(22rem, 40vw, 28rem);
+  }
+
+  .hero-standard-card {
+    width: min(25rem, 88%);
+  }
+}
+
+@media (max-width: 860px) {
+  .training-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -3944,6 +4079,7 @@
     letter-spacing: 0.18em;
   }
 
+  .training-selector,
   .equipment-list,
   .open-gym-proof-grid {
     grid-template-columns: 1fr;
@@ -3971,6 +4107,17 @@
     text-align: left;
   }
 
+  .coaching-hours-row,
+  .coaching-hours-note {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .coaching-hours-row span,
+  .coaching-hours-note span {
+    text-align: left;
+  }
+
   .final-contact-panel > a {
     width: 100%;
     justify-content: space-between;
@@ -3981,7 +4128,7 @@
   }
 
   .hero-headline {
-    font-size: clamp(3rem, 16vw, 4.6rem);
+    font-size: clamp(2.65rem, 13.5vw, 3.7rem);
     line-height: 0.96;
   }
 
@@ -4039,7 +4186,7 @@
   .hero-photo-bezel::before {
     background-image: none;
     border-radius: 1.6rem;
-    border: 1.5px solid rgba(245, 201, 40, 0.62);
+    border: 1.5px solid rgb(var(--atlas-secondary-rgb) / 0.62);
   }
 
   .hero-photo-bezel {
@@ -4069,7 +4216,7 @@
 
   .hero-standard-card::after {
     background-image: none;
-    border: 1.5px solid rgba(245, 201, 40, 0.62);
+    border: 1.5px solid rgb(var(--atlas-secondary-rgb) / 0.62);
     border-radius: 1.5rem;
   }
 
@@ -4431,6 +4578,12 @@
 
   to {
     transform: translateX(-25%);
+  }
+}
+
+@media (max-width: 360px) {
+  .header-flow-button {
+    display: none;
   }
 }
 
