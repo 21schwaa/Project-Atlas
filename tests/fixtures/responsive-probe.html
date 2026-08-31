@@ -157,6 +157,14 @@
             .filter((link) => !link.classList.contains("is-active") && !link.hasAttribute("aria-current"))
             .map((link) => view.getComputedStyle(link).color);
           const phoneLink = doc.querySelector('a[href="tel:+16232165662"]');
+          const googleReviewLink = doc.querySelector(".floating-google-review");
+          const googleReviewStars = Array.from(doc.querySelectorAll(".floating-google-review-star"));
+          const testimonialGatheringCard = doc.querySelector(".testimonial-gathering-card");
+          const testimonialRibbon = doc.querySelector(".testimonial-progress-ribbon");
+          const testimonialRibbonText = doc.querySelector(".testimonial-progress-ribbon-text");
+          const testimonialCardRect = testimonialGatheringCard?.getBoundingClientRect();
+          const testimonialRibbonRect = testimonialRibbon?.getBoundingClientRect();
+          const testimonialRibbonTextRect = testimonialRibbonText?.getBoundingClientRect();
           const assistantHourRows = Array.from(doc.querySelectorAll(".coaching-hours-row"))
             .filter((row) => row.textContent.includes("Assistant coach"));
           const philosophyParagraphs = Array.from(doc.querySelectorAll(".coach-info-card-accent > div:last-child > p:not(.coach-info-kicker)"));
@@ -228,6 +236,37 @@
             railPartBounds: railPartBounds.map((rect) => ({ top: rect.top, bottom: rect.bottom })),
             inactiveNavColorsConsistent: new Set(inactiveNavColors).size <= 1,
             phoneLinkCorrect: phoneLink?.textContent.trim() === "(623) 216-5662",
+            googleReviewLinkReady: googleReviewLink?.tagName === "A"
+              && googleReviewLink.href === "https://share.google/ATi5f1iM6d3ljoALV"
+              && view.getComputedStyle(googleReviewLink).pointerEvents !== "none",
+            googleReviewRatingReady: googleReviewStars.length === 5
+              && googleReviewStars.every((star) => star.textContent.trim() === "★")
+              && googleReviewLink?.textContent.includes("5.0")
+              && Boolean(googleReviewLink?.querySelector('[aria-label="Google rating: 5 out of 5"]')),
+            testimonialGatheringReady: isVisible(testimonialGatheringCard, view)
+              && testimonialGatheringCard.textContent.includes("Member testimonials are being gathered.")
+              && testimonialGatheringCard.textContent.includes("Verified lifter stories will appear here once they are ready.")
+              && view.getComputedStyle(testimonialGatheringCard).overflowX === "hidden"
+              && !testimonialGatheringCard.querySelector("button, img"),
+            testimonialRibbonCrossesCorner: (() => {
+              if (!isVisible(testimonialGatheringCard, view) || !isVisible(testimonialRibbon, view) || !isVisible(testimonialRibbonText, view)) return false;
+              const cardRect = testimonialGatheringCard.getBoundingClientRect();
+              const ribbonRect = testimonialRibbon.getBoundingClientRect();
+              const textRect = testimonialRibbonText.getBoundingClientRect();
+              return testimonialRibbonText.textContent.trim() === "TESTIMONIALS IN PROGRESS"
+                && ribbonRect.top <= cardRect.top + 2
+                && ribbonRect.bottom >= cardRect.top + 18
+                && ribbonRect.right >= cardRect.right - 2
+                && ribbonRect.left <= cardRect.right - 120
+                && textRect.left >= cardRect.left + 8
+                && textRect.right <= cardRect.right - 8
+                && textRect.top >= cardRect.top + 4;
+            })(),
+            testimonialRibbonGeometry: testimonialCardRect && testimonialRibbonRect && testimonialRibbonTextRect ? {
+              card: { left: testimonialCardRect.left, right: testimonialCardRect.right, top: testimonialCardRect.top, bottom: testimonialCardRect.bottom },
+              ribbon: { left: testimonialRibbonRect.left, right: testimonialRibbonRect.right, top: testimonialRibbonRect.top, bottom: testimonialRibbonRect.bottom },
+              text: { left: testimonialRibbonTextRect.left, right: testimonialRibbonTextRect.right, top: testimonialRibbonTextRect.top, bottom: testimonialRibbonTextRect.bottom }
+            } : null,
             assistantHoursHidden: assistantHourRows.every((row) => !isVisible(row, view)),
             accentGreenIsLighterThanFieldGreen: relativeLuminance(accentGreen) > relativeLuminance(fieldGreen),
             accentGreenMatchesActiveNavigation: !isVisible(desktopNav, view) || activeNavColor === accentGreen,

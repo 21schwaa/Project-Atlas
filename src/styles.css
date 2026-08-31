@@ -2223,7 +2223,18 @@
     box-shadow:
       inset 0 1px 1px rgba(255, 255, 255, 0.08),
       0 18px 48px rgba(0, 0, 0, 0.28);
-    pointer-events: none;
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+  }
+
+  .floating-google-review:hover {
+    border-color: rgb(var(--atlas-secondary-rgb) / 0.52);
+    transform: translateY(-2px);
+  }
+
+  .floating-google-review:focus-visible {
+    outline: 2px solid var(--atlas-secondary-bright);
+    outline-offset: 3px;
   }
 
   .floating-google-review-mark {
@@ -2246,7 +2257,7 @@
   }
 
   .floating-google-review strong,
-  .floating-google-review span span {
+  .floating-google-review-link-copy {
     display: block;
   }
 
@@ -2259,10 +2270,36 @@
     text-transform: uppercase;
   }
 
-  .floating-google-review span span {
-    margin-top: 0.28rem;
-    color: rgba(244, 242, 237, 0.82);
+  .floating-google-review-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+    margin-top: 0.3rem;
+    line-height: 1;
+  }
+
+  .floating-google-review-value {
+    color: #f4efe6;
     font-size: 0.82rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .floating-google-review-stars {
+    display: inline-flex;
+    gap: 0.08rem;
+  }
+
+  .floating-google-review-star {
+    color: #f5c518;
+    font-size: 0.72rem;
+    line-height: 1;
+  }
+
+  .floating-google-review-link-copy {
+    margin-top: 0.24rem;
+    color: rgba(244, 242, 237, 0.82);
+    font-size: 0.7rem;
     font-weight: 800;
     line-height: 1.2;
   }
@@ -3241,6 +3278,95 @@
       0 26px 80px rgba(0, 0, 0, 0.34);
   }
 
+  .testimonial-gathering-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min(100%, 58rem);
+    min-height: clamp(21rem, 38vw, 29rem);
+    margin-inline: auto;
+    overflow: hidden;
+    padding: clamp(2rem, 6vw, 5rem);
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.32);
+    border-radius: 1.8rem;
+    background:
+      radial-gradient(circle at 15% 22%, rgba(255, 255, 255, 0.11), transparent 32%),
+      var(--atlas-primary);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.16),
+      0 26px 80px rgba(0, 0, 0, 0.34);
+  }
+
+  .testimonial-progress-ribbon {
+    position: absolute;
+    top: clamp(1.25rem, 2.5vw, 2rem);
+    right: clamp(-3.5rem, -4vw, -2.5rem);
+    z-index: 2;
+    display: block;
+    width: min(32rem, calc(100% - 3rem));
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+    transform: rotate(8deg);
+    border-block: 2px solid rgba(20, 18, 10, 0.9);
+    background:
+      repeating-linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.12) 0 0.45rem,
+        transparent 0.45rem 0.9rem
+      ),
+      #f5c518;
+    box-shadow:
+      0 0 0 1px rgba(255, 224, 78, 0.72),
+      0 0.7rem 1.6rem rgba(0, 0, 0, 0.28);
+    color: #17140a;
+    font-size: clamp(0.65rem, 1vw, 0.82rem);
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .testimonial-progress-ribbon-text {
+    display: block;
+    width: max-content;
+    max-width: calc(100% - 6rem);
+    margin-inline: auto;
+    transform: translateX(clamp(-3.25rem, -3vw, -1.5rem));
+  }
+
+  .testimonial-gathering-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 38rem;
+    padding-top: 2.25rem;
+  }
+
+  .testimonial-gathering-copy .section-kicker {
+    color: #172019;
+  }
+
+  .testimonial-gathering-copy h2 {
+    max-width: 34rem;
+    margin-top: 1rem;
+    color: #090b09;
+    font-size: clamp(2.35rem, 5.4vw, 5rem);
+    font-weight: 950;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
+  .testimonial-gathering-copy > p:last-of-type {
+    max-width: 33rem;
+    margin-top: 1.4rem;
+    color: rgba(9, 11, 9, 0.74);
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
   .testimonial-editorial-number {
     color: rgb(var(--atlas-secondary-rgb) / 0.2);
     font-size: clamp(4.75rem, 10vw, 8rem);
@@ -3771,7 +3897,7 @@
     font-size: 0.56rem;
   }
 
-  .floating-google-review span span {
+  .floating-google-review-link-copy {
     font-size: 0.74rem;
   }
 
@@ -4230,7 +4356,7 @@
     font-size: 0.54rem;
   }
 
-  .floating-google-review span span {
+  .floating-google-review-link-copy {
     font-size: 0.72rem;
   }
 

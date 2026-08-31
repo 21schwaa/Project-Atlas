@@ -108,6 +108,10 @@ try {
         assert.equal(result.railContentFits, true, `Desktop rail content overlaps or exceeds the viewport at ${viewport.width}x${viewport.height}: ${JSON.stringify(result.railPartBounds)}`);
         assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
         assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
+        assert.equal(result.googleReviewLinkReady, true, `Google Reviews card is not an interactive link to the verified profile at ${viewport.width}px.`);
+        assert.equal(result.googleReviewRatingReady, true, `Google Reviews rating is missing or incomplete at ${viewport.width}px.`);
+        assert.equal(result.testimonialGatheringReady, true, `Lifters testimonial gathering state is missing or overflowing at ${viewport.width}px.`);
+        assert.equal(result.testimonialRibbonCrossesCorner, true, `Testimonials ribbon does not cross the top-right corner cleanly at ${viewport.width}px: ${JSON.stringify(result.testimonialRibbonGeometry)}`);
         assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
         assert.equal(result.accentGreenIsLighterThanFieldGreen, true, `Atlas accent green is not lighter than its large green fields at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
         assert.equal(result.accentGreenMatchesActiveNavigation, true, `Active navigation does not use the Atlas accent green at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
@@ -138,6 +142,10 @@ try {
       assert.equal(result.imagePlaceholdersAreGreen, true, `Construction placeholders are not using Atlas green at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderColors)}`);
       assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
       assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
+      assert.equal(result.googleReviewLinkReady, true, `Google Reviews card is not an interactive link to the verified profile at ${viewport.width}px.`);
+      assert.equal(result.googleReviewRatingReady, true, `Google Reviews rating is missing or incomplete at ${viewport.width}px.`);
+      assert.equal(result.testimonialGatheringReady, true, `Lifters testimonial gathering state is missing or overflowing at ${viewport.width}px.`);
+      assert.equal(result.testimonialRibbonCrossesCorner, true, `Testimonials ribbon does not cross the top-right corner cleanly at ${viewport.width}px: ${JSON.stringify(result.testimonialRibbonGeometry)}`);
       assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
       assert.equal(result.accentGreenIsLighterThanFieldGreen, true, `Atlas accent green is not lighter than its large green fields at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
       assert.equal(result.accentGreenMatchesActiveNavigation, true, `Active navigation does not use the Atlas accent green at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
