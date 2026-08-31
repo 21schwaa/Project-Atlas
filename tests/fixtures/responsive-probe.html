@@ -98,6 +98,9 @@
           const heroCopy = doc.querySelector(".hero-copy-panel");
           const heroMedia = doc.querySelector(".hero-photo-bezel");
           const trainingSelector = doc.querySelector(".training-selector");
+          const imagePlaceholders = Array.from(doc.querySelectorAll("[data-image-placeholder]"));
+          const desktopRail = doc.querySelector(".hero-rail");
+          const postHeroShells = Array.from(doc.querySelectorAll("main > .anchor-section:not(#home) > .page-shell"));
           const gridSelectors = [
             ".training-selector",
             ".equipment-hero",
@@ -148,6 +151,30 @@
             heroEquipmentLeft: heroEquipmentRect.left,
             heroEquipmentRight: heroEquipmentRect.right,
             trainingItemsPerRow: maxItemsPerRow(trainingSelector),
+            imagePlaceholderCount: imagePlaceholders.length,
+            imagePlaceholdersReady: imagePlaceholders.every((element) => {
+              const tape = view.getComputedStyle(element, "::after");
+              return tape.content === '"UNDER CONSTRUCTION"' && tape.display !== "none";
+            }),
+            imagePlaceholderTapeValues: imagePlaceholders.map((element) => {
+              const tape = view.getComputedStyle(element, "::after");
+              return { content: tape.content, display: tape.display };
+            }),
+            imagePlaceholdersAreGreen: imagePlaceholders.every((element) =>
+              view.getComputedStyle(element).backgroundColor === "rgb(89, 107, 94)"
+            ),
+            imagePlaceholderColors: imagePlaceholders.map((element) =>
+              view.getComputedStyle(element).backgroundColor
+            ),
+            imagePlaceholderMediaRemoved: imagePlaceholders.every((element) => {
+              const nodes = [element, ...element.querySelectorAll("*")];
+              return !element.querySelector("img") && nodes.every((node) =>
+                !view.getComputedStyle(node).backgroundImage.includes("url(")
+              );
+            }),
+            postHeroShellsClearRail: !isVisible(desktopRail, view) || postHeroShells.every((element) =>
+              element.getBoundingClientRect().left >= desktopRail.getBoundingClientRect().right - 1
+            ),
             overflowingGrids
           };
 

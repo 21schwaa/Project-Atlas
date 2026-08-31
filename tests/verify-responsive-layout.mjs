@@ -116,6 +116,11 @@ try {
         assert.equal(result.heroMediaStartsInViewport, true, `Hero media starts below the laptop viewport at ${viewport.width}px (top ${result.heroMediaTop}px, viewport height ${viewport.height}px).`);
       }
       assert.equal(result.trainingItemsPerRow, viewport.expectedColumns, `Training selector has the wrong column count at ${viewport.width}px.`);
+      assert.equal(result.imagePlaceholderCount, 6, `Expected six construction-marked photo areas at ${viewport.width}px.`);
+      assert.equal(result.imagePlaceholdersReady, true, `Construction tape is missing or hidden at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderTapeValues)}`);
+      assert.equal(result.postHeroShellsClearRail, true, `Post-hero content overlaps the desktop rail at ${viewport.width}px.`);
+      assert.equal(result.imagePlaceholderMediaRemoved, true, `Photographic media remains inside a construction placeholder at ${viewport.width}px.`);
+      assert.equal(result.imagePlaceholdersAreGreen, true, `Construction placeholders are not using Atlas green at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderColors)}`);
       assert.deepEqual(result.overflowingGrids, [], `Major grids overflow at ${viewport.width}px: ${result.overflowingGrids.join(", ")}`);
 
       if (screenshotDir) {

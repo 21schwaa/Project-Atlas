@@ -22,6 +22,7 @@
   :root {
     --atlas-header-height: clamp(5.6rem, 5.8vw, 7.25rem);
     --hero-bottom-space: clamp(1rem, 2vh, 2rem);
+    --atlas-rail-width: clamp(5.6rem, 5.4vw, 6.4rem);
     --atlas-ink: #050606;
     --atlas-surface: #0b0e0c;
     --atlas-surface-elevated: #101512;
@@ -114,6 +115,43 @@
     padding-block: clamp(3.5rem, 6vw, 7rem);
   }
 
+  [data-image-placeholder] {
+    position: relative;
+  }
+
+  [data-image-placeholder]::after {
+    content: "UNDER CONSTRUCTION";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    display: block;
+    width: max(138%, 19rem);
+    box-sizing: border-box;
+    padding: clamp(0.72rem, 1.4vw, 1rem) 1.5rem;
+    transform: translate(-50%, -50%) rotate(-9deg);
+    border-block: 2px solid rgba(20, 18, 10, 0.9);
+    background:
+      repeating-linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.12) 0 0.45rem,
+        transparent 0.45rem 0.9rem
+      ),
+      #f5c518;
+    box-shadow:
+      0 0 0 1px rgba(255, 224, 78, 0.72),
+      0 0.7rem 1.6rem rgba(0, 0, 0, 0.38);
+    color: #17140a;
+    font-size: clamp(0.68rem, 1.25vw, 0.95rem);
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-indent: 0.2em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
   .responsive-media-shell {
     min-height: clamp(20rem, 48vw, 34rem);
   }
@@ -191,7 +229,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: clamp(5.6rem, 5.4vw, 6.4rem);
+    width: var(--atlas-rail-width);
     display: none;
     align-items: center;
     border-right: 1px solid rgba(255, 255, 255, 0.12);
@@ -2834,16 +2872,16 @@
     margin-top: clamp(2rem, 4vw, 4rem);
   }
 
-  .equipment-hero figure,
-  .equipment-side-strip img,
+  .equipment-hero > figure,
+  .equipment-side-strip figure,
   .training-path-photo {
     overflow: hidden;
     border-radius: 1.6rem;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    background: #101011;
+    background: var(--atlas-primary);
   }
 
-  .equipment-hero figure {
+  .equipment-hero > figure {
     min-height: clamp(28rem, 48vw, 42rem);
   }
 
@@ -2857,6 +2895,7 @@
 
   .equipment-side-strip {
     display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
@@ -3564,6 +3603,10 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+
+  [data-image-placeholder] {
+    background: var(--atlas-primary);
+  }
 }
 
 @media (min-width: 640px) {
@@ -3581,6 +3624,11 @@
 @media (min-width: 1200px) {
   .hero-rail {
     display: flex;
+  }
+
+  main > .anchor-section:not(#home),
+  .site-footer {
+    padding-left: var(--atlas-rail-width);
   }
 }
 

@@ -42,7 +42,6 @@ if (existsSync(indexPath)) {
     "./dist/styles.css",
     "./src/main.js",
     "./mainlandingpageimage.webp",
-    "./hero-card-generated-v1.png",
     "./platformlogo.svg",
     "./coachicon.svg",
     "./planicon.svg",
