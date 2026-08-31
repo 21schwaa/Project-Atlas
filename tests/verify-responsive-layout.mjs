@@ -68,6 +68,7 @@ const address = server.address();
 const requestedViewportWidth = Number.parseInt(process.env.ATLAS_VIEWPORT_WIDTH, 10);
 const viewports = [
   { width: 1280, height: 800, expectedColumns: 6, desktopNav: true, heroRail: true, headerCta: true, expectHeroMediaAboveFold: true },
+  { width: 1280, height: 600, expectedColumns: 6, desktopNav: true, heroRail: true, headerCta: true, railOnly: true },
   { width: 1024, height: 768, expectedColumns: 3, desktopNav: false, heroRail: false, headerCta: true, expectHeroMediaAboveFold: true },
   { width: 768, height: 1024, expectedColumns: 2, desktopNav: false, heroRail: false, headerCta: true },
   { width: 390, height: 844, expectedColumns: 1, desktopNav: false, heroRail: false, headerCta: true },
@@ -101,6 +102,16 @@ try {
       assert.ok(encodedResult && encodedResult !== "pending", `Responsive probe did not finish at ${viewport.width}px.`);
       const result = JSON.parse(decodeURIComponent(encodedResult));
 
+      if (viewport.railOnly) {
+        assert.equal(result.documentFits, true, `Document overflows horizontally at ${viewport.width}px.`);
+        assert.equal(result.heroRailVisible, true, `Desktop rail is hidden at ${viewport.width}x${viewport.height}.`);
+        assert.equal(result.railContentFits, true, `Desktop rail content overlaps or exceeds the viewport at ${viewport.width}x${viewport.height}: ${JSON.stringify(result.railPartBounds)}`);
+        assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
+        assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
+        assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
+        return;
+      }
+
       assert.equal(result.documentFits, true, `Document overflows horizontally at ${viewport.width}px.`);
       assert.equal(result.brandSingleLine, true, `Header brand wraps at ${viewport.width}px.`);
       assert.equal(result.desktopNavVisible, viewport.desktopNav, `Desktop navigation mode is wrong at requested ${viewport.width}px (measured ${result.viewportWidth}px).`);
@@ -119,8 +130,12 @@ try {
       assert.equal(result.imagePlaceholderCount, 6, `Expected six construction-marked photo areas at ${viewport.width}px.`);
       assert.equal(result.imagePlaceholdersReady, true, `Construction tape is missing or hidden at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderTapeValues)}`);
       assert.equal(result.postHeroShellsClearRail, true, `Post-hero content overlaps the desktop rail at ${viewport.width}px.`);
+      assert.equal(result.railContentFits, true, `Desktop rail content overlaps or exceeds the viewport at ${viewport.width}x${viewport.height}: ${JSON.stringify(result.railPartBounds)}`);
       assert.equal(result.imagePlaceholderMediaRemoved, true, `Photographic media remains inside a construction placeholder at ${viewport.width}px.`);
       assert.equal(result.imagePlaceholdersAreGreen, true, `Construction placeholders are not using Atlas green at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderColors)}`);
+      assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
+      assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
+      assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
       assert.deepEqual(result.overflowingGrids, [], `Major grids overflow at ${viewport.width}px: ${result.overflowingGrids.join(", ")}`);
 
       if (screenshotDir) {

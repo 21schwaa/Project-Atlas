@@ -246,22 +246,22 @@
     position: absolute;
     left: 50%;
     width: 2px;
-    height: 6.75rem;
+    height: clamp(3rem, 10vh, 6.75rem);
     transform: translateX(-50%);
     background: linear-gradient(to bottom, transparent, rgb(var(--atlas-secondary-rgb) / 0.82), transparent);
   }
 
   .hero-rail::before {
-    top: 8.8rem;
+    top: calc(var(--atlas-header-height) + 0.5rem);
   }
 
   .hero-rail::after {
-    bottom: 7.25rem;
+    bottom: clamp(4.5rem, 10vh, 7.25rem);
   }
 
   .hero-rail-icon {
     position: absolute;
-    top: 10.8rem;
+    top: calc(var(--atlas-header-height) + clamp(1.25rem, 3vh, 2.25rem));
     left: 50%;
     width: 1.45rem;
     height: 1.45rem;
@@ -295,12 +295,15 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 22rem;
-    transform: translate(-50%, -50%) rotate(-90deg);
+    max-height: calc(100svh - var(--atlas-header-height) - 10rem);
+    writing-mode: vertical-rl;
+    transform: translate(-50%, -50%) rotate(180deg);
     text-align: center;
     color: rgba(255, 255, 255, 0.82);
-    font-size: 0.82rem;
-    letter-spacing: 0.34em;
+    font-size: clamp(0.68rem, 1.5vh, 0.82rem);
+    letter-spacing: clamp(0.16em, 0.45vh, 0.34em);
+    line-height: 1;
+    white-space: nowrap;
     text-transform: uppercase;
   }
 
@@ -3564,6 +3567,17 @@
     display: inline-block;
     margin-top: 0.7rem;
     overflow-wrap: anywhere;
+  }
+
+  .contact-links {
+    display: grid;
+    justify-items: start;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+
+  .contact-card-grid .contact-links a {
+    margin-top: 0;
   }
 
   .contact-map-card {

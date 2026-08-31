@@ -100,6 +100,7 @@
           const trainingSelector = doc.querySelector(".training-selector");
           const imagePlaceholders = Array.from(doc.querySelectorAll("[data-image-placeholder]"));
           const desktopRail = doc.querySelector(".hero-rail");
+          const desktopNavLinks = Array.from(doc.querySelectorAll(".atlas-topline > div:first-of-type > [data-nav-link]"));
           const postHeroShells = Array.from(doc.querySelectorAll("main > .anchor-section:not(#home) > .page-shell"));
           const gridSelectors = [
             ".training-selector",
@@ -129,6 +130,25 @@
             const rect = child.getBoundingClientRect();
             return rect.top >= heroStageRect.top - 1 && rect.bottom <= heroStageRect.bottom + 1;
           });
+          const railParts = [
+            doc.querySelector(".hero-rail-icon"),
+            doc.querySelector(".hero-rail-copy"),
+            doc.querySelector(".hero-rail-location")
+          ].filter((element) => isVisible(element, view));
+          const railBounds = desktopRail.getBoundingClientRect();
+          const railPartBounds = railParts
+            .map((element) => element.getBoundingClientRect())
+            .sort((first, second) => first.top - second.top);
+          const railContentFits = !isVisible(desktopRail, view) || (
+            railPartBounds.every((rect) => rect.top >= railBounds.top && rect.bottom <= railBounds.bottom)
+            && railPartBounds.every((rect, index) => index === 0 || rect.top >= railPartBounds[index - 1].bottom)
+          );
+          const inactiveNavColors = desktopNavLinks
+            .filter((link) => !link.classList.contains("is-active") && !link.hasAttribute("aria-current"))
+            .map((link) => view.getComputedStyle(link).color);
+          const phoneLink = doc.querySelector('a[href="tel:+16232165662"]');
+          const assistantHourRows = Array.from(doc.querySelectorAll(".coaching-hours-row"))
+            .filter((row) => row.textContent.includes("Assistant coach"));
           const result = {
             viewportWidth: view.innerWidth,
             documentFits: doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1,
@@ -175,6 +195,11 @@
             postHeroShellsClearRail: !isVisible(desktopRail, view) || postHeroShells.every((element) =>
               element.getBoundingClientRect().left >= desktopRail.getBoundingClientRect().right - 1
             ),
+            railContentFits,
+            railPartBounds: railPartBounds.map((rect) => ({ top: rect.top, bottom: rect.bottom })),
+            inactiveNavColorsConsistent: new Set(inactiveNavColors).size <= 1,
+            phoneLinkCorrect: phoneLink?.textContent.trim() === "(623) 216-5662",
+            assistantHoursHidden: assistantHourRows.every((row) => !isVisible(row, view)),
             overflowingGrids
           };
 
