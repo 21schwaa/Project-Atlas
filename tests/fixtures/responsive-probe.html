@@ -149,6 +149,15 @@
           const phoneLink = doc.querySelector('a[href="tel:+16232165662"]');
           const assistantHourRows = Array.from(doc.querySelectorAll(".coaching-hours-row"))
             .filter((row) => row.textContent.includes("Assistant coach"));
+          const philosophyParagraphs = Array.from(doc.querySelectorAll(".coach-info-card-accent > div:last-child > p:not(.coach-info-kicker)"));
+          const philosophyParagraphStyles = philosophyParagraphs.map((paragraph) => {
+            const styles = view.getComputedStyle(paragraph);
+            return {
+              color: styles.color,
+              fontSize: styles.fontSize,
+              lineHeight: styles.lineHeight
+            };
+          });
           const result = {
             viewportWidth: view.innerWidth,
             documentFits: doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1,
@@ -200,6 +209,13 @@
             inactiveNavColorsConsistent: new Set(inactiveNavColors).size <= 1,
             phoneLinkCorrect: phoneLink?.textContent.trim() === "(623) 216-5662",
             assistantHoursHidden: assistantHourRows.every((row) => !isVisible(row, view)),
+            philosophyBodyTypographyConsistent: philosophyParagraphStyles.length === 2
+              && philosophyParagraphStyles.every((styles) =>
+                styles.color === philosophyParagraphStyles[0].color
+                && styles.fontSize === philosophyParagraphStyles[0].fontSize
+                && styles.lineHeight === philosophyParagraphStyles[0].lineHeight
+              ),
+            philosophyParagraphStyles,
             overflowingGrids
           };
 
