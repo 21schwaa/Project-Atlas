@@ -103,6 +103,7 @@ try {
       const result = JSON.parse(decodeURIComponent(encodedResult));
 
       if (viewport.railOnly) {
+        assert.deepEqual(result.ariaTreeViolations, [], `ARIA accessibility-tree checks failed at ${viewport.width}px: ${JSON.stringify(result.ariaTreeViolations)}`);
         assert.equal(result.documentFits, true, `Document overflows horizontally at ${viewport.width}px.`);
         assert.equal(result.heroRailVisible, true, `Desktop rail is hidden at ${viewport.width}x${viewport.height}.`);
         assert.equal(result.railContentFits, true, `Desktop rail content overlaps or exceeds the viewport at ${viewport.width}x${viewport.height}: ${JSON.stringify(result.railPartBounds)}`);
@@ -119,6 +120,7 @@ try {
         return;
       }
 
+      assert.deepEqual(result.ariaTreeViolations, [], `ARIA accessibility-tree checks failed at ${viewport.width}px: ${JSON.stringify(result.ariaTreeViolations)}`);
       assert.equal(result.documentFits, true, `Document overflows horizontally at ${viewport.width}px.`);
       assert.equal(result.brandSingleLine, true, `Header brand wraps at ${viewport.width}px.`);
       assert.equal(result.desktopNavVisible, viewport.desktopNav, `Desktop navigation mode is wrong at requested ${viewport.width}px (measured ${result.viewportWidth}px).`);

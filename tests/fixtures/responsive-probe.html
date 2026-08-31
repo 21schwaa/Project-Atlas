@@ -95,7 +95,7 @@
             }
           }, 650);
         }
-        window.setTimeout(() => {
+        window.setTimeout(async () => {
           const doc = frame.contentDocument;
           const view = frame.contentWindow;
           const desktopNavLink = doc.querySelector(".atlas-topline [data-nav-link]");
@@ -280,6 +280,24 @@
             philosophyParagraphStyles,
             overflowingGrids
           };
+
+          const axeScript = doc.createElement("script");
+          axeScript.src = "/node_modules/axe-core/axe.min.js";
+          await new Promise((resolve, reject) => {
+            axeScript.addEventListener("load", resolve, { once: true });
+            axeScript.addEventListener("error", reject, { once: true });
+            doc.head.append(axeScript);
+          });
+          const ariaAudit = await view.axe.run(doc, {
+            runOnly: {
+              type: "rule",
+              values: ["aria-allowed-attr", "aria-prohibited-attr", "aria-valid-attr", "aria-valid-attr-value", "aria-roles"]
+            }
+          });
+          result.ariaTreeViolations = ariaAudit.violations.map((violation) => ({
+            id: violation.id,
+            targets: violation.nodes.flatMap((node) => node.target)
+          }));
 
           output.dataset.json = encodeURIComponent(JSON.stringify(result));
         }, 900);

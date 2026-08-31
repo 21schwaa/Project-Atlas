@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    />
+    <meta
       name="description"
       content="Atlas Barbell Club is a family-owned Glendale strength gym serving the Phoenix area with Olympic weightlifting, strength and conditioning, team programming, coaching, and open gym training."
     />
@@ -32,6 +36,15 @@
     <meta name="twitter:image:alt" content="Atlas Barbell Club Olympic weightlifting gym" />
     <link rel="icon" href="./atlasbarbellnowords.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./dist/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Atlas Barbell Club",
+        "alternateName": "Atlas Barbell",
+        "url": "https://atlasbarbellclub.com/"
+      }
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -81,6 +94,8 @@
             <img
               src="./atlasbarbellnowords.svg"
               alt="Atlas Barbell Club logo"
+              width="119"
+              height="222"
               class="h-11 w-auto invert"
             />
           </span>
@@ -188,7 +203,7 @@
       aria-label="View Atlas Barbell Club reviews on Google"
     >
       <span class="floating-google-review-mark" aria-hidden="true">
-        <img src="./goolgelogo.svg" alt="" />
+        <img src="./goolgelogo.svg" alt="" width="74" height="75" />
       </span>
       <span class="floating-google-review-content">
         <strong>Google Reviews</strong>
@@ -282,7 +297,7 @@
             </div>
             <div class="hero-standard-card">
               <div class="hero-standard-icon" aria-hidden="true">
-                <img src="./platformlogo.svg" alt="" class="hero-standard-logo" />
+                <img src="./platformlogo.svg" alt="" width="133" height="132" class="hero-standard-logo" />
               </div>
               <div>
                 <p class="hero-standard-label text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#c9ae6b]">
@@ -361,7 +376,7 @@
           <div class="equipment-hero" data-reveal>
             <figure data-image-placeholder>
             </figure>
-            <div class="equipment-side-strip" aria-label="Atlas floor details">
+            <div class="equipment-side-strip">
               <figure data-image-placeholder>
               </figure>
               <figure data-image-placeholder>
@@ -403,7 +418,7 @@
 
           <div class="training-path-stack">
           <section id="team" class="anchor-section training-path training-path-team" aria-labelledby="team-heading">
-            <div class="training-path-mark" aria-hidden="true"><img src="./teamicon.svg" alt="" /></div>
+            <div class="training-path-mark" aria-hidden="true"><img src="./teamicon.svg" alt="" width="303" height="227" /></div>
             <div class="training-path-body" data-reveal>
               <p class="mini-label">Team Programming</p>
               <h3 id="team-heading">Follow the plan. Train with the room.</h3>
@@ -434,7 +449,7 @@
             </div>
             <div class="training-path-details">
               <article data-reveal data-reveal-delay="80">
-                <img src="./dumbellicon.svg" alt="" />
+                <img src="./dumbellicon.svg" alt="" width="122" height="60" />
                 <h4>For competitive lifters</h4>
                 <p>
                   Programming can account for meet timelines, heavier training
@@ -443,7 +458,7 @@
                 </p>
               </article>
               <article data-reveal data-reveal-delay="150">
-                <img src="./charticon.svg" alt="" />
+                <img src="./charticon.svg" alt="" width="106" height="116" />
                 <h4>For developing lifters</h4>
                 <p>
                   A repeatable weekly structure gives newer lifters more
@@ -455,7 +470,7 @@
           </section>
 
           <section id="coaching" class="anchor-section training-path training-path-coaching" aria-labelledby="coaching-heading">
-            <div class="training-path-mark" aria-hidden="true"><img src="./coachicon.svg" alt="" /></div>
+            <div class="training-path-mark" aria-hidden="true"><img src="./coachicon.svg" alt="" width="215" height="210" /></div>
             <div class="training-path-body" data-reveal>
               <p class="mini-label">Coaching</p>
               <h3 id="coaching-heading">Coaching when you want a closer look at the lift.</h3>
@@ -504,7 +519,7 @@
           </section>
 
           <section id="individual-coaching" class="anchor-section training-path training-path-individual-coaching" aria-labelledby="individual-coaching-heading">
-            <div class="training-path-mark" aria-hidden="true"><img src="./planicon.svg" alt="" /></div>
+            <div class="training-path-mark" aria-hidden="true"><img src="./planicon.svg" alt="" width="122" height="186" /></div>
             <div class="training-path-body" data-reveal>
               <p class="mini-label">Individual Coaching + Programming</p>
               <h3 id="individual-coaching-heading">A limited number of spots. A plan built around you.</h3>
@@ -548,7 +563,7 @@
           </section>
 
           <section id="strength-conditioning" class="anchor-section training-path training-path-strength" aria-labelledby="strength-conditioning-heading">
-            <div class="training-path-mark" aria-hidden="true"><img src="./dumbellicon.svg" alt="" /></div>
+            <div class="training-path-mark" aria-hidden="true"><img src="./dumbellicon.svg" alt="" width="122" height="60" /></div>
             <div class="training-path-body" data-reveal>
               <p class="mini-label">Strength &amp; Conditioning</p>
               <h3 id="strength-conditioning-heading">No Oly? No Problem.</h3>
@@ -595,7 +610,7 @@
           </section>
 
           <section id="open-gym" class="anchor-section training-path training-path-open-gym open-gym-section" aria-labelledby="open-gym-heading">
-              <div class="training-path-mark" aria-hidden="true"><img src="./opengym.svg" alt="" /></div>
+              <div class="training-path-mark" aria-hidden="true"><img src="./opengym.svg" alt="" width="193" height="194" /></div>
               <div class="training-path-body" data-reveal>
                 <p class="mini-label">Open Gym</p>
                 <h3 id="open-gym-heading">
@@ -620,25 +635,25 @@
                 <div class="open-gym-proof-grid" aria-label="Open gym options">
                   <div class="open-gym-proof-card">
                     <span class="open-gym-proof-icon open-gym-proof-icon-coach" aria-hidden="true">
-                      <img src="./coachicon.svg" alt="" />
+                      <img src="./coachicon.svg" alt="" width="215" height="210" />
                     </span>
                     <span>Your Coach</span>
                   </div>
                   <div class="open-gym-proof-card">
                     <span class="open-gym-proof-icon open-gym-proof-icon-plan" aria-hidden="true">
-                      <img src="./planicon.svg" alt="" />
+                      <img src="./planicon.svg" alt="" width="122" height="186" />
                     </span>
                     <span>Your Plan</span>
                   </div>
                   <div class="open-gym-proof-card">
                     <span class="open-gym-proof-icon open-gym-proof-icon-pace" aria-hidden="true">
-                      <img src="./opengym.svg" alt="" />
+                      <img src="./opengym.svg" alt="" width="193" height="194" />
                     </span>
                     <span>Your Pace</span>
                   </div>
                   <div class="open-gym-proof-card">
                     <span class="open-gym-proof-icon open-gym-proof-icon-access" aria-hidden="true">
-                      <img src="./stopwatchicon.svg" alt="" />
+                      <img src="./stopwatchicon.svg" alt="" width="162" height="198" />
                     </span>
                     <span>24/7 Monitored Access</span>
                   </div>
@@ -703,7 +718,7 @@
             <div class="coach-profile-stack">
               <article class="coach-info-card" data-reveal data-reveal-delay="130">
                 <div class="coach-info-icon" aria-hidden="true">
-                  <img src="./coachicon.svg" alt="" />
+                  <img src="./coachicon.svg" alt="" width="215" height="210" />
                 </div>
                 <div>
                   <p class="coach-info-kicker">Qualifications</p>
@@ -719,7 +734,7 @@
 
               <article class="coach-info-card coach-info-card-accent" data-reveal data-reveal-delay="190">
                 <div class="coach-info-icon" aria-hidden="true">
-                  <img src="./dumbellicon.svg" alt="" />
+                  <img src="./dumbellicon.svg" alt="" width="122" height="60" />
                 </div>
                 <div>
                   <p class="coach-info-kicker">Coaching Philosophy</p>
@@ -781,7 +796,7 @@
                   <div class="technique-gallery-stack" aria-label="Technique coaching focus">
                     <article class="technique-glass-card" data-reveal data-reveal-delay="80">
                       <div class="technique-icon-orbit" aria-hidden="true">
-                        <img class="technique-custom-icon" src="./clean.svg" alt="" />
+                        <img class="technique-custom-icon" src="./clean.svg" alt="" width="103" height="103" />
                       </div>
                       <div>
                         <p>Mobility</p>
@@ -797,7 +812,7 @@
                     </article>
                     <article class="technique-glass-card" data-reveal data-reveal-delay="150">
                       <div class="technique-icon-orbit" aria-hidden="true">
-                        <img class="technique-custom-icon" src="./snatch.svg" alt="" />
+                        <img class="technique-custom-icon" src="./snatch.svg" alt="" width="125" height="121" />
                       </div>
                       <div>
                         <p>Technique</p>
@@ -816,7 +831,7 @@
 
                 <div class="technique-proof-strip" data-reveal aria-label="Coach Shen teaching process">
                   <article>
-                    <span aria-hidden="true"><img class="technique-custom-icon" src="./clean.svg" alt="" /></span>
+                    <span aria-hidden="true"><img class="technique-custom-icon" src="./clean.svg" alt="" width="103" height="103" /></span>
                     <div>
                       <p><span>01</span> Position</p>
                       <strong>Find the position the athlete needs.</strong>
@@ -824,7 +839,7 @@
                     </div>
                   </article>
                   <article>
-                    <span aria-hidden="true"><img class="technique-custom-icon" src="./squat.svg" alt="" /></span>
+                    <span aria-hidden="true"><img class="technique-custom-icon" src="./squat.svg" alt="" width="110" height="110" /></span>
                     <div>
                       <p><span>02</span> Practice</p>
                       <strong>Give the athlete opportunities to repeat it.</strong>
@@ -832,7 +847,7 @@
                     </div>
                   </article>
                   <article>
-                    <span aria-hidden="true"><img class="technique-custom-icon" src="./jerk.svg" alt="" /></span>
+                    <span aria-hidden="true"><img class="technique-custom-icon" src="./jerk.svg" alt="" width="103" height="140" /></span>
                     <div>
                       <p><span>03</span> Apply</p>
                       <strong>Bring it back into the full lift.</strong>
@@ -862,7 +877,7 @@
               <div class="lifting-method-grid">
                 <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="70">
                   <div class="lifting-method-icon lifting-method-flag" aria-hidden="true">
-                    <img src="./bulgarianflag.svg" alt="" />
+                    <img src="./bulgarianflag.svg" alt="" width="65" height="39" />
                   </div>
                   <h4>Bulgarian approach</h4>
                   <p class="lifting-method-summary">
@@ -883,7 +898,7 @@
 
                 <article class="lifting-method-card" tabindex="0" data-reveal data-reveal-delay="120">
                   <div class="lifting-method-icon lifting-method-flag" aria-hidden="true">
-                    <img src="./americanflag.svg" alt="" />
+                    <img src="./americanflag.svg" alt="" width="339" height="178" />
                   </div>
                   <h4>American approaches</h4>
                   <p class="lifting-method-summary">
@@ -904,7 +919,7 @@
 
                 <article class="lifting-method-card lifting-method-card-selected" tabindex="0" data-reveal data-reveal-delay="170">
                   <div class="lifting-method-icon lifting-method-flag" aria-hidden="true">
-                    <img src="./chineseflag.svg" alt="" />
+                    <img src="./chineseflag.svg" alt="" width="339" height="226" />
                   </div>
                   <span class="lifting-method-badge">ATLAS METHOD</span>
                   <h4>Chinese-influenced approach</h4>

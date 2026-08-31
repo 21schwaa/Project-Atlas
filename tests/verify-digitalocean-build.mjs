@@ -66,6 +66,12 @@ if (existsSync(indexPath)) {
   if (!html.includes('<meta property="og:url" content="https://atlasbarbellclub.com/" />')) {
     failures.push("public/index.html is missing the production Open Graph URL");
   }
+  if (!/<title>[^<]*Atlas Barbell Club[^<]*<\/title>/i.test(html)) {
+    failures.push("public/index.html title does not identify Atlas Barbell Club");
+  }
+  if (!html.includes('<meta property="og:site_name" content="Atlas Barbell Club" />')) {
+    failures.push("public/index.html is missing the Atlas Barbell Club Open Graph site name");
+  }
   if (!html.includes('content="https://atlasbarbellclub.com/mainlandingpageimage.webp"')) {
     failures.push("public/index.html is missing the absolute production social image URL");
   }
@@ -75,6 +81,29 @@ if (existsSync(indexPath)) {
   if (/\bnofollow\b/i.test(html)) {
     failures.push("public/index.html contains a nofollow directive");
   }
+  const csp = html.match(/<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"\s*\/?>/i)?.[1];
+  for (const directive of [
+    "default-src 'self'",
+    "script-src 'self' https://cdnjs.cloudflare.com",
+    "frame-src https://www.google.com",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ]) {
+    if (!csp?.includes(directive)) failures.push(`public/index.html CSP is missing: ${directive}`);
+  }
+  if (csp?.includes("frame-ancestors")) {
+    failures.push("public/index.html puts ineffective frame-ancestors in a meta CSP");
+  }
+  const imagesWithoutDimensions = Array.from(html.matchAll(/<img\b[^>]*>/gi), (match) => match[0])
+    .filter((image) => !/\bwidth="[1-9][0-9]*"/i.test(image) || !/\bheight="[1-9][0-9]*"/i.test(image));
+  if (imagesWithoutDimensions.length > 0) {
+    failures.push(`public/index.html has ${imagesWithoutDimensions.length} image(s) without explicit dimensions`);
+  }
+  const equipmentStrip = html.match(/<div\b[^>]*class="[^"]*\bequipment-side-strip\b[^"]*"[^>]*>/i)?.[0];
+  if (!equipmentStrip || /\baria-(?:label|labelledby)\s*=/i.test(equipmentStrip)) {
+    failures.push("public/index.html equipment side strip has invalid ARIA semantics");
+  }
   if (html.includes("instagram.com/kilobarbellclub") || html.includes("instagram.com/atlasbarbellclub/") || !html.includes("https://www.instagram.com/atlasbarbellclubllc/")) {
     failures.push("public/index.html does not use the verified Atlas Instagram account");
   }
@@ -83,16 +112,23 @@ if (existsSync(indexPath)) {
   }
 
   const jsonLdBlocks = Array.from(html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi));
-  const structuredBusinesses = [];
+  const structuredEntities = [];
   for (const block of jsonLdBlocks) {
     try {
       const data = JSON.parse(block[1]);
-      structuredBusinesses.push(...(Array.isArray(data) ? data : [data]));
+      const items = Array.isArray(data) ? data : [data];
+      for (const item of items) {
+        if (Array.isArray(item?.["@graph"])) structuredEntities.push(...item["@graph"]);
+        else structuredEntities.push(item);
+      }
     } catch {
       failures.push("public/index.html contains invalid JSON-LD");
     }
   }
-  const atlasBusiness = structuredBusinesses.find((entry) => entry?.["@type"] === "SportsActivityLocation" && entry?.name === "Atlas Barbell Club");
+  const atlasBusiness = structuredEntities.find((entry) => {
+    const types = Array.isArray(entry?.["@type"]) ? entry["@type"] : [entry?.["@type"]];
+    return types.includes("SportsActivityLocation") && entry?.name === "Atlas Barbell Club";
+  });
   if (!atlasBusiness || atlasBusiness.url !== "https://atlasbarbellclub.com/") {
     failures.push("public/index.html is missing Atlas SportsActivityLocation JSON-LD");
   } else {
@@ -102,6 +138,18 @@ if (existsSync(indexPath)) {
     for (const unverifiedField of ["aggregateRating", "openingHours", "openingHoursSpecification", "priceRange"]) {
       if (unverifiedField in atlasBusiness) failures.push(`Atlas JSON-LD includes unverified ${unverifiedField}`);
     }
+  }
+  const websiteEntities = structuredEntities.filter((entry) => {
+    const types = Array.isArray(entry?.["@type"]) ? entry["@type"] : [entry?.["@type"]];
+    return types.includes("WebSite");
+  });
+  if (websiteEntities.length !== 1) {
+    failures.push(`public/index.html must contain exactly one WebSite entity (found ${websiteEntities.length})`);
+  } else {
+    const website = websiteEntities[0];
+    if (website.name !== "Atlas Barbell Club") failures.push("public WebSite name must be Atlas Barbell Club");
+    if (website.alternateName !== "Atlas Barbell") failures.push("public WebSite alternateName must be Atlas Barbell");
+    if (website.url !== "https://atlasbarbellclub.com/") failures.push("public WebSite URL must be the production homepage");
   }
 }
 
