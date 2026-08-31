@@ -7,6 +7,7 @@ const publicDir = join(root, "public");
 
 const files = [
   "index.html",
+  "goolgelogo.svg",
   "atlasbarbellnowords.svg",
   "platformlogo.svg",
   "coachicon.svg",

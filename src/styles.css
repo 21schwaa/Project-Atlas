@@ -40,8 +40,8 @@
 
   /* Green is the club's default visual field; gold is reserved for action states. */
   body {
-    --atlas-secondary: var(--atlas-primary);
-    --atlas-secondary-rgb: var(--atlas-primary-rgb);
+    --atlas-secondary: #6b7f70;
+    --atlas-secondary-rgb: 107 127 112;
     --atlas-secondary-bright: #9caf9f;
     --atlas-secondary-bright-rgb: 156 175 159;
     --atlas-secondary-deep: var(--atlas-primary-deep);
@@ -98,7 +98,7 @@
 
   .atlas-topline [data-nav-link].is-active,
   .atlas-topline [data-nav-link][aria-current="true"] {
-    color: var(--atlas-primary);
+    color: var(--atlas-secondary);
   }
 
   .atlas-topline [data-nav-link].is-active::after,

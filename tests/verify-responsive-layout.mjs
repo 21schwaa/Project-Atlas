@@ -109,6 +109,8 @@ try {
         assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
         assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
         assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
+        assert.equal(result.accentGreenIsLighterThanFieldGreen, true, `Atlas accent green is not lighter than its large green fields at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
+        assert.equal(result.accentGreenMatchesActiveNavigation, true, `Active navigation does not use the Atlas accent green at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
         assert.equal(result.philosophyBodyTypographyConsistent, true, `Coaching philosophy body typography is inconsistent at ${viewport.width}px: ${JSON.stringify(result.philosophyParagraphStyles)}`);
         return;
       }
@@ -137,6 +139,8 @@ try {
       assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
       assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
       assert.equal(result.inactiveNavColorsConsistent, true, `An inactive navigation item retains active coloring at ${viewport.width}px.`);
+      assert.equal(result.accentGreenIsLighterThanFieldGreen, true, `Atlas accent green is not lighter than its large green fields at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
+      assert.equal(result.accentGreenMatchesActiveNavigation, true, `Active navigation does not use the Atlas accent green at ${viewport.width}px: ${JSON.stringify(result.atlasGreenColors)}`);
       assert.equal(result.philosophyBodyTypographyConsistent, true, `Coaching philosophy body typography is inconsistent at ${viewport.width}px: ${JSON.stringify(result.philosophyParagraphStyles)}`);
       assert.deepEqual(result.overflowingGrids, [], `Major grids overflow at ${viewport.width}px: ${result.overflowingGrids.join(", ")}`);
 

@@ -64,6 +64,16 @@
         return Math.max(...rows.values());
       };
 
+      const relativeLuminance = (color) => {
+        const channels = color.match(/[\d.]+/g)?.slice(0, 3).map(Number) || [];
+        if (channels.length !== 3) return 0;
+        const linear = channels.map((channel) => {
+          const value = channel / 255;
+          return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+        });
+        return (0.2126 * linear[0]) + (0.7152 * linear[1]) + (0.0722 * linear[2]);
+      };
+
       frame.addEventListener("load", () => {
         if (captureMode) {
           const captureStyles = frame.contentDocument.createElement("style");
@@ -158,6 +168,16 @@
               lineHeight: styles.lineHeight
             };
           });
+          const accentGreen = view.getComputedStyle(doc.querySelector(".coach-info-kicker")).color;
+          const fieldGreen = view.getComputedStyle(imagePlaceholders[0]).backgroundColor;
+          const navAccentProbe = desktopNavLinks[0];
+          const navAccentProbeWasActive = navAccentProbe?.classList.contains("is-active");
+          const navAccentProbeTransition = navAccentProbe?.style.transition;
+          if (navAccentProbe) navAccentProbe.style.transition = "none";
+          navAccentProbe?.classList.add("is-active");
+          const activeNavColor = navAccentProbe ? view.getComputedStyle(navAccentProbe).color : null;
+          if (!navAccentProbeWasActive) navAccentProbe?.classList.remove("is-active");
+          if (navAccentProbe) navAccentProbe.style.transition = navAccentProbeTransition;
           const result = {
             viewportWidth: view.innerWidth,
             documentFits: doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1,
@@ -209,6 +229,9 @@
             inactiveNavColorsConsistent: new Set(inactiveNavColors).size <= 1,
             phoneLinkCorrect: phoneLink?.textContent.trim() === "(623) 216-5662",
             assistantHoursHidden: assistantHourRows.every((row) => !isVisible(row, view)),
+            accentGreenIsLighterThanFieldGreen: relativeLuminance(accentGreen) > relativeLuminance(fieldGreen),
+            accentGreenMatchesActiveNavigation: !isVisible(desktopNav, view) || activeNavColor === accentGreen,
+            atlasGreenColors: { accentGreen, fieldGreen, activeNavColor },
             philosophyBodyTypographyConsistent: philosophyParagraphStyles.length === 2
               && philosophyParagraphStyles.every((styles) =>
                 styles.color === philosophyParagraphStyles[0].color

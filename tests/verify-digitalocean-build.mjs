@@ -10,6 +10,7 @@ const requiredPaths = [
   "index.html",
   "dist/styles.css",
   "src/main.js",
+  "goolgelogo.svg",
   "atlasbarbellnowords.svg",
   "platformlogo.svg",
   "coachicon.svg",
@@ -41,6 +42,7 @@ if (existsSync(indexPath)) {
   const requiredReferences = [
     "./dist/styles.css",
     "./src/main.js",
+    "./goolgelogo.svg",
     "./mainlandingpageimage.webp",
     "./platformlogo.svg",
     "./coachicon.svg",
