@@ -3,8 +3,10 @@ const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
 const floatingTrainingCta = document.querySelector("[data-floating-training-cta]");
 const heroSection = document.getElementById("home");
 const contactSection = document.getElementById("contact");
+const testimonialsSection = document.getElementById("testimonials");
 let heroVisible = true;
 let contactVisible = false;
+let testimonialsVisible = false;
 
 document.documentElement.classList.add("js-enabled");
 
@@ -66,7 +68,7 @@ const updateFloatingTrainingCta = () => {
     return;
   }
 
-  const shouldShow = !heroVisible && !contactVisible;
+  const shouldShow = !heroVisible && !contactVisible && !testimonialsVisible;
 
   floatingTrainingCta.classList.toggle("is-visible", shouldShow);
   floatingTrainingCta.tabIndex = shouldShow ? 0 : -1;
@@ -144,7 +146,7 @@ if ("IntersectionObserver" in window) {
 
   navObservedSections.forEach((target) => navObserver.observe(target));
 
-  if (floatingTrainingCta && heroSection && contactSection) {
+  if (floatingTrainingCta && heroSection && contactSection && testimonialsSection) {
     const floatingCtaObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -154,6 +156,10 @@ if ("IntersectionObserver" in window) {
 
           if (entry.target === contactSection) {
             contactVisible = entry.isIntersecting;
+          }
+
+          if (entry.target === testimonialsSection) {
+            testimonialsVisible = entry.isIntersecting;
           }
         });
 
@@ -167,6 +173,7 @@ if ("IntersectionObserver" in window) {
 
     floatingCtaObserver.observe(heroSection);
     floatingCtaObserver.observe(contactSection);
+    floatingCtaObserver.observe(testimonialsSection);
   }
 } else {
   revealItems.forEach(revealNow);
@@ -208,6 +215,190 @@ window.addEventListener("hashchange", () => revealHashTarget(getAnchorScrollBeha
 window.addEventListener("popstate", () => revealHashTarget(getAnchorScrollBehavior()));
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const testimonialFaq = document.querySelector("[data-testimonial-faq]");
+const testimonialTabs = Array.from(document.querySelectorAll("[data-testimonial-tab]"));
+const testimonialQuestions = Array.from(document.querySelectorAll("[data-testimonial-question]"));
+const testimonialRails = Array.from(document.querySelectorAll("[data-testimonial-rail]"));
+
+const setTestimonialQuestion = (question, shouldOpen) => {
+  const panelId = question.getAttribute("aria-controls");
+  const panel = panelId ? document.getElementById(panelId) : null;
+  const item = question.closest(".testimonial-faq-item");
+
+  if (!panel || !item) {
+    return;
+  }
+
+  const wasPanelHidden = panel.hidden;
+  const currentPanelHeight = wasPanelHidden ? 0 : panel.getBoundingClientRect().height;
+  const currentPanelOpacity = wasPanelHidden
+    ? 0
+    : Number.parseFloat(window.getComputedStyle(panel).opacity);
+  panel.getAnimations?.().forEach((animation) => animation.cancel());
+  question.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+  item.classList.toggle("is-open", shouldOpen);
+
+  if (shouldOpen) {
+    panel.hidden = false;
+
+    if (wasPanelHidden) {
+      panel.classList.remove("testimonial-panel-enter");
+      void panel.offsetWidth;
+      panel.classList.add("testimonial-panel-enter");
+    }
+
+    panel.querySelectorAll("[data-testimonial-rail]").forEach((rail) => {
+      window.requestAnimationFrame(() => updateTestimonialRail(rail));
+    });
+
+    if (!prefersReducedMotion && panel.animate) {
+      panel.animate(
+        [
+          { height: `${currentPanelHeight}px`, opacity: currentPanelOpacity },
+          { height: `${panel.scrollHeight}px`, opacity: 1 },
+        ],
+        { duration: 420, easing: "cubic-bezier(0.32, 0.72, 0, 1)" },
+      );
+    }
+
+    return;
+  }
+
+  if (prefersReducedMotion || !panel.animate) {
+    panel.hidden = true;
+    return;
+  }
+
+  const closingAnimation = panel.animate(
+    [
+      { height: `${currentPanelHeight}px`, opacity: currentPanelOpacity },
+      { height: "0px", opacity: 0 },
+    ],
+    { duration: 300, easing: "cubic-bezier(0.32, 0.72, 0, 1)" },
+  );
+
+  closingAnimation.finished
+    .then(() => {
+      if (question.getAttribute("aria-expanded") === "false") {
+        panel.hidden = true;
+      }
+    })
+    .catch(() => {});
+};
+
+const selectTestimonialTab = (selectedTab) => {
+  const selectedCategory = selectedTab.dataset.testimonialTab;
+
+  testimonialTabs.forEach((tab) => {
+    const isSelected = tab === selectedTab;
+    tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+
+  testimonialFaq?.querySelectorAll("[data-testimonial-category]").forEach((panel) => {
+    const isSelected = panel.dataset.testimonialCategory === selectedCategory;
+    panel.hidden = !isSelected;
+
+    if (isSelected) {
+      panel.classList.remove("testimonial-panel-enter");
+      void panel.offsetWidth;
+      panel.classList.add("testimonial-panel-enter");
+      panel.querySelectorAll("[data-testimonial-rail]").forEach((rail) => {
+        window.requestAnimationFrame(() => updateTestimonialRail(rail));
+      });
+    }
+  });
+};
+
+const getTestimonialRailStep = (rail) => {
+  const firstCard = rail.querySelector(".testimonial-response-card");
+  const gap = Number.parseFloat(window.getComputedStyle(rail).columnGap) || 0;
+  return firstCard ? firstCard.getBoundingClientRect().width + gap : rail.clientWidth;
+};
+
+const updateTestimonialRail = (rail) => {
+  const shell = rail.closest("[data-testimonial-rail-shell]");
+  const previousButton = shell?.querySelector("[data-testimonial-rail-previous]");
+  const nextButton = shell?.querySelector("[data-testimonial-rail-next]");
+  const status = shell?.querySelector("[data-testimonial-rail-status]");
+  const cards = Array.from(rail.querySelectorAll(".testimonial-response-card"));
+  const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
+  const canScrollLeft = rail.scrollLeft > 2;
+  const canScrollRight = rail.scrollLeft < maxScroll - 2;
+  const step = getTestimonialRailStep(rail);
+  const currentCard = Math.min(cards.length, Math.max(1, Math.round(rail.scrollLeft / step) + 1));
+
+  shell?.classList.toggle("can-scroll-left", canScrollLeft);
+  shell?.classList.toggle("can-scroll-right", canScrollRight);
+
+  if (previousButton) previousButton.disabled = !canScrollLeft;
+  if (nextButton) nextButton.disabled = !canScrollRight;
+  if (status) status.textContent = `${String(currentCard).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
+};
+
+testimonialRails.forEach((rail) => {
+  const shell = rail.closest("[data-testimonial-rail-shell]");
+  const previousButton = shell?.querySelector("[data-testimonial-rail-previous]");
+  const nextButton = shell?.querySelector("[data-testimonial-rail-next]");
+
+  previousButton?.addEventListener("click", () => {
+    rail.scrollBy({ left: -getTestimonialRailStep(rail) });
+    updateTestimonialRail(rail);
+  });
+
+  nextButton?.addEventListener("click", () => {
+    rail.scrollBy({ left: getTestimonialRailStep(rail) });
+    updateTestimonialRail(rail);
+  });
+
+  rail.addEventListener("scroll", () => {
+    updateTestimonialRail(rail);
+  }, { passive: true });
+
+  updateTestimonialRail(rail);
+});
+
+window.addEventListener("resize", () => {
+  testimonialRails.forEach(updateTestimonialRail);
+});
+
+testimonialTabs.forEach((tab, tabIndex) => {
+  tab.addEventListener("click", () => selectTestimonialTab(tab));
+  tab.addEventListener("keydown", (event) => {
+    const keyOffsets = { ArrowLeft: -1, ArrowRight: 1 };
+    let nextIndex = tabIndex;
+
+    if (event.key in keyOffsets) {
+      nextIndex = (tabIndex + keyOffsets[event.key] + testimonialTabs.length) % testimonialTabs.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = testimonialTabs.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    testimonialTabs[nextIndex].focus();
+    selectTestimonialTab(testimonialTabs[nextIndex]);
+  });
+});
+
+testimonialQuestions.forEach((question) => {
+  question.addEventListener("click", () => {
+    const categoryPanel = question.closest("[data-testimonial-category]");
+    const shouldOpen = question.getAttribute("aria-expanded") !== "true";
+
+    categoryPanel?.querySelectorAll("[data-testimonial-question]").forEach((otherQuestion) => {
+      if (otherQuestion !== question && otherQuestion.getAttribute("aria-expanded") === "true") {
+        setTestimonialQuestion(otherQuestion, false);
+      }
+    });
+
+    setTestimonialQuestion(question, shouldOpen);
+  });
+});
 
 if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
   window.gsap.registerPlugin(window.ScrollTrigger);

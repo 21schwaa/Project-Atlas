@@ -967,18 +967,439 @@
 
       <section id="testimonials" class="anchor-section testimonials-section section-rhythm-tight">
         <div class="page-shell">
-          <div
-            class="testimonial-gathering-card"
-            data-reveal
-            aria-label="Atlas Barbell Club member testimonials are being gathered"
-          >
-            <span class="testimonial-progress-ribbon" aria-hidden="true">
-              <span class="testimonial-progress-ribbon-text">TESTIMONIALS IN PROGRESS</span>
-            </span>
-            <div class="testimonial-gathering-copy">
-              <p class="section-kicker">Member stories</p>
-              <h2>Member testimonials are being gathered.</h2>
-              <p>Verified lifter stories will appear here once they are ready.</p>
+          <div class="testimonial-faq" data-testimonial-faq data-reveal>
+            <header class="testimonial-faq-header">
+              <div>
+                <p class="section-kicker">Lifter perspectives</p>
+                <h2>Questions about Atlas, answered by the people who train here.</h2>
+              </div>
+              <p>
+                Hear directly from Atlas lifters about Coach Shen, technical
+                progress, and the room they return to train in.
+              </p>
+            </header>
+
+            <div class="testimonial-tablist" role="tablist" aria-label="Lifter testimonial topics">
+              <button
+                id="testimonial-coaching-tab"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="testimonial-coaching-panel"
+                data-testimonial-tab="coaching"
+              >
+                <span>01</span>
+                Coaching
+              </button>
+              <button
+                id="testimonial-gym-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="testimonial-gym-panel"
+                tabindex="-1"
+                data-testimonial-tab="gym"
+              >
+                <span>02</span>
+                The Gym
+              </button>
+            </div>
+
+            <div
+              id="testimonial-coaching-panel"
+              class="testimonial-category-panel testimonial-panel-enter"
+              role="tabpanel"
+              aria-labelledby="testimonial-coaching-tab"
+              data-testimonial-category="coaching"
+            >
+              <article class="testimonial-faq-item is-open">
+                <h3>
+                  <button
+                    id="testimonial-coaching-struggle-question"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="testimonial-coaching-struggle-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">01</span>
+                    <span class="testimonial-question-copy">What were lifters struggling with before working with Coach Shen?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-coaching-struggle-panel"
+                  class="testimonial-response-panel testimonial-panel-enter"
+                  role="region"
+                  aria-labelledby="testimonial-coaching-struggle-question"
+                >
+                  <div class="testimonial-response-rail-shell can-scroll-right" data-testimonial-rail-shell>
+                    <div class="testimonial-rail-toolbar">
+                      <span>3 lifter perspectives</span>
+                      <div class="testimonial-rail-controls">
+                        <span class="testimonial-rail-status" data-testimonial-rail-status aria-live="polite">01 / 03</span>
+                        <button type="button" data-testimonial-rail-previous aria-label="Previous response" disabled><span aria-hidden="true">←</span></button>
+                        <button type="button" data-testimonial-rail-next aria-label="Next response"><span aria-hidden="true">→</span></button>
+                      </div>
+                    </div>
+                    <div class="testimonial-response-rail" data-testimonial-rail="coaching-struggle" tabindex="0" aria-label="Responses about challenges before coaching">
+                      <blockquote class="testimonial-response-card">
+                        <p>Before working with coach Shen, I was struggling with technique and finding positions that actually worked for me. Some of the positions I was using just didn’t feel right and were causing discomfort in my joints. Since we started making changes, everything feels a lot more natural and I can train without constantly feeling beat up.</p>
+                        <footer class="testimonial-author">
+                          <!-- Replace this initials span with an img when Tony's approved photo is available. -->
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                          <cite>Tony</cite>
+                        </footer>
+                      </blockquote>
+                      <blockquote class="testimonial-response-card">
+                        <p>Before working with her, I had a tendency to think that more work was always better work. I’ve always been willing to train hard, but she has helped me understand that long-term progress also requires knowing when to adjust, recover, and address weaknesses before they become bigger problems. Having someone who can channel that drive in a productive direction has made me a much more well-rounded athlete.</p>
+                        <footer class="testimonial-author">
+                          <!-- Replace this initials span with an img when Allison's approved photo is available. -->
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                          <cite>Allison</cite>
+                        </footer>
+                      </blockquote>
+                      <blockquote class="testimonial-response-card" data-testimonial-adam>
+                        <p>I came in with a lot of issues from lifting. My shoulders, hips, lower back, knees, elbows—something was always hurting or aching after I trained. Within about a month of working with Shen, all of that was gone.</p>
+                        <footer class="testimonial-author">
+                          <!-- Replace this initials span with an img when Adam's approved photo is available. -->
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                          <cite>Adam</cite>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button
+                    id="testimonial-coaching-technique-question"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="testimonial-coaching-technique-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">02</span>
+                    <span class="testimonial-question-copy">What technical changes have made the biggest difference?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-coaching-technique-panel"
+                  class="testimonial-response-panel"
+                  role="region"
+                  aria-labelledby="testimonial-coaching-technique-question"
+                  hidden
+                >
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>Honestly, it’s been changing my positions and not trying to force myself into a certain way of lifting. We’ve made adjustments based on how I move and what feels best for me. Some of the changes seemed small at first, but they’ve made a huge difference. My lifts feel smoother, stronger, and more comfortable.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>She is insanely good at spotting technical problems. When I started, pretty much everything about my lifting needed work. My elbows were bending, my positions were inconsistent, and there were problems I didn’t even know I had.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button
+                    id="testimonial-coaching-improvement-question"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="testimonial-coaching-improvement-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">03</span>
+                    <span class="testimonial-question-copy">How have the snatch and clean &amp; jerk improved?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-coaching-improvement-panel"
+                  class="testimonial-response-panel"
+                  role="region"
+                  aria-labelledby="testimonial-coaching-improvement-question"
+                  hidden
+                >
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>Both have gotten a lot more consistent. I feel more comfortable in my positions and I understand the lifts better than I did before. I’m not fighting the movement as much anymore. The biggest thing for me is being able to train hard, make progress, and not have the joint pain I was dealing with before.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>My snatch especially has improved so much. My positions feel way more solid now and I’m much more consistent.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button id="testimonial-coaching-different-question" type="button" aria-expanded="false" aria-controls="testimonial-coaching-different-panel" data-testimonial-question>
+                    <span class="testimonial-question-number">04</span>
+                    <span class="testimonial-question-copy">What makes this coaching approach different?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div id="testimonial-coaching-different-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-coaching-different-question" hidden>
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>She genuinely cares about developing the whole athlete and about longevity in the sport. Progress isn’t treated as simply adding kilos to the bar at any cost. There is a lot of thought behind technique, stability, strength, injury prevention, recovery, and what I need at that particular point in my training. I also really value how collaborative she is. I can tell her when something doesn’t feel right, when life is especially demanding, or when my body needs something different, and I know she will listen and adjust without losing sight of the bigger goals. That combination of knowledge, adaptability, and genuine care is really special.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Allison</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>I have no idea how she manages to watch everyone in the gym at once, but she does. She’ll be coaching somebody else and somehow still see your lift and immediately have something useful to tell you. You can tell she genuinely loves weightlifting and cares about making people better. She’s patient, persistent, supportive, funny, and she knows when to keep pushing you instead of letting you get frustrated and give up on something.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button id="testimonial-coaching-adapt-question" type="button" aria-expanded="false" aria-controls="testimonial-coaching-adapt-panel" data-testimonial-question>
+                    <span class="testimonial-question-number">05</span>
+                    <span class="testimonial-question-copy">How does Coach Shen adapt training to the individual?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div id="testimonial-coaching-adapt-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-coaching-adapt-question" hidden>
+                  <div class="testimonial-response-rail-shell can-scroll-right" data-testimonial-rail-shell>
+                    <div class="testimonial-rail-toolbar">
+                      <span>3 lifter perspectives</span>
+                      <div class="testimonial-rail-controls">
+                        <span class="testimonial-rail-status" data-testimonial-rail-status aria-live="polite">01 / 03</span>
+                        <button type="button" data-testimonial-rail-previous aria-label="Previous response" disabled><span aria-hidden="true">←</span></button>
+                        <button type="button" data-testimonial-rail-next aria-label="Next response"><span aria-hidden="true">→</span></button>
+                      </div>
+                    </div>
+                    <div class="testimonial-response-rail" data-testimonial-rail="coaching-adapt" tabindex="0" aria-label="Responses about individualized coaching">
+                      <blockquote class="testimonial-response-card">
+                        <p>I like that the coaching is based on me and how I move. If something isn’t working, we change it instead of trying to force it. I’ve learned a lot of new positions and techniques that I probably never would have tried before, and they’ve made a big difference. I’m really happy with where my lifting is going and I actually feel good doing it.</p>
+                        <footer class="testimonial-author">
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                          <cite>Tony</cite>
+                        </footer>
+                      </blockquote>
+                      <blockquote class="testimonial-response-card">
+                        <p>She is incredibly good at meeting me where I am without losing sight of where I want to go. I’ve trained through injuries, demanding work schedules, periods of fatigue, and plenty of normal ups and downs, and she has always found a way to adapt my training rather than simply stopping it. She knows when I need to be challenged and when something needs to be modified, and I trust that those decisions are always being made with both my performance and my longevity in mind.</p>
+                        <footer class="testimonial-author">
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                          <cite>Allison</cite>
+                        </footer>
+                      </blockquote>
+                      <blockquote class="testimonial-response-card" data-testimonial-adam>
+                        <p>A big reason is that she actually pays attention to why something is happening instead of just telling you to stretch more or work around it. She programs real warmups and mobility work, tries different things when something isn’t clicking, and will change what you’re doing right there in the middle of a session if she sees an issue.</p>
+                        <footer class="testimonial-author">
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                          <cite>Adam</cite>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div
+              id="testimonial-gym-panel"
+              class="testimonial-category-panel"
+              role="tabpanel"
+              aria-labelledby="testimonial-gym-tab"
+              data-testimonial-category="gym"
+              hidden
+            >
+              <article class="testimonial-faq-item is-open">
+                <h3>
+                  <button
+                    id="testimonial-gym-atmosphere-question"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="testimonial-gym-atmosphere-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">01</span>
+                    <span class="testimonial-question-copy">What is the atmosphere at Atlas like?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-gym-atmosphere-panel"
+                  class="testimonial-response-panel"
+                  role="region"
+                  aria-labelledby="testimonial-gym-atmosphere-question"
+                >
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>It’s a really good atmosphere. Everyone is there to work and get better, but we also have fun and support each other. You can have a tough training day and still leave feeling good about being there.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>We all take the training seriously, but it’s also hilarious in there. We push each other, celebrate PRs, help load plates, share platforms, help somebody when they’re struggling, and then spend the time between sets making jokes and creating inside jokes that probably make no sense to anybody outside the gym.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button
+                    id="testimonial-gym-lifters-question"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="testimonial-gym-lifters-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">02</span>
+                    <span class="testimonial-question-copy">What do lifters enjoy about training together?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-gym-lifters-panel"
+                  class="testimonial-response-panel"
+                  role="region"
+                  aria-labelledby="testimonial-gym-lifters-question"
+                  hidden
+                >
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>I like being around other people who are working toward their own goals. Everyone pushes each other without making it overly competitive. When someone has a good lift, everyone gets excited for them, and that makes training a lot more enjoyable.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>I wouldn’t even say beginners are just “welcome.” They’re encouraged. When I first started, everyone was talking to me, asking me questions, giving me tips, and helping me out. Nobody made me feel like I didn’t belong because I was still learning. You have people of every level training together—complete beginners, experienced lifters, and even national-level athletes. Nobody acts above anybody else.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button
+                    id="testimonial-gym-community-question"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="testimonial-gym-community-panel"
+                    data-testimonial-question
+                  >
+                    <span class="testimonial-question-number">03</span>
+                    <span class="testimonial-question-copy">Does the community help lifters stay motivated and consistent?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  id="testimonial-gym-community-panel"
+                  class="testimonial-response-panel"
+                  role="region"
+                  aria-labelledby="testimonial-gym-community-question"
+                  hidden
+                >
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>It definitely makes me want to show up and train. When you enjoy the people you’re around and the environment you’re training in, being consistent becomes a lot easier. Even on days when I’m tired, once I get there I’m glad I came.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>The people are a huge part of why I love the gym. It gets busy around 2 to 6, but honestly that’s probably my favorite time to train because everyone is there. Even when it’s crowded, people just share. We’re all there to get work done.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button id="testimonial-gym-different-question" type="button" aria-expanded="false" aria-controls="testimonial-gym-different-panel" data-testimonial-question>
+                    <span class="testimonial-question-number">04</span>
+                    <span class="testimonial-question-copy">What makes Atlas feel different from other gyms?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div id="testimonial-gym-different-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-gym-different-question" hidden>
+                  <div class="testimonial-response-grid testimonial-response-grid-single">
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>The equipment is great. The bars and platforms are awesome, it’s actually built around weightlifting, and the new belt squat is GREAT. Having 24/7 access is also a huge plus if you want to train outside the busy hours. What I like most is that basically anyone can walk in and have a place there. You can be brand new, have years of experience, or be competing at a very high level. It doesn’t matter.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
+
+              <article class="testimonial-faq-item">
+                <h3>
+                  <button id="testimonial-gym-return-question" type="button" aria-expanded="false" aria-controls="testimonial-gym-return-panel" data-testimonial-question>
+                    <span class="testimonial-question-number">05</span>
+                    <span class="testimonial-question-copy">What makes lifters look forward to coming back?</span>
+                    <span class="testimonial-question-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div id="testimonial-gym-return-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-gym-return-question" hidden>
+                  <div class="testimonial-response-grid">
+                    <blockquote class="testimonial-response-card">
+                      <p>I’m enjoying lifting again. I feel better, I’m learning new things, and I can see the improvements in my technique. Being able to train without my joints hurting has been huge for me. I’m excited to keep working on these new positions, get stronger, and see how far I can take it.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">T</span></span>
+                        <cite>Tony</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card" data-testimonial-adam>
+                      <p>I actually look forward to going to the gym every day now. It’s kind of become my oasis. I get to lift, work hard, learn, laugh with everyone, and leave feeling better than when I walked in. If somebody asked me why they should work with Shen, I’d tell them she knows what she’s doing and she’ll get you where you need to be. You just have to trust her, be patient, and put the work in. This stuff doesn’t happen overnight, but I saw a pretty crazy difference in only a month.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
+                        <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>

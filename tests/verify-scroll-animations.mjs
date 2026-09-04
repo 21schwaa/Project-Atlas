@@ -15,10 +15,11 @@ const persistentCtaMarker = html.indexOf("data-floating-training-cta");
 const persistentCtaStart = persistentCtaMarker >= 0 ? html.lastIndexOf("<a", persistentCtaMarker) : -1;
 const persistentCtaEnd = html.indexOf("</a>", persistentCtaStart);
 const persistentCtaHtml = html.slice(persistentCtaStart, persistentCtaEnd);
-const footerHtml = html.slice(html.indexOf("<footer"), html.indexOf("</footer>"));
+const siteFooterStart = html.indexOf('<footer class="site-footer"');
+const footerHtml = html.slice(siteFooterStart, html.indexOf("</footer>", siteFooterStart));
 const testimonialsHtml = html.slice(html.indexOf('id="testimonials"'), html.indexOf("marquee-track"));
 const offeringsHtml = html.slice(html.indexOf('id="offerings"'), html.indexOf('id="coach"'));
-const contactHtml = html.slice(html.indexOf('id="contact"'), html.indexOf("<footer"));
+const contactHtml = html.slice(html.indexOf('id="contact"'), siteFooterStart);
 const teamHtml = html.slice(html.indexOf('id="team"'), html.indexOf('id="coaching"'));
 const coachingHtml = html.slice(html.indexOf('id="coaching"'), html.indexOf('id="open-gym"'));
 const individualCoachingHtml = html.slice(html.indexOf('id="individual-coaching"'), html.indexOf('id="open-gym"'));
@@ -37,12 +38,30 @@ const coachBridgeHtml = coachBridgeIndex >= 0
 const marqueeHtml = html.slice(html.indexOf("marquee-track"), html.indexOf('id="contact"'));
 const marqueeContentCount = (marqueeHtml.match(/class="marquee-content"/g) || []).length;
 const loadedSource = `${html}\n${css}\n${js}`;
-const fabricatedTestimonialPhrases = [
-  "Technique cues are specific",
-  "Programming, coaching, and open gym access can live",
-  "Open gym still feels intentional here",
-  "The attached therapy office adds useful access nearby",
-];
+const testimonialQuestionCount = (testimonialsHtml.match(/data-testimonial-question/g) || []).length;
+const testimonialTabCount = (testimonialsHtml.match(/data-testimonial-tab/g) || []).length;
+const testimonialAvatarCount = (testimonialsHtml.match(/data-testimonial-avatar/g) || []).length;
+const testimonialCards = testimonialsHtml.match(/<blockquote class="testimonial-response-card"[^>]*>[\s\S]*?<\/blockquote>/g) || [];
+const testimonialCardMatches = (name, phrase) => testimonialCards.some((card) =>
+  card.includes(`<cite>${name}</cite>`) && card.includes(phrase)
+);
+const testimonialCardContainsAll = (name, phrases) => testimonialCards.some((card) =>
+  card.includes(`<cite>${name}</cite>`) && phrases.every((phrase) => card.includes(phrase))
+);
+const testimonialRailCount = (testimonialsHtml.match(/data-testimonial-rail=/g) || []).length;
+const adamTestimonialCount = (testimonialsHtml.match(/data-testimonial-adam/g) || []).length;
+const testimonialToolbarCss = css.slice(
+  css.indexOf(".testimonial-rail-toolbar {"),
+  css.indexOf(".testimonial-rail-toolbar > span"),
+);
+const testimonialGridCss = css.slice(
+  css.indexOf(".testimonial-response-grid {"),
+  css.indexOf(".testimonial-response-grid-single"),
+);
+const testimonialRailCss = css.slice(
+  css.indexOf(".testimonial-response-rail {"),
+  css.indexOf(".testimonial-response-rail:focus-visible"),
+);
 
 const appearsInOrder = (needles) => {
   let lastIndex = -1;
@@ -138,8 +157,32 @@ const checks = [
   ["Training approach distinguishes comparison systems from Atlas method", coachText.includes("Bulgarian approach") && coachText.includes("Heavy, specific, and high intensity.") && coachText.includes("American approaches") && coachText.includes("More varied and periodized.") && coachText.includes("Chinese-influenced approach") && coachText.includes("Technique, positions, mobility, and supporting strength.") && coachText.includes("ATLAS METHOD")],
   ["Coach Shen application block resolves the method", coachText.includes("How Coach Shen applies it") && coachText.includes("Chinese-influenced technique, adapted to the athlete.") && coachText.includes("Coach Shen uses Chinese-influenced principles as the foundation of her coaching") && coachText.includes("Repeatable technical positions.") && coachText.includes("Mobility that supports the lifts.") && coachText.includes("Accessory work chosen for a purpose.") && coachText.includes("Strength developed around the demands of weightlifting.")],
   ["Method cards reveal details accessibly across desktop and mobile", css.includes(".lifting-method-card:hover .lifting-method-drawer") && css.includes(".lifting-method-card:focus .lifting-method-drawer") && css.includes(".lifting-method-card:focus-within .lifting-method-drawer") && css.includes(".lifting-method-card:focus-visible") && css.includes("outline: 2px solid") && css.includes("grid-template-rows: 0fr") && css.includes("grid-template-rows: 1fr") && css.includes("@media (max-width: 1199px)") && css.includes(".lifting-method-drawer") && css.includes("transform: none")],
-  ["Testimonials section truthfully states that verified lifter stories are being gathered", testimonialsHtml.includes("testimonial-gathering-card") && testimonialsHtml.includes("testimonial-progress-ribbon") && testimonialsHtml.includes("testimonial-progress-ribbon-text") && testimonialsHtml.includes("TESTIMONIALS IN PROGRESS") && testimonialsHtml.includes("Member stories") && testimonialsHtml.includes("Member testimonials are being gathered.") && testimonialsHtml.includes("Verified lifter stories will appear here once they are ready.") && !fabricatedTestimonialPhrases.some((phrase) => js.includes(phrase) || testimonialsHtml.includes(phrase))],
-  ["Testimonials section removes the inactive placeholder carousel", !testimonialsHtml.includes("data-testimonial-carousel") && !testimonialsHtml.includes("Testimonial controls") && !testimonialsHtml.includes("Placeholder member story") && !js.includes("testimonialSlides") && !js.includes("data-testimonial-dot") && !js.includes("changeSlide")],
+  ["Lifter perspectives use two question categories and ten accessible accordion questions", testimonialTabCount === 2 && testimonialQuestionCount === 10 && testimonialsHtml.includes('role="tablist"') && testimonialsHtml.includes('aria-selected="true"') && testimonialsHtml.includes('aria-expanded="true"') && testimonialsHtml.includes('aria-controls="testimonial-coaching-struggle-panel"')],
+  ["Tony's eight supplied answers appear in full under their matching questions", [
+    ["Before working with coach Shen, I was struggling with technique and finding positions that actually worked for me", "I can train without constantly feeling beat up"],
+    ["Honestly, it’s been changing my positions and not trying to force myself into a certain way of lifting", "My lifts feel smoother, stronger, and more comfortable"],
+    ["Both have gotten a lot more consistent", "the joint pain I was dealing with before"],
+    ["I like that the coaching is based on me and how I move", "I actually feel good doing it"],
+    ["It’s a really good atmosphere", "leave feeling good about being there"],
+    ["I like being around other people who are working toward their own goals", "that makes training a lot more enjoyable"],
+    ["It definitely makes me want to show up and train", "once I get there I’m glad I came"],
+    ["I’m enjoying lifting again", "see how far I can take it"]
+  ].every((phrases) => testimonialCardContainsAll("Tony", phrases))],
+  ["Allison's three supplied answers appear in full under their matching questions", [
+    ["She is incredibly good at meeting me where I am without losing sight of where I want to go", "both my performance and my longevity in mind"],
+    ["She genuinely cares about developing the whole athlete and about longevity in the sport", "That combination of knowledge, adaptability, and genuine care is really special"],
+    ["Before working with her, I had a tendency to think that more work was always better work", "made me a much more well-rounded athlete"]
+  ].every((phrases) => testimonialCardContainsAll("Allison", phrases))],
+  ["Adam's review is presented as first-person testimonial excerpts", adamTestimonialCount >= 5 && testimonialsHtml.includes("I came in with a lot of issues from lifting") && testimonialsHtml.includes("We all take the training seriously, but it’s also hilarious in there") && testimonialsHtml.includes("I actually look forward to going to the gym every day now")],
+  ["Adam's cards are attributed as testimonials without Google-review summary labeling", !testimonialsHtml.includes("Summary of Google review") && !testimonialsHtml.includes("data-google-review-summary") && !testimonialsHtml.includes("Adam describes") && testimonialCardMatches("Adam", "I came in with a lot of issues from lifting")],
+  ["Questions with more than two responses use arrow-controlled horizontal rails", testimonialRailCount === 2 && (testimonialsHtml.match(/data-testimonial-rail-previous/g) || []).length === 2 && (testimonialsHtml.match(/data-testimonial-rail-next/g) || []).length === 2 && (testimonialsHtml.match(/data-testimonial-rail-status/g) || []).length === 2],
+  ["Testimonial rail controls stay in the left content zone clear of the floating CTA", testimonialToolbarCss.includes("justify-content: flex-start")],
+  ["Clipped testimonial containers leave enough top clearance for the card hover lift", testimonialGridCss.includes("padding: 0.45rem 0.8rem") && testimonialRailCss.includes("padding: 0.45rem 0 1rem")],
+  ["Testimonial authors have replaceable circular photo placeholders", testimonialAvatarCount >= 3 && testimonialsHtml.includes('aria-hidden="true"') && testimonialsHtml.includes("testimonial-avatar-initials") && !testimonialsHtml.includes("testimonial-avatar-photo")],
+  ["Testimonials replace the gathering state with the approved question-led design", testimonialsHtml.includes("Lifter perspectives") && testimonialsHtml.includes("Questions about Atlas, answered by the people who train here.") && !testimonialsHtml.includes("testimonial-gathering-card") && !testimonialsHtml.includes("TESTIMONIALS IN PROGRESS")],
+  ["Testimonial interactions initialize category tabs, accordion panels, and response rails", js.includes("testimonialTabs") && js.includes("testimonialQuestions") && js.includes("testimonialRails") && js.includes('setAttribute("aria-selected"') && js.includes('setAttribute("aria-expanded"') && js.includes("scrollBy") && js.includes("testimonial-panel-enter")],
+  ["Testimonial arrows defer smooth or instant motion to the CSS reduced-motion policy", js.includes("rail.scrollBy({ left:") && !js.includes('behavior: prefersReducedMotion ? "auto" : "smooth"')],
+  ["Testimonial entry motion releases transforms for the response-card hover lift", css.includes("animation: testimonial-response-enter") && css.includes("backwards") && !css.includes("testimonial-response-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) both")],
   ["Header labels testimonials as lifters", headerHtml.includes('href="#testimonials"') && headerHtml.includes(">Lifters<") && !headerHtml.includes(">Reviews<")],
   ["Header navigation highlights active sections", headerHtml.includes("data-nav-link") && css.includes('[data-nav-link].is-active') && css.includes('aria-current="true"') && js.includes("setActiveNavLink") && js.includes("navObserver") && js.includes('link.setAttribute("aria-current", "true")')],
   ["Training paths are grouped in order", offeringsHtml.includes("Team Programming") && offeringsHtml.includes("Coaching") && offeringsHtml.includes("Individual Coaching + Programming") && offeringsHtml.includes("Strength &amp; Conditioning") && offeringsHtml.includes("Open Gym") && offeringsHtml.indexOf("Team Programming") < offeringsHtml.indexOf("Coaching") && offeringsHtml.indexOf("Coaching") < offeringsHtml.indexOf("Individual Coaching + Programming") && offeringsHtml.indexOf("Individual Coaching + Programming") < offeringsHtml.indexOf("Strength &amp; Conditioning") && offeringsHtml.indexOf("Strength &amp; Conditioning") < offeringsHtml.indexOf("Open Gym")],
@@ -166,7 +209,7 @@ const checks = [
   ["CSS defines equipment and path cleanup", css.includes(".equipment-hero") && css.includes(".equipment-list") && css.includes(".training-path-stack") && css.includes(".training-path")],
   ["CSS removes obsolete Open Gym layout rules", ![".open-gym-shell", ".open-gym-copy", ".open-gym-media", ".open-gym-media-stage", ".open-gym-photo-frame", ".open-gym-photo-core", ".open-gym-statement-card", ".open-gym-headline", ".open-gym-heading", ".open-gym-eyebrow", ".open-gym-body"].some((selector) => css.includes(selector))],
   ["CSS defines coach profile, technique, and method architecture", css.includes(".coach-profile-section") && css.includes(".technique-gallery-section") && css.includes(".lifting-method-section")],
-  ["CSS defines quieter coach, testimonial gathering, and final contact systems", css.includes(".coach-support-grid") && css.includes(".testimonial-gathering-card") && css.includes(".final-contact-panel")],
+  ["CSS defines quieter coach, testimonial FAQ, and final contact systems", css.includes(".coach-support-grid") && css.includes(".testimonial-faq") && css.includes(".testimonial-response-card") && css.includes(".final-contact-panel")],
   ["CSS defines conversion selector and floating CTA systems", css.includes(".training-options-section") && css.includes(".training-selector") && css.includes(".training-path-cta") && css.includes(".floating-training-cta") && css.includes(".floating-training-cta.is-visible")],
   ["Brand palette is tokenized and old amber system is removed", css.includes("--atlas-primary: #596b5e") && css.includes("--atlas-secondary: #b7923e") && css.includes("--atlas-ink: #050606") && !loadedSource.includes("#f7d64a") && !loadedSource.includes("#f5c928") && !loadedSource.includes("#fcd34d") && !loadedSource.includes("amber-") && !loadedSource.includes("yellow-")],
   ["Brand palette roles are used across the page", css.includes("var(--atlas-primary)") && css.includes("var(--atlas-secondary)") && html.includes("bg-[#b7923e]") && css.includes('[data-nav-link].is-active')],
@@ -180,7 +223,8 @@ const checks = [
   ["JS closes mobile nav without shipping placeholder testimonial behavior", js.includes("mobileNav.open = false") && !js.includes("Placeholder member story") && !js.includes("testimonialSlides")],
   ["JS smoothly scrolls nav clicks below the fixed header", js.includes("alignHashTarget") && js.includes('document.querySelector(".atlas-topline")') && js.includes("header.getBoundingClientRect().height") && js.includes('document.addEventListener("click"') && js.includes("event.preventDefault()") && js.includes("window.history.pushState") && js.includes('window.scrollTo({ top: targetTop, behavior })') && js.includes('"smooth"')],
   ["Persistent Start Training CTA exists", persistentCtaStart >= 0 && persistentCtaHtml.includes('href="#contact"') && persistentCtaHtml.includes("Start Training") && persistentCtaHtml.includes("Find your next step") && persistentCtaHtml.includes("aria-label")],
-  ["Persistent Start Training CTA observes hero and contact", js.includes("floatingTrainingCta") && js.includes("heroVisible") && js.includes("contactVisible") && js.includes("shouldShow = !heroVisible && !contactVisible") && js.includes('document.getElementById("home")') && js.includes('document.getElementById("contact")') && js.includes("IntersectionObserver")],
+  ["Persistent Start Training CTA observes hero and contact", js.includes("floatingTrainingCta") && js.includes("heroVisible") && js.includes("contactVisible") && js.includes("shouldShow =") && js.includes("!heroVisible") && js.includes("!contactVisible") && js.includes('document.getElementById("home")') && js.includes('document.getElementById("contact")') && js.includes("IntersectionObserver")],
+  ["Persistent Start Training CTA clears the testimonial reading area", js.includes("testimonialsVisible") && js.includes("!testimonialsVisible") && js.includes('document.getElementById("testimonials")')],
   ["CSS fully disables reduced-motion transitions and interaction transforms", (() => {
     const reducedMotionCss = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
     return reducedMotionCss.includes("*::before")
@@ -188,7 +232,9 @@ const checks = [
       && reducedMotionCss.includes("transition: none !important")
       && reducedMotionCss.includes(".google-review-card:hover")
       && reducedMotionCss.includes(".coach-photo-card:hover .coach-photo")
-      && reducedMotionCss.includes(".training-flow-button:hover");
+      && reducedMotionCss.includes(".training-flow-button:hover")
+      && reducedMotionCss.includes(".testimonial-response-rail")
+      && reducedMotionCss.includes("scroll-behavior: auto");
   })()],
   ["CSS marquee is continuous linear", css.includes("linear infinite") && css.includes("translateX(-25%)")],
   ["JS registers ScrollTrigger when GSAP exists", js.includes("ScrollTrigger")],

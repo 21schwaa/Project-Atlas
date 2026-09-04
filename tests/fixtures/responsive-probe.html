@@ -159,12 +159,121 @@
           const phoneLink = doc.querySelector('a[href="tel:+16232165662"]');
           const googleReviewLink = doc.querySelector(".floating-google-review");
           const googleReviewStars = Array.from(doc.querySelectorAll(".floating-google-review-star"));
-          const testimonialGatheringCard = doc.querySelector(".testimonial-gathering-card");
-          const testimonialRibbon = doc.querySelector(".testimonial-progress-ribbon");
-          const testimonialRibbonText = doc.querySelector(".testimonial-progress-ribbon-text");
-          const testimonialCardRect = testimonialGatheringCard?.getBoundingClientRect();
-          const testimonialRibbonRect = testimonialRibbon?.getBoundingClientRect();
-          const testimonialRibbonTextRect = testimonialRibbonText?.getBoundingClientRect();
+          const testimonialFaq = doc.querySelector(".testimonial-faq");
+          const testimonialTabs = Array.from(doc.querySelectorAll("[data-testimonial-tab]"));
+          const testimonialQuestions = Array.from(doc.querySelectorAll("[data-testimonial-question]"));
+          const testimonialAvatars = Array.from(doc.querySelectorAll("[data-testimonial-avatar]"));
+          const testimonialRails = Array.from(doc.querySelectorAll("[data-testimonial-rail]"));
+          const visibleTestimonialRail = testimonialRails.find((rail) => isVisible(rail, view));
+          const testimonialRailsConfigured = testimonialRails.length === 2
+            && testimonialRails.every((rail) => rail.querySelectorAll(".testimonial-response-card").length === 3)
+            && visibleTestimonialRail?.scrollWidth > visibleTestimonialRail?.clientWidth;
+          const firstTestimonialRailControls = visibleTestimonialRail
+            ?.closest("[data-testimonial-rail-shell]")
+            ?.querySelector(".testimonial-rail-controls");
+          const floatingTrainingCta = doc.querySelector("[data-floating-training-cta]");
+          const visibleRailShell = visibleTestimonialRail?.closest("[data-testimonial-rail-shell]");
+          const visibleRailPrevious = visibleRailShell?.querySelector("[data-testimonial-rail-previous]");
+          const visibleRailNext = visibleRailShell?.querySelector("[data-testimonial-rail-next]");
+          const visibleRailStatus = visibleRailShell?.querySelector("[data-testimonial-rail-status]");
+          const visibleRailFirstCard = visibleTestimonialRail?.querySelector(".testimonial-response-card");
+          const waitFor = async (predicate, timeout = 500) => {
+            const startedAt = performance.now();
+            while (!predicate() && performance.now() - startedAt < timeout) {
+              await new Promise((resolve) => window.setTimeout(resolve, 25));
+            }
+            return predicate();
+          };
+          const coachingPanel = doc.getElementById("testimonial-coaching-panel");
+          const gymPanel = doc.getElementById("testimonial-gym-panel");
+          const gymTab = doc.querySelector('[data-testimonial-tab="gym"]');
+          testimonialFaq?.scrollIntoView({ block: "start" });
+          const testimonialFloatingCtaHidden = await waitFor(() =>
+            !floatingTrainingCta?.classList.contains("is-visible")
+            && floatingTrainingCta?.getAttribute("aria-hidden") === "true"
+            && floatingTrainingCta?.tabIndex === -1
+          );
+          visibleTestimonialRail.style.scrollBehavior = "auto";
+          visibleTestimonialRail?.scrollTo({ left: 0, behavior: "auto" });
+          visibleTestimonialRail?.dispatchEvent(new Event("scroll"));
+          const initialRailControlsReady = await waitFor(() => visibleRailPrevious?.disabled === true
+            && visibleRailNext?.disabled === false
+            && visibleRailStatus?.textContent.trim() === "01 / 03");
+          visibleRailNext?.click();
+          const testimonialArrowAdvanced = await waitFor(() => visibleTestimonialRail?.scrollLeft > 2
+            && visibleRailPrevious?.disabled === false
+            && visibleRailStatus?.textContent.trim() === "02 / 03");
+          const railAfterArrow = {
+            scrollLeft: visibleTestimonialRail?.scrollLeft,
+            previousDisabled: visibleRailPrevious?.disabled,
+            nextDisabled: visibleRailNext?.disabled,
+            status: visibleRailStatus?.textContent.trim()
+          };
+          visibleTestimonialRail?.scrollTo({ left: visibleTestimonialRail.scrollWidth, behavior: "auto" });
+          visibleTestimonialRail?.dispatchEvent(new Event("scroll"));
+          const expectedEndStatus = requestedWidth <= 640 ? "03 / 03" : "02 / 03";
+          const testimonialRailReachedEnd = await waitFor(() => visibleRailNext?.disabled === true
+            && visibleRailStatus?.textContent.trim() === expectedEndStatus);
+          const railAfterEnd = {
+            scrollLeft: visibleTestimonialRail?.scrollLeft,
+            maxScroll: visibleTestimonialRail ? visibleTestimonialRail.scrollWidth - visibleTestimonialRail.clientWidth : null,
+            nextDisabled: visibleRailNext?.disabled,
+            status: visibleRailStatus?.textContent.trim()
+          };
+          const desktopCardTarget = visibleTestimonialRail
+            ? (visibleTestimonialRail.clientWidth - 16) / 2
+            : 0;
+          const mobileCardTarget = visibleTestimonialRail ? visibleTestimonialRail.clientWidth * 0.88 : 0;
+          const testimonialCardSizingReady = visibleRailFirstCard
+            ? Math.abs(visibleRailFirstCard.getBoundingClientRect().width - (requestedWidth <= 640 ? mobileCardTarget : desktopCardTarget)) < 2
+            : false;
+          visibleTestimonialRail?.scrollTo({ left: 0, behavior: "auto" });
+          visibleTestimonialRail?.dispatchEvent(new Event("scroll"));
+          await new Promise((resolve) => window.setTimeout(resolve, 50));
+          gymTab?.click();
+          gymTab?.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+          const keyboardTabNavigationReady = testimonialTabs[0]?.getAttribute("aria-selected") === "true"
+            && doc.activeElement === testimonialTabs[0];
+          gymTab?.click();
+          const gymQuestions = Array.from(gymPanel?.querySelectorAll("[data-testimonial-question]") || []);
+          const firstGymQuestion = gymQuestions[0];
+          const secondGymQuestion = gymQuestions[1];
+          secondGymQuestion?.click();
+          const firstGymResponse = firstGymQuestion
+            ? doc.getElementById(firstGymQuestion.getAttribute("aria-controls"))
+            : null;
+          const secondGymResponse = secondGymQuestion
+            ? doc.getElementById(secondGymQuestion.getAttribute("aria-controls"))
+            : null;
+          (firstGymResponse?.getAnimations() || []).forEach((animation) => animation.finish());
+          await Promise.resolve();
+          const collapsedQuestionOpensReady = firstGymQuestion?.getAttribute("aria-expanded") === "false"
+            && firstGymResponse?.hidden === true
+            && secondGymQuestion?.getAttribute("aria-expanded") === "true"
+            && secondGymResponse?.hidden === false
+            && secondGymQuestion?.closest(".testimonial-faq-item")?.classList.contains("is-open");
+          const gymCategoryStateReady = gymTab?.getAttribute("aria-selected") === "true"
+            && coachingPanel?.hidden === true
+            && gymPanel?.hidden === false;
+
+          if (captureMode) {
+            testimonialTabs[0]?.click();
+            testimonialFaq?.scrollIntoView({ block: "start" });
+            floatingTrainingCta.style.transition = "none";
+            floatingTrainingCta?.classList.add("is-visible");
+            void floatingTrainingCta?.offsetWidth;
+          }
+          const testimonialFaqBounds = testimonialFaq?.getBoundingClientRect();
+          const testimonialOverflowingChildren = testimonialFaqBounds
+            ? Array.from(testimonialFaq.querySelectorAll("*")).filter((element) => {
+                if (!isVisible(element, view)) return false;
+                const bounds = element.getBoundingClientRect();
+                return bounds.left < testimonialFaqBounds.left - 1 || bounds.right > testimonialFaqBounds.right + 1;
+              }).map((element) => {
+                const bounds = element.getBoundingClientRect();
+                return { tag: element.tagName, className: element.className, left: bounds.left, right: bounds.right };
+              }).slice(0, 12)
+            : [];
           const assistantHourRows = Array.from(doc.querySelectorAll(".coaching-hours-row"))
             .filter((row) => row.textContent.includes("Assistant coach"));
           const philosophyParagraphs = Array.from(doc.querySelectorAll(".coach-info-card-accent > div:last-child > p:not(.coach-info-kicker)"));
@@ -243,30 +352,70 @@
               && googleReviewStars.every((star) => star.textContent.trim() === "★")
               && googleReviewLink?.textContent.includes("5.0")
               && Boolean(googleReviewLink?.querySelector('[aria-label="Google rating: 5 out of 5"]')),
-            testimonialGatheringReady: isVisible(testimonialGatheringCard, view)
-              && testimonialGatheringCard.textContent.includes("Member testimonials are being gathered.")
-              && testimonialGatheringCard.textContent.includes("Verified lifter stories will appear here once they are ready.")
-              && view.getComputedStyle(testimonialGatheringCard).overflowX === "hidden"
-              && !testimonialGatheringCard.querySelector("button, img"),
-            testimonialRibbonCrossesCorner: (() => {
-              if (!isVisible(testimonialGatheringCard, view) || !isVisible(testimonialRibbon, view) || !isVisible(testimonialRibbonText, view)) return false;
-              const cardRect = testimonialGatheringCard.getBoundingClientRect();
-              const ribbonRect = testimonialRibbon.getBoundingClientRect();
-              const textRect = testimonialRibbonText.getBoundingClientRect();
-              return testimonialRibbonText.textContent.trim() === "TESTIMONIALS IN PROGRESS"
-                && ribbonRect.top <= cardRect.top + 2
-                && ribbonRect.bottom >= cardRect.top + 18
-                && ribbonRect.right >= cardRect.right - 2
-                && ribbonRect.left <= cardRect.right - 120
-                && textRect.left >= cardRect.left + 8
-                && textRect.right <= cardRect.right - 8
-                && textRect.top >= cardRect.top + 4;
+            testimonialFaqReady: isVisible(testimonialFaq, view)
+              && testimonialTabs.length === 2
+              && testimonialQuestions.length === 10
+              && testimonialAvatars.length >= 3
+              && testimonialRailsConfigured
+              && testimonialAvatars.every((avatar) => {
+                const bounds = avatar.getBoundingClientRect();
+                return Math.abs(bounds.width - bounds.height) < 0.1;
+              })
+              && testimonialFaq.scrollWidth <= testimonialFaq.clientWidth + 1,
+            testimonialFaqMetrics: {
+              visible: isVisible(testimonialFaq, view),
+              tabCount: testimonialTabs.length,
+              questionCount: testimonialQuestions.length,
+              avatarCount: testimonialAvatars.length,
+              railCount: testimonialRails.length,
+              railsConfigured: testimonialRailsConfigured,
+              visibleRailScrollWidth: visibleTestimonialRail?.scrollWidth,
+              visibleRailClientWidth: visibleTestimonialRail?.clientWidth,
+              squareAvatars: testimonialAvatars.every((avatar) => {
+                const bounds = avatar.getBoundingClientRect();
+                return Math.abs(bounds.width - bounds.height) < 0.1;
+              }),
+              avatarSizes: testimonialAvatars.filter((avatar) => isVisible(avatar, view)).map((avatar) => {
+                const bounds = avatar.getBoundingClientRect();
+                return { width: bounds.width, height: bounds.height };
+              }),
+              scrollWidth: testimonialFaq?.scrollWidth,
+              clientWidth: testimonialFaq?.clientWidth,
+              overflowingChildren: testimonialOverflowingChildren
+            },
+            testimonialInteractionsReady: gymCategoryStateReady
+              && keyboardTabNavigationReady
+              && collapsedQuestionOpensReady
+              && initialRailControlsReady
+              && testimonialArrowAdvanced
+              && testimonialRailReachedEnd
+              && testimonialCardSizingReady,
+            testimonialFloatingCtaHidden,
+            testimonialControlsClearFloatingCta: (() => {
+              if (!isVisible(firstTestimonialRailControls, view) || !isVisible(floatingTrainingCta, view)) return true;
+              const controls = firstTestimonialRailControls.getBoundingClientRect();
+              const floating = floatingTrainingCta.getBoundingClientRect();
+              return controls.right <= floating.left || controls.left >= floating.right
+                || controls.bottom <= floating.top || controls.top >= floating.bottom;
             })(),
-            testimonialRibbonGeometry: testimonialCardRect && testimonialRibbonRect && testimonialRibbonTextRect ? {
-              card: { left: testimonialCardRect.left, right: testimonialCardRect.right, top: testimonialCardRect.top, bottom: testimonialCardRect.bottom },
-              ribbon: { left: testimonialRibbonRect.left, right: testimonialRibbonRect.right, top: testimonialRibbonRect.top, bottom: testimonialRibbonRect.bottom },
-              text: { left: testimonialRibbonTextRect.left, right: testimonialRibbonTextRect.right, top: testimonialRibbonTextRect.top, bottom: testimonialRibbonTextRect.bottom }
-            } : null,
+            testimonialInteractionMetrics: {
+              gymSelected: gymTab?.getAttribute("aria-selected"),
+              coachingHidden: coachingPanel?.hidden,
+              gymHidden: gymPanel?.hidden,
+              keyboardTabNavigationReady,
+              collapsedQuestionOpensReady,
+              initialRailControlsReady,
+              testimonialArrowAdvanced,
+              testimonialRailReachedEnd,
+              railAfterArrow,
+              railAfterEnd,
+              testimonialCardSizingReady,
+              firstExpanded: firstGymQuestion?.getAttribute("aria-expanded"),
+              firstResponseHidden: firstGymResponse?.hidden,
+              secondExpanded: secondGymQuestion?.getAttribute("aria-expanded"),
+              secondResponseHidden: secondGymResponse?.hidden,
+              secondItemOpen: secondGymQuestion?.closest(".testimonial-faq-item")?.classList.contains("is-open")
+            },
             assistantHoursHidden: assistantHourRows.every((row) => !isVisible(row, view)),
             accentGreenIsLighterThanFieldGreen: relativeLuminance(accentGreen) > relativeLuminance(fieldGreen),
             accentGreenMatchesActiveNavigation: !isVisible(desktopNav, view) || activeNavColor === accentGreen,
