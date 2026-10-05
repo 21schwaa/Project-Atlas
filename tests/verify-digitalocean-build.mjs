@@ -100,9 +100,11 @@ if (existsSync(indexPath)) {
   if (imagesWithoutDimensions.length > 0) {
     failures.push(`public/index.html has ${imagesWithoutDimensions.length} image(s) without explicit dimensions`);
   }
-  const equipmentStrip = html.match(/<div\b[^>]*class="[^"]*\bequipment-side-strip\b[^"]*"[^>]*>/i)?.[0];
-  if (!equipmentStrip || /\baria-(?:label|labelledby)\s*=/i.test(equipmentStrip)) {
-    failures.push("public/index.html equipment side strip has invalid ARIA semantics");
+  if (!html.includes('data-equipment-carousel') || !html.includes('src="./assets/atlasimages/gym%20(3).webp"')) {
+    failures.push("public/index.html is missing the training floor photo carousel");
+  }
+  if (html.includes('class="equipment-side-strip"') || html.includes('class="equipment-gallery"')) {
+    failures.push("public/index.html still contains the equipment collage");
   }
   if (html.includes("instagram.com/kilobarbellclub") || html.includes("instagram.com/atlasbarbellclub/") || !html.includes("https://www.instagram.com/atlasbarbellclubllc/")) {
     failures.push("public/index.html does not use the verified Atlas Instagram account");

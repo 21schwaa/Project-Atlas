@@ -138,12 +138,15 @@ try {
         assert.equal(result.heroMediaStartsInViewport, true, `Hero media starts below the laptop viewport at ${viewport.width}px (top ${result.heroMediaTop}px, viewport height ${viewport.height}px).`);
       }
       assert.equal(result.trainingItemsPerRow, viewport.expectedColumns, `Training selector has the wrong column count at ${viewport.width}px.`);
-      assert.equal(result.imagePlaceholderCount, 6, `Expected six construction-marked photo areas at ${viewport.width}px.`);
-      assert.equal(result.imagePlaceholdersReady, true, `Construction tape is missing or hidden at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderTapeValues)}`);
+      assert.equal(result.imagePlaceholderCount, 0, `Construction placeholders remain at ${viewport.width}px.`);
+      assert.equal(result.sitePhotoCount, 12, `Expected the curated coach and gym photos at ${viewport.width}px.`);
+      assert.equal(result.focalEquipmentPhotoReady, true, `The training floor carousel is missing or the collage remains at ${viewport.width}px.`);
+      assert.equal(result.testimonialHeaderPhotoReady, true, `The testimonial header photo or intro is missing at ${viewport.width}px.`);
+      assert.equal(result.sitePhotoAltReady, true, `A supplied photo is missing alternative text at ${viewport.width}px.`);
+      assert.equal(result.heroPhotoLoaded, true, `The landing photo did not load at ${viewport.width}px.`);
+      assert.equal(result.coachCarouselReady, true, `The coach photo carousel is unavailable at ${viewport.width}px.`);
       assert.equal(result.postHeroShellsClearRail, true, `Post-hero content overlaps the desktop rail at ${viewport.width}px.`);
       assert.equal(result.railContentFits, true, `Desktop rail content overlaps or exceeds the viewport at ${viewport.width}x${viewport.height}: ${JSON.stringify(result.railPartBounds)}`);
-      assert.equal(result.imagePlaceholderMediaRemoved, true, `Photographic media remains inside a construction placeholder at ${viewport.width}px.`);
-      assert.equal(result.imagePlaceholdersAreGreen, true, `Construction placeholders are not using Atlas green at ${viewport.width}px: ${JSON.stringify(result.imagePlaceholderColors)}`);
       assert.equal(result.assistantHoursHidden, true, `Assistant coaching hours remain visible at ${viewport.width}px.`);
       assert.equal(result.phoneLinkCorrect, true, `Contact phone link is missing or incorrect at ${viewport.width}px.`);
       assert.equal(result.googleReviewLinkReady, true, `Google Reviews card is not an interactive link to the verified profile at ${viewport.width}px.`);

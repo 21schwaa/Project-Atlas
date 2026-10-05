@@ -109,6 +109,8 @@
           const heroMedia = doc.querySelector(".hero-photo-bezel");
           const trainingSelector = doc.querySelector(".training-selector");
           const imagePlaceholders = Array.from(doc.querySelectorAll("[data-image-placeholder]"));
+          const sitePhotos = Array.from(doc.querySelectorAll('img[src*="atlasimages"]'));
+          const coachCarousel = doc.querySelector("[data-coach-carousel]");
           const desktopRail = doc.querySelector(".hero-rail");
           const desktopNavLinks = Array.from(doc.querySelectorAll(".atlas-topline > div:first-of-type > [data-nav-link]"));
           const postHeroShells = Array.from(doc.querySelectorAll("main > .anchor-section:not(#home) > .page-shell"));
@@ -165,8 +167,8 @@
           const testimonialAvatars = Array.from(doc.querySelectorAll("[data-testimonial-avatar]"));
           const testimonialRails = Array.from(doc.querySelectorAll("[data-testimonial-rail]"));
           const visibleTestimonialRail = testimonialRails.find((rail) => isVisible(rail, view));
-          const testimonialRailsConfigured = testimonialRails.length === 2
-            && testimonialRails.every((rail) => rail.querySelectorAll(".testimonial-response-card").length === 3)
+          const testimonialRailsConfigured = testimonialRails.length === 3
+            && testimonialRails.every((rail) => rail.querySelectorAll(".testimonial-response-card").length >= 3)
             && visibleTestimonialRail?.scrollWidth > visibleTestimonialRail?.clientWidth;
           const firstTestimonialRailControls = visibleTestimonialRail
             ?.closest("[data-testimonial-rail-shell]")
@@ -177,6 +179,8 @@
           const visibleRailNext = visibleRailShell?.querySelector("[data-testimonial-rail-next]");
           const visibleRailStatus = visibleRailShell?.querySelector("[data-testimonial-rail-status]");
           const visibleRailFirstCard = visibleTestimonialRail?.querySelector(".testimonial-response-card");
+          const visibleRailCardCount = visibleTestimonialRail?.querySelectorAll(".testimonial-response-card").length || 0;
+          const visibleRailTotal = String(visibleRailCardCount).padStart(2, "0");
           const waitFor = async (predicate, timeout = 500) => {
             const startedAt = performance.now();
             while (!predicate() && performance.now() - startedAt < timeout) {
@@ -198,11 +202,11 @@
           visibleTestimonialRail?.dispatchEvent(new Event("scroll"));
           const initialRailControlsReady = await waitFor(() => visibleRailPrevious?.disabled === true
             && visibleRailNext?.disabled === false
-            && visibleRailStatus?.textContent.trim() === "01 / 03");
+            && visibleRailStatus?.textContent.trim() === `01 / ${visibleRailTotal}`);
           visibleRailNext?.click();
           const testimonialArrowAdvanced = await waitFor(() => visibleTestimonialRail?.scrollLeft > 2
             && visibleRailPrevious?.disabled === false
-            && visibleRailStatus?.textContent.trim() === "02 / 03");
+            && visibleRailStatus?.textContent.trim() === `02 / ${visibleRailTotal}`);
           const railAfterArrow = {
             scrollLeft: visibleTestimonialRail?.scrollLeft,
             previousDisabled: visibleRailPrevious?.disabled,
@@ -211,7 +215,7 @@
           };
           visibleTestimonialRail?.scrollTo({ left: visibleTestimonialRail.scrollWidth, behavior: "auto" });
           visibleTestimonialRail?.dispatchEvent(new Event("scroll"));
-          const expectedEndStatus = requestedWidth <= 640 ? "03 / 03" : "02 / 03";
+          const expectedEndStatus = `${String(requestedWidth <= 640 ? visibleRailCardCount : visibleRailCardCount - 1).padStart(2, "0")} / ${visibleRailTotal}`;
           const testimonialRailReachedEnd = await waitFor(() => visibleRailNext?.disabled === true
             && visibleRailStatus?.textContent.trim() === expectedEndStatus);
           const railAfterEnd = {
@@ -286,7 +290,7 @@
             };
           });
           const accentGreen = view.getComputedStyle(doc.querySelector(".coach-info-kicker")).color;
-          const fieldGreen = view.getComputedStyle(imagePlaceholders[0]).backgroundColor;
+          const fieldGreen = view.getComputedStyle(doc.querySelector(".equipment-photo-track")).backgroundColor;
           const navAccentProbe = desktopNavLinks[0];
           const navAccentProbeWasActive = navAccentProbe?.classList.contains("is-active");
           const navAccentProbeTransition = navAccentProbe?.style.transition;
@@ -318,26 +322,22 @@
             heroEquipmentRight: heroEquipmentRect.right,
             trainingItemsPerRow: maxItemsPerRow(trainingSelector),
             imagePlaceholderCount: imagePlaceholders.length,
-            imagePlaceholdersReady: imagePlaceholders.every((element) => {
-              const tape = view.getComputedStyle(element, "::after");
-              return tape.content === '"UNDER CONSTRUCTION"' && tape.display !== "none";
-            }),
-            imagePlaceholderTapeValues: imagePlaceholders.map((element) => {
-              const tape = view.getComputedStyle(element, "::after");
-              return { content: tape.content, display: tape.display };
-            }),
-            imagePlaceholdersAreGreen: imagePlaceholders.every((element) =>
-              view.getComputedStyle(element).backgroundColor === "rgb(89, 107, 94)"
-            ),
-            imagePlaceholderColors: imagePlaceholders.map((element) =>
-              view.getComputedStyle(element).backgroundColor
-            ),
-            imagePlaceholderMediaRemoved: imagePlaceholders.every((element) => {
-              const nodes = [element, ...element.querySelectorAll("*")];
-              return !element.querySelector("img") && nodes.every((node) =>
-                !view.getComputedStyle(node).backgroundImage.includes("url(")
-              );
-            }),
+            sitePhotoCount: sitePhotos.length,
+            focalEquipmentPhotoReady: doc.querySelectorAll(".equipment-photo-slide").length === 4
+              && doc.querySelector("[data-equipment-carousel]")?.getAttribute("aria-roledescription") === "carousel"
+              && doc.querySelector("[data-equipment-status]")?.textContent.trim() === "01 / 04"
+              && !doc.querySelector(".equipment-side-strip, .equipment-gallery"),
+            testimonialHeaderPhotoReady: doc.querySelector(".testimonial-faq-photo img")?.getAttribute("src") === "./assets/atlasimages/gym%20(10).webp"
+              && !!doc.querySelector(".testimonial-faq-heading .testimonial-faq-intro"),
+            sitePhotoAltReady: sitePhotos.every((image) => image.alt.trim().length > 0),
+            heroPhotoLoaded: (() => {
+              const image = doc.querySelector(".hero-photo-core img");
+              return image?.complete && image.naturalWidth > 0;
+            })(),
+            coachCarouselReady: coachCarousel?.querySelectorAll(".coach-photo-slide").length === 5
+              && coachCarousel.scrollWidth > coachCarousel.clientWidth
+              && !!doc.querySelector("[data-coach-previous]")
+              && !!doc.querySelector("[data-coach-next]"),
             postHeroShellsClearRail: !isVisible(desktopRail, view) || postHeroShells.every((element) =>
               element.getBoundingClientRect().left >= desktopRail.getBoundingClientRect().right - 1
             ),

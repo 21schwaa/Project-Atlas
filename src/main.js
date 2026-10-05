@@ -216,6 +216,68 @@ window.addEventListener("popstate", () => revealHashTarget(getAnchorScrollBehavi
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const equipmentPhotoTrack = document.querySelector("[data-equipment-carousel]");
+
+if (equipmentPhotoTrack) {
+  const slides = equipmentPhotoTrack.querySelectorAll(".equipment-photo-slide");
+  const previousButton = document.querySelector("[data-equipment-previous]");
+  const nextButton = document.querySelector("[data-equipment-next]");
+  const status = document.querySelector("[data-equipment-status]");
+  const currentIndex = () => Math.min(slides.length - 1, Math.max(0, Math.round(equipmentPhotoTrack.scrollLeft / equipmentPhotoTrack.clientWidth)));
+  const update = () => {
+    const index = currentIndex();
+    previousButton.disabled = index === 0;
+    nextButton.disabled = index === slides.length - 1;
+    status.textContent = `${String(index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+  };
+  const move = (direction) => {
+    const index = Math.min(slides.length - 1, Math.max(0, currentIndex() + direction));
+    equipmentPhotoTrack.scrollTo({ left: index * equipmentPhotoTrack.clientWidth });
+  };
+
+  previousButton.addEventListener("click", () => move(-1));
+  nextButton.addEventListener("click", () => move(1));
+  equipmentPhotoTrack.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    move(event.key === "ArrowRight" ? 1 : -1);
+  });
+  equipmentPhotoTrack.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
+const coachPhotoTrack = document.querySelector("[data-coach-carousel]");
+
+if (coachPhotoTrack) {
+  const slides = coachPhotoTrack.querySelectorAll(".coach-photo-slide");
+  const previousButton = document.querySelector("[data-coach-previous]");
+  const nextButton = document.querySelector("[data-coach-next]");
+  const status = document.querySelector("[data-coach-status]");
+  const currentIndex = () => Math.min(slides.length - 1, Math.max(0, Math.round(coachPhotoTrack.scrollLeft / coachPhotoTrack.clientWidth)));
+  const update = () => {
+    const index = currentIndex();
+    previousButton.disabled = index === 0;
+    nextButton.disabled = index === slides.length - 1;
+    status.textContent = `${String(index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+  };
+  const move = (direction) => {
+    const index = Math.min(slides.length - 1, Math.max(0, currentIndex() + direction));
+    coachPhotoTrack.scrollTo({ left: index * coachPhotoTrack.clientWidth });
+  };
+
+  previousButton.addEventListener("click", () => move(-1));
+  nextButton.addEventListener("click", () => move(1));
+  coachPhotoTrack.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    move(event.key === "ArrowRight" ? 1 : -1);
+  });
+  coachPhotoTrack.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
 const testimonialFaq = document.querySelector("[data-testimonial-faq]");
 const testimonialTabs = Array.from(document.querySelectorAll("[data-testimonial-tab]"));
 const testimonialQuestions = Array.from(document.querySelectorAll("[data-testimonial-question]"));

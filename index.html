@@ -292,7 +292,8 @@
 
           <div class="hero-equipment-stage relative" data-reveal data-reveal-delay="120">
             <div class="hero-photo-bezel">
-              <div class="hero-photo-core" data-image-placeholder>
+              <div class="hero-photo-core">
+                <img src="./assets/atlasimages/gym%20(2).webp" alt="Atlas Barbell Club training floor with platforms, racks, and open space" width="1920" height="1440" fetchpriority="high" decoding="async" />
               </div>
             </div>
             <div class="hero-standard-card">
@@ -374,13 +375,18 @@
           </div>
 
           <div class="equipment-hero" data-reveal>
-            <figure data-image-placeholder>
-            </figure>
-            <div class="equipment-side-strip">
-              <figure data-image-placeholder>
-              </figure>
-              <figure data-image-placeholder>
-              </figure>
+            <div class="equipment-photo-track" data-equipment-carousel role="region" aria-roledescription="carousel" tabindex="0" aria-label="Views of the Atlas training floor">
+              <figure class="equipment-photo-slide"><img src="./assets/atlasimages/gym%20(3).webp" alt="Wide view across the Atlas training floor, rig, and lifting platforms" width="1920" height="1440" loading="lazy" decoding="async" /></figure>
+              <figure class="equipment-photo-slide"><img src="./assets/atlasimages/gym%20(5).webp" alt="Lifting platforms and training space viewed toward the back of the gym" width="1920" height="1440" loading="lazy" decoding="async" /></figure>
+              <figure class="equipment-photo-slide"><img src="./assets/atlasimages/gym%20(6).webp" alt="Atlas banner above the strength equipment and platforms" width="1920" height="1440" loading="lazy" decoding="async" /></figure>
+              <figure class="equipment-photo-slide"><img src="./assets/atlasimages/gym%20(7).webp" alt="Wide view of the training floor and platforms from the opposite end" width="1920" height="1440" loading="lazy" decoding="async" /></figure>
+            </div>
+            <div class="equipment-photo-controls" aria-label="Training floor photo controls">
+              <span data-equipment-status aria-live="polite">01 / 04</span>
+              <div>
+                <button type="button" data-equipment-previous aria-label="Previous training floor photo" disabled>←</button>
+                <button type="button" data-equipment-next aria-label="Next training floor photo">→</button>
+              </div>
             </div>
           </div>
 
@@ -681,7 +687,8 @@
                   <i class="gg-arrow-right" aria-hidden="true"></i>
                 </a>
               </div>
-              <figure class="training-path-photo" data-image-placeholder data-reveal data-reveal-delay="120">
+              <figure class="training-path-photo" data-reveal data-reveal-delay="120">
+                <img src="./assets/atlasimages/gym%20(4).webp" alt="Open lifting platforms and training space at Atlas Barbell Club" width="1440" height="1920" loading="lazy" decoding="async" />
               </figure>
           </section>
           </div>
@@ -704,11 +711,19 @@
           </p>
 
           <div class="coach-profile-grid">
-            <article class="coach-photo-card" data-image-placeholder data-reveal data-reveal-delay="80">
-              <div
-                class="coach-photo"
-                aria-hidden="true"
-              ></div>
+            <article class="coach-photo-card" data-reveal data-reveal-delay="80">
+              <div class="coach-photo-track" data-coach-carousel role="region" aria-roledescription="carousel" tabindex="0" aria-label="Coach Shen photo gallery">
+                <figure class="coach-photo-slide"><img class="coach-photo" src="./assets/atlasimages/coach%20(1).webp" alt="Martial arts competition medal podium" width="720" height="960" loading="lazy" decoding="async" /></figure>
+                <figure class="coach-photo-slide"><img class="coach-photo" src="./assets/atlasimages/coach%20(2).webp" alt="Athletes holding triathlon awards" width="720" height="960" loading="lazy" decoding="async" /></figure>
+                <figure class="coach-photo-slide"><img class="coach-photo" src="./assets/atlasimages/coach%20(3).webp" alt="Triathlon award podium" width="960" height="720" loading="lazy" decoding="async" /></figure>
+                <figure class="coach-photo-slide"><img class="coach-photo" src="./assets/atlasimages/coach%20(4).webp" alt="Open-water swimmer during a race" width="960" height="640" loading="lazy" decoding="async" /></figure>
+                <figure class="coach-photo-slide"><img class="coach-photo" src="./assets/atlasimages/coach%20(5).webp" alt="Cyclist standing beside a road bike" width="720" height="960" loading="lazy" decoding="async" /></figure>
+              </div>
+              <div class="coach-photo-controls" aria-label="Coach photo controls">
+                <button type="button" data-coach-previous aria-label="Previous coach photo" disabled>←</button>
+                <span data-coach-status aria-live="polite">01 / 05</span>
+                <button type="button" data-coach-next aria-label="Next coach photo">→</button>
+              </div>
               <div class="coach-photo-caption">
                 <p>COACH SHEN</p>
                 <span>Stronger together</span>
@@ -969,14 +984,17 @@
         <div class="page-shell">
           <div class="testimonial-faq" data-testimonial-faq data-reveal>
             <header class="testimonial-faq-header">
-              <div>
+              <div class="testimonial-faq-heading">
                 <p class="section-kicker">Lifter perspectives</p>
                 <h2>Questions about Atlas, answered by the people who train here.</h2>
+                <p class="testimonial-faq-intro">
+                  Hear directly from Atlas lifters about Coach Shen, technical
+                  progress, and the room they return to train in.
+                </p>
               </div>
-              <p>
-                Hear directly from Atlas lifters about Coach Shen, technical
-                progress, and the room they return to train in.
-              </p>
+              <figure class="testimonial-faq-photo">
+                <img src="./assets/atlasimages/gym%20(10).webp" alt="Atlas Barbell Club and USA Weightlifting banners beside the Olympic bar storage" width="1440" height="1920" loading="lazy" decoding="async" />
+              </figure>
             </header>
 
             <div class="testimonial-tablist" role="tablist" aria-label="Lifter testimonial topics">
@@ -1034,9 +1052,9 @@
                 >
                   <div class="testimonial-response-rail-shell can-scroll-right" data-testimonial-rail-shell>
                     <div class="testimonial-rail-toolbar">
-                      <span>3 lifter perspectives</span>
+                      <span>4 lifter perspectives</span>
                       <div class="testimonial-rail-controls">
-                        <span class="testimonial-rail-status" data-testimonial-rail-status aria-live="polite">01 / 03</span>
+                        <span class="testimonial-rail-status" data-testimonial-rail-status aria-live="polite">01 / 04</span>
                         <button type="button" data-testimonial-rail-previous aria-label="Previous response" disabled><span aria-hidden="true">←</span></button>
                         <button type="button" data-testimonial-rail-next aria-label="Next response"><span aria-hidden="true">→</span></button>
                       </div>
@@ -1064,6 +1082,13 @@
                           <!-- Replace this initials span with an img when Adam's approved photo is available. -->
                           <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
                           <cite>Adam</cite>
+                        </footer>
+                      </blockquote>
+                      <blockquote class="testimonial-response-card">
+                        <p>Before working with Shen, I felt like I had some weaknesses in my lifting that I wasn’t really sure how to address on my own. I also had some nagging aches and pains that would come and go, and I felt like they were holding me back. Shen has helped me identify those weaknesses and address them intentionally instead of just continuing to train around them.</p>
+                        <footer class="testimonial-author">
+                          <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">K</span></span>
+                          <cite>Kendall</cite>
                         </footer>
                       </blockquote>
                     </div>
@@ -1160,7 +1185,16 @@
                   </button>
                 </h3>
                 <div id="testimonial-coaching-different-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-coaching-different-question" hidden>
-                  <div class="testimonial-response-grid">
+                  <div class="testimonial-response-rail-shell can-scroll-right" data-testimonial-rail-shell>
+                    <div class="testimonial-rail-toolbar">
+                      <span>3 lifter perspectives</span>
+                      <div class="testimonial-rail-controls">
+                        <span class="testimonial-rail-status" data-testimonial-rail-status aria-live="polite">01 / 03</span>
+                        <button type="button" data-testimonial-rail-previous aria-label="Previous response" disabled><span aria-hidden="true">←</span></button>
+                        <button type="button" data-testimonial-rail-next aria-label="Next response"><span aria-hidden="true">→</span></button>
+                      </div>
+                    </div>
+                    <div class="testimonial-response-rail" data-testimonial-rail="coaching-different" tabindex="0" aria-label="Responses about Coach Shen’s approach">
                     <blockquote class="testimonial-response-card">
                       <p>She genuinely cares about developing the whole athlete and about longevity in the sport. Progress isn’t treated as simply adding kilos to the bar at any cost. There is a lot of thought behind technique, stability, strength, injury prevention, recovery, and what I need at that particular point in my training. I also really value how collaborative she is. I can tell her when something doesn’t feel right, when life is especially demanding, or when my body needs something different, and I know she will listen and adjust without losing sight of the bigger goals. That combination of knowledge, adaptability, and genuine care is really special.</p>
                       <footer class="testimonial-author">
@@ -1175,6 +1209,14 @@
                         <cite>Adam</cite>
                       </footer>
                     </blockquote>
+                    <blockquote class="testimonial-response-card">
+                      <p>What I really appreciate about working with Shen is how individualized her coaching is. She doesn’t just give me a generic program—she tailors all of my warm-ups and accessory work specifically to what I need and what we’re trying to improve in my lifting. She also takes life stressors into account when constructing my plan, which I really appreciate because training doesn’t happen in a vacuum. It makes the program feel sustainable and intentional while still helping me work toward my goals.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">K</span></span>
+                        <cite>Kendall</cite>
+                      </footer>
+                    </blockquote>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -1361,12 +1403,19 @@
                   </button>
                 </h3>
                 <div id="testimonial-gym-different-panel" class="testimonial-response-panel" role="region" aria-labelledby="testimonial-gym-different-question" hidden>
-                  <div class="testimonial-response-grid testimonial-response-grid-single">
+                  <div class="testimonial-response-grid">
                     <blockquote class="testimonial-response-card" data-testimonial-adam>
                       <p>The equipment is great. The bars and platforms are awesome, it’s actually built around weightlifting, and the new belt squat is GREAT. Having 24/7 access is also a huge plus if you want to train outside the busy hours. What I like most is that basically anyone can walk in and have a place there. You can be brand new, have years of experience, or be competing at a very high level. It doesn’t matter.</p>
                       <footer class="testimonial-author">
                         <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">A</span></span>
                         <cite>Adam</cite>
+                      </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-response-card">
+                      <p>I’ve been training here for seven years, so this gym has been a huge part of my life. What really stands out is the community. It’s a welcoming environment where people genuinely encourage each other, regardless of experience level. Whether you are maxing out lifts or doing mobility, you’ll be surrounded by great people cheering you on and working alongside you. It’s a place where people are happy to see you and want you to succeed.</p>
+                      <footer class="testimonial-author">
+                        <span class="testimonial-avatar" data-testimonial-avatar aria-hidden="true"><span class="testimonial-avatar-initials">K</span></span>
+                        <cite>Kendall</cite>
                       </footer>
                     </blockquote>
                   </div>

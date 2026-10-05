@@ -74,11 +74,11 @@ for (const directive of [
 }
 if (csp?.includes("frame-ancestors")) failures.push("frame-ancestors is ineffective in a meta-delivered CSP");
 
-const equipmentStrip = html.match(/<div\b[^>]*class="[^"]*\bequipment-side-strip\b[^"]*"[^>]*>/i)?.[0];
-if (!equipmentStrip) {
-  failures.push("index.html is missing the equipment side strip");
-} else if (/\baria-(?:label|labelledby)\s*=/i.test(equipmentStrip)) {
-  failures.push("equipment-side-strip has a prohibited accessible-name attribute");
+if (!html.includes('data-equipment-carousel') || !html.includes('src="./assets/atlasimages/gym%20(3).webp"')) {
+  failures.push("index.html is missing the training floor photo carousel");
+}
+if (html.includes('class="equipment-side-strip"') || html.includes('class="equipment-gallery"')) {
+  failures.push("index.html still contains the equipment collage");
 }
 
 const imageElements = Array.from(html.matchAll(/<img\b[^>]*>/gi), (match) => match[0]);

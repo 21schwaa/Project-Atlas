@@ -175,7 +175,7 @@ const checks = [
   ].every((phrases) => testimonialCardContainsAll("Allison", phrases))],
   ["Adam's review is presented as first-person testimonial excerpts", adamTestimonialCount >= 5 && testimonialsHtml.includes("I came in with a lot of issues from lifting") && testimonialsHtml.includes("We all take the training seriously, but it’s also hilarious in there") && testimonialsHtml.includes("I actually look forward to going to the gym every day now")],
   ["Adam's cards are attributed as testimonials without Google-review summary labeling", !testimonialsHtml.includes("Summary of Google review") && !testimonialsHtml.includes("data-google-review-summary") && !testimonialsHtml.includes("Adam describes") && testimonialCardMatches("Adam", "I came in with a lot of issues from lifting")],
-  ["Questions with more than two responses use arrow-controlled horizontal rails", testimonialRailCount === 2 && (testimonialsHtml.match(/data-testimonial-rail-previous/g) || []).length === 2 && (testimonialsHtml.match(/data-testimonial-rail-next/g) || []).length === 2 && (testimonialsHtml.match(/data-testimonial-rail-status/g) || []).length === 2],
+  ["Questions with more than two responses use arrow-controlled horizontal rails", testimonialRailCount === 3 && (testimonialsHtml.match(/data-testimonial-rail-previous/g) || []).length === 3 && (testimonialsHtml.match(/data-testimonial-rail-next/g) || []).length === 3 && (testimonialsHtml.match(/data-testimonial-rail-status/g) || []).length === 3 && testimonialsHtml.includes('data-testimonial-rail="coaching-different"')],
   ["Testimonial rail controls stay in the left content zone clear of the floating CTA", testimonialToolbarCss.includes("justify-content: flex-start")],
   ["Clipped testimonial containers leave enough top clearance for the card hover lift", testimonialGridCss.includes("padding: 0.45rem 0.8rem") && testimonialRailCss.includes("padding: 0.45rem 0 1rem")],
   ["Testimonial authors have replaceable circular photo placeholders", testimonialAvatarCount >= 3 && testimonialsHtml.includes('aria-hidden="true"') && testimonialsHtml.includes("testimonial-avatar-initials") && !testimonialsHtml.includes("testimonial-avatar-photo")],
@@ -231,7 +231,7 @@ const checks = [
       && reducedMotionCss.includes("animation: none !important")
       && reducedMotionCss.includes("transition: none !important")
       && reducedMotionCss.includes(".google-review-card:hover")
-      && reducedMotionCss.includes(".coach-photo-card:hover .coach-photo")
+      && reducedMotionCss.includes(".coach-photo-slide:hover .coach-photo")
       && reducedMotionCss.includes(".training-flow-button:hover")
       && reducedMotionCss.includes(".testimonial-response-rail")
       && reducedMotionCss.includes("scroll-behavior: auto");

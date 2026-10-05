@@ -115,43 +115,6 @@
     padding-block: clamp(3.5rem, 6vw, 7rem);
   }
 
-  [data-image-placeholder] {
-    position: relative;
-  }
-
-  [data-image-placeholder]::after {
-    content: "UNDER CONSTRUCTION";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 5;
-    display: block;
-    width: max(138%, 19rem);
-    box-sizing: border-box;
-    padding: clamp(0.72rem, 1.4vw, 1rem) 1.5rem;
-    transform: translate(-50%, -50%) rotate(-9deg);
-    border-block: 2px solid rgba(20, 18, 10, 0.9);
-    background:
-      repeating-linear-gradient(
-        115deg,
-        rgba(255, 255, 255, 0.12) 0 0.45rem,
-        transparent 0.45rem 0.9rem
-      ),
-      #f5c518;
-    box-shadow:
-      0 0 0 1px rgba(255, 224, 78, 0.72),
-      0 0.7rem 1.6rem rgba(0, 0, 0, 0.38);
-    color: #17140a;
-    font-size: clamp(0.68rem, 1.25vw, 0.95rem);
-    font-weight: 950;
-    line-height: 1;
-    letter-spacing: 0.2em;
-    text-align: center;
-    text-indent: 0.2em;
-    white-space: nowrap;
-    pointer-events: none;
-  }
-
   .responsive-media-shell {
     min-height: clamp(20rem, 48vw, 34rem);
   }
@@ -362,6 +325,15 @@
     background: #09090b;
     clip-path: polygon(15% 0, 100% 0, 91% 100%, 0 100%);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14);
+  }
+
+  .hero-photo-core img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.78) contrast(1.08);
   }
 
   .hero-standard-card {
@@ -1509,18 +1481,95 @@
     padding: 0.7rem;
   }
 
-  .coach-photo {
+  .coach-photo-track {
     position: absolute;
     inset: 0.7rem;
+    display: flex;
+    overflow-x: auto;
     border-radius: calc(clamp(1.35rem, 2.2vw, 2rem) - 0.45rem);
-    background-size: cover;
-    background-position: 50% 50%;
-    filter: grayscale(1) contrast(1.16);
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+
+  .coach-photo-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .coach-photo-track:focus-visible {
+    outline: 2px solid var(--atlas-secondary-bright);
+    outline-offset: -3px;
+  }
+
+  .coach-photo-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .coach-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.9);
     transition: transform 1000ms cubic-bezier(0.32,0.72,0,1);
   }
 
-  .coach-photo-card:hover .coach-photo {
+  .coach-photo-slide:hover .coach-photo {
     transform: scale(1.035);
+  }
+
+  .coach-photo-controls {
+    position: absolute;
+    z-index: 2;
+    top: 1.45rem;
+    right: 1.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem;
+    border: 1px solid rgb(var(--atlas-secondary-rgb) / 0.42);
+    border-radius: 999px;
+    background: rgba(8, 10, 9, 0.84);
+  }
+
+  .coach-photo-controls button {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    color: #f4f1e8;
+    font-size: 1.25rem;
+  }
+
+  .coach-photo-controls button:hover:not(:disabled),
+  .coach-photo-controls button:focus-visible {
+    background: var(--atlas-secondary-bright);
+    color: #090b09;
+  }
+
+  .coach-photo-controls button:focus-visible {
+    outline: 2px solid #f4f1e8;
+    outline-offset: 2px;
+  }
+
+  .coach-photo-controls button:disabled {
+    opacity: 0.32;
+  }
+
+  .coach-photo-controls span {
+    min-width: 3.7rem;
+    color: #f4f1e8;
+    font-size: 0.68rem;
+    font-weight: 900;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
   }
 
   .coach-photo-caption {
@@ -2048,18 +2097,6 @@
     background-size: 112px 112px;
     mask-image: linear-gradient(90deg, transparent, black 12%, black 82%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 82%, transparent);
-  }
-
-  .open-gym-section::after {
-    content: "";
-    position: absolute;
-    inset: 0 -10% 0 auto;
-    width: min(64rem, 64vw);
-    opacity: 0.13;
-    pointer-events: none;
-    background: repeating-radial-gradient(ellipse at 78% 48%, transparent 0 42px, rgba(255, 255, 255, 0.7) 43px, transparent 44px);
-    mask-image: linear-gradient(90deg, transparent, black 24%, black);
-    -webkit-mask-image: linear-gradient(90deg, transparent, black 24%, black);
   }
 
   .open-gym-proof-grid {
@@ -2923,14 +2960,9 @@
   }
 
   .equipment-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.28fr);
-    gap: 1rem;
     margin-top: clamp(2rem, 4vw, 4rem);
   }
 
-  .equipment-hero > figure,
-  .equipment-side-strip figure,
   .training-path-photo {
     overflow: hidden;
     border-radius: 1.6rem;
@@ -2938,22 +2970,93 @@
     background: var(--atlas-primary);
   }
 
-  .equipment-hero > figure {
-    min-height: clamp(28rem, 48vw, 42rem);
+  .equipment-photo-track {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.6rem;
+    background: var(--atlas-primary);
   }
 
-  .equipment-hero img,
-  .training-path-photo img {
+  .equipment-photo-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .equipment-photo-track:focus-visible {
+    outline: 2px solid var(--atlas-secondary-bright);
+    outline-offset: 3px;
+  }
+
+  .equipment-photo-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    scroll-snap-align: start;
+  }
+
+  .equipment-photo-slide img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.55) contrast(1.12) brightness(0.78);
+    filter: contrast(1.04) brightness(0.94);
   }
 
-  .equipment-side-strip {
-    display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+  .equipment-photo-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
+    padding-top: 0.8rem;
+    color: rgba(244, 244, 245, 0.74);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  .equipment-photo-controls > div {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .equipment-photo-controls button {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    background: #151716;
+    color: #f4f1e8;
+    font-size: 1.25rem;
+  }
+
+  .equipment-photo-controls button:hover:not(:disabled),
+  .equipment-photo-controls button:focus-visible {
+    border-color: var(--atlas-secondary-bright);
+    color: var(--atlas-secondary-bright);
+  }
+
+  .equipment-photo-controls button:disabled {
+    opacity: 0.35;
+  }
+
+  .equipment-photo-controls button:focus-visible {
+    outline: 2px solid var(--atlas-secondary-bright);
+    outline-offset: 2px;
+  }
+
+  .training-path-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.08) brightness(0.84);
   }
 
   .equipment-list {
@@ -3105,6 +3208,17 @@
 
   .training-path-photo {
     min-height: 16rem;
+  }
+
+  .open-gym-section .training-path-photo {
+    width: min(100%, 26rem);
+    min-height: 0;
+    aspect-ratio: 3 / 4;
+    justify-self: center;
+  }
+
+  .open-gym-section .training-path-photo img {
+    filter: contrast(1.04) brightness(0.93);
   }
 
   .training-path-note {
@@ -3267,28 +3381,46 @@
 
   .testimonial-faq-header {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
-    align-items: end;
-    gap: clamp(2rem, 7vw, 7rem);
+    grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
+    align-items: start;
+    gap: clamp(2rem, 5vw, 4rem);
     margin-bottom: clamp(2.5rem, 5vw, 4.25rem);
   }
 
   .testimonial-faq-header h2 {
-    max-width: 48rem;
+    max-width: 38rem;
     color: #f4f1e8;
-    font-size: clamp(2.55rem, 5.6vw, 5.6rem);
+    font-size: clamp(2.5rem, 4.3vw, 4.4rem);
     font-weight: 950;
     letter-spacing: -0.045em;
-    line-height: 0.94;
+    line-height: 1.02;
     text-wrap: balance;
   }
 
-  .testimonial-faq-header > p {
-    max-width: 29rem;
-    padding-bottom: 0.4rem;
+  .testimonial-faq-intro {
+    max-width: 32rem;
+    margin-top: clamp(1.25rem, 2.5vw, 2rem);
     color: rgba(244, 244, 245, 0.64);
     font-size: clamp(0.98rem, 1.35vw, 1.08rem);
-    line-height: 1.75;
+    line-height: 1.65;
+  }
+
+  .testimonial-faq-photo {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.5rem;
+    background: #151716;
+  }
+
+  .testimonial-faq-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    filter: contrast(1.05) brightness(0.96);
   }
 
   .testimonial-tablist {
@@ -3905,9 +4037,6 @@
     text-transform: uppercase;
   }
 
-  [data-image-placeholder] {
-    background: var(--atlas-primary);
-  }
 }
 
 @media (min-width: 640px) {
@@ -4114,7 +4243,6 @@
   }
 
   .equipment-header,
-  .equipment-hero,
   .training-path,
   .contact-layout,
   .contact-card-grid {
@@ -4138,8 +4266,9 @@
     gap: 1.5rem;
   }
 
-  .testimonial-faq-header > p {
-    max-width: 40rem;
+  .testimonial-faq-photo {
+    width: min(100%, 25rem);
+    justify-self: center;
   }
 
   .training-selector {
@@ -4287,7 +4416,7 @@
   .lifting-method-drawer {
     position: relative;
     grid-template-rows: 1fr;
-    margin-top: 1rem;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
     opacity: 1;
     transform: none;
   }
@@ -4414,6 +4543,10 @@
 }
 
 @media (max-width: 640px) {
+  .equipment-photo-slide {
+    aspect-ratio: 4 / 3;
+  }
+
   .section-heading {
     font-size: clamp(2.25rem, 11vw, 3.35rem);
     line-height: 1;
@@ -5001,6 +5134,14 @@
     scroll-behavior: auto;
   }
 
+  .equipment-photo-track {
+    scroll-behavior: auto;
+  }
+
+  .coach-photo-track {
+    scroll-behavior: auto;
+  }
+
   .floating-training-cta,
   .floating-training-cta.is-visible {
     transform: none !important;
@@ -5023,7 +5164,7 @@
   .atlas-fit-stack-card:focus-within .atlas-fit-card-body,
   .technique-gallery-section .technique-ambient-glow.is-visible,
   .technique-glass-card:hover,
-  .coach-photo-card:hover .coach-photo,
+  .coach-photo-slide:hover .coach-photo,
   .lifting-method-card:hover,
   .lifting-method-card:focus,
   .lifting-method-card:focus-within,
