@@ -65,6 +65,7 @@
   }
 
   .atlas-topline {
+    position: relative;
     min-height: var(--atlas-header-height);
     border-bottom: 1px solid rgb(var(--atlas-primary-rgb) / 0.42);
     background:
@@ -2494,7 +2495,7 @@
   }
 
   .mobile-nav {
-    position: relative;
+    position: static;
   }
 
   .mobile-nav summary {
@@ -2517,7 +2518,7 @@
 
   .mobile-nav-panel {
     position: absolute;
-    right: 0;
+    right: max(1rem, env(safe-area-inset-right));
     top: calc(100% + 0.75rem);
     width: min(18rem, calc(100vw - 2rem));
     display: grid;

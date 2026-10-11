@@ -127,6 +127,7 @@ try {
       assert.equal(result.brandSingleLine, true, `Header brand wraps at ${viewport.width}px.`);
       assert.equal(result.desktopNavVisible, viewport.desktopNav, `Desktop navigation mode is wrong at requested ${viewport.width}px (measured ${result.viewportWidth}px).`);
       assert.equal(result.mobileNavVisible, !viewport.desktopNav, `Mobile navigation mode is wrong at requested ${viewport.width}px (measured ${result.viewportWidth}px).`);
+      assert.equal(result.mobileMenuFits, true, `Open mobile menu extends beyond the viewport at ${viewport.width}px.`);
       assert.equal(result.headerCtaVisible, viewport.headerCta, `Header CTA visibility is wrong at ${viewport.width}px.`);
       assert.equal(result.heroRailVisible, viewport.heroRail, `Hero rail visibility is wrong at ${viewport.width}px.`);
       assert.equal(result.headerFits, true, `Header controls overflow at ${viewport.width}px.`);

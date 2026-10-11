@@ -102,6 +102,13 @@
           const desktopNav = desktopNavLink ? desktopNavLink.parentElement : null;
           const mobileNav = doc.querySelector(".mobile-nav");
           const topLine = doc.querySelector(".atlas-topline");
+          let mobileMenuFits = true;
+          if (isVisible(mobileNav, view)) {
+            mobileNav.querySelector("summary").click();
+            const panel = mobileNav.querySelector(".mobile-nav-panel").getBoundingClientRect();
+            mobileMenuFits = mobileNav.open && panel.left >= 0 && panel.right <= view.innerWidth;
+            mobileNav.querySelector("summary").click();
+          }
           const brand = doc.querySelector(".atlas-topline > a > span:last-child");
           const heroStage = doc.querySelector(".hero-reference-stage");
           const heroShell = doc.querySelector(".hero-reference-shell");
@@ -304,6 +311,7 @@
             documentFits: doc.documentElement.scrollWidth <= doc.documentElement.clientWidth + 1,
             desktopNavVisible: isVisible(desktopNav, view),
             mobileNavVisible: isVisible(mobileNav, view),
+            mobileMenuFits,
             headerCtaVisible: isVisible(doc.querySelector(".header-flow-button"), view),
             heroRailVisible: isVisible(doc.querySelector(".hero-rail"), view),
             brandSingleLine,
