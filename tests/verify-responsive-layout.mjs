@@ -102,6 +102,10 @@ try {
       assert.ok(encodedResult && encodedResult !== "pending", `Responsive probe did not finish at ${viewport.width}px.`);
       const result = JSON.parse(decodeURIComponent(encodedResult));
 
+      for (const [check, passed] of Object.entries(result.eventMetrics)) {
+        assert.equal(passed, true, `Event check ${check} failed at ${viewport.width}px: ${JSON.stringify(result.eventMetrics)}`);
+      }
+
       if (viewport.railOnly) {
         assert.deepEqual(result.ariaTreeViolations, [], `ARIA accessibility-tree checks failed at ${viewport.width}px: ${JSON.stringify(result.ariaTreeViolations)}`);
         assert.equal(result.documentFits, true, `Document overflows horizontally at ${viewport.width}px.`);

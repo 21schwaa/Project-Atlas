@@ -75,6 +75,21 @@
       };
 
       frame.addEventListener("load", () => {
+        const eventDialog = frame.contentDocument.querySelector("[data-event-dialog]");
+        const dialogBounds = eventDialog?.getBoundingClientRect();
+        const registrationUrls = (root) => Array.from(root.querySelectorAll(".event-registration a"), (link) => link.href);
+        const expectedUrls = ["https://tinyurl.com/atlasliftofffemale", "https://tinyurl.com/atlasliftoffmale"];
+        const shouldShowPopup = Date.now() < Date.parse(eventDialog.dataset.eventExpires);
+        const eventMetrics = {
+          popupOpens: eventDialog?.open === shouldShowPopup,
+          popupFits: dialogBounds?.left >= 0 && dialogBounds?.right <= frame.contentWindow.innerWidth
+            && dialogBounds?.top >= 0 && dialogBounds?.bottom <= frame.contentWindow.innerHeight,
+          popupLinks: JSON.stringify(registrationUrls(eventDialog)) === JSON.stringify(expectedUrls),
+          popupDoesNotTakeFocus: !eventDialog.contains(frame.contentDocument.activeElement),
+          announcementNonModal: !eventDialog.matches(":modal"),
+          posterLoaded: eventDialog?.querySelector("img").naturalWidth > 0,
+        };
+        eventDialog?.querySelector("[data-event-close]").click();
         if (captureMode) {
           const captureStyles = frame.contentDocument.createElement("style");
           captureStyles.textContent = `
@@ -98,6 +113,33 @@
         window.setTimeout(async () => {
           const doc = frame.contentDocument;
           const view = frame.contentWindow;
+          eventMetrics.popupCloses = !eventDialog.open && !doc.documentElement.classList.contains("event-popup-open");
+          const eventCard = doc.querySelector("[data-event-card]");
+          const eventFront = eventCard.querySelector("[data-event-flip]");
+          const eventBack = eventCard.querySelector(".event-card-back");
+          eventFront.click();
+          eventMetrics.cardFlips = eventCard.classList.contains("is-flipped") && eventFront.inert
+            && !eventBack.inert && doc.activeElement === eventBack.querySelector("a");
+          eventMetrics.cardLinks = JSON.stringify(registrationUrls(eventBack)) === JSON.stringify(expectedUrls);
+          // Finish the turn before measuring the rotated face.
+          eventCard.querySelector(".event-card-inner").style.transition = "none";
+          eventMetrics.cardFits = eventBack.scrollHeight <= eventBack.clientHeight + 1
+            && eventBack.scrollWidth <= eventBack.clientWidth + 1;
+          eventCard.dispatchEvent(new view.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+          eventMetrics.cardReturns = !eventCard.classList.contains("is-flipped") && !eventFront.inert
+            && eventBack.inert && doc.activeElement === eventFront;
+          const eventTrack = doc.querySelector("[data-events-track]");
+          const extraCard = eventCard.cloneNode(true);
+          extraCard.removeAttribute("aria-label");
+          extraCard.querySelector("#lift-off-details")?.removeAttribute("id");
+          extraCard.querySelector("[aria-controls]")?.removeAttribute("aria-controls");
+          eventTrack.append(extraCard);
+          eventTrack.dispatchEvent(new view.KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+          eventTrack.scrollTo({ left: eventTrack.scrollWidth, behavior: "instant" });
+          eventMetrics.railScrolls = eventTrack.scrollWidth > eventTrack.clientWidth && eventTrack.scrollLeft > 0
+            && view.getComputedStyle(eventTrack).scrollSnapType === "x mandatory";
+          extraCard.remove();
+          eventTrack.scrollTo({ left: 0, behavior: "instant" });
           const desktopNavLink = doc.querySelector(".atlas-topline [data-nav-link]");
           const desktopNav = desktopNavLink ? desktopNavLink.parentElement : null;
           const mobileNav = doc.querySelector(".mobile-nav");
@@ -438,6 +480,7 @@
             overflowingGrids
           };
 
+          result.eventMetrics = eventMetrics;
           const axeScript = doc.createElement("script");
           axeScript.src = "/node_modules/axe-core/axe.min.js";
           await new Promise((resolve, reject) => {

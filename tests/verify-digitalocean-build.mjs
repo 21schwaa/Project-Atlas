@@ -12,6 +12,8 @@ const requiredPaths = [
   "sitemap.xml",
   "dist/styles.css",
   "src/main.js",
+  "src/events.js",
+  "assets/lift-off-2027.webp",
   "goolgelogo.svg",
   "atlasbarbellnowords.svg",
   "platformlogo.svg",

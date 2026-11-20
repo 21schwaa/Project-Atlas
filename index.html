@@ -113,6 +113,7 @@
           <a class="transition-colors duration-500 hover:text-[#c9ae6b]" href="#offerings" data-nav-link>Training</a>
           <a class="transition-colors duration-500 hover:text-[#c9ae6b]" href="#coach" data-nav-link>Coach</a>
           <a class="transition-colors duration-500 hover:text-[#c9ae6b]" href="#testimonials" data-nav-link>Lifters</a>
+          <a class="transition-colors duration-500 hover:text-[#c9ae6b]" href="#events" data-nav-link>Events</a>
           <a class="transition-colors duration-500 hover:text-[#c9ae6b]" href="#contact" data-nav-link>Contact</a>
         </div>
 
@@ -179,6 +180,7 @@
               <a href="#offerings" data-nav-link>Training</a>
               <a href="#coach" data-nav-link>Coach</a>
               <a href="#testimonials" data-nav-link>Lifters</a>
+              <a href="#events" data-nav-link>Events</a>
               <a href="#contact" data-nav-link>Contact</a>
             </div>
           </details>
@@ -1454,6 +1456,59 @@
         </div>
       </section>
 
+      <section id="events" class="anchor-section events-section section-rhythm" aria-labelledby="events-heading">
+        <div class="page-shell events-layout">
+          <div class="events-intro" data-reveal>
+            <p class="section-kicker">Events at Atlas</p>
+            <h2 id="events-heading" class="section-heading">Meet you on<br />the platform.</h2>
+            <p class="events-description">Big lifts. Good company. Find your next competition and be part of the Atlas community.</p>
+            <p class="events-instruction">Tap an event to find your session and sign up.</p>
+          </div>
+          <div class="events-gallery" data-reveal>
+            <div class="events-toolbar">
+              <span>On the calendar</span>
+              <div class="events-controls" data-event-controls hidden>
+                <button type="button" aria-label="Previous event" aria-controls="events-track" data-event-previous>&larr;</button>
+                <button type="button" aria-label="Next event" aria-controls="events-track" data-event-next>&rarr;</button>
+              </div>
+            </div>
+            <div id="events-track" class="events-track" role="region" aria-label="Atlas events, scroll horizontally for more" tabindex="0" data-events-track>
+              <article class="event-card" aria-label="Atlas Unsanctioned Lift Off, February 6, 2027" data-event-card>
+                <div class="event-card-inner">
+                  <button class="event-card-front" type="button" aria-expanded="false" aria-controls="lift-off-details" data-event-flip>
+                    <img src="./assets/lift-off-2027.webp" alt="Atlas Barbell Club Unsanctioned Lift Off flyer for Saturday, February 6, 2027. Female weigh-in at 9am, lifting at 11am. Male weigh-in at 11am, lifting at 1pm." width="1254" height="1254" loading="lazy" decoding="async" />
+                    <span class="event-card-caption">
+                      <span class="event-card-date">Saturday &middot; February 6, 2027</span>
+                      <span class="event-card-title">Unsanctioned Lift Off</span>
+                      <span class="event-flip-hint">Registration &amp; session details <span aria-hidden="true">&nearr;</span></span>
+                    </span>
+                  </button>
+                  <div id="lift-off-details" class="event-card-back">
+                    <div class="event-card-back-top">
+                      <span class="event-card-date">February 6, 2027</span>
+                      <button type="button" class="event-back-button" data-event-back aria-label="Flip back to the Lift Off flyer">&larr; Flyer</button>
+                    </div>
+                    <div class="event-card-details">
+                      <p class="event-eyebrow">Atlas Barbell Club</p>
+                      <h3>Unsanctioned<br />Lift Off</h3>
+                      <p class="event-card-summary">Your next big lift starts here. Choose your division to register.</p>
+                      <dl class="event-sessions">
+                        <div><dt>Female</dt><dd>9am weigh-in<br /><strong>11am lifting starts</strong></dd></div>
+                        <div><dt>Male</dt><dd>11am weigh-in<br /><strong>1pm lifting starts</strong></dd></div>
+                      </dl>
+                    </div>
+                    <div class="event-registration event-registration-stacked">
+                      <a href="https://tinyurl.com/atlasliftofffemale" target="_blank" rel="noopener noreferrer">Female registration <span aria-hidden="true">&nearr;</span></a>
+                      <a href="https://tinyurl.com/atlasliftoffmale" target="_blank" rel="noopener noreferrer">Male registration <span aria-hidden="true">&nearr;</span></a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         class="overflow-hidden border-y border-[#596b5e]/80 bg-[#596b5e] py-6 text-zinc-950"
         aria-label="Atlas training focus"
@@ -1597,6 +1652,38 @@
       </div>
     </footer>
 
+    <dialog class="event-dialog" aria-labelledby="event-dialog-title" aria-describedby="event-announcement-description" data-event-dialog data-event-expires="2027-02-07T00:00:00-07:00">
+      <div class="event-dialog-heading">
+        <p class="event-announcement-label">From Atlas Barbell Club</p>
+        <button type="button" class="event-dialog-close" aria-label="Close announcement" data-event-close>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="event-announcement-body">
+        <img class="event-dialog-poster" src="./assets/lift-off-2027.webp" alt="Atlas Barbell Club Unsanctioned Lift Off, Saturday February 6, 2027. Female: 9am weigh-in, 11am lifting. Male: 11am weigh-in, 1pm lifting." width="1254" height="1254" decoding="async" />
+        <div class="event-announcement-copy">
+          <p class="event-eyebrow">On the club calendar</p>
+          <h2 id="event-dialog-title">Lift Off at Atlas</h2>
+          <time class="event-announcement-date" datetime="2027-02-06">Saturday, February 6, 2027</time>
+          <p id="event-announcement-description">We're hosting an unsanctioned lift off. Join the Atlas community for a day on the platform.</p>
+        </div>
+      </div>
+      <div class="event-dialog-footer">
+        <p>Registration</p>
+        <div class="event-registration">
+          <a href="https://tinyurl.com/atlasliftofffemale" target="_blank" rel="noopener noreferrer" aria-label="Female registration">
+            <span>Female</span>
+            <svg class="event-registration-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10" /></svg>
+          </a>
+          <a href="https://tinyurl.com/atlasliftoffmale" target="_blank" rel="noopener noreferrer" aria-label="Male registration">
+            <span>Male</span>
+            <svg class="event-registration-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10" /></svg>
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./src/events.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
       defer

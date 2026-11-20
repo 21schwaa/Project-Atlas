@@ -1,5 +1,505 @@
 @import "tailwindcss";
 
+@layer components {
+  .event-dialog {
+    position: fixed;
+    inset: auto 1.5rem 1.5rem auto;
+    z-index: 40;
+    width: min(38rem, calc(100% - 3rem));
+    max-width: none;
+    max-height: calc(100svh - 3rem);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #596b5e #0b0e0c;
+    border: 1px solid #7a8c7e55;
+    border-radius: 1.1rem;
+    color: #f2f1eb;
+    background: #101512;
+    box-shadow: 0 1rem 3rem #0005;
+  }
+
+  .event-dialog-heading {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 1.1rem;
+    background: #101512;
+  }
+
+  .event-announcement-label {
+    color: #aab9ae;
+    font-size: 0.62rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .event-eyebrow {
+    color: #c9ae6b;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-announcement-body {
+    display: grid;
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .event-announcement-copy h2 {
+    margin-top: 0.5rem;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .event-announcement-copy .event-eyebrow {
+    color: #aab9ae;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .event-announcement-date {
+    display: block;
+    margin-top: 0.6rem;
+    color: #d2d9d3;
+    font-size: 0.75rem;
+    font-weight: 550;
+  }
+
+  #event-announcement-description {
+    margin-top: 0.75rem;
+    color: #a9afa8;
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .event-dialog-close {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: #b7beb8;
+    cursor: pointer;
+    transition: color 180ms ease, background-color 180ms ease;
+  }
+
+  .event-dialog-close svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .event-dialog-close:hover {
+    color: #fff;
+    background: #ffffff0d;
+  }
+
+  .event-dialog-poster {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 0.6rem;
+  }
+
+  .event-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1.5rem;
+    border-top: 1px solid #7a8c7e30;
+  }
+
+  .event-dialog-footer > p {
+    color: #9da79f;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .event-registration {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .event-registration a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid #7a8c7e45;
+    border-radius: 0.75rem;
+    color: #f2f1eb;
+    background: #161e19;
+    font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 180ms ease, border-color 180ms ease;
+  }
+
+  .event-dialog .event-registration a {
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: transparent;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .event-dialog .event-registration a:hover {
+    background: #ffffff09;
+  }
+
+  .event-dialog .event-registration-arrow {
+    width: 1rem;
+    height: 1rem;
+    color: #aab9ae;
+  }
+
+  .event-registration-arrow {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #c9ae6b;
+    transition: transform 180ms ease;
+  }
+
+  .event-registration a:hover {
+    background: #222e26;
+    border-color: #c9ae6b99;
+  }
+
+  .event-registration a:hover .event-registration-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .event-dialog button:focus-visible,
+  .event-registration a:focus-visible,
+  .events-section button:focus-visible,
+  .events-track:focus-visible {
+    outline: 2px solid #e0c88d;
+    outline-offset: 4px;
+  }
+
+  .events-section {
+    border-top: 1px solid #596b5e50;
+    background: radial-gradient(ellipse at 82% 45%, #596b5e18, transparent 60%);
+  }
+
+  .events-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .events-intro .section-heading {
+    font-size: clamp(2.4rem, 4.7vw, 4.4rem);
+  }
+
+  .events-description {
+    max-width: 23rem;
+    margin-top: 1.5rem;
+    color: #a9afa8;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .events-instruction {
+    margin-top: 1.5rem;
+    color: #9caf9f;
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .events-gallery {
+    min-width: 0;
+  }
+
+  .events-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.75rem;
+    margin-bottom: 0.5rem;
+    color: #a9afa8;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .events-controls:not([hidden]) {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .events-controls button {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid #596b5e;
+    border-radius: 50%;
+    color: #f2f1eb;
+    cursor: pointer;
+  }
+
+  .events-controls button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .events-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #596b5e #0b0e0c;
+    padding: 0.4rem 0.4rem 1rem;
+  }
+
+  .event-card {
+    flex: 0 0 min(23rem, 100%);
+    min-width: 0;
+    scroll-snap-align: start;
+    perspective: 1200px;
+  }
+
+  .event-card-inner {
+    display: grid;
+    border: 1px solid #596b5e80;
+    border-radius: 0.85rem;
+    background: #101512;
+    transform-style: preserve-3d;
+    transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+
+  .event-card-front {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border-radius: inherit;
+    color: #f2f1eb;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .event-card-front img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+
+  .event-card-caption {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.25rem;
+  }
+
+  .event-card-date {
+    color: #b8c5ba;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .event-card-title {
+    font-size: clamp(1.1rem, 3vw, 1.35rem);
+    font-weight: 850;
+  }
+
+  .event-flip-hint {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #596b5e50;
+    color: #e0c88d;
+    font-size: 0.75rem;
+  }
+
+  .event-card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    min-width: 0;
+    padding: 1.25rem;
+    border-radius: inherit;
+    color: #f2f1eb;
+    background: linear-gradient(145deg, #1b281f, #0b0e0c 80%);
+  }
+
+  .event-card-back-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .event-back-button {
+    display: none;
+    min-height: 2.75rem;
+    color: #c9ae6b;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
+  .event-card-details h3 {
+    margin-top: 0.6rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+  }
+
+  .event-card-summary {
+    margin-top: 0.9rem;
+    color: #a9afa8;
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .event-sessions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid #596b5e80;
+    font-size: 0.75rem;
+    line-height: 1.8;
+  }
+
+  .event-sessions dt {
+    margin-bottom: 0.25rem;
+    color: #e0c88d;
+    font-weight: 800;
+  }
+
+  .event-sessions dd {
+    color: #c5cbc5;
+  }
+
+  .event-registration-stacked {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-card.is-interactive .event-card-front,
+  .event-card.is-interactive .event-card-back {
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .event-card.is-interactive .event-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .event-card.is-interactive .event-flip-hint {
+    display: flex;
+  }
+
+  .event-card.is-interactive .event-back-button {
+    display: block;
+  }
+
+  .event-card.is-flipped .event-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .event-dialog {
+    inset: auto 1rem 1rem auto;
+    width: calc(100% - 2rem);
+    max-height: calc(100svh - 2rem);
+  }
+
+  .event-announcement-body {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+    padding: 0.25rem 1.1rem 1.25rem;
+  }
+
+  .event-announcement-copy h2 {
+    font-size: 1.5rem;
+  }
+
+  .event-announcement-date {
+    font-size: 0.68rem;
+    line-height: 1.5;
+  }
+
+  #event-announcement-description {
+    font-size: 0.74rem;
+  }
+
+  .event-dialog-footer {
+    gap: 0.4rem;
+    padding: 0.6rem 1.1rem;
+  }
+
+  .event-dialog-footer > p {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .event-dialog .event-registration {
+    gap: 0.25rem;
+  }
+
+  .event-dialog .event-registration a {
+    gap: 0.4rem;
+    padding-inline: 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .events-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .event-card {
+    flex-basis: min(23rem, 86vw, 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card-inner {
+    transition: none;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
