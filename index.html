@@ -1464,7 +1464,7 @@
             <p class="events-description">Big lifts. Good company. Find your next competition and be part of the Atlas community.</p>
             <p class="events-instruction">Tap an event to find your session and sign up.</p>
           </div>
-          <div class="events-gallery" data-reveal>
+          <div class="events-gallery" data-reveal data-upcoming-events>
             <div class="events-toolbar">
               <span>On the calendar</span>
               <div class="events-controls" data-event-controls hidden>
@@ -1473,14 +1473,15 @@
               </div>
             </div>
             <div id="events-track" class="events-track" role="region" aria-label="Atlas events, scroll horizontally for more" tabindex="0" data-events-track>
-              <article class="event-card" aria-label="Atlas Unsanctioned Lift Off, February 6, 2027" data-event-card>
+              <article class="event-card" aria-label="Atlas Unsanctioned Lift Off, February 6, 2027" data-event-card data-event-id="lift-off-2027" data-event-expires="2027-02-07T00:00:00-07:00">
                 <div class="event-card-inner">
                   <button class="event-card-front" type="button" aria-expanded="false" aria-controls="lift-off-details" data-event-flip>
                     <img src="./assets/lift-off-2027.webp" alt="Atlas Barbell Club Unsanctioned Lift Off flyer for Saturday, February 6, 2027. Female weigh-in at 9am, lifting at 11am. Male weigh-in at 11am, lifting at 1pm." width="1254" height="1254" loading="lazy" decoding="async" />
                     <span class="event-card-caption">
                       <span class="event-card-date">Saturday &middot; February 6, 2027</span>
+                      <span class="event-ended" data-event-ended hidden>Past event</span>
                       <span class="event-card-title">Unsanctioned Lift Off</span>
-                      <span class="event-flip-hint">Registration &amp; session details <span aria-hidden="true">&nearr;</span></span>
+                      <span class="event-flip-hint"><span data-event-hint>Registration &amp; session details</span><span aria-hidden="true">&nearr;</span></span>
                     </span>
                   </button>
                   <div id="lift-off-details" class="event-card-back">
@@ -1501,10 +1502,33 @@
                       <a href="https://tinyurl.com/atlasliftofffemale" target="_blank" rel="noopener noreferrer">Female registration <span aria-hidden="true">&nearr;</span></a>
                       <a href="https://tinyurl.com/atlasliftoffmale" target="_blank" rel="noopener noreferrer">Male registration <span aria-hidden="true">&nearr;</span></a>
                     </div>
+                    <p class="event-archive-note" data-event-ended hidden>This event has ended. Registration is closed.</p>
                   </div>
                 </div>
               </article>
             </div>
+          </div>
+          <p class="events-empty" data-events-empty hidden>No upcoming events right now. Take a look at our past events below, and check back for the next day on the platform.</p>
+        </div>
+      </section>
+
+      <section id="past-events" class="anchor-section events-section section-rhythm" aria-labelledby="past-events-heading" data-past-events hidden>
+        <div class="page-shell events-layout">
+          <div class="events-intro">
+            <p class="section-kicker">From the platform</p>
+            <h2 id="past-events-heading" class="section-heading">Past events.</h2>
+            <p class="events-description">Good lifts. Great memories. Look back at the competitions that brought our community together.</p>
+            <p class="events-instruction">Tap an event to revisit the flyer and session details.</p>
+          </div>
+          <div class="events-gallery">
+            <div class="events-toolbar">
+              <span>The Atlas archive</span>
+              <div class="events-controls" data-event-controls hidden>
+                <button type="button" aria-label="Previous past event" aria-controls="past-events-track" data-event-previous>&larr;</button>
+                <button type="button" aria-label="Next past event" aria-controls="past-events-track" data-event-next>&rarr;</button>
+              </div>
+            </div>
+            <div id="past-events-track" class="events-track" role="region" aria-label="Past Atlas events, scroll horizontally for more" tabindex="0" data-events-track></div>
           </div>
         </div>
       </section>
@@ -1652,7 +1676,7 @@
       </div>
     </footer>
 
-    <dialog class="event-dialog" aria-labelledby="event-dialog-title" aria-describedby="event-announcement-description" data-event-dialog data-event-expires="2027-02-07T00:00:00-07:00">
+    <dialog class="event-dialog" aria-labelledby="event-dialog-title" aria-describedby="event-announcement-description" data-event-dialog data-event-id="lift-off-2027" data-event-expires="2027-02-07T00:00:00-07:00">
       <div class="event-dialog-heading">
         <p class="event-announcement-label">From Atlas Barbell Club</p>
         <button type="button" class="event-dialog-close" aria-label="Close announcement" data-event-close>

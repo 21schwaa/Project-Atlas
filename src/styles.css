@@ -241,6 +241,35 @@
     min-width: 0;
   }
 
+  .events-empty {
+    max-width: 26rem;
+    padding: 1.5rem;
+    border: 1px solid #596b5e50;
+    border-radius: 0.85rem;
+    color: #a9afa8;
+    background: #101512;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .event-ended,
+  .event-archive-note {
+    color: #aab9ae;
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+
+  .event-ended {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .event-registration[hidden] {
+    display: none;
+  }
+
   .events-toolbar {
     display: flex;
     align-items: center;
